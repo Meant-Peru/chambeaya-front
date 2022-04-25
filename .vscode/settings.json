@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///Users/harold/projects/Meant/chambeaya_frontend/.github/workflows/deploy.yml"
+    }
+}
