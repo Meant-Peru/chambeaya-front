@@ -1,0 +1,29 @@
+{
+  "post_job_technology": [
+    {
+      "id_technology": "1",
+      "id_post_job": "3",
+      "state": 1
+    },
+    {
+      "id_technology": "2",
+      "id_post_job": "2",
+      "state": 1
+    },
+    {
+      "id_technology": "1",
+      "id_post_job": "5",
+      "state": 1
+    },
+    {
+      "id_technology": "1",
+      "id_post_job": "4",
+      "state": 1
+    },
+    {
+      "id_technology": "1",
+      "id_post_job": "3",
+      "state": 1
+    }
+  ]
+}

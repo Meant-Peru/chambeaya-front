@@ -1,0 +1,19 @@
+{
+  "payment_method": [
+    {
+      "name_payment_method": "yape",
+      "description_payment_method": "pago por yape",
+      "state": 1
+    },
+    {
+      "name_payment_method": "transferencia",
+      "description_payment_method": "pago por transferencia bancaria",
+      "state": 1
+    },
+    {
+      "name_payment_method": "visa",
+      "description_payment_method": "pago por visa",
+      "state": 0
+    }
+  ]
+}

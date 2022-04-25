@@ -1,0 +1,124 @@
+{
+  "company": [
+    {
+      "id_use": 1,
+      "name": "Hermes",
+      "name_last": "Hermes Transportes Blindados SAC",
+      "email": "sac@hermes.com.pe",
+      "phone": "925369174",
+      "birthday_date": "15/10/1985",
+      "genero": "No definido",
+      "ruc": "20100077044",
+      "dni": "34343434",
+      "state": 1
+    },
+    {
+      "id_use": 2,
+      "name": "PROSEGUR",
+      "name_last": "PROSEGURIDAD S A",
+      "email": "servicioalcliente@prosegur.com",
+      "phone": "935268251",
+      "birthday_date": "19/06/1986",
+      "genero": "No definido",
+      "ruc": "20101155588",
+      "dni": "34343434",
+      "state": 1
+    },
+    {
+      "id_use": 3,
+      "name": "MIFARMA",
+      "name_last": "MIFARMA S.A.C.",
+      "email": "contacto@mifarma.com",
+      "phone": "612-5000",
+      "birthday_date": "22/11/2005",
+      "genero": "No definido",
+      "ruc": "20512002090",
+      "dni": "34343434",
+      "state": 1
+    },
+    {
+      "id_use": 4,
+      "name": "FARMACIA UNIVERSAL",
+      "name_last": "FARMACIA UNIVERSAL S.A.C.",
+      "email": "contacto@farmaciauniversal.com",
+      "phone": "999011068",
+      "birthday_date": "01/10/1961",
+      "genero": "No definido",
+      "ruc": "20100025168",
+      "dni": "18224788",
+      "state": 1
+    },
+    {
+      "id_use": 5,
+      "name": "TOTTUS",
+      "name_last": "HIPERMERCADOS TOTTUS S.A",
+      "email": "contacto@hipermecadostottus.com",
+      "phone": "918939091",
+      "birthday_date": "16/04/2004",
+      "genero": "No definido",
+      "ruc": "20508565934",
+      "dni": "48707796",
+      "state": 1
+    },
+    {
+      "id_use": 6,
+      "name": "FABER-CASTELL",
+      "name_last": "A W FABER CASTELL PERUANA S A",
+      "email": "contacto@fabercastell.com",
+      "phone": "6121900",
+      "birthday_date": "21/05/1965",
+      "genero": "No definido",
+      "ruc": "20100050359",
+      "dni": "45867476",
+      "state": 1
+    },
+    {
+      "id_use": 7,
+      "name": "BANCO RIPLEY",
+      "name_last": "BANCO RIPLEY PERU S.A.",
+      "email": "contacto@bancoripley.com",
+      "phone": "985151650",
+      "birthday_date": "08/02/1995",
+      "genero": "No definido",
+      "ruc": "20259702411",
+      "dni": "17553070",
+      "state": 1
+    },
+    {
+      "id_use": 8,
+      "name": "SUPERMERCADOS PERUANOS",
+      "name_last": "SUPERMERCADOS PERUANOS SOCIEDAD ANONIMA",
+      "email": "contacto@supermercadosperuanos.com",
+      "phone": "936096352",
+      "birthday_date": "01/06/1979",
+      "genero": "No definido",
+      "ruc": "20100070970",
+      "dni": "40676489",
+      "state": 1
+    },
+    {
+      "id_use": 9,
+      "name": "BBVA",
+      "name_last": "BANCO BBVA PERU",
+      "email": "contacto@bbva.com",
+      "phone": "595-0000",
+      "birthday_date": "20/08/1951",
+      "genero": "No definido",
+      "ruc": "20100130204",
+      "dni": "34343434",
+      "state": 1
+    },
+    {
+      "id_use": 10,
+      "name": "BCP",
+      "name_last": "BANCO DE CREDITO DEL PERU",
+      "email": "contacto@bcp.com",
+      "phone": "983719521",
+      "birthday_date": "09/0/1889",
+      "genero": "No definido",
+      "ruc": "20100047218",
+      "dni": "16012163",
+      "state": 1
+    }
+  ]
+}

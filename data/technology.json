@@ -1,0 +1,29 @@
+{
+  "technology": [
+    {
+      "name_technology": "Excel",
+      "description_technology": "nivel intermedio",
+      "state": 1
+    },
+    {
+      "name_technology": "Titulado en farmacia",
+      "description_technology": "Titulado en farmacia y Bioquímica, colegiado y habilitado",
+      "state": 1
+    },
+    {
+      "name_technology": "Java",
+      "description_technology": "manejo de java",
+      "state": 1
+    },
+    {
+      "name_technology": "Oracle",
+      "description_technology": "manejo de oracle 11g y 12c",
+      "state": 1
+    },
+    {
+      "name_technology": "Php",
+      "description_technology": "nivel avanzado",
+      "state": 1
+    }
+  ]
+}

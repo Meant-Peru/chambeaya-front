@@ -1,0 +1,24 @@
+{
+  "post_job_postular": [
+    {
+      "id_postular": "1",
+      "id_post_job": "3",
+      "state": 1
+    },
+    {
+      "id_postular": "4",
+      "id_post_job": "5",
+      "state": 1
+    },
+    {
+      "id_postular": "2",
+      "id_post_job": "2",
+      "state": 1
+    },
+    {
+      "id_postular": "9",
+      "id_post_job": "1",
+      "state": 1
+    }
+  ]
+}

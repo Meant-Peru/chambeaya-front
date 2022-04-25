@@ -1,0 +1,39 @@
+{
+  "post_job": [
+    {
+      "title": "Ingeniero Mecánico",
+      "desciption_post": "Hermes Transportes Blindados, empresa líder en brindar servicios de Soluciones Seguras, con más de 30 años en el mercado y más de 3000 trabajadores, se encuentra en la búsqueda de un Ingeniero Mecánico. FUNCIONES: - Gestionar y controlar el mantenimiento preventivo y correctivo de Unidades a nivel nacional. - Gestionar via software el control de la flota a nivel nacional.",
+      "id_company": "1",
+      "salary_": "S/. 3.050,00",
+      "state": 1
+    },
+    {
+      "title": "Químico Farmacéutico Farmacia Universal - Pueblo Libre",
+      "desciption_post": "Farmacia Universal es una cadena de Boticas de capitales 100% peruanas con más de 20 años de existencia, pertenecemos al Grupo Farmacéutico Deco, considerado entre los 100 Grupos Económicos más importantes del Perú. Contamos con más de 160 locales y 1500 colaboradores a nivel nacional y múltiples oportunidades de empleo y desarrollo profesional alineadas a nuestra política de servicio al cliente y promoción al talento interno con el objetivo de seguir siendo una de las empresas líderes de nuestro sector. Requisitos: * Titulado en farmacia y Bioquímica, colegiado y habilitado. * Proactivos y con deseos de superación. * Habilidad para comunicarse y buen trato con los colaboradores del establecimiento farmacéutico. * Capacidad de vocación de servicio, liderazgo, orientado a cumplir los objetivos * Honestidad e integridad. * Desarrollo personal y profesional. * No existe restricción alguna para personal afiliado al CONADIS (adjuntar certificado de discapacidad y/o una copia del Carnet de Inscripción en el CONADIS).",
+      "id_company": "4",
+      "salary_": "S/ 2,024",
+      "state": 1
+    },
+    {
+      "title": "Ingeniero de Sistemas",
+      "desciption_post": "Descripción completa del empleo. REQUISITOS: -Títulado o Bachiller como Ingeniero de Sistemas. - Experiencia mínima de 2 años. - Manejo de Java, JavaScript, MySQL,php, Python y Linux. - Disponibilidad inmediata.",
+      "id_company": "10",
+      "salary_": "S/.2,500.00 - S/.4,000.00 al mes",
+      "state": 1
+    },
+    {
+      "title": "Analista de Sistemas/Turnos Rotativos",
+      "desciption_post": "Descripción Funciones del Cargo: Revisar los requerimientos de soporte e incidentes que le sean asignados, aplicar los conocimientos que tiene para resolverlos a la brevedad posible para recuperar la operación del sistema con falla, y en el caso de que no sea posible escalarlos a desarrollo, documentar en la herramienta de soporte el diagnóstico y acciones realizadas para resolver el reporte / incidente, alertar cuando una incidencia es recurrente para ver opción de generar un fix de fondo con desarrollo.",
+      "id_company": "5",
+      "salary_": "S/.2,500.00 - S/.4,000.00 al mes",
+      "state": 1
+    },
+    {
+      "title": "Practicante SAC Central",
+      "desciption_post": "Descripción Funciones del Cargo: - Recopilación, tratamiento y análisis de data para detección de potenciales alertas o desviaciones en indicadores relacionados a Experiencia de Cliente así como oportunidades de mejora. - Generación de reportería, informes y tableros de control para monitoreo del desempeño de indicadores a fin de garantizar cumplimiento de objetivos del área. - Generación de presentaciones de alto impacto para Gerencia de SAC. - Proponer e implementar controles de validación de datos a fin de garantizar la precisión de los mismos.",
+      "id_company": "5",
+      "salary_": "S/. 890.00",
+      "state": 1
+    }
+  ]
+}

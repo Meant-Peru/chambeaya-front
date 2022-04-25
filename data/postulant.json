@@ -1,0 +1,124 @@
+{
+  "postulant": [
+    {
+      "id_use": 1,
+      "name": "Juanito",
+      "name_last": "Clavo Clavito",
+      "email": "juanitocalvito@gmail.com",
+      "phone": "960434928",
+      "birthday_date": "25/10/1998",
+      "genero": "Masculino",
+      "ruc": "10837367451",
+      "dni": "83736745",
+      "state": 1
+    },
+    {
+      "id_use": 2,
+      "name": "Jorge",
+      "name_last": "Billanueva Villavicencio",
+      "email": "villanuevajorge@gmail.com",
+      "phone": "978198016",
+      "birthday_date": "07/03/1987",
+      "genero": "Masculino",
+      "ruc": "10164792021",
+      "dni": "16479202",
+      "state": 1
+    },
+    {
+      "id_use": 3,
+      "name": "Fiorela",
+      "name_last": "Lopez Arriaga",
+      "email": "flopeza@gmail.com",
+      "phone": "901907620",
+      "birthday_date": "14/02/1995",
+      "genero": "Femenino",
+      "ruc": "10235130281",
+      "dni": "23513028",
+      "state": 1
+    },
+    {
+      "id_use": 4,
+      "name": "Adriana",
+      "name_last": "Torres Diaz",
+      "email": "atorres@gmail.com",
+      "phone": "932747081",
+      "birthday_date": "27/09/1994",
+      "genero": "Femenino",
+      "ruc": "10970558912",
+      "dni": "97055891",
+      "state": 1
+    },
+    {
+      "id_use": 5,
+      "name": "Carla",
+      "name_last": "Cáceres Mendoza",
+      "email": "ccaceres@gmail.com",
+      "phone": "930278765",
+      "birthday_date": "09/10/1993",
+      "genero": "Femenino",
+      "ruc": "10469771542",
+      "dni": "46977154",
+      "state": 1
+    },
+    {
+      "id_use": 6,
+      "name": "Marcos",
+      "name_last": "Flores Valdez",
+      "email": "mflores@gmail.com",
+      "phone": "945086124",
+      "birthday_date": "20/04/1999",
+      "genero": "Masculino",
+      "ruc": "10195356392",
+      "dni": "19535639",
+      "state": 1
+    },
+    {
+      "id_use": 7,
+      "name": "Diego",
+      "name_last": "Jiménez Ruiz",
+      "email": "djimenez@gmail.com",
+      "phone": "964763799",
+      "birthday_date": "18/11/1998",
+      "genero": "Masculino",
+      "ruc": "10275706245",
+      "dni": "27570624",
+      "state": 1
+    },
+    {
+      "id_use": 8,
+      "name": "Juan",
+      "name_last": "Paredes Urbina",
+      "email": "paredesjuanurbina@gmail.com",
+      "phone": "971804279",
+      "birthday_date": "16/08/1996",
+      "genero": "Masculino",
+      "ruc": "10280278270",
+      "dni": "28027827",
+      "state": 1
+    },
+    {
+      "id_use": 9,
+      "name": "Rosa",
+      "name_last": "Meza Atoche",
+      "email": "rmeza@gmail.com",
+      "phone": "967852192",
+      "birthday_date": "01/01/1992",
+      "genero": "Femenino",
+      "ruc": "10734971592",
+      "dni": "73497159",
+      "state": 1
+    },
+    {
+      "id_use": 10,
+      "name": "Brayan",
+      "name_last": "Lopez Bravo",
+      "email": "b.lopezbravo@gmail.com",
+      "phone": "986815456",
+      "birthday_date": "07/04/1991",
+      "genero": "Masculino",
+      "ruc": "10936964840",
+      "dni": "93696484",
+      "state": 1
+    }
+  ]
+}

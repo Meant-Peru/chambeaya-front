@@ -1,0 +1,22 @@
+{
+    "subscription": [
+        {
+            "id_plan": "1",
+            "id_company": "2",
+            "id_payment_method": "1",
+            "state": 1
+        },
+        {
+            "id_plan": "3",
+            "id_company": "5",
+            "id_payment_method": "2",
+            "state": 1
+        },
+        {
+            "id_plan": "2",
+            "id_company": "7",
+            "id_payment_method": "1",
+            "state": 1
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+  "skill": [
+    {
+      "name_skill": "liderazgo",
+      "description_skill": "Aquellos con fuertes habilidades de liderazgo tendrán la capacidad de inspirar a otros y liderar equipos para el éxito",
+      "state": 1
+    },
+    {
+      "name_skill": "Resolución de problemas",
+      "description_skill": "La resolución de conflictos depende de fuertes habilidades interpersonales y la capacidad de establecer una relación con colegas y clientes por igual.",
+      "state": 1
+    },
+    {
+      "name_skill": "Capacidad para trabajar bajo presión",
+      "description_skill": "Los reclutadores valoran a los candidatos que muestran una actitud decisiva, una capacidad inquebrantable para pensar con claridad y una capacidad para compartimentar y dejar de lado el estrés.",
+      "state": 1
+    },
+    {
+      "name_skill": "Flexibilidad",
+      "description_skill": "La flexibilidad es una soft skill  importante, ya que demuestra la capacidad y la voluntad de aceptar nuevas tareas y nuevos desafíos con calma y sin complicaciones.",
+      "state": 1
+    },
+    {
+      "name_skill": "Resiliencia",
+      "description_skill": "siempre hay algo que aprender de cada situación",
+      "state": 1
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+    "post_job_skill": [
+        {
+            "id_skill": "2",
+            "id_post_jobl": "1",
+            "state": 1
+        },
+        {
+            "id_skill": "3",
+            "id_post_jobl": "3",
+            "state": 1
+        },
+        {
+            "id_skill": "4",
+            "id_post_jobl": "3",
+            "state": 1
+        },
+        {
+            "id_skill": "3",
+            "id_post_jobl": "4",
+            "state": 1
+        },
+        {
+            "id_skill": "2",
+            "id_post_jobl": "5",
+            "state": 1
+        }
+    ]
+}

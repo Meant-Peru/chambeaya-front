@@ -1,0 +1,19 @@
+{
+  "plans": [
+    {
+      "descripcion_pla": "plan anual",
+      "price": "S/. 250,00",
+      "state": 1
+    },
+    {
+      "descripcion_pla": "plan mensual",
+      "price": "S/. 29,90",
+      "state": 1
+    },
+    {
+      "descripcion_pla": "plan por campaña",
+      "price": "S/. 50,00",
+      "state": 1
+    }
+  ]
+}

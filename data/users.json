@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "usuario": 1,
+      "avatar": "admin.jpg",
+      "password": "123456",
+      "id_rol": "2",
+      "state": 1
+    },
+    {
+      "usuario": 2,
+      "avatar": "postulant.jpg",
+      "password": "123user",
+      "id_rol": "1",
+      "state": 1
+    },
+    {
+      "usuario": 3,
+      "avatar": "company.jpg",
+      "password": "comp123",
+      "id_rol": "4",
+      "state": 1
+    },
+    {
+      "usuario": 4,
+      "avatar": "ventas.jpg",
+      "password": "venta123",
+      "id_rol": "4",
+      "state": 1
+    },
+    {
+      "usuario": 5,
+      "avatar": "postulan2.jpg",
+      "password": "user234",
+      "id_rol": "1",
+      "state": 1
+    }
+  ]
+}

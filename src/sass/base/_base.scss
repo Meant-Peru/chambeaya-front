@@ -1,0 +1,58 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+$primary-color: #084887;
+$secondary-color: #F58A07;
+$neutral-color-1000: #031D44;
+$neutral-color-600: #111827;
+$neutral-color-500: #2F2E41;
+$neutral-color-400: #3F3D56;
+$neutral-color-100: #F9F7F8;
+$neutral-color-0: #FFFFFF;
+
+$size: 8px;
+$spacing: 4px;
+$grid: 1440px;
+$container: 1280px;
+$container-tablet: 674px;
+$container-phone: 334px;
+
+//-------- MEDIAQUERIES --------
+$tablet: 768px;
+$desktop: 900px;
+$desktop_m: 1680px;
+$desktop_xl: 1920px;
+
+@mixin phone {
+  @media (max-width: #{$tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet}) and (max-width: #{$desktop - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin desktop_hd {
+  @media (min-width: #{$desktop_m}) and (max-width: #{$desktop_xl}) {
+    @content;
+  }
+}
+
+@mixin devices {
+  @media (max-width: #{$desktop - 1px}) {
+    @content;
+  }
+}
+
+
+

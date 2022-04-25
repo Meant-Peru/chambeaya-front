@@ -1,0 +1,20 @@
+{
+  "rol": [
+    {
+      "descripcion":  "yo soy el postulante",
+      "access_rol": "postulant"
+    },
+    {
+      "descripcion":  "yo soy el administrador",
+      "access_rol": "admin"
+    },
+    {
+      "descripcion":  "yo soy el de ventas",
+      "access_rol": "area de ventas"
+    },
+    {
+      "descripcion":  "yo soy la compañia",
+      "access_rol": "company"
+    }
+  ]
+}
