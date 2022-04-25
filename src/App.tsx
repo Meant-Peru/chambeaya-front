@@ -5,7 +5,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-        Prueba chambeaya
+        Solo debe salir esto :  Prueba Landing chambeaya
         </p>
       
       </header>
