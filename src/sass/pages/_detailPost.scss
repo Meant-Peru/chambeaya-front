@@ -1,0 +1,186 @@
+@import "./../base/_grid.scss";
+
+.DetailPostComponent{
+    width: var(--container);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 85px auto 40px;
+      @include tablet-l {
+        width: var(--container-tablet-landscape);
+      }
+      @include tablet-p {
+        width: var(--container-tablet-portrait);
+      }
+      @include phone {
+        width: var(--container-phone);
+      }
+  
+    .skillTags{
+        width: 35%;
+        margin: 0 auto 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        @include tablet-l {
+            width: var(--container-tablet-landscape);
+          }
+          @include tablet-p {
+            width: var(--container-tablet-portrait);
+          }
+          @include phone {
+            width: var(--container-phone);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+          }
+
+    }
+    .cardApply{
+        background-color: var(--light-color);
+        border-radius: 24px;
+        padding: 24px;
+        display: flex;
+        flex-direction: row;
+
+        @include tablet-l {
+            width: var(--container-tablet-landscape);
+          }
+          @include tablet-p {
+            width: var(--container-tablet-portrait);
+          }
+          @include phone {
+            width: var(--container-phone);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+   
+          }
+        // justify-content: space-between;
+  
+        .imgBrand{
+            width: 15%;
+            @include tablet-l {
+                width: var(--container-tablet-landscape);
+              }
+              @include tablet-p {
+                width: 20%;
+                }
+              @include phone {
+                width: 100%;
+                margin-bottom: 24px;
+        
+              }
+         
+        }
+        .infoApply{
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+            @include tablet-l {
+                width: var(--container-tablet-landscape);
+              }
+              @include tablet-p {
+                width: 50%;
+                }
+              @include phone {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 24px;
+              }
+              p{
+                @include phone {
+                   margin-top: 4px;
+                  }
+              }
+        }
+        .actionApply{
+            width: 25%;
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+            @include tablet-p {
+                width: 30%;
+                }
+              @include phone {
+                width: 100%;
+                text-align: center;
+              }
+              p{
+                @include phone {
+                    margin-top: 8px;
+                  }  
+              }
+        }
+    }
+    .detailsApply{
+        display: flex;
+        flex-direction: row;
+
+          @include phone {
+            width: var(--container-phone);
+            display: flex;
+            flex-direction: column;
+
+          }
+        .leftBox{
+            width: 70%;
+            margin-right: 28px;
+            text-align: left;
+            @include phone {
+                width: 100%;
+     
+              }
+        }
+        .rightBox{
+            width: 30%;
+            margin-left: 28px;
+            text-align: left;
+
+            @include phone {
+                width: 100%;
+
+                margin-left: 0;
+                margin-top: 40px;
+              }
+            ul li{
+                list-style: none;
+                margin-bottom: 8px;
+                &::before{
+                    content: '';
+                    display: inline-block;
+                    width: 7px;
+                    height: 7px;
+                    margin-right: 8px;
+                    margin-bottom: 2px;
+                    -moz-border-radius: 7.5px;
+                    -webkit-border-radius: 7.5px;
+                    border-radius: 7.5px;
+                    background-color: var(--gray-color-900);
+                }
+            }
+        }
+    }
+    .postRelated{
+        text-align: left;
+        padding-top: 40px;
+        @include tablet-l {
+            width: var(--container-tablet-landscape);
+          }
+          @include tablet-p {
+            width: var(--container-tablet-portrait);
+          }
+          @include phone {
+            width: var(--container-phone);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 24px;
+          }
+    }
+}
+

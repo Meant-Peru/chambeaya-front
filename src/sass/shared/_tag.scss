@@ -1,0 +1,111 @@
+@import "./../base/_grid.scss";
+
+.tagComponent-{
+    background-color: var(--gray-color-100);
+    border-style: none;
+    padding: 4px 16px;
+    border-radius: 4px;
+    width: auto;
+    margin-top: 8px;
+
+    &highlight{
+        &-primary{
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 4px 16px;
+            border-radius: 16px;
+            border-style: none;
+
+            @include phone {
+                 margin-bottom: 16px;
+            }
+             
+        }
+        &-secondary{
+            background-color: var(--secondary-color);
+            color: var(--gray-color-900);
+            padding: 4px 16px;
+            border-radius: 16px;
+            border-style: none;
+            @include phone {
+                margin-bottom: 16px;
+           }
+        }
+        &-terceary{
+            background-color: #D7DBF5;
+            color: #141938;
+            padding: 4px 16px;
+            border-radius: 16px;
+            border-style: none;
+            @include phone {
+                margin-bottom: 16px;
+           }
+        }
+    }
+    &status{
+        &-probated{
+            background-color: #a7eb92;
+            color: #141938;
+            padding: 4px 8px;
+            border-radius: 6px;
+            border-style: none;
+            &::before{
+                content: '';
+                display: inline-block;
+                width: 7px;
+                height: 7px;
+                margin-right: 4px;
+                -moz-border-radius: 7.5px;
+                -webkit-border-radius: 7.5px;
+                border-radius: 7.5px;
+                background-color: #0aa83f;
+            }
+            @include phone {
+                margin-bottom: 16px;
+           }
+        }
+        &-denied{
+            background-color: #ffc2c6;
+            color: #141938;
+            padding: 4px 8px;
+            border-radius: 6px;
+            border-style: none;
+            &::before{
+                content: '';
+                display: inline-block;
+                width: 7px;
+                height: 7px;
+                margin-right: 4px;
+                -moz-border-radius: 7.5px;
+                -webkit-border-radius: 7.5px;
+                border-radius: 7.5px;
+                background-color: #FA0A32;
+                @include phone {
+                    margin-bottom: 16px;
+               }
+            }
+        }
+        &-inprogress{
+            background-color: #fcda6a;
+            color: #141938;
+            padding: 4px 8px;
+            border-radius: 6px;
+            border-style: none;
+            &::before{
+                content: '';
+                display: inline-block;
+                width: 7px;
+                height: 7px;
+                margin-right: 4px;
+                -moz-border-radius: 7.5px;
+                -webkit-border-radius: 7.5px;
+                border-radius: 7.5px;
+                background-color: #FC9700;
+            }
+            @include phone {
+                margin-bottom: 16px;
+           }
+        }
+    }
+
+}

@@ -1,0 +1,23 @@
+@import "./../base/_grid.scss";
+
+.HeroComponent {
+    width: var(--container);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 152px auto ;
+    text-align: center;
+
+
+    aside {
+        &:last-child {
+            margin-top: 72px;
+
+            input,
+            select {
+                margin-right: 32px;
+            }
+        }
+    }
+}
+

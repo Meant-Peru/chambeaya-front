@@ -1,0 +1,15 @@
+
+.btnComponent{
+    font-size: 16px;
+    border-radius: 28px;
+    align-items: center;
+    padding: 16px 64px;
+    color: var(--light-color);
+    background-color: var(--primary-color);
+    border-style:none;
+    cursor:pointer;
+
+        &:hover{
+            background: var(--gray-color-900);
+        }
+}

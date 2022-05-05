@@ -1,0 +1,22 @@
+@import "./../base/_grid.scss";
+
+.listCard{
+    display: flex;
+    flex-direction: row;
+    @include tablet-l {
+        width: var(--container-tablet-landscape);
+      }
+      @include tablet-p {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+      }
+      @include phone {
+        width: var(--container-phone);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+      }
+}

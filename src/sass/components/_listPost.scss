@@ -1,0 +1,39 @@
+@import "./../base/_grid.scss";
+
+.ListPostComponent {
+    width: var(--container);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto 90px;
+    text-align: center;
+
+ aside{
+     border-radius: 24px;
+    
+    article{
+        display: flex;
+        flex-direction: row;
+        padding: 24px;
+        background-color: var(--light-color);
+        margin-bottom: 4px;
+
+        aside{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            img{
+                border-radius: 16px;
+            }
+        }
+        .rContent{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            margin-left: 2rem;
+        }
+    }
+ }
+}
