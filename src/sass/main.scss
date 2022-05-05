@@ -157,6 +157,10 @@ ul li{
   margin-right: #{$size*5};
 }
 
+.pt-5{
+  padding-top: #{$size*5};
+}
+
 .row{
   display: flex;
   flex-direction: row;

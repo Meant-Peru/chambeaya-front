@@ -41,9 +41,22 @@
                 margin-bottom: 16px;
            }
         }
+        &-dark{
+            background-color: var(--gray-color-900);
+            color: var(--gray-color-100);
+            padding: 4px 16px;
+            border-radius: 0px;
+            border-style: none;
+            margin-top: 8px;
+            border-left: 4px solid var(--secondary-color);
+            @include phone {
+                margin-bottom: 16px;
+           }
+        }
+
     }
-    &status{
-        &-probated{
+    &state{
+        &-success{
             background-color: #a7eb92;
             color: #141938;
             padding: 4px 8px;

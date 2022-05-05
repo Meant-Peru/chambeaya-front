@@ -20,7 +20,7 @@ export default function ListPost() {
       <section className="DetailPostComponent">
         <aside className="coverHeader mb-5">
           <h1 className="mb-2">Diseñador UX/UI</h1>
-          <p>Empresa Famel SAC</p>
+          <p><i>Empresa Famel SAC</i></p>
         </aside>
         <aside className="skillTags">
           <TagComponent type="highlight" level="secondary" label="Figma" />
@@ -70,7 +70,7 @@ export default function ListPost() {
             </div>
           </article>
           <article className="rightBox">
-            <h4 className="mb-3">Presiciones</h4>
+            <h4 className="mb-3">Precisiones</h4>
          
               <ul>
                 <li>Duración: 1 mes </li>

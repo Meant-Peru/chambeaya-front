@@ -3,16 +3,23 @@ import "./../sass/components/_listPost.scss";
 import { BtnPrimary } from "./shared/styled";
 import TagComponent from "./shared/atom/tag";
 
-import {useNavigate} from "react-router-dom";
+import Logo1 from "./../assets/logos/1.svg";
+import Logo2 from "./../assets/logos/2.svg";
+import Logo3 from "./../assets/logos/3.svg";
+import Logo4 from "./../assets/logos/4.svg";
+import Logo5 from "./../assets/logos/6.svg";
+
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function ListPost() {
+  const navigate = useNavigate();
 
-   const navigate = useNavigate();
+  const handleRedirect = () => {
+    navigate("/detail-post");
+  };
 
-   const handleRedirect = ()=>{
-    navigate("/detail-post")
-    }
-    
   return (
     <React.Fragment>
       <section className="ListPostComponent">
@@ -21,77 +28,87 @@ export default function ListPost() {
         </aside>
         <aside>
           <article>
-            <aside>
-              <img src="https://via.placeholder.com/80x80" alt="" />
+            <aside className="logoBrand">
+              <img src={Logo1} alt="" />
             </aside>
             <div className="rContent row">
-              <aside>
-                <div>Diseño y dirección</div>
-                <TagComponent label="Destacado" />
+              <aside className="title">
+                <p>Diseño y dirección</p>
+                <TagComponent type="highlight" level="dark" label="Destacado" />
               </aside>
-              <aside>Lima, Perú</aside>
-              <aside>
-              <BtnPrimary onClick={handleRedirect} > Aplicar </BtnPrimary>
+              <aside className="ubication">
+                <p>Lima, Perú</p>
+              </aside>
+              <aside className="actions">
+                <BtnPrimary onClick={handleRedirect}> Aplicar </BtnPrimary>
               </aside>
             </div>
           </article>
           <article>
-            <aside>
-              <img src="https://via.placeholder.com/80x80" alt="" />
+            <aside className="logoBrand">
+              <img src={Logo2} alt="" />
             </aside>
             <div className="rContent row">
-              <aside>
-                <div>Diseño y dirección</div>
-                <TagComponent label="Destacado" />
+              <aside className="title">
+                <p>Product Designer</p>
+                <TagComponent type="highlight" level="dark" label="Destacado" />
               </aside>
-              <aside>Lima, Perú</aside>
-              <aside>
-                <BtnPrimary onClick={handleRedirect} > Aplicar </BtnPrimary>
+              <aside className="ubication">
+                <p>Washington, EEUU</p>
+              </aside>
+              <aside className="actions">
+                <BtnPrimary onClick={handleRedirect}> Aplicar </BtnPrimary>
               </aside>
             </div>
           </article>
           <article>
-            <aside>
-              <img src="https://via.placeholder.com/80x80" alt="" />
+            <aside className="logoBrand">
+              <img src={Logo3} alt="" />
             </aside>
             <div className="rContent row">
-              <aside>
-                <div>Diseño y dirección</div>
-                <TagComponent label="Destacado" />
+              <aside className="title">
+                <p>UI Designer</p>
+                <TagComponent type="highlight" level="dark" label="Destacado" />
               </aside>
-              <aside>Lima, Perú</aside>
-              <aside>
-              <BtnPrimary onClick={handleRedirect} > Aplicar </BtnPrimary>
+              <aside className="ubication">
+                <p>Lima, Perú</p>
+              </aside>
+              <aside className="actions">
+                <BtnPrimary onClick={handleRedirect}> Aplicar </BtnPrimary>
               </aside>
             </div>
           </article>
           <article>
-            <aside>
-              <img src="https://via.placeholder.com/80x80" alt="" />
+            <aside className="logoBrand">
+              <img src={Logo4} alt="" />
             </aside>
             <div className="rContent row">
-              <aside>
-                <div>Diseño y dirección</div>
-                <TagComponent label="Destacado" />
+              <aside className="title">
+                <p>Desarrollador web</p>
+                {/* <TagComponent type="highlight" level="dark" label="Destacado" /> */}
               </aside>
-              <aside>Lima, Perú</aside>
-              <aside>
-              <BtnPrimary onClick={handleRedirect} > Aplicar </BtnPrimary>
+              <aside className="ubication">
+                <p>Arequipa, Perú</p>
+              </aside>
+              <aside className="actions">
+                <BtnPrimary onClick={handleRedirect}> Aplicar </BtnPrimary>
               </aside>
             </div>
           </article>
           <article>
-            <aside>
-              <img src="https://via.placeholder.com/80x80" alt="" />
+            <aside className="logoBrand">
+              <img src={Logo5} alt="" />
             </aside>
             <div className="rContent row">
-              <aside>
-                <div>Diseño y dirección</div>
-                <TagComponent label="Destacado" />
+              <aside className="title">
+                <p>Diseño y dirección</p>
+                {/* <TagComponent type="highlight" level="dark" label="Destacado" /> */}
               </aside>
-              <aside>Lima, Perú</aside>
-              <aside>
-              <BtnPrimary onClick={handleRedirect} > Aplicar </BtnPrimary>
+              <aside className="ubication">
+                <p>Trujillo, Perú</p>
+              </aside>
+              <aside className="actions">
+                <BtnPrimary onClick={handleRedirect}> Aplicar </BtnPrimary>
               </aside>
             </div>
           </article>
