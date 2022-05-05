@@ -1,14 +1,19 @@
 {
   "files": {
-    "main.css": "/Meant-Peru/chambeaya-front/static/css/main.28901dc4.css",
-    "main.js": "/Meant-Peru/chambeaya-front/static/js/main.c0e64b88.js",
-    "static/media/logo.svg": "/Meant-Peru/chambeaya-front/static/media/logo.42343f746185a15c82aabaf1b881f65e.svg",
-    "index.html": "/Meant-Peru/chambeaya-front/index.html",
-    "main.28901dc4.css.map": "/Meant-Peru/chambeaya-front/static/css/main.28901dc4.css.map",
-    "main.c0e64b88.js.map": "/Meant-Peru/chambeaya-front/static/js/main.c0e64b88.js.map"
+    "main.css": "/static/css/main.7cec2b83.css",
+    "main.js": "/static/js/main.1e219211.js",
+    "static/media/logo.svg": "/static/media/logo.42343f746185a15c82aabaf1b881f65e.svg",
+    "static/media/2.svg": "/static/media/2.463d6851f2ec843bb0943e4c2323b7d0.svg",
+    "static/media/1.svg": "/static/media/1.3a667b39b78b6cbd69d921b5e20d8d4c.svg",
+    "static/media/6.svg": "/static/media/6.1cd7ca64f344fb231d8c058f48f8831f.svg",
+    "static/media/3.svg": "/static/media/3.ead8c6792c0a6696a1b73eb3c813e029.svg",
+    "static/media/4.svg": "/static/media/4.f473f88b3c909713605481b56b030dfd.svg",
+    "index.html": "/index.html",
+    "main.7cec2b83.css.map": "/static/css/main.7cec2b83.css.map",
+    "main.1e219211.js.map": "/static/js/main.1e219211.js.map"
   },
   "entrypoints": [
-    "static/css/main.28901dc4.css",
-    "static/js/main.c0e64b88.js"
+    "static/css/main.7cec2b83.css",
+    "static/js/main.1e219211.js"
   ]
 }
