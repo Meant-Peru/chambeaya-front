@@ -7,6 +7,7 @@ import PostJob from "./pages/postJob";
 
 import "./sass/main.scss";
 import DetailPost from "./pages/detailPost";
+import ApplyJob from "./pages/applyJob";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="searchjob" element={<SearchJob />} />
         <Route path="postjob" element={<PostJob />} />
+        <Route path="apply" element={<ApplyJob />} />
         <Route path="detail-post" element={<DetailPost />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>

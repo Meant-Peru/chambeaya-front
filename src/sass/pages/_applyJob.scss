@@ -1,0 +1,39 @@
+@import "./../base/_grid.scss";
+
+.applyJob {
+  width: var(--container);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 80px auto 40px;
+  @include tablet-l {
+    width: var(--container-tablet-landscape);
+  }
+  @include tablet-p {
+    width: var(--container-tablet-portrait);
+  }
+  @include phone {
+    width: var(--container-phone);
+  }
+}
+
+
+.react-tabs__tab {
+    display: inline-block;
+    border: 0px solid transparent!important;
+    border-bottom: 0px;
+    bottom: 0px!important; 
+    position: inherit!important;
+    list-style: none;
+    padding: 8px 32px!important;
+    cursor: pointer;
+    font-size: 16px!important;
+}
+.react-tabs__tab--selected {
+    background: transparent!important;
+    border-color: transparent!important;
+    border-bottom: 2px solid var(--primary-color)!important;
+    color: black;
+    border-radius: 0px!important;
+}

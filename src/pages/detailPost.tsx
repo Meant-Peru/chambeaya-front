@@ -3,10 +3,17 @@ import "./../sass/pages/_detailPost.scss";
 
 import Header from "../components/shared/header";
 import TagComponent from "../components/shared/atom/tag";
-import ButtonComponent from "../components/shared/atom/button";
 import CardPost from "../components/shared/cardPost";
 
+import {useNavigate} from "react-router-dom";
+import { BtnPrimary } from "../components/shared/styled";
+
 export default function ListPost() {
+  const navigate = useNavigate();
+
+  const handleRedirect = ()=>{
+   navigate("/apply")
+   }
   return (
     <React.Fragment>
       <Header />
@@ -35,7 +42,7 @@ export default function ListPost() {
             <p className="mt-2">10 de Diciembre 2022</p>
           </article>
           <article className="actionApply">
-            <ButtonComponent label="APLICAR" />
+          <BtnPrimary onClick={handleRedirect} > Aplicar </BtnPrimary>
             <p className="mt-2">Requerimiento activo</p>
           </article>
         </aside>
