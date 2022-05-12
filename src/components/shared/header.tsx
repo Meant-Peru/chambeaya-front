@@ -9,7 +9,7 @@ const navigation = {
       { name: "Postear un empleo", to: "/postjob" },
       { name: "Contacto", to: "/contact" },
       { name: "Iniciar sesión", to: "/login" },
-      { name: "Registrarme", to: "/signup" },
+      { name: "Registrarme", to: "/register" },
     ],
   };
 

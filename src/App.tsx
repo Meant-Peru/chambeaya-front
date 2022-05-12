@@ -8,6 +8,8 @@ import PostJob from "./pages/postJob";
 import "./sass/main.scss";
 import DetailPost from "./pages/detailPost";
 import ApplyJob from "./pages/applyJob";
+import Login from "./pages/login";
+import Register from "./pages/register";
 
 export default function App() {
   return (
@@ -16,6 +18,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route index element={<Home />} />
         <Route path="searchjob" element={<SearchJob />} />
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
         <Route path="postjob" element={<PostJob />} />
         <Route path="apply" element={<ApplyJob />} />
         <Route path="detail-post" element={<DetailPost />} />

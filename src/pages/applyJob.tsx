@@ -1,15 +1,15 @@
 import * as React from "react";
 import Header from "../components/shared/header";
-import "./../sass/pages/_applyJob.scss";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import CheckButton from "../components/shared/atom/checkButton";
 import {
   Txtfield,
   DropdownMenu,
   DropdownItem,
   BtnPrimary,
 } from "./../components/shared/styled";
-
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import "./../sass/pages/_applyJob.scss";
 
 export default function ApplyJob() {
   return (
@@ -27,7 +27,6 @@ export default function ApplyJob() {
               <Tab>Skills</Tab>
               <Tab>Experiencia</Tab>
             </TabList>
-
             <TabPanel>
               <section className="formApply pt-5">
                 <article className="mb-5">
@@ -66,6 +65,15 @@ export default function ApplyJob() {
             <TabPanel>
               <section className="formApply pt-5">
                 <p>Elige las skills que mejor manejes</p>
+                <article className="gridBox mt-4">
+                  <CheckButton withbg="yes" label="Adobe Illustrator" />
+                  <CheckButton withbg="yes" label="Figma" />
+                  <CheckButton withbg="yes" label="Content" />
+                  <CheckButton withbg="yes" label="Photoshop" />
+                  <CheckButton withbg="yes" label="Html" />
+                  <CheckButton withbg="yes" label="css" />
+                  <CheckButton withbg="yes" label="Design Thinking" />
+                </article>
                 <article className="footerSection">
                   <BtnPrimary> Siguiente </BtnPrimary>
                 </article>
@@ -73,9 +81,35 @@ export default function ApplyJob() {
             </TabPanel>
             <TabPanel>
               <section className="formApply pt-5">
-                <p>Enlace digital de experiencia laboral (Certijoven, Linkedin, Web, etc)</p>
+                <article className="mb-5">
+                  <p className="mb-3 text-center">
+                    Enlace digital de experiencia laboral (Certijoven, Linkedin,
+                    Web, etc)
+                  </p>
+                  <aside className="FormGroup">
+                    <DropdownMenu>
+                      <DropdownItem>Seleccione tipo de enlace </DropdownItem>
+                      <DropdownItem>Diseño</DropdownItem>
+                      <DropdownItem>Ingeniería</DropdownItem>
+                    </DropdownMenu>
+                    <Txtfield className="ml-5" placeholder="Ingrese enlace" />
+                  </aside>
+                </article>
+                <article className="mb-5">
+                  <p className="text-center mb-3">
+                    ó , coloca tu experiencia respecto al puesto que buscamos
+                  </p>
+                  <aside className="FormGroup">
+                    <Txtfield className="mr-5" placeholder="Empresa" />
+                    <Txtfield className="" placeholder="Tiempo de trabajo" />
+                  </aside>
+                  <aside className="FormGroup-full mt-4">
+                    <Txtfield placeholder="Empresa" />
+                  </aside>
+                </article>
+
                 <article className="footerSection">
-                  <BtnPrimary> Siguiente </BtnPrimary>
+                  <BtnPrimary> Aplicar </BtnPrimary>
                 </article>
               </section>
             </TabPanel>

@@ -33,7 +33,7 @@ export default function ListPost() {
             </aside>
             <div className="rContent row">
               <aside className="title">
-                <p>Diseño y dirección</p>
+                <p>Diseñador UX/UI</p>
                 <TagComponent type="highlight" level="dark" label="Destacado" />
               </aside>
               <aside className="ubication">

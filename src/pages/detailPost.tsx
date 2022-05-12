@@ -5,6 +5,8 @@ import Header from "../components/shared/header";
 import TagComponent from "../components/shared/atom/tag";
 import CardPost from "../components/shared/cardPost";
 
+import Logo1 from "./../assets/logos/1.svg";
+
 import {useNavigate} from "react-router-dom";
 import { BtnPrimary } from "../components/shared/styled";
 
@@ -34,8 +36,8 @@ export default function ListPost() {
         </aside>
         <hr />
         <aside className="cardApply mt-5">
-          <article className="imgBrand">
-            <img src="https://via.placeholder.com/100x90" alt="" />
+          <article className="imgBrand logoBrand">
+            <img src={Logo1} alt="" />            
           </article>
           <article className="infoApply">
             <h4>12 personas aplicaron</h4>

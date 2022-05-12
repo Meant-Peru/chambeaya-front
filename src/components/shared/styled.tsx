@@ -104,7 +104,6 @@ export const Theme = {
 
     export const Txtfield = styled.input`
     background: ${Theme.colors.light};
-    width: 404px;
     font-size: 16px;
     border-radius: 28px;
     align-items: center;
@@ -115,9 +114,9 @@ export const Theme = {
     }
     `;
 
+
     export const DropdownMenu = styled.select`
     background: ${Theme.colors.light};
-    width: 404px;
     font-size: 16px;
     border-radius: 28px;
     align-items: center;

@@ -51,8 +51,24 @@
   flex-direction: row;
   flex: 1;
   justify-content: space-between;
+  :first-child, :last-child{
+    width: 50%;
+  }
+}
+.FormGroup-full{
+  :first-child{
+    width: 100%;
+  }
 }
 .footerSection{
   text-align: center;
   margin-top: 40px;
+}
+
+.gridBox{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
 }
