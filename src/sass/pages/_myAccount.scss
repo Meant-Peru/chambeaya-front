@@ -18,47 +18,105 @@
     width: var(--container-phone);
   }
 
-  .sideBarMenu{
-      width: 20%;
-      padding-left: 20px;
-      margin-right: 56px;
+  .react-tabs {
+    display: flex;
+    margin-left: 36px;
+    width: 100%;
+    .list {
+      display: flex;
+      flex-direction: column;
+      margin-right: 69px;
 
-      ul {
-          margin-top: 56px;
-          li{
-            display: flex;
-            list-style: none;
-            height: 36px;
-            font-size: 16px;
-            line-height: 20px;
-            padding-left: 1rem;
-            align-items: center;
-            &:hover{
-                color: var(--primary-color);
-                cursor: pointer;
-                font-weight: 600;
-            }
-            &:active{
-                border-left: 2px solid var(--primary-color);
-            }
-          }
-          li.active{
-            border-left: 2px solid var(--primary-color);
-            padding-left: 1rem;
-          }
-      }
+    }
   }
-  .sectionAccount{
-      width: 80%;
-      .FormGroup{
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex: 1;
-        justify-content: space-between;
-        :first-child, :last-child{
-          width: 48%;
-        }
+
+  .react-tabs__tab-list {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background: #3c3e43;
+  }
+
+  .react-tabs__tab {
+    height: 40px;
+    list-style: none;
+    padding: 12px 6px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    color: var(--gray-color-900);
+  }
+
+  .react-tabs__tab--selected {
+    background: #1c1d1f;
+    border-color: #1c1d1f;
+    border-left: 4px solid #6eb800;
+    color: var(--primary-color);
+  }
+
+  .react-tabs__tab-panel {
+    display: none;
+    width: 80%;
+  }
+
+  .react-tabs__tab-panel--selected {
+    display: block;
+  }
+
+  .react-tabs__tab {
+    padding-left: 0px !important;
+  }
+
+  .react-tabs__tab--selected {
+    padding-left: 0px !important;
+  }
+
+  .panel-content {
+    text-align: center;
+  }
+
+
+
+
+  .sideBarMenu {
+    width: 100%;
+    // padding-left: 20px;
+    margin-right: 56px;
+
+    span {
+      color: var(--gray-color-900);
+    }
+  }
+
+  .sectionAccount {
+    width: 100%;
+
+    .FormGroup {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+      justify-content: space-between;
+
+      :first-child,
+      :last-child {
+        width: 48%;
       }
+    }
+  }
+}
+
+
+.apply,.proyects{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 50vh;
+  justify-content: center;
+  img{
+    margin-bottom: 24px;
   }
 }

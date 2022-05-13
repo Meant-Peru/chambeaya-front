@@ -1,4 +1,4 @@
 export default interface Auth{
-    email : String,
-    password : String
+    email : String;
+    password : String;
 }
