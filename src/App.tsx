@@ -12,6 +12,7 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import MyAccount from "./pages/myaccount";
 import AddJob from "./pages/addJob";
+import Corporativo from "./pages/corporativo";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
         <Route path="myaccount" element={<MyAccount />} />
+        <Route path="corporativo" element={<Corporativo />} />
         <Route path="postjob" element={<PostJob />} />
         <Route path="addJob" element={<AddJob />} />
         <Route path="apply" element={<ApplyJob />} />

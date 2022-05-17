@@ -1,0 +1,75 @@
+@import "./../base/_grid.scss";
+
+.corporativoPage {
+    width: var(--container);
+    display: flex;
+    flex-direction: row;
+    margin: 80px auto 120px;
+
+    @include tablet-l {
+        width: var(--container-tablet-landscape);
+    }
+
+    @include tablet-p {
+        width: var(--container-tablet-portrait);
+    }
+
+    @include phone {
+        width: var(--container-phone);
+    }
+
+    .coverSection {
+        width: 40%;
+        margin-top: 48px;
+        img{
+            width: 299px;
+            margin-top: 40px;
+        }
+        h1{
+            font-weight: 400;
+            font-size: 36px;
+            line-height: 48px;
+            
+            color: var(--gray-color-800);
+            span{
+                color: var(--primary-color);
+                text-decoration: underline;
+                font-weight: 600;
+                letter-spacing: 10px;
+            }
+        }
+    }
+
+    .formRegister {
+        width: 60%;
+        text-align: center;
+
+        .FormGroup {
+            width: 80%;
+            margin: 0 auto 0;
+            display: flex;
+            flex-direction: row;
+
+            :first-child {
+                margin-right: 16px;
+                text-align: left;
+            }
+
+            a {
+                color: var(--color-text);
+                text-decoration: none;
+            }
+
+        }
+
+        .FormGroupFull {
+            width: 50%;
+            margin: 0 auto 0;
+            display: flex;
+            flex-direction: row;
+        }
+
+    }
+
+
+}

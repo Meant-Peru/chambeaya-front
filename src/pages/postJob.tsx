@@ -4,7 +4,6 @@ import ButtonComponent from "../components/shared/atom/button";
 import Header from "../components/shared/header";
 import ilusEmpty from "./../assets/empty-state.svg";
 import {
-  BtnPrimary,
   DropdownItem,
   DropdownMenu,
   Txtfield,

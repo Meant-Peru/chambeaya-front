@@ -1,6 +1,5 @@
 import * as React from "react";
 import "./../sass/components/_listPost.scss";
-import { BtnPrimary } from "./shared/styled";
 import TagComponent from "./shared/atom/tag";
 
 import Logo1 from "./../assets/logos/1.svg";

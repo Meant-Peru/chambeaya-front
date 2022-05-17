@@ -3,6 +3,7 @@ export default interface Account{
     password : String;
     name : String;
     lastName : String;
+    phone: String;
     rolUser : String;
     sex : String;
     birthDayDate : Date;

@@ -16,7 +16,27 @@ import "./../sass/pages/_addJob.scss";
 import Footer from "../components/shared/footer";
 import ButtonComponent from "../components/shared/atom/button";
 
+import { addJob } from "./../util/job.service";
+
 export default function AddJob() {
+  const [job, setJob] = React.useState({
+    description: "",
+    idCompany: "",
+    modality: "",
+    timeEstimated: "",
+    salaryRange: "",
+    funtionsPost: "",
+    idCategory: "",
+    idPosition: "",
+    idSkills: "",
+  });
+
+  const handleEvent = (e: any) => {
+    setJob({
+      ...job,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
     <React.Fragment>
       <Header />
@@ -37,10 +57,19 @@ export default function AddJob() {
 
           <TabPanel>
             <section className="sectionAccount">
-              <p>Datos personales</p>
+              <aside className="mb-5">
+                <article className="headSection">
+                  <h2>Datos Generales</h2>
+                </article>
+              </aside>
 
+              <p>Datos Personales</p>
               <aside className="FormsRow mt-3">
-                <Txtfield placeholder="Nombres" />
+                <Txtfield
+                  onChange={handleEvent}
+                  name="name"
+                  placeholder="Nombres"
+                />
                 <Txtfield placeholder="Apellidos" />
               </aside>
               <aside className="FormsRow mt-2 mb-5">
@@ -72,7 +101,7 @@ export default function AddJob() {
             </section>
           </TabPanel>
           <TabPanel>
-            <section className="sectionAccount">
+            <section className="sectionTab">
               <aside className="mb-5">
                 <article className="headSection">
                   <h2>Nueva publicación</h2>
@@ -85,7 +114,7 @@ export default function AddJob() {
                     <DropdownItem>Elegir rubro</DropdownItem>
                     <DropdownItem>Diseño</DropdownItem>
                     <DropdownItem>Ingeniería</DropdownItem>
-                </DropdownMenu>
+                  </DropdownMenu>
                 </aside>
                 <aside className="FormGroup mt-3">
                   <p>Posición</p>
@@ -127,10 +156,10 @@ export default function AddJob() {
                   <aside className="FormGroup mt-3">
                     <p>Modalidad</p>
                     <DropdownMenu>
-                        <DropdownItem>Elegir modalidad</DropdownItem>
-                        <DropdownItem>Híbrido</DropdownItem>
-                        <DropdownItem>Presencial</DropdownItem>
-                        <DropdownItem>Remoto</DropdownItem>
+                      <DropdownItem>Elegir modalidad</DropdownItem>
+                      <DropdownItem>Híbrido</DropdownItem>
+                      <DropdownItem>Presencial</DropdownItem>
+                      <DropdownItem>Remoto</DropdownItem>
                     </DropdownMenu>
                   </aside>
                 </aside>
@@ -145,15 +174,33 @@ export default function AddJob() {
             </section> */}
           </TabPanel>
           <TabPanel>
-            <section className="proyects">
-              <img src={ilusEmpty} alt="empty" />
-              <p>Aún no ingresaste a algún proyecto</p>
+            <section className="sectionTab">
+              <aside className="mb-5">
+                <article className="headSection">
+                  <h2>Proyectos</h2>
+                </article>
+              </aside>
+              <aside className="FormsRow">
+                <article className="proyects">
+                  <img src={ilusEmpty} alt="empty" />
+                  <p>Aún no ingresaste a algún proyecto</p>
+                </article>
+              </aside>
             </section>
           </TabPanel>
           <TabPanel>
-            <section className="billing">
-              <img src={ilusEmpty} alt="empty" />
-              <p>Tienes un plan free actualmente</p>
+            <section className="sectionTab">
+              <aside className="mb-5">
+                <article className="headSection">
+                  <h2>Facturación</h2>
+                </article>
+              </aside>
+              <aside className="FormsRow">
+                <article className="proyects">
+                  <img src={ilusEmpty} alt="empty" />
+                  <p>Tienes un plan free actualmente</p>
+                </article>
+              </aside>
             </section>
           </TabPanel>
         </Tabs>

@@ -1,8 +1,15 @@
 import * as React from "react";
 import "./../../sass/shared/_footer.scss";
 import Logo from "./../../assets/logo.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
+  const navigate = useNavigate();
+
+  const handleRedirect = () => {
+    navigate("/corporativo")
+  };
+  
   return (
     <React.Fragment>
       <footer>
@@ -22,7 +29,7 @@ export default function Footer() {
             <ul>
               <li>Publica un empleo</li>
               <li>Busca un empleo</li>
-              <li>Soy una compañia</li>
+              <li onClick={handleRedirect}>Soy una compañia</li>
             </ul>
           </article>
           <article>

@@ -2,7 +2,7 @@ export default interface Post{
     description : String;
     idCompany : String;
     modality : String;
-    timeEstimated : Date;
+    timeEstimated : String;
     salaryRange : String;
     funtionsPost: String;
     idCategory: String;

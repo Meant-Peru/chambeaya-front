@@ -11,9 +11,9 @@ import "./../sass/pages/_register.scss";
 import { register } from "./../util/auth.service";
 import {useNavigate} from "react-router-dom";
 
-export default function Login() {
+export default function Register() {
     const navigate = useNavigate();
-    const[account, setAccount] = React.useState({email:"", password:"",name: "",lastName: "",rolUser:"COMPANY",sex: "H", birthDayDate: new Date()});
+    const[account, setAccount] = React.useState({email:"", password:"",name: "",lastName: "", phone: "",rolUser:"POSTULANT",sex: "H", birthDayDate: new Date()});
 
     const handleRegister = async ()=>{
         console.log(account);

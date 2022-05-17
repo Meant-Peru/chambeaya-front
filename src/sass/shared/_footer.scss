@@ -1,6 +1,7 @@
 @import "./../base/_grid.scss";
 
 footer{
+
     background-color: var(--acent-color);
     @include tablet-l {
       width: var(--container-tablet-landscape);
