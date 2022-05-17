@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin: 80px auto 40px;
+  margin: 80px auto 120px;
   @include tablet-l {
     width: var(--container-tablet-landscape);
   }
@@ -17,6 +17,33 @@
     width: var(--container-phone);
   }
 
+  .FormGroup{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-between;
+    :first-child, :last-child{
+      width: 50%;
+    }
+  }
+  .FormGroup-full{
+    :first-child{
+      width: 100%;
+    }
+  }
+  .footerSection{
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .gridBox{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  
+  }
 
 }
 
@@ -44,31 +71,4 @@
     text-align: left;
     width: 60%;
     margin: 0 auto;
-}
-.FormGroup{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-  justify-content: space-between;
-  :first-child, :last-child{
-    width: 50%;
-  }
-}
-.FormGroup-full{
-  :first-child{
-    width: 100%;
-  }
-}
-.footerSection{
-  text-align: center;
-  margin-top: 40px;
-}
-
-.gridBox{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
 }

@@ -9,16 +9,11 @@ import Logo3 from "./../assets/logos/3.svg";
 import Logo4 from "./../assets/logos/4.svg";
 import Logo5 from "./../assets/logos/6.svg";
 
-import { useNavigate } from "react-router-dom";
+import ButtonComponent from "./shared/atom/button";
 
 
 
 export default function ListPost() {
-  const navigate = useNavigate();
-
-  const handleRedirect = () => {
-    navigate("/detail-post");
-  };
 
   return (
     <React.Fragment>
@@ -40,7 +35,8 @@ export default function ListPost() {
                 <p>Lima, Perú</p>
               </aside>
               <aside className="actions">
-                <BtnPrimary onClick={handleRedirect}> Aplicar </BtnPrimary>
+                <ButtonComponent link="/detail-post" type="secondary" label="Aplicar" />
+                {/* <BtnPrimary onClick={handleRedirect}> Aplicar </BtnPrimary> */}
               </aside>
             </div>
           </article>
@@ -57,7 +53,7 @@ export default function ListPost() {
                 <p>Washington, EEUU</p>
               </aside>
               <aside className="actions">
-                <BtnPrimary onClick={handleRedirect}> Aplicar </BtnPrimary>
+                <ButtonComponent link="/detail-post" type="secondary" label="Aplicar" />
               </aside>
             </div>
           </article>
@@ -74,7 +70,7 @@ export default function ListPost() {
                 <p>Lima, Perú</p>
               </aside>
               <aside className="actions">
-                <BtnPrimary onClick={handleRedirect}> Aplicar </BtnPrimary>
+                <ButtonComponent link="/detail-post" type="secondary" label="Aplicar" />
               </aside>
             </div>
           </article>
@@ -91,7 +87,7 @@ export default function ListPost() {
                 <p>Arequipa, Perú</p>
               </aside>
               <aside className="actions">
-                <BtnPrimary onClick={handleRedirect}> Aplicar </BtnPrimary>
+                <ButtonComponent link="/detail-post" type="secondary" label="Aplicar" />
               </aside>
             </div>
           </article>
@@ -108,7 +104,7 @@ export default function ListPost() {
                 <p>Trujillo, Perú</p>
               </aside>
               <aside className="actions">
-                <BtnPrimary onClick={handleRedirect}> Aplicar </BtnPrimary>
+                <ButtonComponent link="/detail-post" type="secondary" label="Aplicar" />
               </aside>
             </div>
           </article>

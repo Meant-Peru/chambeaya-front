@@ -9,7 +9,8 @@
     text-align: center;
 
 
-    aside {
+    .filterSection {
+        display: flex;
         flex: 1;
         &:last-child {
             margin-top: 72px;

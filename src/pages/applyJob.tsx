@@ -10,6 +10,7 @@ import {
 } from "./../components/shared/styled";
 import "react-tabs/style/react-tabs.css";
 import "./../sass/pages/_applyJob.scss";
+import Footer from "../components/shared/footer";
 
 export default function ApplyJob() {
   return (
@@ -116,6 +117,7 @@ export default function ApplyJob() {
           </Tabs>
         </aside>
       </section>
+      <Footer />
     </React.Fragment>
   );
 }

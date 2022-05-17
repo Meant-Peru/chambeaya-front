@@ -1,0 +1,181 @@
+@import "./../base/_grid.scss";
+
+.addJobPage {
+    width: var(--container);
+    display: flex;
+    flex-direction: row;
+    margin: 80px auto 120px;
+
+    @include tablet-l {
+        width: var(--container-tablet-landscape);
+    }
+
+    @include tablet-p {
+        width: var(--container-tablet-portrait);
+    }
+
+    @include phone {
+        width: var(--container-phone);
+    }
+
+    .react-tabs {
+        display: flex;
+        margin-left: 36px;
+        width: 100%;
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            margin-right: 69px;
+
+        }
+    }
+
+    .react-tabs__tab-list {
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        margin: 0;
+        padding: 0;
+        color: white;
+        background: #3c3e43;
+    }
+
+    .react-tabs__tab {
+        height: 40px;
+        list-style: none;
+        padding: 12px 6px;
+        margin-bottom: 8px;
+        cursor: pointer;
+        color: var(--gray-color-900);
+    }
+
+    .react-tabs__tab--selected {
+        background: #1c1d1f;
+        border-color: #1c1d1f;
+        border-left: 4px solid #6eb800;
+        color: var(--primary-color);
+    }
+
+    .react-tabs__tab-panel {
+        display: none;
+        width: 80%;
+    }
+
+    .react-tabs__tab-panel--selected {
+        display: block;
+    }
+
+    .react-tabs__tab {
+        padding-left: 0px !important;
+    }
+
+    .react-tabs__tab--selected {
+        padding-left: 0px !important;
+    }
+
+    .panel-content {
+        text-align: center;
+    }
+
+
+
+    .sideBarMenu {
+        width: 100%;
+        // padding-left: 20px;
+        margin-right: 56px;
+
+        span {
+            color: var(--gray-color-900);
+        }
+    }
+
+    .sectionAccount {
+        width: 100%;
+
+        .FormsRow {
+            display: flex;
+            flex-direction: row;
+
+            .FormGroup {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                justify-content: space-between;
+                &:first-child{
+                    margin-right: 2rem;
+                }
+                &:nth-child(2){
+                    margin-right: 2rem;
+                }
+                &:last-child{
+                    margin-right: 0rem;
+                }
+             
+            }
+           
+            .FormGroup--full {
+
+                &:first-child {
+                    width: 100% !important;
+
+                }
+
+            }
+        }
+
+
+
+        .headSection {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+}
+
+.apply,
+.proyects,
+.billing {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50vh;
+    justify-content: center;
+
+    img {
+        margin-bottom: 24px;
+    }
+}
+
+
+.rowPost {
+    background-color: var(--gray-color-100);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 24px;
+    margin-bottom: 1rem;
+}
+
+.skillsBox {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 24px;
+    border: 1px dashed var(--gray-color-300);
+
+    img {
+        width: 40px !important;
+    }
+
+    p {
+        color: var(--gray-color-400);
+    }
+}

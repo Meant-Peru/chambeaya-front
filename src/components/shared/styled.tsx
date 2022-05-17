@@ -100,6 +100,7 @@ export const Theme = {
     &:hover{
         background: ${Theme.colors.gray9};
     }
+    
     `;
 
     export const Txtfield = styled.input`
@@ -109,6 +110,22 @@ export const Theme = {
     align-items: center;
     padding: 16px 24px;
     border: 1px solid ${Theme.colors.border};
+    width:100%;
+    margin-right:1rem;
+    ::placeholder{
+        color: ${Theme.colors.gray6};
+    }
+    `;
+    export const TxtArea = styled.textarea`
+    background: ${Theme.colors.light};
+    font-size: 16px;
+    border-radius: 28px;
+    align-items: center;
+    padding: 16px 24px;
+    border: 1px solid ${Theme.colors.border};
+    width:100%;
+    margin-right:1rem;
+    font-family: ${Theme.fonts.body};
     ::placeholder{
         color: ${Theme.colors.gray6};
     }
@@ -122,6 +139,7 @@ export const Theme = {
     align-items: center;
     padding: 16px 24px;
     border: none;
+    margin-right: 8px;
     border-right: 24px solid transparent;
     outline: ${Theme.colors.border} auto 1px;
     :focus-visible{

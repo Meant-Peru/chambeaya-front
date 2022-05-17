@@ -1,15 +1,54 @@
 
-.btnComponent{
-    font-size: 16px;
-    border-radius: 28px;
-    align-items: center;
-    padding: 16px 64px;
-    color: var(--light-color);
-    background-color: var(--primary-color);
-    border-style:none;
-    cursor:pointer;
-
-        &:hover{
-            background: var(--gray-color-900);
+.btnComponent--{
+    &primary{
+        background-color: var(--primary-color);
+        font-size: 16px;
+        border-radius: 28px;
+        align-items: center;
+        padding: 16px 64px;
+        color: var(--light-color);
+        border-style:none;
+        cursor:pointer;
+        img{
+            display: none;
         }
+        &:hover{
+            background: var(--dark-color);
+        }
+    }
+    &secondary{
+        background-color: var(--dark-color);
+        font-size: 16px;
+        border-radius: 28px;
+        align-items: center;
+        padding: 16px 64px;
+        color: var(--light-color);
+        border-style:none;
+        cursor:pointer;
+        img{
+            display: none;
+        }
+        &:hover{
+            background: var(--primary-color);
+        }
+    }
+    &terceary{
+        background-color: var(--gray-color-200);
+        font-size: 16px;
+        border-radius: 8px;
+        align-items: center;
+        padding: 4px 12px 4px 16px;
+        color: var(--dark-color);
+        border-style:none;
+        cursor:pointer;
+        align-items: center;
+        display: flex;
+        &:hover{
+            background: var(--secondary-color);
+        }
+    }
+}
+
+.whitIcon{
+    display: flex;
 }

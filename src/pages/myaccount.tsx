@@ -9,6 +9,7 @@ import {
   Txtfield,
 } from "../components/shared/styled";
 import "./../sass/pages/_myAccount.scss";
+import Footer from "../components/shared/footer";
 
 export default function MyAccount() {
   return (
@@ -58,7 +59,7 @@ export default function MyAccount() {
                 <Txtfield placeholder="Nro de cuenta" />
               </aside>
               <aside>
-                <ButtonComponent label="Actualizar" />
+                <ButtonComponent type="primary" label="Actualizar" />
               </aside>
             </section>
           </TabPanel>
@@ -76,6 +77,7 @@ export default function MyAccount() {
           </TabPanel>
         </Tabs>
       </section>
+      <Footer />
     </React.Fragment>
   );
 }

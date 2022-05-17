@@ -1,6 +1,7 @@
 import * as React from "react";
 import Hero from "../components/hero";
 import ListPost from "../components/listPost";
+import Footer from "../components/shared/footer";
 import Header from "../components/shared/header";
 
 export default function Home() {
@@ -9,6 +10,8 @@ export default function Home() {
        <Header />
        <Hero />
        <ListPost />
+
+       <Footer />
     </React.Fragment>
   );
 }

@@ -53,6 +53,17 @@
                 margin-bottom: 16px;
            }
         }
+        &-gray{
+            background-color: var(--gray-color-400);
+            color: var(--gray-color-900);
+            padding: 4px 16px;
+            border-radius: 0px;
+            border-style: none;
+            margin-top: 8px;
+            @include phone {
+                margin-bottom: 16px;
+           }
+        }
 
     }
     &state{

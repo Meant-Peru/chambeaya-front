@@ -31,7 +31,7 @@ export default function Hero() {
             <DropdownItem>Diseño</DropdownItem>
             <DropdownItem>Ingeniería</DropdownItem>
           </DropdownMenu>
-          <ButtonComponent  label="Filtrar" />
+          <ButtonComponent type="primary" label="Filtrar" />
         </aside>
       </section>
     </React.Fragment>

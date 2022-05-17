@@ -9,6 +9,7 @@ import Logo1 from "./../assets/logos/1.svg";
 
 import {useNavigate} from "react-router-dom";
 import { BtnPrimary } from "../components/shared/styled";
+import Footer from "../components/shared/footer";
 
 export default function ListPost() {
   const navigate = useNavigate();
@@ -88,6 +89,7 @@ export default function ListPost() {
           <CardPost/>
         </aside>
       </section>
+      <Footer />
     </React.Fragment>
   );
 }

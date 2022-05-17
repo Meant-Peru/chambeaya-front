@@ -1,0 +1,54 @@
+@import "./../base/_grid.scss";
+
+footer{
+    background-color: var(--acent-color);
+    @include tablet-l {
+      width: var(--container-tablet-landscape);
+    }
+  
+    @include tablet-p {
+      width: var(--container-tablet-portrait);
+    }
+  
+    @include phone {
+      width: var(--container-phone);
+    }
+
+    .footerContent{
+        width: var(--container); 
+        margin: 0px auto;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        p{
+            color: var(--light-color);
+            font-weight: 200;
+        }
+        .logoFooter{
+            width: 151px;
+        }
+        article{
+            flex: 1;
+            padding: 56px 0;
+            &:first-child{
+                flex: 2;
+            }
+            ul{
+              li{
+                list-style: none;
+                color: var(--light-color);
+                font-weight: 300;
+                cursor: pointer;
+                margin-bottom: 8px;
+                &:hover{
+                    font-weight: 500;
+                }
+                :active{
+                    font-weight: 500;
+                }
+              }  
+            }
+        }
+    }
+    
+}
