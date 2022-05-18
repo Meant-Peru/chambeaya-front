@@ -49,8 +49,8 @@ export default function Corporativo() {
       <Header />
       <section className="corporativoPage">
         <aside className="coverSection">
-          <h1>Únete a las <br /> compañias que buscan <br /> <span>resultados.</span></h1>
           <img src={CoverCorporativo} alt="" />
+          <span>Únete a las compañias que buscan <strong>resultados.</strong></span>
         </aside>
         <aside className="formRegister">
           <h2>Registro de nueva compañia</h2>

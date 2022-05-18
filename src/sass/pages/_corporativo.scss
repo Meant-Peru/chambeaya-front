@@ -20,23 +20,10 @@
 
     .coverSection {
         width: 40%;
-        margin-top: 48px;
-        img{
-            width: 299px;
-            margin-top: 40px;
-        }
-        h1{
-            font-weight: 400;
-            font-size: 36px;
-            line-height: 48px;
-            
+        span{
             color: var(--gray-color-800);
-            span{
-                color: var(--primary-color);
-                text-decoration: underline;
-                font-weight: 600;
-                letter-spacing: 10px;
-            }
+            font-weight: 400;
+            font-size: 1.2rem;
         }
     }
 

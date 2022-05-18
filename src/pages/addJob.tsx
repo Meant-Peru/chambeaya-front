@@ -56,7 +56,7 @@ export default function AddJob() {
           </TabList>
 
           <TabPanel>
-            <section className="sectionAccount">
+            <section className="sectionTab">
               <aside className="mb-5">
                 <article className="headSection">
                   <h2>Datos Generales</h2>
@@ -72,6 +72,7 @@ export default function AddJob() {
                 />
                 <Txtfield placeholder="Apellidos" />
               </aside>
+
               <aside className="FormsRow mt-2 mb-5">
                 <Txtfield placeholder="Correo electrónico" />
                 <Txtfield placeholder="Teléfono" />
