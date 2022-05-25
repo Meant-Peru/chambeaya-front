@@ -13,7 +13,7 @@ import {useNavigate} from "react-router-dom";
 
 export default function Register() {
     const navigate = useNavigate();
-    const[account, setAccount] = React.useState({email:"", password:"",name: "",lastName: "", phone: "",rolUser:"POSTULANT",sex: "H", birthDayDate: new Date()});
+    const[account, setAccount] = React.useState({email:"", password:"",name: "",lastName: "", phone: "",rolUser:"POSTULANT",sex: "H", birthDayDate: new Date()  });
 
     const handleRegister = async ()=>{
         console.log(account);

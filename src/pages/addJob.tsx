@@ -2,8 +2,9 @@ import * as React from "react";
 import Header from "../components/shared/header";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import boxEmpty from "./../assets/box-empty.svg";
-
 import ilusEmpty from "./../assets/empty-state.svg";
+
+import { Hint } from 'react-autocomplete-hint';
 
 import {
   Txtfield,
@@ -19,6 +20,11 @@ import ButtonComponent from "../components/shared/atom/button";
 import { addJob } from "./../util/job.service";
 
 export default function AddJob() {
+
+  const options = ["orange", "banana", "apple"];
+
+  const [text, setText] = React.useState("");
+
   const [job, setJob] = React.useState({
     description: "",
     idCompany: "",
@@ -120,6 +126,19 @@ export default function AddJob() {
                 <aside className="FormGroup mt-3">
                   <p>Posición</p>
                   <Txtfield placeholder="Posición" />
+                </aside>
+              </aside>
+              <aside className="FormsRow">
+                <aside className="FormGroup mt-3">
+                  <p>Prueba</p>
+                  
+                  <Hint options={options}>
+                      <input
+                          value={text}
+                          onChange={e => setText(e.target.value)} />
+                  </Hint>
+
+
                 </aside>
               </aside>
               <aside className="FormsRow">
