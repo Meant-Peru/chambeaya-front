@@ -1,20 +1,35 @@
 export default interface User{
-    email : String;
-    password ?: String;
-    name ?: String;
-    lastName ?: String;
-    phone: String;
-    rolUser ?: String;
-    sex ?: String;
+    email : string;
+    password ?: string;
+    name ?: string;
+    lastName ?: string;
+    phone: string;
+    rolUser ?: string;
+    sex ?: string;
     birthDayDate ?: Date;
 
-    businessName ?: String;
-    ruc ?: String;
-    description ?: String;
+    businessName ?: string;
+    ruc ?: string;
+    description ?: string;
 
-    youtube ?: String;
-    facebook ?: String;
-    linkedin ?: String;
-    web ?: String;
+    youtube ?: string;
+    facebook ?: string;
+    linkedin ?: string;
+    web ?: string;
 }
 
+export interface UserDetail{
+    dataUser: {
+        youtube: string,
+        business_name : string,
+        ruc: string,
+        web: string,
+        phone: string,
+        facebook: string,
+        description: string,
+        linkedin: string,
+        state: Boolean
+    },
+    rol: string,
+    email: string
+}

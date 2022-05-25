@@ -2,7 +2,7 @@ import * as React from "react";
 
 import Header from "../components/shared/header";
 import { SESSION, USER_OR_PASSWORD_NOT_EXISTING } from "./../helpers/constants";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import { Txtfield, BtnPrimary } from "./../components/shared/styled";
 
 import "./../sass/pages/_login.scss";

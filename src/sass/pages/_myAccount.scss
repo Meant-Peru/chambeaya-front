@@ -6,6 +6,10 @@
   flex-direction: row;
   margin: 80px auto 120px;
 
+  a{
+    cursor: pointer;
+  }
+
   @include tablet-l {
     width: var(--container-tablet-landscape);
   }
