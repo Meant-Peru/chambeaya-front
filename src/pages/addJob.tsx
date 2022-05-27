@@ -3,7 +3,8 @@ import Header from "../components/shared/header";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import boxEmpty from "./../assets/box-empty.svg";
 import ilusEmpty from "./../assets/empty-state.svg";
-
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
 import { Hint } from 'react-autocomplete-hint';
 
 import {
@@ -11,6 +12,7 @@ import {
   DropdownMenu,
   DropdownItem,
   TxtArea,
+  BtnPrimary,
 } from "./../components/shared/styled";
 import "react-tabs/style/react-tabs.css";
 import "./../sass/pages/_addJob.scss";
@@ -18,12 +20,16 @@ import Footer from "../components/shared/footer";
 import ButtonComponent from "../components/shared/atom/button";
 
 import { addJob } from "./../util/job.service";
+import { getCategory, getPosition, createPosition } from '../util/publication.service';
+import { Response } from "../interfaces/Response";
+import { Category } from "../interfaces/Category";
+import { Position } from "../interfaces/Position";
 
 export default function AddJob() {
 
-  const options = ["orange", "banana", "apple"];
-
-  const [text, setText] = React.useState("");
+  const [encounter, setEncounter] = React.useState(true);
+  const [categorys, setCategorys] = React.useState<Category[]>([]);
+  const [positions, setPositions] = React.useState<Position[]>([]);
 
   const [job, setJob] = React.useState({
     description: "",
@@ -37,12 +43,66 @@ export default function AddJob() {
     idSkills: "",
   });
 
+  const [position, setPosition] = React.useState({
+    "idCategory": "",
+    "namePosition": "",
+    "description": "",
+  });
+
+  React.useEffect(() => {
+    (async () => {
+      await getCategoryAll();
+    })()
+  }, []);
+
+  const getCategoryAll = async () => {
+    const response: Response = await getCategory();
+    if (response.status) setCategorys(response.data);
+  }
+
   const handleEvent = (e: any) => {
     setJob({
       ...job,
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleSearch = (e: any) => {
+    setEncounter(true);
+    const value = e.target.value;
+    setPosition({...position, namePosition: value});
+    if (positions.length === 0 && value.length > 0) setEncounter(false);
+
+    for (let index in positions) {
+      const item = positions[index];
+      const title = item.namePosition;
+      if (value.length != 0 && title.length != 0) {
+        if (title.toLowerCase().search(value.toLowerCase()) != -1) {
+          setEncounter(true);
+          return;
+        }
+        setEncounter(false);
+      }
+    }
+  }
+
+  const handlePosition = async (event: any) => {
+    const value = event.target.value;
+    if (value !== '0') {
+      setPosition({...position, idCategory: value});
+      const response: Response = await getPosition({ idCategory: value });
+      setPositions(response.data);
+    }
+  }
+
+  const addPosition = async () => {
+    const response: Response = await createPosition(position);
+    if (response.status) {
+      const response: Response = await getPosition({ idCategory: position.idCategory });
+      setPositions(response.data);
+    }
+  }
+
   return (
     <React.Fragment>
       <Header />
@@ -117,28 +177,51 @@ export default function AddJob() {
               <aside className="FormsRow">
                 <aside className="FormGroup mt-3">
                   <p>Rubro</p>
-                  <DropdownMenu>
-                    <DropdownItem>Elegir rubro</DropdownItem>
-                    <DropdownItem>Diseño</DropdownItem>
-                    <DropdownItem>Ingeniería</DropdownItem>
+                  <DropdownMenu onChange={handlePosition}>
+                    <DropdownItem value={'0'}>Elegir rubro</DropdownItem>
+                    {categorys.map((category: Category) => <DropdownItem key={category.id} value={category.id}>
+                      {category.nameCategory}
+                    </DropdownItem>)}
                   </DropdownMenu>
                 </aside>
                 <aside className="FormGroup mt-3">
                   <p>Posición</p>
-                  <Txtfield placeholder="Posición" />
+                  {/* <Txtfield placeholder="Posición" /> */}
+                  <Autocomplete
+                    freeSolo
+                    id="free-solo-2-demo"
+                    disableClearable
+                    className="border__none"
+                    options={positions.map((option) => option.namePosition)}
+                    renderInput={(params) => (
+                      <TextField
+                        className="border__none"
+                        {...params}
+                        // label="Nombre de la posición"
+                        InputProps={{
+                          ...params.InputProps,
+                          type: 'search',
+                          disableUnderline: true
+                        }}
+                        onChange={handleSearch}
+                        sx={{
+                          "& .MuiInputLabel-root": {
+                            color: 'transparent'
+                          },
+                          "& .MuiOutlinedInput-root": {
+                            "& > fieldset": {
+                              borderRadius: 20,
+                              borderColor: "transparent"
+                            },
+                          }
+                        }}
+                      />
+                    )}
+                  />
                 </aside>
-              </aside>
-              <aside className="FormsRow">
-                <aside className="FormGroup mt-3">
-                  <p>Prueba</p>
-                  
-                  <Hint options={options}>
-                      <input
-                          value={text}
-                          onChange={e => setText(e.target.value)} />
-                  </Hint>
-
-
+                <aside className="FormGroup">
+                  <br />
+                  {!encounter && <BtnPrimary onClick={addPosition}>Crear Posición</BtnPrimary>}
                 </aside>
               </aside>
               <aside className="FormsRow">

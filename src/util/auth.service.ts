@@ -12,7 +12,10 @@ export const auth = async (payload: Auth)=>{
 
 export const register = async (payload: Postulant)=>{
     return await axios.post(`${URI}/user/signUp`,payload);
-
 }
 
 export const getToken = localStorage.getItem(SESSION);
+
+export const headers = {
+    token : `${getToken}`
+}
