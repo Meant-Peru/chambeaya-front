@@ -16,7 +16,7 @@ export const getPosition = async (payload: any) => {
         const response = await axios.post(`${URI}/user/getPosition`, payload, { headers });
         return response.data;
     } catch (error) {
-        
+        return error;
     }
 }
 
@@ -25,6 +25,15 @@ export const createPosition = async (payload: any) => {
         const response = await axios.post(`${URI}/user/createPosition`, payload, { headers });
         return response.data;
     } catch (error) {
-        
+        return error;
+    }
+}
+
+export const getSkill = async (payload: any) => {
+    try {
+        const response = await axios.post(`${URI}/user/getSPCSkill`, payload, { headers });
+        return response.data;
+    } catch (error) {
+        return error;
     }
 }

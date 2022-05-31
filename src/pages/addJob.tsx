@@ -20,7 +20,7 @@ import Footer from "../components/shared/footer";
 import ButtonComponent from "../components/shared/atom/button";
 
 import { addJob } from "./../util/job.service";
-import { getCategory, getPosition, createPosition } from '../util/publication.service';
+import { getCategory, getPosition, createPosition, getSkill } from '../util/publication.service';
 import { Response } from "../interfaces/Response";
 import { Category } from "../interfaces/Category";
 import { Position } from "../interfaces/Position";
@@ -31,6 +31,15 @@ export default function AddJob() {
   const [encounter, setEncounter] = React.useState(true);
   const [categorys, setCategorys] = React.useState<Category[]>([]);
   const [positions, setPositions] = React.useState<Position[]>([]);
+  const [skills, setSkills] = React.useState<any[]>([]);
+
+  const [positionSelected, setPositionSelected] = React.useState<any>({
+    id: "",
+    id_category: "",
+    id_user: "",
+    namePosition: "",
+    description: ""
+  });
 
   const [job, setJob] = React.useState({
     description: "",
@@ -49,6 +58,8 @@ export default function AddJob() {
     "namePosition": "",
     "description": "",
   });
+
+  const [skillPayload, setSkillPayload] = React.useState({ idCategory: "", idPositon: "" });
 
   React.useEffect(() => {
     (async () => {
@@ -79,6 +90,7 @@ export default function AddJob() {
       const title = item.namePosition;
       if (value.length != 0 && title.length != 0) {
         if (title.toLowerCase().search(value.toLowerCase()) != -1) {
+          setPositionSelected(item);
           setEncounter(true);
           return;
         }
@@ -103,6 +115,36 @@ export default function AddJob() {
       setPositions(response.data);
     }
   }
+
+  const getSkills = async () => {
+    setSkillPayload({...skillPayload, idPositon: positionSelected.id, idCategory: positionSelected.id_category});
+  }
+
+  React.useEffect(() => {
+    (async () => {
+      if (skillPayload.idCategory !== "" || skillPayload.idPositon !== "") {
+        const response: Response = await getSkill(skillPayload);
+        const skillsData: any = response.data;
+        const skillsArray = [];
+        if (skillsData.skillGeneral.length > 0) {
+          for (let i = 0; i < skillsData.skillGeneral.length; i++) {
+            skillsArray.push(skillsData.skillGeneral[i]);
+          }
+        }
+        if (skillsData.skillPosition.length > 0) {
+          for (let i = 0; i < skillsData.skillPosition.length; i++) {
+            skillsArray.push(skillsData.skillPosition[i]);
+          }
+        }
+        if (skillsData.skillPositionUser.length > 0) {
+          for (let i = 0; i < skillsData.skillPositionUser.length; i++) {
+            skillsArray.push(skillsData.skillPositionUser[i]);
+          }
+        }
+        setSkills(skillsArray);
+      }
+    })();
+  }, [skillPayload]);
 
   return (
     <React.Fragment>
@@ -222,6 +264,10 @@ export default function AddJob() {
                 </aside>
                 <aside className="FormGroup">
                   <br />
+                  <BtnPrimary onClick={getSkills}>Buscar</BtnPrimary>
+                </aside>
+                <aside className="FormGroup">
+                  <br />
                   {!encounter && <BtnPrimary onClick={addPosition}>Crear Posición</BtnPrimary>}
                 </aside>
               </aside>
@@ -231,15 +277,17 @@ export default function AddJob() {
                   <article className="skillsBox">
                     {/* <img src={boxEmpty} alt="empty" />
                     <p>Ingrese la posición para cargar skills</p> */}
-
-                    <TagComponent type="highlight" level="secondary" label="skill" />
+                    {
+                      skills.map((e: any) => <TagComponent type="highlight" level="secondary" label={e.name_skill} />)
+                    }
+{/*                     
                     <TagComponent type="highlight" level="secondary" label="skill" />
                     <TagComponent type="highlight" level="secondary" label="skill" />
 
                     <TagComponent type="highlight" level="secondary" label="skill" />                    
                     <TagComponent type="highlight" level="secondary" label="skill" />
                     <TagComponent type="highlight" level="secondary" label="skill" />
-                    <TagComponent type="highlight" level="gray" label="skill" />
+                    <TagComponent type="highlight" level="gray" label="skill" /> */}
 
                   </article>
                 </aside>
