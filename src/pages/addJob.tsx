@@ -24,6 +24,7 @@ import { getCategory, getPosition, createPosition } from '../util/publication.se
 import { Response } from "../interfaces/Response";
 import { Category } from "../interfaces/Category";
 import { Position } from "../interfaces/Position";
+import TagComponent from "../components/shared/atom/tag";
 
 export default function AddJob() {
 
@@ -228,8 +229,18 @@ export default function AddJob() {
                 <aside className="FormGroup mt-3">
                   <p>Skills</p>
                   <article className="skillsBox">
-                    <img src={boxEmpty} alt="empty" />
-                    <p>Ingrese la posición para cargar skills</p>
+                    {/* <img src={boxEmpty} alt="empty" />
+                    <p>Ingrese la posición para cargar skills</p> */}
+
+                    <TagComponent type="highlight" level="secondary" label="skill" />
+                    <TagComponent type="highlight" level="secondary" label="skill" />
+                    <TagComponent type="highlight" level="secondary" label="skill" />
+
+                    <TagComponent type="highlight" level="secondary" label="skill" />                    
+                    <TagComponent type="highlight" level="secondary" label="skill" />
+                    <TagComponent type="highlight" level="secondary" label="skill" />
+                    <TagComponent type="highlight" level="gray" label="skill" />
+
                   </article>
                 </aside>
               </aside>
