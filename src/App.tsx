@@ -28,7 +28,7 @@ export default function App() {
         <Route path="postjob" element={<PostJob />} />
         <Route path="addJob" element={<AddJob />} />
         <Route path="apply" element={<ApplyJob />} />
-        <Route path="detail-post" element={<DetailPost />} />
+        <Route path="detail-post/:id" element={<DetailPost />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </div>

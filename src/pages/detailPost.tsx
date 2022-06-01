@@ -7,23 +7,30 @@ import CardPost from "../components/shared/cardPost";
 
 import Logo1 from "./../assets/logos/1.svg";
 
-import {useNavigate} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { BtnPrimary } from "../components/shared/styled";
 import Footer from "../components/shared/footer";
+import { usePostJob } from "../hooks/usePostJob";
 
 export default function ListPost() {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const { postJob } = usePostJob(id);
 
-  const handleRedirect = ()=>{
-   navigate("/apply")
-   }
+  console.log(postJob);
+
+  const handleRedirect = () => {
+    navigate("/apply");
+  };
   return (
     <React.Fragment>
       <Header />
       <section className="DetailPostComponent">
         <aside className="coverHeader mb-5">
           <h1 className="mb-2">Diseñador UX/UI</h1>
-          <p><i>Empresa Famel SAC</i></p>
+          <p>
+            <i>Empresa Famel SAC</i>
+          </p>
         </aside>
         <aside className="skillTags">
           <TagComponent type="highlight" level="secondary" label="Figma" />
@@ -38,14 +45,14 @@ export default function ListPost() {
         <hr />
         <aside className="cardApply mt-5">
           <article className="imgBrand logoBrand">
-            <img src={Logo1} alt="" />            
+            <img src={Logo1} alt="" />
           </article>
           <article className="infoApply">
             <h4>12 personas aplicaron</h4>
             <p className="mt-2">10 de Diciembre 2022</p>
           </article>
           <article className="actionApply">
-          <BtnPrimary onClick={handleRedirect} > Aplicar </BtnPrimary>
+            <BtnPrimary onClick={handleRedirect}> Aplicar </BtnPrimary>
             <p className="mt-2">Requerimiento activo</p>
           </article>
         </aside>
@@ -64,29 +71,27 @@ export default function ListPost() {
             <div className="mt-5">
               <h4 className="mb-3">Funciones</h4>
               <p>
-                * Realizar Benchmark de productos digitales similares
-                * Realizar Wireframes de baja/mediana calidad 
-                * Realizar pruebas de usuario/usabilidad
-                * Diseñar interfaces de acuerdo a los
+                * Realizar Benchmark de productos digitales similares * Realizar
+                Wireframes de baja/mediana calidad * Realizar pruebas de
+                usuario/usabilidad * Diseñar interfaces de acuerdo a los
                 requerimientos planteados
               </p>
             </div>
           </article>
           <article className="rightBox">
             <h4 className="mb-3">Precisiones</h4>
-         
-              <ul>
-                <li>Duración: 1 mes </li>
-                <li>Presupuesto estimado: 2000 Soles </li>
-                <li>Tipo: Híbrido</li>
-              </ul>
 
+            <ul>
+              <li>Duración: 1 mes </li>
+              <li>Presupuesto estimado: 2000 Soles </li>
+              <li>Tipo: Híbrido</li>
+            </ul>
           </article>
         </aside>
 
         <aside className="postRelated mt-5">
           <h2 className="mb-5">Publicaciones Similares</h2>
-          <CardPost/>
+          <CardPost />
         </aside>
       </section>
       <Footer />
