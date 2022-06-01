@@ -7,17 +7,18 @@ import { Txtfield, TxtArea, DropdownMenu, DropdownItem } from '../components/sha
 import './../sass/pages/_myAccount.scss';
 import Footer from '../components/shared/footer';
 
-import { GetUser } from './../util/user.service';
-import User, { CompanyDetailInterface, PostulantInterface } from './../interfaces/User';
-import { COMPANY, LIST_SUCCESS, POSTULANT, SESSION } from '../helpers/constants';
+import { COMPANY, SESSION } from '../helpers/constants';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
+import { getToken } from '../util/auth.service';
+import { useAuth } from '../hooks/useAuth';
 
 export default function MyAccount() {
 	const navigation: any = useNavigate();
 
 	const { user } = useSelector((state: RootState) => state.auth);
+	const { validateToken } = useAuth();
 
 	const [postulant, setPostulant] = useState({
 		name: '',
@@ -39,8 +40,8 @@ export default function MyAccount() {
 	});
 
 	useEffect(() => {
-		console.log({ user });
-	}, [user]);
+		// validateSession;
+	}, []);
 
 	const handleEvent = (e: any) => {
 		console.log(e);
@@ -50,18 +51,20 @@ export default function MyAccount() {
 		});
 	};
 
-	const handleEventPostulant = (e: any) => {
-		console.log(e);
-		setPostulant({
-			...user,
-			[e.target.name]: e.target.value,
-		});
-	};
-
 	const handleLogout = () => {
 		localStorage.removeItem(SESSION);
+		navigation('/login', { replace: true });
+	};
 
-		navigation('/login');
+	if (user === null) return <Navigate replace to="/login" />;
+
+	const validateSession = async () => {
+		if (getToken) {
+			const val = await validateToken(getToken);
+			if (!val) return <Navigate replace to="/login" />;
+		} else {
+			return <Navigate replace to="/login" />;
+		}
 	};
 
 	return (
@@ -86,11 +89,11 @@ export default function MyAccount() {
 
 					<TabPanel>
 						<section className="sectionAccount">
-							{user.rol === COMPANY ? (
+							{user?.rol === COMPANY ? (
 								<Fragment>
 									<p>Datos primarios</p>
 									<aside className="FormGroup mt-3">
-										<Txtfield onChange={handleEvent} value={user.business_name} name="business_name" placeholder="Nombre de empresa" />
+										<Txtfield onChange={handleEvent} value={user.businessName} name="businessName" placeholder="Nombre de empresa" />
 										<Txtfield onChange={handleEvent} value={user.ruc} name="ruc" placeholder="Nro de Documento" />
 									</aside>
 									<aside className="FormGroup mt-4 mb-4">
@@ -109,12 +112,12 @@ export default function MyAccount() {
 								<Fragment>
 									<p>Datos personales</p>
 									<aside className="FormGroup mt-3">
-										<Txtfield onChange={handleEventPostulant} value={user.name} name="name" placeholder="Nombres" />
-										<Txtfield onChange={handleEventPostulant} value={user.last_name} name="lastname" placeholder="Apellidos" />
+										<Txtfield onChange={handleEvent} value={user.name} name="name" placeholder="Nombres" />
+										<Txtfield onChange={handleEvent} value={user.lastName} name="lastname" placeholder="Apellidos" />
 									</aside>
 									<aside className="FormGroup mt-2 mb-5">
-										<Txtfield onChange={handleEventPostulant} value={user.email} name="email" placeholder="Correo electrónico" />
-										<Txtfield onChange={handleEventPostulant} value={user.phone} name="phone" placeholder="Teléfono" />
+										<Txtfield onChange={handleEvent} value={user.email} name="email" placeholder="Correo electrónico" />
+										<Txtfield onChange={handleEvent} value={user.phone} name="phone" placeholder="Teléfono" />
 									</aside>
 									<p>Datos de Pago</p>
 									<aside className="FormGroup mt-3">

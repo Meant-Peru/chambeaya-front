@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import UserGenerico, { CompanyDetailInterface, PostulantInterface } from '../../interfaces/User';
 
 interface AuthState {
 	loadingLogin: boolean;
