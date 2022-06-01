@@ -10,6 +10,7 @@ import CoverCorporativo from "./../assets/coverCorporativo.svg";
 import { register } from "./../util/auth.service";
 import { useNavigate } from "react-router-dom";
 import { CREATE_USER, USER_EXISTING } from "./../helpers/constants";
+import {  COMPANY } from "./../helpers/constants";
 
 export default function Corporativo() {
   const navigate = useNavigate();
@@ -19,9 +20,7 @@ export default function Corporativo() {
     name: "",
     phone: "",
     lastName: "",
-    rolUser: "COMPANY",
-    sex: "H",
-    birthDayDate: new Date(),
+    rolUser: COMPANY,
   });
 
   const handleRegister = async () => {

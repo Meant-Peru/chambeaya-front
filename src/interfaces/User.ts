@@ -18,7 +18,7 @@ export default interface User{
     web ?: string;
 }
 
-export interface UserDetail{
+export interface UserCompanyDetail{
     dataUser: {
         youtube: string,
         business_name : string,

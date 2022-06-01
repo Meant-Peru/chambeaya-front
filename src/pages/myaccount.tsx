@@ -6,12 +6,14 @@ import ilusEmpty from "./../assets/empty-state.svg";
 import {
   Txtfield,
   TxtArea,
+  DropdownMenu,
+  DropdownItem,
 } from "../components/shared/styled";
 import "./../sass/pages/_myAccount.scss";
 import Footer from "../components/shared/footer";
 
 import { GetUser } from "./../util/user.service";
-import User, { UserDetail } from "./../interfaces/User";
+import User, { UserCompanyDetail } from "./../interfaces/User";
 import { COMPANY, LIST_SUCCESS, SESSION } from "../helpers/constants";
 import { useNavigate , Navigate } from "react-router-dom";
 
@@ -20,8 +22,41 @@ export default function MyAccount() {
 
   const navigation : any = useNavigate();
 
-  
-  const [user, setUser] = useState<User>({
+  const [postulant, setPostulant] = useState<User>({
+    name: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    rolUser: "",
+    sex: "",
+    birthDayDate: new Date()
+  });
+  useEffect(() => {
+    (async () => {
+
+      const responsePostulant = await GetUser();
+
+      if (responsePostulant.message === LIST_SUCCESS) {
+ 
+        const userPostulant: User = responsePostulant.data;
+
+        console.log("ahora estoy aqui"+userPostulant.email);
+
+        setPostulant({
+          ...postulant,
+          name: userPostulant.name,
+          lastName: userPostulant.lastName,
+          email: userPostulant.email,
+          phone: userPostulant.phone,
+          rolUser: userPostulant.rolUser,
+        });
+      }
+    })();
+  }, []);
+
+
+
+  const [company, setCompany] = useState<User>({
     businessName: "",
     email: "",
     phone: "",
@@ -34,15 +69,16 @@ export default function MyAccount() {
     (async () => {
       const responseUser = await GetUser();
       if (responseUser.message === LIST_SUCCESS) {
-        const userDetail: UserDetail = responseUser.data;
-        setUser({
-          ...user,
-          businessName: userDetail.dataUser.business_name,
-          email: userDetail.email,
-          phone: userDetail.dataUser.phone,
-          rolUser: userDetail.rol,
-          description: userDetail.dataUser.description,
-          ruc: userDetail.dataUser.ruc,
+        const userCompany: UserCompanyDetail = responseUser.data;
+        setCompany({
+          ...company,
+          businessName: userCompany.dataUser.business_name,
+          email: userCompany.email,
+          phone: userCompany.dataUser.phone,
+          rolUser: userCompany.rol,
+          description: userCompany.dataUser.description,
+          ruc: userCompany.dataUser.ruc,
+          web: userCompany.dataUser.web
         });
       }
     })();
@@ -52,8 +88,16 @@ export default function MyAccount() {
 
   const handleEvent = (e: any) => {
     console.log(e);
-    setUser({
-      ...user,
+    setCompany({
+      ...company,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleEventPostulant = (e: any) => {
+    console.log(e);
+    setPostulant({
+      ...postulant,
       [e.target.name]: e.target.value,
     });
   };
@@ -88,19 +132,19 @@ export default function MyAccount() {
 
           <TabPanel>
             <section className="sectionAccount">
-              {user.rolUser === COMPANY ? (
+              {company.rolUser === COMPANY ? (
                 <Fragment>
-                  <p>Datos personales</p>
+                  <p>Datos primarios</p>
                   <aside className="FormGroup mt-3">
                     <Txtfield
                       onChange={handleEvent}
-                      value={user.businessName}
+                      value={company.businessName}
                       name="businessName"
                       placeholder="Nombre de empresa"
                     />
                     <Txtfield
                       onChange={handleEvent}
-                      value={user.ruc}
+                      value={company.ruc}
                       name="ruc"
                       placeholder="Nro de Documento"
                     />
@@ -108,7 +152,7 @@ export default function MyAccount() {
                   <aside className="FormGroup mt-4 mb-4">
                     <TxtArea
                       onChange={handleEvent}
-                      value={user.description}
+                      value={company.description}
                       name="description"
                       placeholder="Descripción"
                     />
@@ -116,18 +160,54 @@ export default function MyAccount() {
                   <aside className="FormGroup mt-2 mb-5">
                     <Txtfield
                       onChange={handleEvent}
-                      value={user.email}
+                      value={company.email}
                       name="email"
                       placeholder="Correo electrónico"
                     />
                     <Txtfield
                       onChange={handleEvent}
-                      value={user.phone}
+                      value={company.phone}
                       name="phone"
                       placeholder="Teléfono"
                     />
                   </aside>
-                  {/* <p>Datos de Pago</p>
+                  
+                  <aside>
+                    <ButtonComponent type="primary" label="Actualizar" />
+                  </aside>
+                </Fragment>
+              ) : (
+                <Fragment>
+                <p>Datos personales</p>
+                <aside className="FormGroup mt-3">
+                  <Txtfield
+                    onChange={handleEventPostulant}
+                    value={postulant.name}
+                    name="name"
+                    placeholder="Nombres"
+                  />
+                  <Txtfield
+                    onChange={handleEventPostulant}
+                    value={postulant.lastName}
+                    name="lastname"
+                    placeholder="Apellidos"
+                  />
+                </aside>
+                <aside className="FormGroup mt-2 mb-5">
+                  <Txtfield
+                    onChange={handleEventPostulant}
+                    value={postulant.email}
+                    name="email"
+                    placeholder="Correo electrónico"
+                  />
+                  <Txtfield
+                    onChange={handleEventPostulant}
+                    value={postulant.phone}
+                    name="phone"
+                    placeholder="Teléfono"
+                  />
+                </aside>
+                <p>Datos de Pago</p>
               <aside className="FormGroup mt-3">
                 <DropdownMenu>
                   <DropdownItem>Tipo de comprobante</DropdownItem>
@@ -144,13 +224,12 @@ export default function MyAccount() {
                   <DropdownItem>BBVA</DropdownItem>
                 </DropdownMenu>
                 <Txtfield placeholder="Nro de cuenta" />
-              </aside> */}
-                  <aside>
-                    <ButtonComponent type="primary" label="Actualizar" />
-                  </aside>
-                </Fragment>
-              ) : (
-                <Fragment>Holis</Fragment>
+              </aside>
+               
+                <aside>
+                  <ButtonComponent type="primary" label="Actualizar" />
+                </aside>
+              </Fragment>
               )}
             </section>
           </TabPanel>
