@@ -135,3 +135,73 @@
   padding: 24px;
   margin-bottom: 1rem;
 }
+
+.listCards{
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+  .cardHistory{
+    width: 49%;
+    margin-bottom: 1rem;
+    .headCard{
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 20px;
+      /* identical to box height, or 167% */
+    
+      display: flex;
+      align-items: center;
+      text-align: center;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    
+      /* color-accent */
+    
+      color: #6F7DFF;
+      background: #F0F2FA;
+      border-radius: 8px 8px 0px 0px;
+  
+      display: flex;
+      flex-direction: column;
+      padding: 8px 0;
+      span{
+        font-weight: 400;
+      }
+      strong{
+        font-weight: 700;
+      }
+  
+    }
+    .contentCard{
+      border: 3px solid #F0F2FA;
+      padding: 24px;
+      border-radius: 0px 0px 8px 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      .listCard{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        margin-bottom: 24px;
+        line-height: 24px;
+      }
+  
+    }
+  }
+}
+
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($color: #000000, $alpha: 0.4);
+}

@@ -47,8 +47,25 @@
             background: var(--secondary-color);
         }
     }
+    &textLink{
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+        text-align: right;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #676F8F;
+        border-style:none;
+        cursor:pointer;
+    }
 }
 
 .whitIcon{
     display: flex;
+}
+
+.whitOutIcon{
+    display: none;
 }
