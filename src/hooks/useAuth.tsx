@@ -1,11 +1,12 @@
 import { useDispatch } from 'react-redux';
-import { POSTULANT, SESSION, USER_OR_PASSWORD_NOT_EXISTING } from '../helpers/constants';
+import { LOGIN_SUCCESS, SESSION, USER, USER_OR_PASSWORD_NOT_EXISTING } from '../helpers/constants';
 import { auth } from '../util/auth.service';
 
 import { useNavigate } from 'react-router-dom';
-import { signIn } from '../redux/slices/authSlice';
-import { GetUser } from '../util/user.service';
-import { PostulantInterface, CompanyDetailInterface } from '../interfaces/User';
+import { signIn, logout } from '../redux/slices/authSlice';
+import { GetUser, UpdateUser } from '../util/user.service';
+import { UserGenerico } from '../interfaces/User';
+import { clearLocalStorage } from '../helpers/localStorage';
 
 export const useAuth = () => {
 	const navigate = useNavigate();
@@ -13,35 +14,57 @@ export const useAuth = () => {
 
 	const startLogin = async (user: any) => {
 		const response = await auth(user);
-		if (response.status === 200 && response.data.message !== USER_OR_PASSWORD_NOT_EXISTING) {
-			const starUser = await validateToken(response.data.data.token);
-			if (starUser) navigate('/myaccount');
-		} else {
-			alert('No encontrado');
+		// console.log({ response });
+		switch (response.data.message) {
+			case LOGIN_SUCCESS:
+				const starUser = await validateToken(response.data.data.token);
+				if (starUser) navigate('/myaccount', { replace: true });
+				return;
+			case USER_OR_PASSWORD_NOT_EXISTING:
+				alert('No encontrado');
+				return;
+			default:
+				alert('ERROR SERVIDOR');
+				break;
 		}
 	};
 
 	const validateToken = async (token: string) => {
 		try {
 			const { data } = await GetUser(token);
-			if (data?.rol === POSTULANT) {
-				const user: PostulantInterface = { ...data.dataUser, rol: data.rol, email: data.email };
-				const paylod = { token: token, user };
-				dispatch(signIn(paylod));
-			} else {
-				const user: CompanyDetailInterface = { ...data.dataUser, rol: data.rol, email: data.email };
-				const paylod = { token: token, user };
-				dispatch(signIn(paylod));
-			}
+			console.log({ data });
+			const user: UserGenerico = { dataUser: data.dataUser, rol: data.rol };
+			const paylod = { token: token, user };
+			dispatch(signIn(paylod));
 			localStorage.setItem(SESSION, token);
+			localStorage.setItem(USER, JSON.stringify(user));
 			return true;
 		} catch (error) {
+			console.log('[validateToken]', { error });
 			return false;
 		}
+	};
+
+	const startLogout = () => {
+		clearLocalStorage();
+		dispatch(logout());
+		navigate('/login', { replace: true });
+	};
+
+	const startUpdateUser = async (data: any) => {
+		const resp = await UpdateUser(data);
+		if (resp !== false) {
+			const { data } = resp;
+			const user: UserGenerico = { dataUser: data.dataUser, rol: data.dataUser.rol };
+			localStorage.setItem(USER, JSON.stringify(user));
+		}
+		return resp;
 	};
 
 	return {
 		startLogin,
 		validateToken,
+		startLogout,
+		startUpdateUser,
 	};
 };

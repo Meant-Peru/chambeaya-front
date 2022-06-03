@@ -26,15 +26,30 @@ export default function Register() {
 	const handleRegister = async () => {
 		console.log(account);
 
-		const response = await register(account);
-		console.log(response);
+		const dataSend = {
+			email: account.email,
+			password: account.password,
+			rol: account.rolUser,
+			dataUser: {
+				email: account.email,
+				rol: account.rolUser,
+				name: account.name,
+				lastName: account.lastName,
+				dni: 11113,
+				phone: account.phone,
+				genere: '',
+				brithdayDate: account.birthDayDate,
+			},
+		};
 
-		// if (response.status === 200 && response.data.message === CREATE_USER) {
-		//   navigate("/login");
-		// }
-		// if (response.status === 200 && response.data.message === USER_EXISTING) {
-		//   alert("el usuario ya existe");
-		// }
+		const response = await register(dataSend);
+
+		if (response.status === 200 && response.data.message === CREATE_USER) {
+			navigate('/login', { replace: true });
+		}
+		if (response.status === 200 && response.data.message === USER_EXISTING) {
+			alert('el usuario ya existe');
+		}
 	};
 
 	const handleEvent = (e: any) => {

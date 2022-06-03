@@ -19,7 +19,6 @@ export default interface User {
 export interface UserGenerico {
 	dataUser: {};
 	rol: string;
-	email: string;
 }
 
 export interface CompanyDetailInterface {
@@ -43,7 +42,6 @@ export interface PostulantInterface {
 	phone: string;
 	genere: string;
 	state: Boolean;
-	ruc: number;
 	brithdayDate: Date;
 	rol: string;
 	email: string;

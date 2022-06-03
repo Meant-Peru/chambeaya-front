@@ -13,5 +13,14 @@ export const GetUser = async (token: string) => {
 	} catch (error) {
 		console.log(error);
 	}
-	// return getUser();
+};
+
+export const UpdateUser = async (data: any) => {
+	try {
+		const resultData = await axios.post(`${URI}/user/updateUser`, data, { headers: { token: `${getToken}` } });
+		return resultData.data;
+	} catch (error) {
+		return false;
+		// console.log(error);
+	}
 };

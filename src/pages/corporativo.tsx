@@ -17,6 +17,7 @@ export default function Corporativo() {
 	const [account, setAccount] = React.useState({
 		businessName: '',
 		email: '',
+		password: '',
 		phone: '',
 		description: '',
 		ruc: '',
@@ -24,13 +25,26 @@ export default function Corporativo() {
 	});
 
 	const handleRegister = async () => {
-		console.log(account);
-
-		const response = await register(account);
+		const dataSend = {
+			rol: account.rolUser,
+			dataUser: {
+				email: account.email,
+				rol: account.rolUser,
+				ruc: account.ruc,
+				businessName: account.businessName,
+				youtube: '',
+				web: '',
+				phone: account.phone,
+				facebook: '',
+				description: '',
+				linkedin: '',
+			},
+		};
+		const response = await register(dataSend);
 		console.log(response);
 
 		if (response.status === 200 && response.data.message === CREATE_USER) {
-			navigate('/login');
+			navigate('/login', { replace: true });
 		}
 		if (response.status === 200 && response.data.message === USER_EXISTING) {
 			alert('el usuario ya existe');
@@ -60,11 +74,11 @@ export default function Corporativo() {
 						<Txtfield className="mb-2" onChange={handleEvent} name="businessName" placeholder="Razón Social" />
 					</aside>
 					<aside className="FormGroup">
-						<Txtfield type={'email'} onChange={handleEvent} name="email" className="mb-3" placeholder="Correo electrónico" />
+						<Txtfield type={'email'} onChange={handleEvent} name="email" value={account.email} className="mb-3" placeholder="Correo electrónico" autoComplete="off" />
 						<Txtfield type={'tel'} onChange={handleEvent} name="phone" className="mb-2" placeholder="Teléfono / Celular" />
 					</aside>
 					<aside className="FormGroup mt-2">
-						<Txtfield className="mb-3" onChange={handleEvent} name="password" type={'password'} placeholder="Clave" />
+						<Txtfield className="mb-3" onChange={handleEvent} name="password" value={account.password} type={'password'} placeholder="Clave" autoComplete="off" />
 						<Txtfield className="mb-2" onChange={handleEvent} name="confirmPassword" type={'password'} placeholder="Repetir clave" />
 					</aside>
 					<aside className="FormGroupFull">

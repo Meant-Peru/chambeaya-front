@@ -1,4 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getLocalStorage } from '../../helpers/localStorage';
+import { USER } from '../../helpers/constants';
+import { UserGenerico } from '../../interfaces/User';
 
 interface AuthState {
 	loadingLogin: boolean;
@@ -8,12 +11,18 @@ interface AuthState {
 	user: any;
 }
 
+const userNull: UserGenerico = {
+	rol: '',
+	dataUser: {},
+};
+const persistedUser = getLocalStorage(USER);
+
 const initialState: AuthState = {
 	loadingLogin: false,
 	status: 'checking',
 	token: null,
 	errorMessage: '',
-	user: null,
+	user: persistedUser,
 };
 
 const authSlice = createSlice({
@@ -32,7 +41,7 @@ const authSlice = createSlice({
 		addError: (state, action) => {
 			return {
 				...state,
-				user: null,
+				user: userNull,
 				status: 'not-authenticated',
 				token: null,
 				errorMessage: action.payload,
@@ -51,7 +60,7 @@ const authSlice = createSlice({
 				...state,
 				status: 'not-authenticated',
 				token: null,
-				user: null,
+				user: userNull,
 				loadingLogin: false,
 			};
 		},
@@ -60,7 +69,7 @@ const authSlice = createSlice({
 				...state,
 				status: 'not-authenticated',
 				token: null,
-				user: null,
+				user: userNull,
 			};
 		},
 		changeLoginLoading: (state) => {
