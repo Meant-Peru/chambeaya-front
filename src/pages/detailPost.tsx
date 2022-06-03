@@ -7,94 +7,107 @@ import CardPost from "../components/shared/cardPost";
 
 import Logo1 from "./../assets/logos/1.svg";
 
-import { useNavigate, useParams } from "react-router-dom";
-import { BtnPrimary } from "../components/shared/styled";
+import {useNavigate, useParams} from "react-router-dom";
+import {BtnPrimary} from "../components/shared/styled";
 import Footer from "../components/shared/footer";
-import { usePostJob } from "../hooks/usePostJob";
+import {usePostJob} from "../hooks/usePostJob";
+import {Backdrop, CircularProgress} from "@material-ui/core";
+import {get, split} from "lodash";
+import {PostJob} from "../types/post_job";
 
 export default function ListPost() {
-  const navigate = useNavigate();
-  const { id } = useParams();
-  const { postJob } = usePostJob(id);
+    const navigate = useNavigate();
+    const {id} = useParams();
+    const {postJobSate: {loading, postJob}} = usePostJob(id);
+    const _postJob = postJob!.reduce((k: any, o: any) => (k[o] = k, o), {}) as PostJob;
 
-  console.log(postJob);
+    console.log(_postJob);
 
-  const handleRedirect = () => {
-    navigate("/apply");
-  };
-  return (
-    <React.Fragment>
-      <Header />
-      <section className="DetailPostComponent">
-        <aside className="coverHeader mb-5">
-          <h1 className="mb-2">Diseñador UX/UI</h1>
-          <p>
-            <i>Empresa Famel SAC</i>
-          </p>
-        </aside>
-        <aside className="skillTags">
-          <TagComponent type="highlight" level="secondary" label="Figma" />
-          <TagComponent
-            type="highlight"
-            level="secondary"
-            label="Motion Design"
-          />
-          <TagComponent type="highlight" level="secondary" label="Research" />
-          <TagComponent type="highlight" level="secondary" label="UX Writer" />
-        </aside>
-        <hr />
-        <aside className="cardApply mt-5">
-          <article className="imgBrand logoBrand">
-            <img src={Logo1} alt="" />
-          </article>
-          <article className="infoApply">
-            <h4>12 personas aplicaron</h4>
-            <p className="mt-2">10 de Diciembre 2022</p>
-          </article>
-          <article className="actionApply">
-            <BtnPrimary onClick={handleRedirect}> Aplicar </BtnPrimary>
-            <p className="mt-2">Requerimiento activo</p>
-          </article>
-        </aside>
-        <aside className="detailsApply mt-5 mb-5">
-          <article className="leftBox">
-            <div className="mb-5">
-              <h4 className="mb-3">Descripción</h4>
-              <p>
-                Famel SAC busca desarrollar sus plataformas de cara el cliente
-                para la compra de sus productos. Para ello requiere de un
-                diseñador para hacer sus interfaces realizando todo un proceso
-                de diseño UX/UI.
-              </p>
-            </div>
-            <hr />
-            <div className="mt-5">
-              <h4 className="mb-3">Funciones</h4>
-              <p>
-                * Realizar Benchmark de productos digitales similares * Realizar
-                Wireframes de baja/mediana calidad * Realizar pruebas de
-                usuario/usabilidad * Diseñar interfaces de acuerdo a los
-                requerimientos planteados
-              </p>
-            </div>
-          </article>
-          <article className="rightBox">
-            <h4 className="mb-3">Precisiones</h4>
+    const handleRedirect = () => {
+        navigate("/apply");
+    };
 
-            <ul>
-              <li>Duración: 1 mes </li>
-              <li>Presupuesto estimado: 2000 Soles </li>
-              <li>Tipo: Híbrido</li>
-            </ul>
-          </article>
-        </aside>
+    return (
+        <React.Fragment>
+            <Header/>
+            <Backdrop
+                open={loading!}
+                style={{
+                    background: "white",
+                    zIndex: 99,
+                }}
+            >
+                <CircularProgress color="inherit"/>
+            </Backdrop>
+            {
+                !loading && <section className="DetailPostComponent">
+                    <aside className="coverHeader mb-5">
+                        <h1 className="mb-2">{get(_postJob, "title", "")}</h1>
+                        <p>
+                            <i>Empresa Famel SAC</i>
+                        </p>
+                    </aside>
+                    <aside className="skillTags">
+                        {
+                            get(_postJob, "ids_Skills_post_Job", []).map(value => (
+                                <TagComponent type="highlight" key={Math.random()} level="secondary" label={value}/>
+                            ))
+                        }
+                    </aside>
+                    <hr/>
+                    <aside className="cardApply mt-5">
+                        <article className="imgBrand logoBrand">
+                            <img src={Logo1} alt=""/>
+                        </article>
+                        <article className="infoApply">
+                            <h4>12 personas aplicaron</h4>
+                            <p className="mt-2">10 de Diciembre 2022</p>
+                        </article>
+                        <article className="actionApply">
+                            <BtnPrimary onClick={handleRedirect}> Aplicar </BtnPrimary>
+                            <p className="mt-2">Requerimiento activo</p>
+                        </article>
+                    </aside>
+                    <aside className="detailsApply mt-5 mb-5">
+                        <article className="leftBox">
+                            <div className="mb-5">
+                                <h4 className="mb-3">Descripción</h4>
+                                <p>
+                                    {
+                                        get(_postJob, "description_post", "")
+                                    }
+                                </p>
+                            </div>
+                            <hr/>
+                            <div className="mt-5">
+                                <h4 className="mb-3">Funciones</h4>
+                                {
+                                    split(get(_postJob, "funtions_post", ""), ",").map(value => (
+                                        <p key={Math.random()}>
+                                            * {value}
+                                        </p>
+                                    ))
+                                }
+                            </div>
+                        </article>
+                        <article className="rightBox">
+                            <h4 className="mb-3">Precisiones</h4>
 
-        <aside className="postRelated mt-5">
-          <h2 className="mb-5">Publicaciones Similares</h2>
-          <CardPost />
-        </aside>
-      </section>
-      <Footer />
-    </React.Fragment>
-  );
+                            <ul>
+                                <li>Duración: 1 mes</li>
+                                <li>Presupuesto estimado: S/ {get(_postJob, "salary_range", "")}</li>
+                                <li>Tipo: Híbrido</li>
+                            </ul>
+                        </article>
+                    </aside>
+
+                    <aside className="postRelated mt-5">
+                        <h2 className="mb-5">Publicaciones Similares</h2>
+                        <CardPost/>
+                    </aside>
+                </section>
+            }
+            <Footer/>
+        </React.Fragment>
+    );
 }
