@@ -1,25 +1,38 @@
 import React from "react";
 import "./../../sass/shared/_header.scss";
-import NavbarScroller from "./NavBarScroller";
+import NavbarComponent from "./NavbarComponent";
+import {  SESSION } from "./../../helpers/constants";
 
-const navigation = {
+const navNoUser = {
+  brand: { name: "ChambeaYa.", to: "/" },
+  links: [
+    { name: "Buscar un empleo", to: "/searchjob" },
+    { name: "Postear un empleo", to: "/postjob" },
+    { name: "Contacto", to: "/contact" },
+    { name: "Iniciar sesión", to: "/login" },
+    { name: "Registrarme", to: "/register" },
+  ],
+};
+
+const navUser = {
     brand: { name: "ChambeaYa.", to: "/" },
     links: [
       { name: "Buscar un empleo", to: "/searchjob" },
       { name: "Postear un empleo", to: "/postjob" },
       { name: "Contacto", to: "/contact" },
-      { name: "Iniciar sesión", to: "/login" },
-      { name: "Registrarme", to: "/register" },
+      { name: "Mi perfil", to: "/myaccount" },
     ],
   };
 
 export default function Header() {
-const { brand, links } = navigation;
-  return (
-    <React.Fragment>
-        <header>
-            <NavbarScroller brand={brand} links={links} />
-        </header>
-    </React.Fragment>
-  );
+  const sesionLog = localStorage.getItem(SESSION);
+  const { brand, links } = sesionLog ===  null ? navNoUser : navUser;
+  
+    return (
+      <React.Fragment>
+          <header>
+              <NavbarComponent brand={brand} links={links} />
+          </header>
+      </React.Fragment>
+    );
 }

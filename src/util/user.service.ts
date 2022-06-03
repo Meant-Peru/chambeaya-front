@@ -1,20 +1,26 @@
-import { URI } from "./../enviroment/enviroment";
-import axios from "axios";
-import { getToken } from "./auth.service";
-export const GetUser = async ()=>{
-    try {
-        console.log(getToken);
-        const resultData = await axios.get(`${URI}/user/getUser`, {
-          headers: {
-                token : `${getToken}`
-            }
-            
-        });
-        return resultData.data
-        
-    } catch (error) {
-        console.log(error)
-    }
-    // return getUser();
+import { URI } from './../enviroment/enviroment';
+import axios from 'axios';
+import { getToken } from './auth.service';
 
-}
+export const GetUser = async (token: string) => {
+	try {
+		const resultData = await axios.get(`${URI}/user/getUser`, {
+			headers: {
+				token: `${token}`,
+			},
+		});
+		return resultData.data;
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const UpdateUser = async (data: any) => {
+	try {
+		const resultData = await axios.post(`${URI}/user/updateUser`, data, { headers: { token: `${getToken}` } });
+		return resultData.data;
+	} catch (error) {
+		return false;
+		// console.log(error);
+	}
+};

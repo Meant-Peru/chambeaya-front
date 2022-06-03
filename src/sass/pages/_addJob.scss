@@ -18,6 +18,23 @@
         width: var(--container-phone);
     }
 
+    .css-16awh2u-MuiAutocomplete-root .MuiOutlinedInput-root {
+        padding: 0px !important;
+    }
+
+    .css-16awh2u-MuiAutocomplete-root .MuiOutlinedInput-root .MuiAutocomplete-input {
+        background: "#FFFFFF";
+        font-size: 16px;
+        border-radius: 28px;
+        align-items: center;
+        padding: 16px 24px;
+        border: 1px solid #e9e9e9;
+        width: 100%;
+        ::placeholder{
+            color: #98A0AE;
+        }
+    }
+
     .react-tabs {
         display: flex;
         margin-left: 36px;
@@ -162,13 +179,13 @@
     width: 100%;
     height: 200px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     text-align: center;
     margin-top: 24px;
     border: 1px dashed var(--gray-color-300);
-
+    
     img {
         width: 40px !important;
     }

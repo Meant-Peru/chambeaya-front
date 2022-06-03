@@ -21,10 +21,8 @@ export default function ListPost() {
     const {postJobSate: {loading, postJob}} = usePostJob(id);
     const _postJob = postJob!.reduce((k: any, o: any) => (k[o] = k, o), {}) as PostJob;
 
-    console.log(_postJob);
-
     const handleRedirect = () => {
-        navigate("/apply");
+        navigate("/apply/"+id);
     };
 
     return (

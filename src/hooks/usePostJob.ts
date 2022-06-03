@@ -1,6 +1,7 @@
 import React from "react";
 import { PostJob } from "../types/post_job";
 import { getAllJobs, getJob } from "../util/job.service";
+import { PostJobPostulantRequest } from "../types/post_job_postulant_request";
 
 type PostState = {
   loading?: boolean;
@@ -44,3 +45,39 @@ export const usePostJob = (id?: string) => {
 
   return { postJobsState, postJobSate }
 };
+
+
+export const usePostForm = () => {
+  const [form, setForm] = React.useState<PostJobPostulantRequest>(    {
+    idPostJob: "",
+    documentType: "",
+    documentNumber: "",
+    typeAmount: "",
+    amountEstimated: "",
+    skillsIds: [],
+    typeBio: "",
+    linkBio: ""
+  });
+
+  const handleForm = (event: any) => {
+    setForm({
+      ...form,
+      [event.target.name] : event.target.value,
+    })
+  }
+
+  const reset = () => {
+    setForm({
+      idPostJob: "",
+      documentType: "",
+      documentNumber: "",
+      typeAmount: "",
+      amountEstimated: "",
+      skillsIds: [],
+      typeBio: "",
+      linkBio: ""
+    })
+  }
+
+  return { form, handleForm, reset }
+}
