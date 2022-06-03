@@ -44,11 +44,16 @@ export default function Register() {
 
 		const response = await register(dataSend);
 
-		if (response.status === 200 && response.data.message === CREATE_USER) {
-			navigate('/login', { replace: true });
-		}
-		if (response.status === 200 && response.data.message === USER_EXISTING) {
-			alert('el usuario ya existe');
+		switch (response.data.message) {
+			case CREATE_USER:
+				navigate('/login', { replace: true });
+				return;
+			case USER_EXISTING:
+				alert('el usuario ya existe');
+				return;
+			default:
+				alert('Error corregir esto :c');
+				break;
 		}
 	};
 
