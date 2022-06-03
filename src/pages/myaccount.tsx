@@ -81,9 +81,8 @@ export default function MyAccount() {
 			dataSend = { ...user, dataUser: { ...company } };
 		}
 
-		console.log({ dataSend });
 		const respUpdate = await startUpdateUser(dataSend);
-		console.log({ respUpdate });
+		// console.log({ respUpdate });
 	};
 
 	const handleLogout = () => {
@@ -139,7 +138,7 @@ export default function MyAccount() {
 									<p>Datos personales</p>
 									<aside className="FormGroup mt-3">
 										<Txtfield onChange={handleEventPostulant} value={postulant.name} name="name" placeholder="Nombres" />
-										<Txtfield onChange={handleEventPostulant} value={postulant.lastName} name="lastname" placeholder="Apellidos" />
+										<Txtfield onChange={handleEventPostulant} value={postulant.lastName} name="lastName" placeholder="Apellidos" />
 									</aside>
 									<aside className="FormGroup mt-2 mb-5">
 										<Txtfield onChange={handleEventPostulant} value={postulant.email} name="email" placeholder="Correo electrónico" />

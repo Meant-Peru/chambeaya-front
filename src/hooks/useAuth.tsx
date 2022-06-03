@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux';
-import { LOGIN_SUCCESS, SESSION, USER, USER_OR_PASSWORD_NOT_EXISTING } from '../helpers/constants';
+import { LOGIN_SUCCESS, SESSION, UPDATE_SUCCESS, USER, USER_OR_PASSWORD_NOT_EXISTING } from '../helpers/constants';
 import { auth } from '../util/auth.service';
 
 import { useNavigate } from 'react-router-dom';
 import { signIn, logout } from '../redux/slices/authSlice';
 import { GetUser, UpdateUser } from '../util/user.service';
 import { UserGenerico } from '../interfaces/User';
-import { clearLocalStorage } from '../helpers/localStorage';
+import { clearLocalStorage, saveLocalStorage } from '../helpers/localStorage';
 
 export const useAuth = () => {
 	const navigate = useNavigate();
@@ -32,12 +32,11 @@ export const useAuth = () => {
 	const validateToken = async (token: string) => {
 		try {
 			const { data } = await GetUser(token);
-			console.log({ data });
 			const user: UserGenerico = { dataUser: data.dataUser, rol: data.rol };
 			const paylod = { token: token, user };
 			dispatch(signIn(paylod));
-			localStorage.setItem(SESSION, token);
-			localStorage.setItem(USER, JSON.stringify(user));
+			saveLocalStorage(SESSION, token);
+			saveLocalStorage(USER, user);
 			return true;
 		} catch (error) {
 			console.log('[validateToken]', { error });
@@ -53,10 +52,12 @@ export const useAuth = () => {
 
 	const startUpdateUser = async (data: any) => {
 		const resp = await UpdateUser(data);
-		if (resp !== false) {
+		if (resp.message === UPDATE_SUCCESS) {
 			const { data } = resp;
 			const user: UserGenerico = { dataUser: data.dataUser, rol: data.dataUser.rol };
-			localStorage.setItem(USER, JSON.stringify(user));
+			saveLocalStorage(USER, user);
+		} else {
+			alert('ERROR UPDATE');
 		}
 		return resp;
 	};

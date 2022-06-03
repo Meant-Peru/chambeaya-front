@@ -75,7 +75,7 @@ export default function Register() {
 				</aside>
 				<aside className="FormGroup">
 					<Txtfield type={'email'} onChange={handleEvent} name="email" className="mb-3" placeholder="Correo electrónico" />
-					<Txtfield type={'tel'} className="mb-2" name="phone" placeholder="Teléfono / Celular" />
+					<Txtfield type={'tel'} onChange={handleEvent} name="phone" className="mb-2" placeholder="Teléfono / Celular" />
 				</aside>
 
 				<aside className="FormGroup">

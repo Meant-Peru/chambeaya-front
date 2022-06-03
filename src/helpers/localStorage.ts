@@ -1,4 +1,5 @@
 import { UserGenerico } from '../interfaces/User';
+import { USER } from './constants';
 
 const userNull: UserGenerico = {
 	rol: '',
@@ -7,20 +8,20 @@ const userNull: UserGenerico = {
 
 export const getLocalStorage = (localItem: string) => {
 	try {
-		const serialState = localStorage.getItem(localItem);
+		const serialState = window.sessionStorage.getItem(localItem);
 		if (serialState === null) {
-			return userNull;
+			return localItem === USER ? userNull : null;
 		}
 		return JSON.parse(serialState);
 	} catch (err) {
-		return userNull;
+		return localItem === USER ? userNull : null;
 	}
 };
 
-export const savaLocalStorage = (localItem: string, data: any) => {
+export const saveLocalStorage = (localItem: string, data: any) => {
 	try {
 		const serialState = JSON.stringify(data);
-		localStorage.setItem(localItem, serialState);
+		window.sessionStorage.setItem(localItem, serialState);
 	} catch (err) {
 		console.log(err);
 	}

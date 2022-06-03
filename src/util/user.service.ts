@@ -1,6 +1,7 @@
 import { URI } from './../enviroment/enviroment';
 import axios from 'axios';
-import { getToken } from './auth.service';
+import { getLocalStorage } from '../helpers/localStorage';
+import { SESSION } from '../helpers/constants';
 
 export const GetUser = async (token: string) => {
 	try {
@@ -17,7 +18,8 @@ export const GetUser = async (token: string) => {
 
 export const UpdateUser = async (data: any) => {
 	try {
-		const resultData = await axios.post(`${URI}/user/updateUser`, data, { headers: { token: `${getToken}` } });
+		const token = await getLocalStorage(SESSION);
+		const resultData = await axios.post(`${URI}/user/updateUser`, data, { headers: { token } });
 		return resultData.data;
 	} catch (error) {
 		return false;
