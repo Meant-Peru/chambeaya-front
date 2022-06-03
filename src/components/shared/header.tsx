@@ -7,7 +7,6 @@ const navNoUser = {
   brand: { name: "ChambeaYa.", to: "/" },
   links: [
     { name: "Buscar un empleo", to: "/searchjob" },
-    { name: "Postear un empleo", to: "/postjob" },
     { name: "Contacto", to: "/contact" },
     { name: "Iniciar sesión", to: "/login" },
     { name: "Registrarme", to: "/register" },
@@ -18,7 +17,6 @@ const navUser = {
     brand: { name: "ChambeaYa.", to: "/" },
     links: [
       { name: "Buscar un empleo", to: "/searchjob" },
-      { name: "Postear un empleo", to: "/postjob" },
       { name: "Contacto", to: "/contact" },
       { name: "Mi perfil", to: "/myaccount" },
     ],

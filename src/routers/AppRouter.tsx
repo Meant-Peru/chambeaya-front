@@ -7,7 +7,6 @@ import DetailPost from '../pages/detailPost';
 import Home from '../pages/home';
 import Login from '../pages/login';
 import MyAccount from '../pages/myaccount';
-import PostJob from '../pages/postJob';
 import Register from '../pages/register';
 import SearchJob from '../pages/searchJob';
 import { RootState } from '../redux/store/store';
@@ -29,7 +28,6 @@ export const AppRouter = () => {
 				<Route path="login" element={<Login />} />
 				<Route path="myaccount" element={<MyAccount />} />
 				<Route path="corporativo" element={<Corporativo />} />
-				<Route path="postjob" element={<PostJob />} />
 				<Route path="addJob" element={<AddJob />} />
 				<Route path="apply" element={<ApplyJob />} />
 				<Route path="detail-post" element={<DetailPost />} />
