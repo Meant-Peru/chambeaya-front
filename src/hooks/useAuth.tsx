@@ -56,6 +56,7 @@ export const useAuth = () => {
 			const { data } = resp;
 			const user: UserGenerico = { dataUser: data.dataUser, rol: data.dataUser.rol };
 			saveLocalStorage(USER, user);
+			alert('Se actualizó correctamente...');
 		} else {
 			alert('ERROR UPDATE');
 		}
