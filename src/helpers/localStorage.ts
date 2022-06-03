@@ -3,6 +3,7 @@ import { USER } from './constants';
 
 const userNull: UserGenerico = {
 	rol: '',
+	id: '',
 	dataUser: {},
 };
 
@@ -27,6 +28,6 @@ export const saveLocalStorage = (localItem: string, data: any) => {
 	}
 };
 
-export const clearOneLocalStorage = (localItem: string) => localStorage.removeItem(localItem);
+export const clearOneLocalStorage = (localItem: string) => sessionStorage.removeItem(localItem);
 
-export const clearLocalStorage = () => localStorage.clear();
+export const clearLocalStorage = () => sessionStorage.clear();

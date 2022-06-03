@@ -19,6 +19,7 @@ export default interface User {
 export interface UserGenerico {
 	dataUser: {};
 	rol: string;
+	id?: string;
 }
 
 export interface CompanyDetailInterface {

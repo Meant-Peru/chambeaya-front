@@ -13,6 +13,7 @@ interface AuthState {
 
 const userNull: UserGenerico = {
 	rol: '',
+	id: '',
 	dataUser: {},
 };
 const persistedUser = getLocalStorage(USER);

@@ -7,7 +7,7 @@ import './../sass/pages/_myAccount.scss';
 import Footer from '../components/shared/footer';
 
 import { COMPANY, POSTULANT } from '../helpers/constants';
-import {  Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
 import { useAuth } from '../hooks/useAuth';
@@ -16,7 +16,6 @@ import PostCompany from '../components/PostCompany';
 import MyApply from '../components/MyApply';
 
 export default function MyAccount() {
-	
 	const { user } = useSelector((state: RootState) => state.auth);
 	const { startLogout, startUpdateUser } = useAuth();
 
@@ -51,7 +50,7 @@ export default function MyAccount() {
 		}
 
 		const respUpdate = await startUpdateUser(dataSend);
-		// console.log({ respUpdate });
+		console.log({ respUpdate });
 	};
 
 	const handleLogout = () => {
@@ -72,7 +71,7 @@ export default function MyAccount() {
 						</aside>
 						<div className="list">
 							<Tab>Datos generales</Tab>
-							<Tab> {user?.rol === COMPANY ? ("Mis publicaciones"):("Mis postulaciones")}</Tab>
+							<Tab> {user?.rol === COMPANY ? 'Mis publicaciones' : 'Mis postulaciones'}</Tab>
 							<Tab>Proyectos</Tab>
 						</div>
 						<aside className="sideBarMenu mt-5 mb-5">
@@ -147,13 +146,7 @@ export default function MyAccount() {
 
 						</section> */}
 
-						{user?.rol === COMPANY ? (
-							<PostCompany/>
-						) : (
-							<MyApply/>
-						)
-						}
-
+						{user?.rol === COMPANY ? <PostCompany /> : <MyApply />}
 					</TabPanel>
 					<TabPanel>
 						<section className="proyects">
