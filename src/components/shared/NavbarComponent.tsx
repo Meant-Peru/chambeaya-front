@@ -9,7 +9,7 @@ const NavbarComponent = (props: {
     const NavLinks: any = () => links.map((link: { name: string, to: string }) => <Li key={link.name}><a href={link.to}>{link.name}</a></Li>);
     return (
       <Navbar>
-        <Brand href={brand.to}><img src={Logo} alt="" /></Brand>
+        <Brand href={brand.to}><img src={Logo} width="150" alt="" /></Brand>
         <Ul>
           <NavLinks />
         </Ul>

@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Routes, Route, BrowserRouter as Router, Link, Navigate } from 'react-router-dom';
+import AccountSales from '../pages/accountSales';
 import AddJob from '../pages/addJob';
 import ApplyJob from '../pages/applyJob';
 import Corporativo from '../pages/corporativo';
@@ -27,6 +28,7 @@ export const AppRouter = () => {
 				<Route path="searchjob" element={<SearchJob />} />
 				<Route path="login" element={<Login />} />
 				<Route path="myaccount" element={<MyAccount />} />
+				<Route path="account-sales" element={<AccountSales />} />
 				<Route path="corporativo" element={<Corporativo />} />
 				<Route path="addJob" element={<AddJob />} />
 				<Route path="apply/:id" element={<ApplyJob />} />

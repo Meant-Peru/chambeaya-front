@@ -5,7 +5,7 @@ export const Theme = {
       bg: `#F9F9FA`,
       primary: `#0066FF`,
       secondary: `#FFD500`,
-      dark: `#403D4B`,
+      dark: `#4DBFB4`,
       light: `#FFFFFF`,
       red: `#ff5851`,
       gray6: `#98A0AE`,
