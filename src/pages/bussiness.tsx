@@ -7,14 +7,15 @@ import './../sass/pages/_corporativo.scss';
 
 import CoverCorporativo from './../assets/coverCorporativo.svg';
 
-import { register } from '../util/auth.service';
+import { registerSalesCompany } from '../util/auth.service';
 import { useNavigate } from 'react-router-dom';
 import { CREATE_USER, USER_EXISTING } from '../helpers/constants';
 import { COMPANY } from '../helpers/constants';
 
 export default function BussinessSignUp() {
 	const navigate = useNavigate();
-	const [account, setAccount] = React.useState({
+
+	const [companySales, setCompanySales] = React.useState({
 		businessName: '',
 		email: '',
 		password: '',
@@ -26,28 +27,26 @@ export default function BussinessSignUp() {
 
 	const handleRegister = async () => {
 		const dataSend = {
-			email: account.email,
-			password: account.password,
-			rol: account.rolUser,
+			email: companySales.email,
+			password: companySales.password,
+			rol: companySales.rolUser,
 			dataUser: {
-				email: account.email,
-				rol: account.rolUser,
-				ruc: account.ruc,
-				businessName: account.businessName,
+				email: companySales.email,
+				rol: companySales.rolUser,
+				ruc: companySales.ruc,
+				businessName: companySales.businessName,
 				youtube: '',
 				web: '',
-				phone: account.phone,
+				phone: companySales.phone,
 				facebook: '',
 				description: '',
 				linkedin: '',
 			},
 		};
-
-		const response = await register(dataSend);
-
+		const response = await registerSalesCompany(dataSend);
 		switch (response.data.message) {
 			case CREATE_USER:
-				navigate('/login', { replace: true });
+				alert('se registro exitosamente la empresa');
 				return;
 			case USER_EXISTING:
 				alert('el usuario ya existe');
@@ -59,8 +58,8 @@ export default function BussinessSignUp() {
 	};
 
 	const handleEvent = (e: any) => {
-		setAccount({
-			...account,
+		setCompanySales({
+			...companySales,
 			[e.target.name]: e.target.value,
 		});
 	};
@@ -81,17 +80,16 @@ export default function BussinessSignUp() {
 						<Txtfield className="mb-2" onChange={handleEvent} name="businessName" placeholder="Razón Social" />
 					</aside>
 					<aside className="FormGroup">
-						<Txtfield type={'email'} onChange={handleEvent} name="email" value={account.email} className="mb-3" placeholder="Correo electrónico" autoComplete="off" />
+						<Txtfield type={'email'} onChange={handleEvent} name="email" value={companySales.email} className="mb-3" placeholder="Correo electrónico" autoComplete="off" />
 						<Txtfield type={'tel'} onChange={handleEvent} name="phone" className="mb-2" placeholder="Teléfono / Celular" />
 					</aside>
 					<aside className="FormGroup mt-2">
-						<Txtfield className="mb-3" onChange={handleEvent} name="password" value={account.password} type={'password'} placeholder="Clave" autoComplete="off" />
+						<Txtfield className="mb-3" onChange={handleEvent} name="password" value={companySales.password} type={'password'} placeholder="Clave" autoComplete="off" />
 						<Txtfield className="mb-2" onChange={handleEvent} name="confirmPassword" type={'password'} placeholder="Repetir clave" />
 					</aside>
-					
+
 					<aside className="FormAction mt-5">
 						<BtnPrimary onClick={handleRegister}>CREAR CARTERA</BtnPrimary>
-					
 					</aside>
 				</aside>
 			</section>

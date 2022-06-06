@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { LOGIN_SUCCESS, SESSION, UPDATE_SUCCESS, USER, USER_OR_PASSWORD_NOT_EXISTING } from '../helpers/constants';
+import { ADMIN, COMPANY, LOGIN_SUCCESS, POSTULANT, SALES, SESSION, UPDATE_SUCCESS, USER, USER_OR_PASSWORD_NOT_EXISTING } from '../helpers/constants';
 import { auth } from '../util/auth.service';
 
 import { useNavigate } from 'react-router-dom';
@@ -17,15 +17,31 @@ export const useAuth = () => {
 		// console.log({ response });
 		switch (response.data.message) {
 			case LOGIN_SUCCESS:
-				const starUser = await validateToken(response.data.data.token);
-				if (starUser) navigate('/myaccount', { replace: true });
+				const { status, user: userGenerico } = await validateToken(response.data.data.token);
+
+				if (status) {
+					switch (userGenerico.rol) {
+						case POSTULANT:
+						case COMPANY:
+							navigate('/myaccount', { replace: true });
+							return;
+						case SALES:
+							navigate('/account-sales', { replace: true });
+							return;
+						case ADMIN:
+							// navigate('/dashore', { replace: true });
+							return;
+						default:
+							return;
+					}
+				}
 				return;
 			case USER_OR_PASSWORD_NOT_EXISTING:
 				alert('No encontrado');
 				return;
 			default:
 				alert('ERROR SERVIDOR');
-				break;
+				return;
 		}
 	};
 
@@ -38,10 +54,10 @@ export const useAuth = () => {
 			dispatch(signIn(paylod));
 			saveLocalStorage(SESSION, token);
 			saveLocalStorage(USER, user);
-			return true;
+			return { status: true, user };
 		} catch (error) {
 			console.log('[validateToken]', { error });
-			return false;
+			return { status: false, user: { rol: '' } };
 		}
 	};
 

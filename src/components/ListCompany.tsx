@@ -1,49 +1,58 @@
-import * as React from "react";
-import { useNavigate } from "react-router-dom";
-import ButtonComponent from "./shared/atom/button";
-import TagComponent from "./shared/atom/tag";
-import { BtnPrimary } from "./shared/styled";
+import * as React from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useSales } from '../hooks/useSales';
+import { RootState } from '../redux/store/store';
+import ButtonComponent from './shared/atom/button';
+import TagComponent from './shared/atom/tag';
+import { BtnPrimary } from './shared/styled';
 
 export default function ListCompany() {
-    const navigate = useNavigate();
-    const handleRedirect = () => {
+	const navigate = useNavigate();
+	const handleRedirect = () => {
+		navigate('/bussiness');
+	};
 
-		navigate('/bussiness')
-	  };
+	const { startGetCompanies } = useSales();
+	const { companies } = useSelector((state: RootState) => state.sales);
 
-    return (
-        <React.Fragment>
-            <section className="sectionAccount">
-                <aside className="mb-5">
-                    <article className="headSection dfr jc-sb">
-                        <h2>Cartera de negocios</h2>
-                        <BtnPrimary onClick={handleRedirect}>CREAR NUEVA CARTERA</BtnPrimary>
+	React.useEffect(() => {
+		console.log('Listar');
+		listCompaniesSales();
+	}, []);
 
-                    </article>
-                    <p>
-                       Tienes # compañias en tu cartera
-                    </p>
-                </aside>
+	const listCompaniesSales = async () => await startGetCompanies();
 
-                <aside>
-                    <article className="rowPost row">
-                        <aside className="title">
-                            <p className="mb-2">Csti Corp</p>
-                            <TagComponent
-                                type="state"
-                                level="success"
-                                label="Activo"
-                            />
-                        </aside>
-                        <aside className="title">
-                            <p>10483775743</p>
-                        </aside>
-                        <aside className="actions">
-                            <ButtonComponent type="secondary" label="Ver detalles" />
-                        </aside>
-                    </article>
-                </aside>
-            </section>
-        </React.Fragment>
-    )
+	return (
+		<React.Fragment>
+			<section className="sectionAccount">
+				<aside className="mb-5">
+					<article className="headSection dfr jc-sb">
+						<h2>Cartera de negocios</h2>
+						<BtnPrimary onClick={handleRedirect}>CREAR NUEVA CARTERA</BtnPrimary>
+					</article>
+					<p>Tienes # compañias en tu cartera</p>
+				</aside>
+
+				<div>
+					{companies.map((company) => (
+						<aside key={company.id}>
+							<article className="rowPost row">
+								<aside className="title">
+									<p className="mb-2">{company.dataUser.businessName}</p>
+									<TagComponent type="state" level="success" label="Activo" />
+								</aside>
+								<aside className="title">
+									<p>{company.dataUser.ruc}</p>
+								</aside>
+								<aside className="actions">
+									<ButtonComponent type="secondary" label="Ver detalles" />
+								</aside>
+							</article>
+						</aside>
+					))}
+				</div>
+			</section>
+		</React.Fragment>
+	);
 }

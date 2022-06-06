@@ -11,3 +11,5 @@ export const USER = 'USER';
 
 export const POSTULANT = '1';
 export const COMPANY = '2';
+export const SALES = '3';
+export const ADMIN = '0';

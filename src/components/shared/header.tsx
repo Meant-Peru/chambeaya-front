@@ -1,7 +1,7 @@
 import React from 'react';
 import './../../sass/shared/_header.scss';
 import NavbarComponent from './NavbarComponent';
-import { SESSION } from './../../helpers/constants';
+import { ADMIN, COMPANY, POSTULANT, SALES, SESSION, USER } from './../../helpers/constants';
 import { getLocalStorage } from '../../helpers/localStorage';
 
 const navNoUser = {
@@ -23,10 +23,38 @@ const navUser = {
 	],
 };
 
+const navSales = {
+	brand: { name: 'ChambeaYa.', to: '/' },
+	links: [
+		{ name: 'Buscar un empleo', to: '/searchjob' },
+		{ name: 'Contacto', to: '/contact' },
+		{ name: 'Mi perfil', to: '/account-sales' },
+	],
+};
+
 export default function Header() {
-	// const sesionLog = localStorage.getItem(SESSION);
 	const sesionLog = getLocalStorage(SESSION);
-	const { brand, links } = sesionLog === null ? navNoUser : navUser;
+	const { rol } = getLocalStorage(USER);
+
+	let nav: any;
+	if (sesionLog !== null) {
+		switch (rol) {
+			case POSTULANT:
+			case COMPANY:
+				nav = { ...navUser };
+				break;
+			case SALES:
+				nav = { ...navSales };
+				break;
+			case ADMIN:
+				break;
+			default:
+				break;
+		}
+	} else {
+		nav = { ...navNoUser };
+	}
+	const { brand, links } = nav;
 
 	return (
 		<React.Fragment>
