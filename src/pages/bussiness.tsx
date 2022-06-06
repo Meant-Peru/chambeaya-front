@@ -7,12 +7,12 @@ import './../sass/pages/_corporativo.scss';
 
 import CoverCorporativo from './../assets/coverCorporativo.svg';
 
-import { register } from './../util/auth.service';
+import { register } from '../util/auth.service';
 import { useNavigate } from 'react-router-dom';
-import { CREATE_USER, USER_EXISTING } from './../helpers/constants';
-import { COMPANY } from './../helpers/constants';
+import { CREATE_USER, USER_EXISTING } from '../helpers/constants';
+import { COMPANY } from '../helpers/constants';
 
-export default function Corporativo() {
+export default function BussinessSignUp() {
 	const navigate = useNavigate();
 	const [account, setAccount] = React.useState({
 		businessName: '',
@@ -69,13 +69,13 @@ export default function Corporativo() {
 			<Header />
 			<section className="corporativoPage">
 				<aside className="coverSection">
-					<img src={CoverCorporativo}  alt="" />
+					<img src={CoverCorporativo} alt="" />
 					<span>
 						Únete a las compañias que buscan <strong>resultados.</strong>
 					</span>
 				</aside>
 				<aside className="formRegister">
-					<h2>Registro de nueva compañia</h2>
+					<h2>Registro de nueva cartera</h2>
 					<aside className="FormGroup mt-5">
 						<Txtfield className="mb-3" onChange={handleEvent} name="ruc" placeholder="Ruc" />
 						<Txtfield className="mb-2" onChange={handleEvent} name="businessName" placeholder="Razón Social" />
@@ -88,14 +88,10 @@ export default function Corporativo() {
 						<Txtfield className="mb-3" onChange={handleEvent} name="password" value={account.password} type={'password'} placeholder="Clave" autoComplete="off" />
 						<Txtfield className="mb-2" onChange={handleEvent} name="confirmPassword" type={'password'} placeholder="Repetir clave" />
 					</aside>
-					<aside className="FormGroupFull">
-						<CheckButton withbg="no" label="Acepto los Términos y Condiciones" />
-					</aside>
+					
 					<aside className="FormAction mt-5">
-						<BtnPrimary onClick={handleRegister}>CREAR CUENTA</BtnPrimary>
-						<p className="mt-2">
-							<a href="/login">Ya tienes una cuenta?</a>
-						</p>
+						<BtnPrimary onClick={handleRegister}>CREAR CARTERA</BtnPrimary>
+					
 					</aside>
 				</aside>
 			</section>

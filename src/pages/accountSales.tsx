@@ -7,7 +7,7 @@ import './../sass/pages/_myAccount.scss';
 import Footer from '../components/shared/footer';
 
 import { COMPANY, POSTULANT } from '../helpers/constants';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
 import { useAuth } from '../hooks/useAuth';
@@ -17,6 +17,7 @@ import MyApply from '../components/MyApply';
 import ListCompany from '../components/ListCompany';
 
 export default function AccountSales() {
+
 	const { user } = useSelector((state: RootState) => state.auth);
 	const { startLogout, startUpdateUser } = useAuth();
 
@@ -28,6 +29,8 @@ export default function AccountSales() {
 		...user.dataUser,
 	});
 
+
+ 
 	const handleEvent = (e: any) => {
 		setCompany({
 			...company,

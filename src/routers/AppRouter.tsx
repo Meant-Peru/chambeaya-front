@@ -3,6 +3,7 @@ import { Routes, Route, BrowserRouter as Router, Link, Navigate } from 'react-ro
 import AccountSales from '../pages/accountSales';
 import AddJob from '../pages/addJob';
 import ApplyJob from '../pages/applyJob';
+import BussinessSignUp from '../pages/bussiness';
 import Corporativo from '../pages/corporativo';
 import DetailPost from '../pages/detailPost';
 import Home from '../pages/home';
@@ -30,6 +31,7 @@ export const AppRouter = () => {
 				<Route path="myaccount" element={<MyAccount />} />
 				<Route path="account-sales" element={<AccountSales />} />
 				<Route path="corporativo" element={<Corporativo />} />
+				<Route path="bussiness" element={<BussinessSignUp />} />
 				<Route path="addJob" element={<AddJob />} />
 				<Route path="apply/:id" element={<ApplyJob />} />
 				<Route path="detail-post/:id" element={<DetailPost />} />

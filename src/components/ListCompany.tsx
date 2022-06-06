@@ -1,14 +1,24 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import ButtonComponent from "./shared/atom/button";
 import TagComponent from "./shared/atom/tag";
+import { BtnPrimary } from "./shared/styled";
 
 export default function ListCompany() {
+    const navigate = useNavigate();
+    const handleRedirect = () => {
+
+		navigate('/bussiness')
+	  };
+
     return (
         <React.Fragment>
             <section className="sectionAccount">
                 <aside className="mb-5">
-                    <article className="headSection">
+                    <article className="headSection dfr jc-sb">
                         <h2>Cartera de negocios</h2>
+                        <BtnPrimary onClick={handleRedirect}>CREAR NUEVA CARTERA</BtnPrimary>
+
                     </article>
                     <p>
                        Tienes # compañias en tu cartera
