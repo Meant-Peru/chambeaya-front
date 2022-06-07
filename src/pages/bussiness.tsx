@@ -47,6 +47,7 @@ export default function BussinessSignUp() {
 		switch (response.data.message) {
 			case CREATE_USER:
 				alert('se registro exitosamente la empresa');
+				navigate('/account-sales', { replace: true });
 				return;
 			case USER_EXISTING:
 				alert('el usuario ya existe');

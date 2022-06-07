@@ -48,7 +48,7 @@ export const useAuth = () => {
 	const validateToken = async (token: string) => {
 		try {
 			const { data } = await GetUser(token);
-			console.log({ data });
+			console.log('data validateToken', data);
 			const user: UserGenerico = { dataUser: data.dataUser, rol: data.rol };
 			const paylod = { token: token, user };
 			dispatch(signIn(paylod));

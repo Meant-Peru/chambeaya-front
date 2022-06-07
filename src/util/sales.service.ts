@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { URI } from '../enviroment/enviroment';
-import { headers } from './auth.service';
+import { SESSION } from '../helpers/constants';
+import { getLocalStorage } from '../helpers/localStorage';
 
 export const getSalesCompanies = async () => {
-	return await axios.get(`${URI}/user/getUsersByReferences`, { headers });
+	const token = await getLocalStorage(SESSION);
+	return await axios.get(`${URI}/user/getUsersByReferences`, { headers: { token } });
 };
