@@ -42,12 +42,12 @@ export default function ListPost() {
                     <aside className="coverHeader mb-5">
                         <h1 className="mb-2">{get(_postJob, "title", "")}</h1>
                         <p>
-                            <i>Empresa Famel SAC</i>
+                            <i>{get(_postJob.dataCompany, "businessName", "")}</i>
                         </p>
                     </aside>
                     <aside className="skillTags">
                         {
-                            get(_postJob, "ids_Skills_post_Job", []).map(value => (
+                            get(_postJob, "idsSkillsPostJob", []).map(value => (
                                 <TagComponent type="highlight" key={Math.random()} level="secondary" label={value}/>
                             ))
                         }
@@ -72,7 +72,7 @@ export default function ListPost() {
                                 <h4 className="mb-3">Descripción</h4>
                                 <p>
                                     {
-                                        get(_postJob, "description_post", "")
+                                        get(_postJob, "descriptionPost", "")
                                     }
                                 </p>
                             </div>
@@ -80,7 +80,7 @@ export default function ListPost() {
                             <div className="mt-5">
                                 <h4 className="mb-3">Funciones</h4>
                                 {
-                                    split(get(_postJob, "funtions_post", ""), ",").map(value => (
+                                    split(get(_postJob, "funtionsPost", ""), ",").map(value => (
                                         <p key={Math.random()}>
                                             * {value}
                                         </p>
@@ -92,9 +92,9 @@ export default function ListPost() {
                             <h4 className="mb-3">Precisiones</h4>
 
                             <ul>
-                                <li>Duración: 1 mes</li>
-                                <li>Presupuesto estimado: S/ {get(_postJob, "salary_range", "")}</li>
-                                <li>Tipo: Híbrido</li>
+                                <li>Duración: {get(_postJob, "timeEstimated", "")}</li>
+                                <li>Presupuesto estimado: S/ {get(_postJob, "salaryRange", "")}</li>
+                                <li>Tipo: {get(_postJob, "modality", "")}</li>
                             </ul>
                         </article>
                     </aside>
