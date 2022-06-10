@@ -14,10 +14,8 @@ export const register = async (payload: any) => {
 };
 
 export const registerSalesCompany = async (payload: any) => {
-	console.log({ payload });
-	// const get = headers;
-	// console.log({ headers });
-	return await axios.post(`${URI}/user/signUpByReference`, payload, { headers });
+	const token = await getLocalStorage(SESSION);
+	return await axios.post(`${URI}/user/signUpByReference`, payload, { headers: { token } });
 };
 
 export const getToken = getLocalStorage(SESSION);
