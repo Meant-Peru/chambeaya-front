@@ -18,10 +18,10 @@ export const getJob = async (id: string) => {
 	return await axios({
 		method: 'post',
 		url: `${URI}/user/getPostJobByid`,
-		// headers: {
-		// 	token:
-		// 		'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMjgzYjI5LWE4ZWEtOTg0ZS1jOWU0LTE4ZWFmZTRjMzY3OSIsImVtYWlsIjoicGN1c2lyQGdtYWlsLmNvbSIsImlhdCI6MTY1NDIzMDQ1NywiZXhwIjoxNjU0MzE2ODU3fQ.7kl8ty8VvyF4-V-SZeE53kRVO7IzQ-tjT9EwW8XYWo8',
-		// },
+		headers: {
+			token:
+				'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMjgzYjI5LWE4ZWEtOTg0ZS1jOWU0LTE4ZWFmZTRjMzY3OSIsImVtYWlsIjoicGN1c2lyQGdtYWlsLmNvbSIsImlhdCI6MTY1NDIzMDQ1NywiZXhwIjoxNjU0MzE2ODU3fQ.7kl8ty8VvyF4-V-SZeE53kRVO7IzQ-tjT9EwW8XYWo8',
+		},
 		data: {
 			id: id,
 		},
@@ -32,10 +32,10 @@ export const postulateJob = async (request: PostJobPostulantRequest) => {
 	return await axios({
 		method: 'post',
 		url: `${URI}/user/createPostAndPostulantJob`,
-		// headers: {
-		// 	token:
-		// 		'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMjgzYjI5LWE4ZWEtOTg0ZS1jOWU0LTE4ZWFmZTRjMzY3OSIsImVtYWlsIjoicGN1c2lyQGdtYWlsLmNvbSIsImlhdCI6MTY1NDIzMDQ1NywiZXhwIjoxNjU0MzE2ODU3fQ.7kl8ty8VvyF4-V-SZeE53kRVO7IzQ-tjT9EwW8XYWo8',
-		// },
+		headers: {
+			token:
+				'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMjgzYjI5LWE4ZWEtOTg0ZS1jOWU0LTE4ZWFmZTRjMzY3OSIsImVtYWlsIjoicGN1c2lyQGdtYWlsLmNvbSIsImlhdCI6MTY1NDIzMDQ1NywiZXhwIjoxNjU0MzE2ODU3fQ.7kl8ty8VvyF4-V-SZeE53kRVO7IzQ-tjT9EwW8XYWo8',
+		},
 		data: {
 			...request,
 		},
