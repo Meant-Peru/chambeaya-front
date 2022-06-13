@@ -61,7 +61,7 @@ export default function ApplyJob() {
         <section className="applyJob">
           <aside className="coverHeader mb-5">
             <h1 className="mb-2">{get(_postJob, "title", "")}</h1>
-            <p><i>Empresa Famel SAC</i></p>
+            <p><i>{get(_postJob.dataCompany, "businessName", "")}</i></p>
           </aside>
           <aside className="contain">
             <Tabs selectedIndex={selectedTab} onSelect={(index) => setSelectedTab(index)}>
@@ -111,7 +111,7 @@ export default function ApplyJob() {
                   <p>Elige las skills que mejor manejes</p>
                   <article className="gridBox mt-4">
                     {
-                      get(_postJob, "ids_Skills_post_Job", []).map(value => (
+                      get(_postJob, "idsSkillsPostJob", []).map(value => (
                           <CheckButton value={value} onChange={handleCheck} withbg="yes" label={value} key={value}/>
                       ))
                     }
