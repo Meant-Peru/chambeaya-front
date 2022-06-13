@@ -7,7 +7,7 @@ import './../sass/pages/_corporativo.scss';
 
 import CoverCorporativo from './../assets/coverCorporativo.svg';
 
-import { registerSalesCompany } from '../util/auth.service';
+import { registerSalesCompany } from '../util/company.service';
 import { useNavigate } from 'react-router-dom';
 import { CREATE_USER, USER_EXISTING } from '../helpers/constants';
 import { COMPANY } from '../helpers/constants';
@@ -44,6 +44,8 @@ export default function BussinessSignUp() {
 			},
 		};
 		const response = await registerSalesCompany(dataSend);
+		console.log({ dataSend });
+		console.log({ response });
 		switch (response.data.message) {
 			case CREATE_USER:
 				alert('se registro exitosamente la empresa');
@@ -53,6 +55,7 @@ export default function BussinessSignUp() {
 				alert('el usuario ya existe');
 				return;
 			default:
+				console.log('response.data', response.data);
 				alert('Error corregir esto :c');
 				break;
 		}

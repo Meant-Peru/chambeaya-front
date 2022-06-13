@@ -23,6 +23,5 @@ export const UpdateUser = async (data: any) => {
 		return resultData.data;
 	} catch (error) {
 		return false;
-		// console.log(error);
 	}
 };

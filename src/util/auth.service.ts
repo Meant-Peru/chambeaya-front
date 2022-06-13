@@ -13,11 +13,6 @@ export const register = async (payload: any) => {
 	return await axios.post(`${URI}/user/signUp`, payload);
 };
 
-export const registerSalesCompany = async (payload: any) => {
-	const token = await getLocalStorage(SESSION);
-	return await axios.post(`${URI}/user/signUpByReference`, payload, { headers: { token } });
-};
-
 export const getToken = getLocalStorage(SESSION);
 
 export const headers = {
