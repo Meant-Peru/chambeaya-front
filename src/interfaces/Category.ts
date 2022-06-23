@@ -1,5 +1,6 @@
 export interface Category {
-    id: string;
-    nameCategory: string;
-    descriptionCategory: string;
+	id: string;
+	_id: string;
+	nameCategory: string;
+	descriptionCategory: string;
 }

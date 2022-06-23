@@ -14,7 +14,7 @@ export const useAuth = () => {
 
 	const startLogin = async (user: any) => {
 		const response = await auth(user);
-		// console.log({ response });
+		console.log({ response });
 		switch (response.data.message) {
 			case LOGIN_SUCCESS:
 				const { status, user: userGenerico } = await validateToken(response.data.data.token);

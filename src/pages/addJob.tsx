@@ -111,10 +111,9 @@ export default function AddJob() {
 			const title = item.namePosition;
 			if (value.length != 0 && title.length != 0) {
 				if (title.toLowerCase().search(value.toLowerCase()) != -1) {
-					setSkillPayload({ ...skillPayload, idPositon: item.id });
+					setSkillPayload({ ...skillPayload, idPositon: item._id });
 					setPositionSelected(item);
 					setEncounter(true);
-					console.log({ skillPayload });
 					return;
 				}
 				setEncounter(false);
@@ -320,7 +319,7 @@ export default function AddJob() {
 									<DropdownMenu onChange={handlePosition}>
 										<DropdownItem value={'0'}>Elegir rubro</DropdownItem>
 										{categorys.map((category: Category) => (
-											<DropdownItem key={category.id} value={category.id}>
+											<DropdownItem key={category._id} value={category._id}>
 												{category.nameCategory}
 											</DropdownItem>
 										))}
