@@ -8,6 +8,10 @@
     margin: 0 auto 90px;
     text-align: center;
 
+    @include phone {
+        width: var(--container-phone);  
+    }
+    
  aside{
      border-radius: 24px;
     
