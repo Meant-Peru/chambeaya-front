@@ -9,9 +9,19 @@
     text-align: center;
 
 
+    @include phone {
+        width: var(--container-phone);  
+    }
+
     .filterSection {
         display: flex;
         flex: 1;
+        @include phone {
+            width: var(--container-phone); 
+            display: flex;
+            flex-direction: column; 
+        }
+    
         &:last-child {
             margin-top: 72px;
 

@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./../../sass/shared/_footer.scss";
-import Logo from "./../../assets/logo.svg";
+import LogoV4 from "./../../assets/logo-v4.svg";
 import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
@@ -15,7 +15,7 @@ export default function Footer() {
       <footer>
         <section className="footerContent">
           <article>
-            <img src={Logo} alt="" className="logoFooter" />
+            <img src={LogoV4} alt="" className="logoFooter" />
             <p><i>El punto para encontrar proyectos</i></p>
           </article>
           <article>
