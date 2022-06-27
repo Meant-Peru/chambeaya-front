@@ -8,14 +8,20 @@
     margin: 152px auto ;
     text-align: center;
 
-
+    @include tablet-p {
+        width: var(--container-tablet-portrait); 
+    }
     @include phone {
         width: var(--container-phone);  
+        margin: 56px auto ;
     }
 
     .filterSection {
         display: flex;
         flex: 1;
+        @include tablet-p {
+            width: var(--container-tablet-portrait); 
+        }
         @include phone {
             width: var(--container-phone); 
             display: flex;
@@ -25,10 +31,6 @@
         &:last-child {
             margin-top: 72px;
 
-            input,
-            select {
-                margin-right: 32px;
-            }
         }
     }
 }

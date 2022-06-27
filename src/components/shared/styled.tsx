@@ -115,6 +115,9 @@ export const Theme = {
     ::placeholder{
         color: ${Theme.colors.gray6};
     }
+    @media (max-width: 375px){
+      margin-bottom: 1rem
+    }
     `;
     export const TxtArea = styled.textarea`
     background: ${Theme.colors.light};
@@ -139,15 +142,19 @@ export const Theme = {
     align-items: center;
     padding: 16px 24px;
     border: none;
-    margin-right: 8px;
+    margin-right:1rem;
     border-right: 24px solid transparent;
     outline: ${Theme.colors.border} auto 1px;
     :focus-visible{
         border: 1px solid ${Theme.colors.primary};
         border-right: 24px solid transparent;
         outline: ${Theme.colors.primary} auto 1px;
-
-    `;
+    }
+    @media (max-width: 375px){
+      margin-right: 0;
+      margin-bottom: 1rem
+    }
+        `;
     export const DropdownItem = styled.option`
     background: ${Theme.colors.light};
     font-size: 16px;

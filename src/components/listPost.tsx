@@ -50,7 +50,7 @@ export default function ListPost() {
                             <aside className="actions">
                                 <ButtonComponent
                                     link={"/detail-post/" + get(post, "_id", "")}
-                                    type="secondary"
+                                    type="btnCta"
                                     label="Aplicar"
                                 />
                             </aside>

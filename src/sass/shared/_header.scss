@@ -3,6 +3,8 @@
 header{
     width: 100%;
     background-color: var(--dark-color);
-
+    @include tablet-p {
+        width: var(--container-tablet-portrait);
+      }
 }
 

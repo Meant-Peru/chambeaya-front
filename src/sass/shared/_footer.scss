@@ -18,7 +18,9 @@ footer{
         display: flex;
         flex-direction: row;
         align-items: flex-start;
-          
+        @include tablet-p {
+          width: var(--container-tablet-portrait); 
+      }
         @include phone {
           width: var(--container-phone);
           flex-direction: column;
@@ -32,7 +34,7 @@ footer{
         }
         article{
             flex: 1;
-            padding: 56px 0;
+            padding: 28px 0;
             &:first-child{
                 flex: 2;
             }
