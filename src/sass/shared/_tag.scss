@@ -138,9 +138,18 @@
     padding: 0px 5px;
     border-radius: 50%;
     border: 1px solid black;
-    border-color: red;
+    border-color:  var(--primary-color);
+    background-color: var(--primary-color);
     position: absolute;
+    color:  var(--light-color);;
     margin-left: 12vh;
     margin-bottom: 3vh;
     line-height: 17px;
+    &::before{
+        content: 'x';
+    }
+}
+
+.clearTagHide{
+    display: none;
 }
