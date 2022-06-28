@@ -97,7 +97,7 @@ export default function ApplyJob() {
                     <p className="mt-2">
                       <i>
                         * Recuerde que el presupuesto estimado por el cliente es
-                        de : 2000 soles
+                        de : {get(_postJob, 'salaryRange', '')} soles
                       </i>
                     </p>
                   </article>
@@ -142,11 +142,11 @@ export default function ApplyJob() {
                       ó , coloca tu experiencia respecto al puesto que buscamos
                     </p>
                     <aside className="FormGroup">
-                      <Txtfield className="mr-5" placeholder="Empresa" />
+                      <Txtfield className="mr-5" placeholder="Proyecto" />
                       <Txtfield className="" placeholder="Tiempo de trabajo" />
                     </aside>
                     <aside className="FormGroup-full mt-4">
-                      <Txtfield placeholder="Empresa" />
+                      <Txtfield placeholder="Funciones que realizaste" />
                     </aside>
                   </article>
 
