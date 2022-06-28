@@ -18,7 +18,7 @@ export default function PostCompany() {
 					<article className="rowPost row">
 						<aside className="title">
 							<p className="mb-2">Diseñador UX/UI</p>
-							<TagComponent type="state" level="success" label="Publicado" />
+							<TagComponent type="state" level="success" label="Publicado" clearTag="clearTagHide" />
 						</aside>
 						<aside className="title">
 							<p>20 personas postularon</p>
@@ -30,7 +30,7 @@ export default function PostCompany() {
 					<article className="rowPost row">
 						<aside className="title">
 							<p className="mb-2">Diseñador UX/UI</p>
-							<TagComponent type="highlight" level="gray" label="Borrador" />
+							<TagComponent type="highlight" level="gray" label="Borrador" clearTag="clearTagHide"/>
 						</aside>
 						<aside className="title">
 							<p>Aún no visble, revisar planes.</p>
@@ -42,7 +42,7 @@ export default function PostCompany() {
 					<article className="rowPost row">
 						<aside className="title">
 							<p className="mb-2">Diseñador UX/UI</p>
-							<TagComponent type="highlight" level="gray" label="Borrador" />
+							<TagComponent type="highlight" level="gray" label="Borrador" clearTag="clearTagHide" />
 						</aside>
 						<aside className="title">
 							<p>Aún no visble, revisar planes.</p>
@@ -54,7 +54,7 @@ export default function PostCompany() {
 					<article className="rowPost row">
 						<aside className="title">
 							<p className="mb-2">Diseñador UX/UI</p>
-							<TagComponent type="highlight" level="gray" label="Borrador" />
+							<TagComponent type="highlight" level="gray" label="Borrador" clearTag="clearTagHide"  />
 						</aside>
 						<aside className="title">
 							<p>Aún no visble, revisar planes.</p>

@@ -40,7 +40,7 @@ export default function ListCompany() {
 							<article className="rowPost row">
 								<aside className="title">
 									<p className="mb-2">{company.dataUser.businessName}</p>
-									<TagComponent type="state" level="success" label="Activo" />
+									<TagComponent type="state" level="success" label="Activo" clearTag="clearTagHide" />
 								</aside>
 								<aside className="title">
 									<p>{company.dataUser.ruc}</p>
