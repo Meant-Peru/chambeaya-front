@@ -19,7 +19,7 @@ import { getCategory, getPosition, createPosition, getSkill } from '../util/publ
 import { Response } from '../interfaces/Response';
 import { Category } from '../interfaces/Category';
 import { Position } from '../interfaces/Position';
-import TagComponent from '../components/shared/atom/tag';
+import { TagComponent } from '../components/shared/atom/tag';
 import { respSkill, Skill } from '../interfaces/Skill';
 import { PostJob } from '../interfaces/PostJob';
 import { CREATE_POST } from '../helpers/constants';
@@ -165,6 +165,12 @@ export default function AddJob() {
 		/* TODO: */
 		// console.log({ idPositon: '55915275-71b2-c739-b4df-5202ecc5e9d' }, { idCategory: '8b525a9e-f535-b3be-c756-71011b442339' });
 		// setSkillPayload({ ...skillPayload, idPositon: '55915275-71b2-c739-b4df-5202ecc5e9d', idCategory: '8b525a9e-f535-b3be-c756-71011b442339' });
+	};
+
+	const removeItemSkill = async (select: Skill) => {
+		console.log({ select });
+		const deletes: Skill[] = skillSelected.filter((k: Skill) => k._id !== select._id);
+		setSkillSelected([...deletes]);
 	};
 
 	React.useEffect(() => {
@@ -424,7 +430,7 @@ export default function AddJob() {
 									<p>Skills</p>
 									<article className="skillsBox">
 										{skillSelected.map((e: Skill) => (
-											<TagComponent type="highlight" key={'tga-' + e.id} level={e.level} label={e.nameSkill} />
+											<TagComponent type="highlight" key={'tga-' + e.id} level={e.level} label={e.nameSkill} tag={e} event={(e: Skill) => removeItemSkill(e)} />
 										))}
 									</article>
 									{/* <DropdownMenu onChange={addSkill}>

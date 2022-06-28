@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSales } from '../hooks/useSales';
 import { RootState } from '../redux/store/store';
 import ButtonComponent from './shared/atom/button';
-import TagComponent from './shared/atom/tag';
+import { TagComponent } from './shared/atom/tag';
 import { BtnPrimary } from './shared/styled';
 
 export default function ListCompany() {

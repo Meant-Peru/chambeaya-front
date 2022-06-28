@@ -1,15 +1,35 @@
-import * as React from "react";
+import React from 'react';
+import { Skill } from '../../../interfaces/Skill';
 
-import "./../../../sass/shared/_tag.scss";
+import './../../../sass/shared/_tag.scss';
 
-
-export default function TagComponent(props: any){
-    return(
-        <React.Fragment>
-            <button className={"tagComponent-"+props.type+"-"+props.level}>
-                {props.label}
-            </button>
-        </React.Fragment>
-
-    )
+interface Props {
+	type: string;
+	level: string;
+	label: string;
+	tag?: Skill;
+	clear?: boolean;
+	event?: (select: Skill) => void;
 }
+
+export const TagComponent = ({ type, level, label, event = () => {}, tag }: Props) => {
+	return (
+		<React.Fragment>
+			<button className={'tagComponent-' + type + '-' + level}>{label}</button>
+			<div className="clearTag" onClick={() => event(tag)}>
+				x
+			</div>
+		</React.Fragment>
+	);
+};
+
+// export default function TagComponent({ type, level, label, event = () => {} }: Props) {
+// 	return (
+// 		<React.Fragment>
+// 			<button className={'tagComponent-' + type + '-' + level}>{label}</button>
+// 			<div className="clearTag" onClick={() => event}>
+// 				x
+// 			</div>
+// 		</React.Fragment>
+// 	);
+// }
