@@ -12,13 +12,17 @@ interface Props {
 	event?: (select: Skill) => void;
 }
 
-export const TagComponent = ({ type, level, label, event = () => {}, tag }: Props) => {
+export const TagComponent = ({ type, level, label, clear = false, event = () => {}, tag }: Props) => {
 	return (
 		<React.Fragment>
 			<button className={'tagComponent-' + type + '-' + level}>{label}</button>
-			<div className="clearTag" onClick={() => event(tag)}>
-				x
-			</div>
+			{clear && (
+				<>
+					<div className="clearTag" onClick={() => event(tag)}>
+						x
+					</div>
+				</>
+			)}
 		</React.Fragment>
 	);
 };
