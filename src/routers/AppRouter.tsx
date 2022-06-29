@@ -5,6 +5,7 @@ import AddJob from '../pages/addJob';
 import ApplyJob from '../pages/applyJob';
 import BussinessSignUp from '../pages/bussiness';
 import Corporativo from '../pages/corporativo';
+import Dashboard from '../pages/dahsboard';
 import DetailPost from '../pages/detailPost';
 import Home from '../pages/home';
 import Login from '../pages/login';
@@ -29,6 +30,7 @@ export const AppRouter = () => {
 				<Route path="searchjob" element={<SearchJob />} />
 				<Route path="login" element={<Login />} />
 				<Route path="myaccount" element={<MyAccount />} />
+				<Route path="dashboard" element={<Dashboard />} />
 				<Route path="account-sales" element={<AccountSales />} />
 				<Route path="corporativo" element={<Corporativo />} />
 				<Route path="bussiness" element={<BussinessSignUp />} />

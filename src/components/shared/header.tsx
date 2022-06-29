@@ -31,6 +31,14 @@ const navSales = {
 		{ name: 'Mi perfil', to: '/account-sales' },
 	],
 };
+const navAdmin = {
+	brand: { name: 'ChambeaYa.', to: '/' },
+	links: [
+		{ name: 'Buscar un empleo', to: '/searchjob' },
+		{ name: 'Contacto', to: '/contact' },
+		{ name: 'Mi perfil', to: '/account-sales' },
+	],
+};
 
 export default function Header() {
 	const sesionLog = getLocalStorage(SESSION);
@@ -47,6 +55,7 @@ export default function Header() {
 				nav = { ...navSales };
 				break;
 			case ADMIN:
+				nav = { ...navAdmin };
 				break;
 			default:
 				break;
