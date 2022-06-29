@@ -29,7 +29,7 @@ export const useAuth = () => {
 							navigate('/account-sales', { replace: true });
 							return;
 						case ADMIN:
-							// navigate('/dashore', { replace: true });
+							navigate('/dashboard', { replace: true });
 							return;
 						default:
 							return;
