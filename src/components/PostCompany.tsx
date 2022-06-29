@@ -1,8 +1,23 @@
-import * as React from 'react';
+// import * as React from 'react';
+import React, { useEffect, useState } from 'react';
+import { usePostCompany } from '../hooks/usePostCompany';
+import { PostJob } from '../types/post_job';
 import ButtonComponent from './shared/atom/button';
 import { TagComponent } from './shared/atom/tag';
 
-export default function PostCompany() {
+export const PostCompany = () => {
+	const { getPosts } = usePostCompany();
+	const [listPost, setListPost] = useState<PostJob[]>([]);
+
+	useEffect(() => {
+		getList();
+	}, []);
+
+	const getList = async () => {
+		const data = await getPosts();
+		setListPost([...data]);
+	};
+
 	return (
 		<React.Fragment>
 			<section className="sectionAccount">
@@ -15,22 +30,24 @@ export default function PostCompany() {
 				</aside>
 
 				<aside>
-					<article className="rowPost row">
+					{listPost.map((p: PostJob) => (
+						<article className="rowPost row" key={p._id}>
+							<aside className="title">
+								<p className="mb-2">{p.title}</p>
+								<TagComponent type="state" level="success" label="Publicado" clearTag="clearTagHide" />
+							</aside>
+							<aside className="title">
+								<p>{p.postulants} personas postularon</p>
+							</aside>
+							<aside className="actions">
+								<ButtonComponent type="secondary" label="Ver detalles" />
+							</aside>
+						</article>
+					))}
+					{/* <article className="rowPost row">
 						<aside className="title">
 							<p className="mb-2">Diseñador UX/UI</p>
-							<TagComponent type="state" level="success" label="Publicado" clearTag="clearTagHide" />
-						</aside>
-						<aside className="title">
-							<p>20 personas postularon</p>
-						</aside>
-						<aside className="actions">
-							<ButtonComponent type="secondary" label="Ver detalles" />
-						</aside>
-					</article>
-					<article className="rowPost row">
-						<aside className="title">
-							<p className="mb-2">Diseñador UX/UI</p>
-							<TagComponent type="highlight" level="gray" label="Borrador" clearTag="clearTagHide"/>
+							<TagComponent type="highlight" level="gray" label="Borrador" clearTag="clearTagHide" />
 						</aside>
 						<aside className="title">
 							<p>Aún no visble, revisar planes.</p>
@@ -54,7 +71,7 @@ export default function PostCompany() {
 					<article className="rowPost row">
 						<aside className="title">
 							<p className="mb-2">Diseñador UX/UI</p>
-							<TagComponent type="highlight" level="gray" label="Borrador" clearTag="clearTagHide"  />
+							<TagComponent type="highlight" level="gray" label="Borrador" clearTag="clearTagHide" />
 						</aside>
 						<aside className="title">
 							<p>Aún no visble, revisar planes.</p>
@@ -62,9 +79,9 @@ export default function PostCompany() {
 						<aside className="actions">
 							<ButtonComponent type="secondary" label="Ver detalles" />
 						</aside>
-					</article>
+					</article> */}
 				</aside>
 			</section>
 		</React.Fragment>
 	);
-}
+};

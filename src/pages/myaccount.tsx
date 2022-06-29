@@ -12,8 +12,9 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
 import { useAuth } from '../hooks/useAuth';
 
-import PostCompany from '../components/PostCompany';
-import MyApply from '../components/MyApply';
+import { PostCompany } from '../components/PostCompany';
+import { MyApply } from '../components/MyApply';
+import { usePostulant } from '../hooks/usePostulant';
 
 export default function MyAccount() {
 	const { user } = useSelector((state: RootState) => state.auth);

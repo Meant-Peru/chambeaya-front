@@ -4,6 +4,7 @@ export interface PostJob {
 	description_post?: string;
 	funtions_post?: string;
 	id?: string;
+	_id?: string;
 	ids_Skills_post_Job?: string[];
 	location?: string;
 	modality?: string;
@@ -13,6 +14,7 @@ export interface PostJob {
 	title?: string;
 	updateDate?: number;
 	listSkills?: any[];
+	postulants?: number;
 }
 
 export interface DataCompany {

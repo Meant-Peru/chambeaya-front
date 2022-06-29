@@ -12,8 +12,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
 import { useAuth } from '../hooks/useAuth';
 
-import PostCompany from '../components/PostCompany';
-import MyApply from '../components/MyApply';
+import { MyApply } from '../components/MyApply';
 import ListCompany from '../components/ListCompany';
 
 export default function AccountSales() {

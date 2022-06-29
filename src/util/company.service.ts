@@ -3,12 +3,14 @@ import { URI } from '../enviroment/enviroment';
 import { SESSION } from '../helpers/constants';
 import { getLocalStorage } from '../helpers/localStorage';
 
-export const GetPostCompany = async (idCompany: string) => {
+export const GetPostCompany = async () => {
 	try {
-		const resultData = await axios.get(`${URI}/user/getPostJob`);
-		return resultData.data;
+		const token = await getLocalStorage(SESSION);
+		const { data } = await axios.get(`${URI}/user/getPostJob`, { headers: { token } });
+		return data.data;
 	} catch (error) {
 		console.log(error);
+		return { listPostJob: [] };
 	}
 };
 

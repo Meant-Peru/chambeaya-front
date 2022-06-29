@@ -12,8 +12,8 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
 import { useAuth } from '../hooks/useAuth';
 
-import PostCompany from '../components/PostCompany';
-import MyApply from '../components/MyApply';
+import { PostCompany } from '../components/PostCompany';
+import { MyApply } from '../components/MyApply';
 
 export default function Dashboard() {
 	const { user } = useSelector((state: RootState) => state.auth);
@@ -112,7 +112,6 @@ export default function Dashboard() {
 										<Txtfield onChange={handleEventPostulant} value={postulant.email} name="email" placeholder="Correo electrónico" />
 										<Txtfield onChange={handleEventPostulant} value={postulant.phone} name="phone" placeholder="Teléfono" />
 									</aside>
-									
 
 									<aside>
 										{/* <ButtonComponent  type="primary" label="Actualizar" /> */}
