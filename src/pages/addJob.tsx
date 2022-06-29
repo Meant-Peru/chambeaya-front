@@ -141,7 +141,7 @@ export default function AddJob() {
 			const select: Skill = skills.find((k: Skill) => k.nameSkill.toLowerCase() === value.toLowerCase());
 			console.log({ select });
 			if (select) {
-				const uniqe: Skill = skillSelected.find((k: Skill) => k.id === select.id);
+				const uniqe: Skill = skillSelected.find((k: Skill) => k._id === select._id);
 				console.log({ uniqe });
 				if (!uniqe) {
 					setSkillSelected([...skillSelected, select]);
@@ -201,7 +201,7 @@ export default function AddJob() {
 						skillsArray.push({ ...skillsData.skillPositionUser[i], level: 'terceary' });
 					}
 				}
-				const uniquesSkills = [...new Map(skillsArray.map((i: Skill) => [i.id, i])).values()];
+				const uniquesSkills = [...new Map(skillsArray.map((i: Skill) => [i._id, i])).values()];
 				// console.log({ uniquesSkills });
 				setSkills(uniquesSkills);
 			}
@@ -231,15 +231,16 @@ export default function AddJob() {
 				idPosition: skillPayload.idPositon,
 				location: form.location,
 				priority: form.priority,
-				idSkills: [...skillSelected.map((i) => i.id)],
+				idSkills: [...skillSelected.map((i) => i._id)],
 			};
 			console.log({ sendData });
 			const resp = await postJobCompany(sendData);
 			console.log({ resp });
 			if (resp.data.message === CREATE_POST) {
 				alert('Se creo el publicación correctamente...');
-				navigate('/myaccount', { replace: true });
+				navigate('/', { replace: true });
 			} else {
+				alert('Error al crear la publicación');
 			}
 		} else {
 			alert('Seleccione Modalidad');

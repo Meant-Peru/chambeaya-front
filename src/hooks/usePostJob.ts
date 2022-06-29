@@ -32,6 +32,7 @@ export const usePostJob = (id?: string) => {
 
 	const getJobData = async (id: string) => {
 		const { listPostJob } = await getJob(id);
+		// const { dataSkill } = await getJob(listPostJob.);
 		setPostJob({
 			loading: false,
 			postJob: listPostJob,

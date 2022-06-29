@@ -49,8 +49,8 @@ export default function ListPost() {
 						</p>
 					</aside>
 					<aside className="skillTags">
-						{get(_postJob, 'idsSkillsPostJob', []).map((value) => (
-							<TagComponent type="highlight" key={Math.random()} level="secondary" label={value} clearTag="clearTagHide" />
+						{get(_postJob, 'listSkills', []).map((value) => (
+							<TagComponent type="highlight" key={Math.random()} level="secondary" label={value?.nameSkill} clearTag="clearTagHide" />
 						))}
 					</aside>
 					<hr />
