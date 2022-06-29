@@ -1,19 +1,16 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import Header from '../components/shared/header';
-import ilusEmpty from './../assets/empty-state.svg';
-import { Txtfield, TxtArea, DropdownMenu, DropdownItem, BtnPrimary } from '../components/shared/styled';
+import { Txtfield, BtnPrimary } from '../components/shared/styled';
 import './../sass/pages/_myAccount.scss';
+import './../sass/pages/_dashboard.scss';
 import Footer from '../components/shared/footer';
 
-import { COMPANY, POSTULANT } from '../helpers/constants';
+import { POSTULANT } from '../helpers/constants';
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
 import { useAuth } from '../hooks/useAuth';
-
-import { PostCompany } from '../components/PostCompany';
-import { MyApply } from '../components/MyApply';
 
 export default function Dashboard() {
 	const { user } = useSelector((state: RootState) => state.auth);
@@ -71,8 +68,8 @@ export default function Dashboard() {
 						</aside>
 						<div className="list">
 							<Tab>Datos generales</Tab>
-							<Tab> {user?.rol === COMPANY ? 'Mis publicaciones' : 'Mis postulaciones'}</Tab>
-							<Tab>Proyectos</Tab>
+							<Tab>Usuarios</Tab>
+							<Tab>Publicaciones</Tab>
 						</div>
 						<aside className="sideBarMenu mt-5 mb-5">
 							<a onClick={handleLogout}>Cerrar Sesión</a>
@@ -81,59 +78,155 @@ export default function Dashboard() {
 
 					<TabPanel>
 						<section className="sectionAccount">
-							{user?.rol === COMPANY ? (
-								<Fragment>
-									<p>Datos primarios</p>
-									<aside className="FormGroup mt-3">
-										<Txtfield onChange={handleEvent} value={company.businessName} name="businessName" placeholder="Nombre de empresa" />
-										<Txtfield onChange={handleEvent} value={company.ruc} name="ruc" placeholder="Nro de Documento" />
-									</aside>
-									<aside className="FormGroup mt-4 mb-4">
-										<TxtArea onChange={handleEvent} value={company.description} name="description" placeholder="Descripción" />
-									</aside>
-									<aside className="FormGroup mt-2 mb-5">
-										<Txtfield onChange={handleEvent} value={company.email} name="email" placeholder="Correo electrónico" />
-										<Txtfield onChange={handleEvent} value={company.phone} name="phone" placeholder="Teléfono" />
-									</aside>
 
-									<aside>
-										{/* <ButtonComponent type="primary" label="Actualizar" /> */}
-										<BtnPrimary onClick={handleUpdate}>Actualizar</BtnPrimary>
-									</aside>
-								</Fragment>
-							) : (
-								<Fragment>
-									<p>Datos personales</p>
-									<aside className="FormGroup mt-3">
-										<Txtfield onChange={handleEventPostulant} value={postulant.name} name="name" placeholder="Nombres" />
-										<Txtfield onChange={handleEventPostulant} value={postulant.lastName} name="lastName" placeholder="Apellidos" />
-									</aside>
-									<aside className="FormGroup mt-2 mb-5">
-										<Txtfield onChange={handleEventPostulant} value={postulant.email} name="email" placeholder="Correo electrónico" />
-										<Txtfield onChange={handleEventPostulant} value={postulant.phone} name="phone" placeholder="Teléfono" />
-									</aside>
+							<Fragment>
+								<p>Datos personales</p>
+								<aside className="FormGroup mt-3">
+									<Txtfield onChange={handleEventPostulant} value={postulant.name} name="name" placeholder="Nombres" />
+									<Txtfield onChange={handleEventPostulant} value={postulant.lastName} name="lastName" placeholder="Apellidos" />
+								</aside>
+								<aside className="FormGroup mt-2 mb-5">
+									<Txtfield onChange={handleEventPostulant} value={postulant.email} name="email" placeholder="Correo electrónico" />
+									<Txtfield onChange={handleEventPostulant} value={postulant.phone} name="phone" placeholder="Teléfono" />
+								</aside>
 
-									<aside>
-										{/* <ButtonComponent  type="primary" label="Actualizar" /> */}
-										<BtnPrimary onClick={handleUpdate}>Actualizar</BtnPrimary>
-									</aside>
-								</Fragment>
-							)}
+								<aside>
+									{/* <ButtonComponent  type="primary" label="Actualizar" /> */}
+									<BtnPrimary onClick={handleUpdate}>Actualizar</BtnPrimary>
+								</aside>
+							</Fragment>
+
 						</section>
 					</TabPanel>
 					<TabPanel>
-						{/* <section className="apply">
-							<img src={ilusEmpty} alt="empty" />
-							<p>No se encontraron postulaciones</p>
+						<section className="usersTable">
+							{/* <img src={ilusEmpty} alt="empty" />
+							<p>No se encontraron postulaciones</p> */}
+							<h2>Usuarios</h2>
+							<div className="tableUsers">
+								<article className='headerRow'>
+									<aside className='headerItem'>
+										Nombres
+									</aside>
+									<aside className='headerItem'>
+										Correo
+									</aside>
+									<aside className='headerItem'>
+										Rol
+									</aside>
+								</article>
+								<article className='contentRow'>
+									<aside className='contentItem'>
+										Csti Corp
+									</aside>
+									<aside className='contentItem'>
+										csti@gmail.com
+									</aside>
+									<aside className='contentItem'>
+										Empresa
+									</aside>
+								</article>
+								<article className='contentRow'>
+									<aside className='contentItem'>
+										Stefanie
+									</aside>
+									<aside className='contentItem'>
+									Stefanie@gmail.com
+									</aside>
+									<aside className='contentItem'>
+										Postulante
+									</aside>
+								</article>
+								<article className='contentRow'>
+									<aside className='contentItem'>
+										Alicia
+									</aside>
+									<aside className='contentItem'>
+										alicia@gmail.com
+									</aside>
+									<aside className='contentItem'>
+										Postulante
+									</aside>
+								</article>
+								<article className='contentRow'>
+									<aside className='contentItem'>
+										Neil
+									</aside>
+									<aside className='contentItem'>
+										nmancilla@gmail.com
+									</aside>
+									<aside className='contentItem'>
+										Asesor / Vendedor
+									</aside>
+								</article>
+								<article className='contentRow'>
+									<aside className='contentItem'>
+										Meant SAC
+									</aside>
+									<aside className='contentItem'>
+										meant.peru@gmail.com
+									</aside>
+									<aside className='contentItem'>
+										Empresa
+									</aside>
+								</article>
+							</div>
+						</section>
 
-						</section> */}
-
-						{user?.rol === COMPANY ? <PostCompany /> : <MyApply />}
 					</TabPanel>
 					<TabPanel>
-						<section className="proyects">
-							<img src={ilusEmpty} alt="empty" />
-							<p>Aún no ingresaste a algún proyecto</p>
+					
+						<section className="usersTable">
+							{/* <img src={ilusEmpty} alt="empty" />
+							<p>No se encontraron postulaciones</p> */}
+							<h2>Publicaciones</h2>
+							<div className="tableUsers">
+								<article className='headerRow'>
+									<aside className='headerItem'>
+										Nombre
+									</aside>
+									<aside className='headerItem'>
+										Empresa
+									</aside>
+									<aside className='headerItem'>
+										Cartera
+									</aside>
+								</article>
+								<article className='contentRow'>
+									<aside className='contentItem'>
+										Product Designer
+									</aside>
+									<aside className='contentItem'>
+										CSTI Corp
+									</aside>
+									<aside className='contentItem'>
+										Nmancilla
+									</aside>
+								</article>
+								<article className='contentRow'>
+									<aside className='contentItem'>
+										Jr Visual Designer
+									</aside>
+									<aside className='contentItem'>
+										CSTI Corp
+									</aside>
+									<aside className='contentItem'>
+										Nmancilla
+									</aside>
+								</article>
+								<article className='contentRow'>
+									<aside className='contentItem'>
+										Ux Designer
+									</aside>
+									<aside className='contentItem'>
+										Meant sac
+									</aside>
+									<aside className='contentItem'>
+										jvazquez
+									</aside>
+								</article>
+
+							</div>
 						</section>
 					</TabPanel>
 				</Tabs>
