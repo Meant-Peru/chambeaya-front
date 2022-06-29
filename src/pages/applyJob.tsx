@@ -93,7 +93,7 @@ export default function ApplyJob() {
 											<Txtfield className="ml-5" placeholder="Total" onChange={handleForm} name="amountEstimated" value={form.amountEstimated} />
 										</aside>
 										<p className="mt-2">
-											<i>* Recuerde que el presupuesto estimado por el cliente es de : 2000 soles</i>
+											<i>* Recuerde que el presupuesto estimado por el cliente es de : {get(_postJob, 'salaryRange', '')} soles</i>
 										</p>
 									</article>
 									<article className="footerSection">
@@ -109,7 +109,7 @@ export default function ApplyJob() {
 									<p>Elige las skills que mejor manejes</p>
 									<article className="gridBox mt-4">
 										{get(_postJob, 'listSkills', []).map((value) => (
-											<CheckButton value={value} onChange={handleCheck} withbg="yes" label={value?.nameSkill} key={value?._id} />
+											<CheckButton value={value} onChange={handleCheck} withbg="yes" label={value.nameSkill} key={value._id} />
 										))}
 									</article>
 									<article className="footerSection">
@@ -136,11 +136,11 @@ export default function ApplyJob() {
 									<article className="mb-5">
 										<p className="text-center mb-3">ó , coloca tu experiencia respecto al puesto que buscamos</p>
 										<aside className="FormGroup">
-											<Txtfield className="mr-5" placeholder="Empresa" />
+											<Txtfield className="mr-5" placeholder="Proyecto" />
 											<Txtfield className="" placeholder="Tiempo de trabajo" />
 										</aside>
 										<aside className="FormGroup-full mt-4">
-											<Txtfield placeholder="Empresa" />
+											<Txtfield placeholder="Funciones que realizaste" />
 										</aside>
 									</article>
 
