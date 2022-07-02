@@ -1,29 +1,20 @@
+import { Chip } from '@mui/material';
 import React from 'react';
-import { Skill } from '../../../interfaces/Skill';
+import { Skill, SkillSelect } from '../../../interfaces/Skill';
 
 import './../../../sass/shared/_tag.scss';
 
 interface Props {
-	type: string;
-	level: string;
-	label: string;
-	tag?: Skill;
-	clear?: boolean;
-	clearTag?: string;
-	event?: (select: Skill) => void;
+	type?: string;
+	tag: any;
+	level?: string;
+	label?: string;
+	select?: boolean;
+	event?: (select: any) => void;
 }
 
-export const TagComponent = ({ type, level, label, clearTag, clear = false, event = () => {}, tag }: Props) => {
-	return (
-		<React.Fragment>
-			<button className={'tagComponent-' + type + '-' + level}>{label}</button>
-			{clear && (
-				<>
-					<div className={clearTag} onClick={() => event(tag)} />
-				</>
-			)}
-		</React.Fragment>
-	);
+export const TagComponent = ({ select = false, event = () => {}, tag }: Props) => {
+	return <div>{select ? <Chip label={tag.nameSkill} variant={'outlined'} onClick={() => event(tag)} /> : <Chip label={tag.nameSkill} onClick={() => event(tag)} />}</div>;
 };
 
 // export default function TagComponent({ type, level, label, event = () => {} }: Props) {

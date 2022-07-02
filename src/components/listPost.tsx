@@ -40,7 +40,7 @@ export default function ListPost() {
 							<div className="rContent row">
 								<aside className="title">
 									<p>{get(post, 'title', '')}</p>
-									{get(post, 'state', false) && <TagComponent type="highlight" level="dark" label="Destacado" />}
+									{get(post, 'state', false) && <TagComponent tag={{ nameSkill: 'Destacado' }} type="highlight" level="dark" label="Destacado" />}
 								</aside>
 								<aside className="ubication">
 									<p>Lima, Perú</p>

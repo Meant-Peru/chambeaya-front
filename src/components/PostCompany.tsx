@@ -34,7 +34,7 @@ export const PostCompany = () => {
 						<article className="rowPost row" key={p._id}>
 							<aside className="title">
 								<p className="mb-2">{p.title}</p>
-								<TagComponent type="state" level="success" label="Publicado" clearTag="clearTagHide" />
+								<TagComponent type="state" level="success" label="Publicado" /* clearTag="clearTagHide" */ tag={{ nameSkill: 'Publicado' }} />
 							</aside>
 							<aside className="title">
 								<p>{p.postulants} personas postularon</p>

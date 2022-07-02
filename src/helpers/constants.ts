@@ -9,6 +9,7 @@ export const LIST_SUCCESS = 'LIST_SUCCESS';
 
 export const SESSION = 'SESSION';
 export const USER = 'USER';
+export const TEM_USER = 'TEM_USER';
 
 export const POSTULANT = '1';
 export const COMPANY = '2';

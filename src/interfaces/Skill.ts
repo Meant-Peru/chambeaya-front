@@ -11,3 +11,9 @@ export interface Skill {
 	nameSkill: string;
 	level: string;
 }
+
+export interface SkillSelect {
+	_id: string;
+	nameSkill: string;
+	select: boolean;
+}

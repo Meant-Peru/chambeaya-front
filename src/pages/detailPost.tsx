@@ -50,7 +50,7 @@ export default function ListPost() {
 					</aside>
 					<aside className="skillTags">
 						{get(_postJob, 'listSkills', []).map((value) => (
-							<TagComponent type="highlight" key={Math.random()} level="secondary" label={value?.nameSkill} clearTag="clearTagHide" />
+							<TagComponent type="highlight" key={Math.random()} level="secondary" tag={value} />
 						))}
 					</aside>
 					<hr />

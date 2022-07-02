@@ -431,16 +431,7 @@ export default function AddJob() {
 									<p>Skills</p>
 									<article className="skillsBox">
 										{skillSelected.map((e: Skill) => (
-											<TagComponent
-												type="highlight"
-												key={'tga-' + e.id}
-												level={e.level}
-												label={e.nameSkill}
-												tag={e}
-												clearTag="clearTag"
-												clear
-												event={(e: Skill) => removeItemSkill(e)}
-											/>
+											<TagComponent key={e._id} tag={e} event={(e: any) => removeItemSkill(e)} />
 										))}
 									</article>
 									{/* <DropdownMenu onChange={addSkill}>

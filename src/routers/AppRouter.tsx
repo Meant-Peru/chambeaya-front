@@ -3,6 +3,7 @@ import { Routes, Route, BrowserRouter as Router, Link, Navigate } from 'react-ro
 import AccountSales from '../pages/accountSales';
 import AddJob from '../pages/addJob';
 import ApplyJob from '../pages/applyJob';
+import { RegisterPostulant } from '../pages/registerPostulant';
 import BussinessSignUp from '../pages/bussiness';
 import Corporativo from '../pages/corporativo';
 import Dashboard from '../pages/dahsboard';
@@ -36,6 +37,7 @@ export const AppRouter = () => {
 				<Route path="bussiness" element={<BussinessSignUp />} />
 				<Route path="addJob" element={<AddJob />} />
 				<Route path="apply/:id" element={<ApplyJob />} />
+				<Route path="register-step-2" element={<RegisterPostulant />} />
 				<Route path="detail-post/:id" element={<DetailPost />} />
 				<Route path="*" element={<NoMatch />} />
 			</Routes>

@@ -42,3 +42,12 @@ export const getSkill = async (payload: any) => {
 		return error;
 	}
 };
+
+export const getSkillForCategory = async (payload: any) => {
+	try {
+		const response = await axios.post(`${URI}/user/getSPCSkillSecound`, payload);
+		return response.data;
+	} catch (error) {
+		return error;
+	}
+};

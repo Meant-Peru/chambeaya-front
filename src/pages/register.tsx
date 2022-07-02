@@ -1,6 +1,6 @@
 import * as React from 'react';
 import CheckButton from '../components/shared/atom/checkButton';
-import { CREATE_USER, USER_EXISTING } from './../helpers/constants';
+import { CREATE_USER, TEM_USER, USER_EXISTING } from './../helpers/constants';
 
 import Header from '../components/shared/header';
 import { Txtfield, BtnPrimary } from './../components/shared/styled';
@@ -9,6 +9,7 @@ import { register } from './../util/auth.service';
 import { useNavigate } from 'react-router-dom';
 
 import { POSTULANT } from './../helpers/constants';
+import { saveLocalStorage } from '../helpers/localStorage';
 
 export default function Register() {
 	const navigate = useNavigate();
@@ -42,19 +43,23 @@ export default function Register() {
 			},
 		};
 
-		const response = await register(dataSend);
+		saveLocalStorage(TEM_USER, dataSend);
+		navigate('/register-step-2', { replace: true });
 
-		switch (response.data.message) {
-			case CREATE_USER:
-				navigate('/login', { replace: true });
-				return;
-			case USER_EXISTING:
-				alert('el usuario ya existe');
-				return;
-			default:
-				alert('Error corregir esto :c');
-				break;
-		}
+		// const response = await register(dataSend);
+
+		// switch (response.data.message) {
+		// 	case CREATE_USER:
+		// 		// navigate('/login', { replace: true });
+		// 		navigate('/register-step-2', { replace: true });
+		// 		return;
+		// 	case USER_EXISTING:
+		// 		alert('el usuario ya existe');
+		// 		return;
+		// 	default:
+		// 		alert('Error corregir esto :c');
+		// 		break;
+		// }
 	};
 
 	const handleEvent = (e: any) => {
