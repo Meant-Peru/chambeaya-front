@@ -66,14 +66,14 @@
         border-radius: 28px;
         align-items: center;
         padding: 16px 64px;
-        color: var(--gray-color-700);
-        border: 2px solid var(--dark-color);
+        color: var(--acent-color);
+        border: 2px solid var(--acent-color);
         cursor:pointer;
         img{
             display: none;
         }
         &:hover{
-            background: var(--dark-color);
+            background-color: var(--acent-color);
             color: var(--light-color);
         }
     }

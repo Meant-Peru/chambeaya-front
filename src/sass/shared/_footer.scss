@@ -2,7 +2,7 @@
 
 footer{
 
-    background-color: var(--acent-color);
+    background-color: var(--dark-color);
     @include tablet-l {
       width: var(--container-tablet-landscape);
     }

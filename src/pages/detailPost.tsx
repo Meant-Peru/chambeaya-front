@@ -8,7 +8,7 @@ import CardPost from '../components/shared/cardPost';
 import Logo1 from './../assets/logos/1.svg';
 import toast, { Toaster } from 'react-hot-toast';
 import Modal from 'react-modal';
-import { Txtfield, DropdownMenu, DropdownItem, BtnPrimary, BtnSecondary} from './../components/shared/styled';
+import { Txtfield, DropdownMenu, DropdownItem, BtnPrimary, BtnSecondary } from './../components/shared/styled';
 
 import { useNavigate, useParams } from 'react-router-dom';
 import Footer from '../components/shared/footer';
@@ -41,9 +41,9 @@ export default function ListPost() {
 	const _postJob = postJob!.reduce((k: any, o: any) => ((k[o] = k), o), {}) as PostJob;
 	console.log({ _postJob });
 
-/*	const handleRedirect = () => {
-		navigate('/apply/' + id);
-	}; */
+	/*	const handleRedirect = () => {
+			navigate('/apply/' + id);
+		}; */
 
 	form.idPostJob = id;
 
@@ -117,25 +117,27 @@ export default function ListPost() {
 					</aside>
 
 					<Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
-									<h2 className="text-center">Aplicar a {get(_postJob, 'title', '')}</h2>
-									<p className="mt-2 text-center">
-										<i>Antes de aplicar ingresa tus pretenciones salariales</i>
-									</p>
-									<aside className="FormGroup">
-									<form onSubmit={submit}>
+						<h2 className="text-center">Aplicar a {get(_postJob, 'title', '')}</h2>
+						<p className="mt-2 text-center">
+							<i>Antes de aplicar ingresa tus pretenciones salariales</i>
+						</p>
+						<aside className="FormGroup algn-center">
+							<form onSubmit={submit}>
+								<div className="dflex flex-row mt-4 mb-4 algn-center">
 									<DropdownMenu onChange={handleForm} name="typeAmount" value={form.typeAmount}>
-												<DropdownItem>Eliga tipo de moneda</DropdownItem>
-												<DropdownItem value="1">Soles</DropdownItem>
-												<DropdownItem value="2">Dólares</DropdownItem>
+										<DropdownItem>Eliga tipo de moneda</DropdownItem>
+										<DropdownItem value="1">Soles</DropdownItem>
+										<DropdownItem value="2">Dólares</DropdownItem>
 									</DropdownMenu>
-									<Txtfield className="ml-5" placeholder="Pretención salarial" onChange={handleForm} name="amountEstimated" value={form.amountEstimated} />
-									<BtnSecondary onClick={closeModal}>CANCELAR</BtnSecondary>
-									<BtnPrimary type="submit"> APLICAR AHORA </BtnPrimary>
-									</form>
-									</aside>
-									<p className="mt-2 text-center">
-											<i>* Recuerde que el presupuesto estimado por el cliente es de : {get(_postJob, 'salaryRange', '')} soles</i>
-										</p>
+									<Txtfield placeholder="Pretención salarial" onChange={handleForm} name="amountEstimated" value={form.amountEstimated} />
+								</div>
+								<BtnSecondary className='mr-2' onClick={closeModal}>CANCELAR</BtnSecondary>
+								<BtnPrimary type="submit"> APLICAR AHORA </BtnPrimary>
+							</form>
+						</aside>
+						<p className="mt-2 text-center">
+							<i>* Recuerde que el presupuesto estimado por el cliente es de : {get(_postJob, 'salaryRange', '')} soles</i>
+						</p>
 					</Modal>
 
 					<aside className="detailsApply mt-5 mb-5">
