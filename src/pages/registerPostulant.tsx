@@ -211,7 +211,7 @@ export const RegisterPostulant = () => {
 										<p className="mb-3">Eligue tu especialidad</p>
 										<aside className="FormGroup">
 											<DropdownMenu onChange={handleForm} name="category" value={form.category}>
-												<DropdownItem>Eliga tipo de moneda</DropdownItem>
+												<DropdownItem>Eliga su especialidad</DropdownItem>
 												{categorys.map((category: Category) => (
 													<DropdownItem key={category._id} value={category._id}>
 														{category.nameCategory}

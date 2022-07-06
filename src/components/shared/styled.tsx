@@ -14,8 +14,8 @@ export const Theme = {
 
     },
     fonts: {
-      body: `Inter`,
-      heading: `Inter`,
+      body: `Rubik , sans-serif`,
+      heading: `Rubik , sans-serif`,
     },
     grids: {
         small: `360px`,
