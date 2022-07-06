@@ -1,5 +1,6 @@
 @import "./base/base";
 
+
 * {
   padding: 0;
   margin: 0;
@@ -7,23 +8,23 @@
 }
 
 :root {
-  --font-primary: 'Inter';
+  --font-primary: 'Rubik', sans-serif;
   --bg-color: #{$gray-color-0};
   /* set base colors */
   --color-text: #{$gray-color-900};
 
   /* set base values */
-  --text-base-size: 1em;
+  --text-base-size: 16px;
   --text-scale-ratio: 1.2;
 
   /* type scale */
-  --text-xs: calc(1em / (var(--text-scale-ratio) * var(--text-scale-ratio)));
-  --text-sm: calc(1em / var(--text-scale-ratio));
-  --text-md: calc(1em * var(--text-scale-ratio));
-  --text-lg: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio));
-  --text-xl: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
-  --text-xxl: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
-  --text-xxxl: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-xs: calc(var(--text-base-size) / (var(--text-scale-ratio) * var(--text-scale-ratio)));
+  --text-sm: calc(var(--text-base-size) / var(--text-scale-ratio));
+  --text-md: calc(var(--text-base-size) * var(--text-scale-ratio));
+  --text-lg: calc(var(--text-base-size) * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-xl: calc(var(--text-base-size) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-xxl: calc(var(--text-base-size) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-xxxl: calc(var(--text-base-size) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
 
   /* set line-height */
   --heading-line-height: 1.25;
@@ -231,3 +232,87 @@ hr {
   }
 
 }
+
+.pagination {
+  justify-content: center;
+}
+
+.react-paginate {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul.pagination li {
+  display: inline-block;
+  width: 30px;
+  border: 1px solid #e2e2e2;
+  // display: flex;
+  justify-content: center;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+ul.pagination li a {
+  text-decoration: none;
+  color: #337ab7;
+  font-size: 20px;
+}
+
+ul.pagination li.active a {
+  color: white;
+}
+ul.pagination li.active {
+  background-color: #337ab7;
+}
+
+ul.pagination li a:hover,
+ul.pagination li a.active {
+  color: blue;
+}
+
+.page-selection {
+  width: 48px;
+  height: 30px;
+  color: #337ab7;
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+#react-paginate ul {
+  display: inline-block;
+  margin-left: 20px;
+  padding-left: 0;
+}
+
+#react-paginate li {
+  display: inline-block;
+  border: 1px solid rgb(224, 224, 224);
+  color: #000;
+  cursor: pointer;
+  margin-right: 3px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+#react-paginate li a {
+    padding: 2px 5px;
+    display: inline-block;
+    color: #000;
+    outline: none;
+}
+
+#react-paginate li.active {
+  background: rgb(224, 224, 224);
+  outline: none;
+}
+
