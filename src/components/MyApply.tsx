@@ -51,9 +51,9 @@ export const MyApply = () => {
 				<p>Historial</p>
 				<aside className="listCards">
 					{listPostulations.map((p: PostJob) => (
-						<article className="cardHistory" key={p._id}>
+						<article className="cardHistory" key={p?._id}>
 							<div className="headCard">
-								<strong>{p.title}</strong>
+								<strong>{p?.title}</strong>
 								<span>CSTI CORP</span>
 							</div>
 							<div className="contentCard">
