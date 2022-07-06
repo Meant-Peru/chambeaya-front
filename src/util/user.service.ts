@@ -16,6 +16,20 @@ export const GetUser = async (token: string) => {
 	}
 };
 
+export const ListUser = async () => {
+	try {
+		const token = await getLocalStorage(SESSION);
+		const resultData = await axios.get(`${URI}/user/getAllUserService`, {
+			headers: {
+				token: `${token}`,
+			},
+		});
+		return resultData.data;
+	} catch (error) {
+		
+	}
+}
+
 export const UpdateUser = async (data: any) => {
 	try {
 		const token = await getLocalStorage(SESSION);
