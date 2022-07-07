@@ -15,9 +15,10 @@ export default function ListCompany() {
 
 	const { startGetCompanies } = useSales();
 	const { companies } = useSelector((state: RootState) => state.sales);
+	// console.log({ companies });
 
 	React.useEffect(() => {
-		console.log('Listar');
+		// console.log('Listar');
 		listCompaniesSales();
 	}, []);
 
@@ -31,12 +32,12 @@ export default function ListCompany() {
 						<h2>Cartera de negocios</h2>
 						<BtnPrimary onClick={handleRedirect}>CREAR NUEVA CARTERA</BtnPrimary>
 					</article>
-					<p>Tienes # compañias en tu cartera</p>
+					<p>Tienes {companies?.length ?? 0} compañias en tu cartera</p>
 				</aside>
 
 				<div>
 					{companies.map((company) => (
-						<aside key={company.id}>
+						<aside key={company._id}>
 							<article className="rowPost row">
 								<aside className="title">
 									<p className="mb-2">{company.dataUser.businessName}</p>
