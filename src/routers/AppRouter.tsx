@@ -14,6 +14,7 @@ import MyAccount from '../pages/myaccount';
 import Register from '../pages/register';
 import SearchJob from '../pages/searchJob';
 import { RootState } from '../redux/store/store';
+import { DetailPostCompany } from '../pages/detailPostCompany';
 
 export const AppRouter = () => {
 	const { status } = useSelector((state: RootState) => state.auth);
@@ -39,6 +40,8 @@ export const AppRouter = () => {
 				<Route path="apply/:id" element={<ApplyJob />} />
 				<Route path="register-step-2" element={<RegisterPostulant />} />
 				<Route path="detail-post/:id" element={<DetailPost />} />
+				
+				<Route path="detail-post-company" element={<DetailPostCompany />} />
 				<Route path="*" element={<NoMatch />} />
 			</Routes>
 		</>

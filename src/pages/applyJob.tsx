@@ -78,6 +78,7 @@ export default function ApplyJob() {
 												<DropdownItem>Elige el tipo de documento</DropdownItem>
 												<DropdownItem value="1">RUC</DropdownItem>
 												<DropdownItem value="2">DNI</DropdownItem>
+												<DropdownItem value="3">C/E</DropdownItem>
 											</DropdownMenu>
 											<Txtfield className="ml-5" placeholder="Nro de documento" name="documentNumber" onChange={handleForm} value={form.documentNumber} />
 										</aside>

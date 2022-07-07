@@ -1,0 +1,45 @@
+@import "./../base/_grid.scss";
+
+.detailPostCompanyPage {
+  width: var(--container);
+  display: flex;
+  flex-direction: column;
+  margin: 80px auto 120px;
+
+  @include tablet-l {
+    width: var(--container-tablet-landscape);
+  }
+
+  @include tablet-p {
+    width: var(--container-tablet-portrait);
+  }
+
+  @include phone {
+    width: var(--container-phone);
+  }
+
+
+  .cardApply {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    padding: 24px;
+    border-radius: 12px;
+  }
+
+  .detailsApply {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .leftBox {
+      width: 70%;
+    }
+    .rightBox{
+        width: 30%;
+        padding-left: 2rem;
+    }
+  }
+}
