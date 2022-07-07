@@ -6,16 +6,33 @@ import { TagComponent } from '../components/shared/atom/tag';
 import CardPost from '../components/shared/cardPost';
 
 import Logo1 from './../assets/logos/1.svg';
+import toast, { Toaster } from 'react-hot-toast';
+import Modal from 'react-modal';
+import { Txtfield, DropdownMenu, DropdownItem, BtnPrimary, BtnSecondary } from './../components/shared/styled';
 
 import { useNavigate, useParams } from 'react-router-dom';
-import { BtnPrimary } from '../components/shared/styled';
 import Footer from '../components/shared/footer';
-import { usePostJob } from '../hooks/usePostJob';
+import { usePostForm, usePostJob } from '../hooks/usePostJob';
 import { Backdrop, CircularProgress } from '@material-ui/core';
 import { get, split } from 'lodash';
 import { PostJob } from '../types/post_job';
+import { postulateJob } from '../util/job.service';
+
+const customStyles = {
+	content: {
+		top: '50%',
+		left: '50%',
+		right: 'auto',
+		bottom: 'auto',
+		marginRight: '-50%',
+		transform: 'translate(-50%, -50%)',
+		borderRadius: '20px',
+	}
+};
 
 export default function ListPost() {
+	const { form, handleForm, reset } = usePostForm();
+	const [modalIsOpen, setIsOpen] = React.useState(false);
 	const navigate = useNavigate();
 	const { id } = useParams();
 	const {
@@ -24,9 +41,39 @@ export default function ListPost() {
 	const _postJob = postJob!.reduce((k: any, o: any) => ((k[o] = k), o), {}) as PostJob;
 	console.log({ _postJob });
 
-	const handleRedirect = () => {
-		navigate('/apply/' + id);
+	/*	const handleRedirect = () => {
+			navigate('/apply/' + id);
+		}; */
+
+	form.idPostJob = id;
+
+	const submit = async (event: any) => {
+		event.preventDefault();
+		await postulateJob(form);
+		toast.success('Te has postulado correctamente, gracias!');
+		reset();
+		setTimeout(() => {
+			navigate('/');
+		}, 2000);
 	};
+
+	function openModal() {
+		setIsOpen(true);
+	}
+
+	function closeModal() {
+		setIsOpen(false);
+	}
+
+	function afterOpenModal() {
+		// references are now sync'd and can be accessed.
+		//   subtitle.style.color = '#f00';
+	}
+
+	function aplicar() {
+		// references are now sync'd and can be accessed.
+		//   subtitle.style.color = '#f00';
+	}
 
 	return (
 		<React.Fragment>
@@ -40,6 +87,7 @@ export default function ListPost() {
 			>
 				<CircularProgress color="inherit" />
 			</Backdrop>
+			<Toaster position="top-right" reverseOrder={false} />
 			{!loading && (
 				<section className="DetailPostComponent">
 					<aside className="coverHeader mb-5">
@@ -63,10 +111,35 @@ export default function ListPost() {
 							<p className="mt-2">10 de Diciembre 2022</p>
 						</article>
 						<article className="actionApply">
-							<BtnPrimary onClick={handleRedirect}> Aplicar </BtnPrimary>
+							<BtnPrimary onClick={openModal}> Aplicar </BtnPrimary>
 							<p className="mt-2">Requerimiento activo</p>
 						</article>
 					</aside>
+
+					<Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
+						<h2 className="text-center">Aplicar a {get(_postJob, 'title', '')}</h2>
+						<p className="mt-2 text-center">
+							<i>Antes de aplicar ingresa tus pretenciones salariales</i>
+						</p>
+						<aside className="FormGroup algn-center">
+							<form onSubmit={submit}>
+								<div className="dflex flex-row mt-4 mb-4 algn-center">
+									<DropdownMenu onChange={handleForm} name="typeAmount" value={form.typeAmount}>
+										<DropdownItem>Eliga tipo de moneda</DropdownItem>
+										<DropdownItem value="1">Soles</DropdownItem>
+										<DropdownItem value="2">Dólares</DropdownItem>
+									</DropdownMenu>
+									<Txtfield placeholder="Pretención salarial" onChange={handleForm} name="amountEstimated" value={form.amountEstimated} />
+								</div>
+								<BtnSecondary className='mr-2' onClick={closeModal}>CANCELAR</BtnSecondary>
+								<BtnPrimary type="submit"> APLICAR AHORA </BtnPrimary>
+							</form>
+						</aside>
+						<p className="mt-2 text-center">
+							<i>* Recuerde que el presupuesto estimado por el cliente es de : {get(_postJob, 'salaryRange', '')} soles</i>
+						</p>
+					</Modal>
+
 					<aside className="detailsApply mt-5 mb-5">
 						<article className="leftBox">
 							<div className="mb-5">

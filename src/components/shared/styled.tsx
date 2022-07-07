@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Theme = {
     colors: {
       bg: `#F9F9FA`,
-      primary: `#0066FF`,
+      primary: `#4DBFB4`,
       secondary: `#FFD500`,
       dark: `#4DBFB4`,
       light: `#FFFFFF`,
@@ -98,7 +98,23 @@ export const Theme = {
     border-style:none;
     cursor:pointer;
     &:hover{
-        background: ${Theme.colors.gray9};
+        background: ${Theme.colors.gray6};
+    }
+    
+    `;
+
+    export const BtnSecondary = styled.button`
+    background: ${Theme.colors.light};
+    font-size: 16px;
+    border-radius: 28px;
+    align-items: center;
+    padding: 16px 64px;
+    color: ${Theme.colors.gray6};
+    border:2px solid ${Theme.colors.primary};
+    cursor:pointer;
+    &:hover{
+        background: ${Theme.colors.primary};
+        color: ${Theme.colors.light};
     }
     
     `;
