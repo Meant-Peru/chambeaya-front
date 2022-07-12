@@ -94,7 +94,7 @@ export default function Corporativo() {
 					<aside className="FormAction mt-5">
 						<BtnPrimary onClick={handleRegister}>CREAR CUENTA</BtnPrimary>
 						<p className="mt-2">
-							<a href="/login">Ya tienes una cuenta?</a>
+							<a href="/login">¿Ya tienes una cuenta?</a>
 						</p>
 					</aside>
 				</aside>
