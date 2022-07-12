@@ -1,84 +1,127 @@
-import { TagComponent } from "../components/shared/atom/tag";
-import Footer from "../components/shared/footer"
-import Header from "../components/shared/header"
-import './../sass/pages/_detailPostCompany.scss'
+import { useEffect, useState } from 'react';
+import { TagComponent } from '../components/shared/atom/tag';
+import Footer from '../components/shared/footer';
+import Header from '../components/shared/header';
+import './../sass/pages/_detailPostCompany.scss';
 import Logo1 from './../assets/logos/1.svg';
-import { BtnPrimary } from "../components/shared/styled";
+import { BtnPrimary } from '../components/shared/styled';
+import { useParams } from 'react-router-dom';
+import { usePostCompany } from '../hooks/usePostCompany';
+import { ListPostJob, ListSkill, PostulantJob } from '../interfaces/DetailPost';
+import { Backdrop, CircularProgress } from '@material-ui/core';
+import React from 'react';
+import { Skill } from '../interfaces/Skill';
+import ButtonComponent from '../components/shared/atom/button';
 
 export const DetailPostCompany = () => {
-    return (
-        <>
-            <Header />
-            <section className="detailPostCompanyPage">
-                <aside className="coverHeader mb-5">
-                    <h1 className="mb-2">Design UI</h1>
-                    <p>
-                        <i> AE1 SAC </i>
-                    </p>
-                </aside>
-                <aside className="skillTags">
-                    <TagComponent type="state" level="success" tag={{ nameSkill: 'Skill 1' }} />
+	// detail-post-company
+	const [loadingPost, setLoadingPost] = useState(false);
+	const [postJob, setPostJob] = useState<ListPostJob>();
+	const [listSkill, setListSkill] = useState<ListSkill[]>([]);
+	const [listPostulant, setListPostulant] = useState<PostulantJob[]>([]);
+	const { id } = useParams();
+	const { startDetailPost } = usePostCompany();
 
-                </aside>
-                <hr />
+	useEffect(() => {
+		handlerInit();
+	}, [id]);
 
-                <aside className="cardApply mt-5">
-                    <article className="imgBrand logoBrand">
-                        <img src={Logo1} alt="" />
-                    </article>
-                    <article className="infoApply">
-                        <h4>12 personas aplicaron</h4>
-                        <p className="mt-2">10 de Diciembre 2022</p>
-                    </article>
-                    <article className="actionApply">
-                        <BtnPrimary> Ver Postulantes </BtnPrimary>
-                        <p className="mt-2">Requerimiento activo</p>
-                    </article>
-                </aside>
+	const handlerInit = async () => {
+		setLoadingPost(true);
+		const resp = await startDetailPost(id);
+		setPostJob(resp.listPostJob[0]);
+		setListSkill([...resp.listSkills]);
+		setListPostulant([...resp.postulants]);
+		setLoadingPost(false);
+	};
 
-                <aside className="detailsApply mt-5 mb-5">
-                    <article className="leftBox">
-                        <div className="mb-5">
-                            <h4 className="mb-3">Descripción</h4>
-                            <p> Lorem </p>
-                        </div>
-                        <hr />
-                        <div className="mt-5">
-                            <h4 className="mb-3">Funciones</h4>
-                            <p>Lorem functions</p>
-                        </div>
-                    </article>
-                    <article className="rightBox">
-                        <h4 className="mb-3">Precisiones</h4>
+	return (
+		<React.Fragment>
+			<Backdrop
+				open={loadingPost}
+				style={{
+					background: 'white',
+					zIndex: 99,
+				}}
+			>
+				<CircularProgress color="inherit" />
+			</Backdrop>
+			<Header />
+			<section className="detailPostCompanyPage">
+				<aside className="coverHeader mb-5">
+					<h1 className="mb-2">{postJob?.title}</h1>
+					<p>
+						<i> {postJob?.dataCompany.businessName} </i>
+					</p>
+				</aside>
+				<aside className="skillTags">
+					{listSkill.map((s: ListSkill) => (
+						<TagComponent key={s._id} type="state" level="success" tag={s} />
+					))}
+				</aside>
+				<hr />
 
-                        <ul>
-                            <li>Duración: 1 mes</li>
-                            <li>Presupuesto estimado: S/ 2000</li>
-                            <li>Tipo: Presencial</li>
-                        </ul>
-                    </article>
-                </aside>
+				<aside className="cardApply mt-5">
+					<article className="imgBrand logoBrand">
+						<img src={Logo1} alt="" />
+					</article>
+					<article className="infoApply">
+						<h4>{listPostulant.length} personas aplicaron</h4>
+						{/* <p className="mt-2">10 de Diciembre 2022</p> */}
+					</article>
+					<article className="actionApply">
+						<BtnPrimary> Ver Postulantes </BtnPrimary>
+						<p className="mt-2">Requerimiento {postJob?.state ? 'activo' : 'no activo'}</p>
+					</article>
+				</aside>
 
-                <aside>
-                    <div>
-                        <h4 className="mb-3">Postulantes</h4>
-                    </div>
-                    <div className="tableUsers">
-                        <article className="headerRow">
-                            <aside className="headerItem">Postulante</aside>
-                            <aside className="headerItem">Similitud</aside>
-                            <aside className="headerItem">Acciones</aside>
-                        </article>
-                        <article className="contentRow">
-                            <aside className="contentItem">aaaaa</aside>
-                            <aside className="contentItem">bbbbb</aside>
-                            <aside className="contentItem">cccccc</aside>
-                        </article>
-                    </div>
-                </aside>
+				<aside className="detailsApply mt-5 mb-5">
+					<article className="leftBox">
+						<div className="mb-5">
+							<h4 className="mb-3">Descripción</h4>
+							<p> {postJob?.descriptionPost} </p>
+						</div>
+						<hr />
+						<div className="mt-5">
+							<h4 className="mb-3">Funciones</h4>
+							<p>{postJob?.funtionsPost}</p>
+						</div>
+					</article>
+					<article className="rightBox">
+						<h4 className="mb-3">Precisiones</h4>
 
-            </section>
-            <Footer />
-        </>
-    );
-}
+						<ul>
+							<li>Duración: {postJob?.timeEstimated}</li>
+							<li>Presupuesto estimado: S/ {postJob?.salaryRange}</li>
+							<li>Tipo: {postJob?.modality}</li>
+						</ul>
+					</article>
+				</aside>
+
+				<aside>
+					<div>
+						<h4 className="mb-3">Postulantes</h4>
+					</div>
+					<div className="tableUsers">
+						<article className="headerRow">
+							<aside className="headerItem">Postulante</aside>
+							<aside className="headerItem">Similitud</aside>
+							<aside className="headerItem">Acciones</aside>
+						</article>
+						{listPostulant.map((p: PostulantJob) => (
+							<article className="contentRow" key={p._id}>
+								<aside className="contentItem">
+									{p.namePostulant} {p.lastNamePostulant}
+								</aside>
+								<aside className="contentItem">{p.porcentageSkills.toFixed(2)} %</aside>
+								{/* <aside className="contentItem">cccccc</aside> */}
+								<ButtonComponent type="primary" link={''} label="Ver" />
+							</article>
+						))}
+					</div>
+				</aside>
+			</section>
+			<Footer />
+		</React.Fragment>
+	);
+};

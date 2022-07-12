@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const TagComponent = ({ select = false, event = () => {}, tag }: Props) => {
-	return <div>{select ? <Chip label={tag.nameSkill} variant={'outlined'} onClick={() => event(tag)} /> : <Chip label={tag.nameSkill} onClick={() => event(tag)} />}</div>;
+	return <>{select ? <Chip label={tag.nameSkill} variant={'outlined'} onClick={() => event(tag)} /> : <Chip label={tag.nameSkill} onClick={() => event(tag)} />}</>;
 };
 
 // export default function TagComponent({ type, level, label, event = () => {} }: Props) {

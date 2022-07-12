@@ -6,8 +6,6 @@ import ButtonComponent from './shared/atom/button';
 import { TagComponent } from './shared/atom/tag';
 
 export const PostCompany = () => {
-
-	
 	const { getPosts } = usePostCompany();
 	const [listPost, setListPost] = useState<PostJob[]>([]);
 
@@ -17,6 +15,7 @@ export const PostCompany = () => {
 
 	const getList = async () => {
 		const data = await getPosts();
+		console.log({ data });
 		setListPost([...data]);
 	};
 
@@ -42,7 +41,7 @@ export const PostCompany = () => {
 								<p>{p.postulants} personas postularon</p>
 							</aside>
 							<aside className="actions">
-								<ButtonComponent  type="secondary" link='/detail-post-company' label="Ver detalles" />
+								<ButtonComponent type="secondary" link={'/detail-post-company/' + p._id} label="Ver detalles" />
 							</aside>
 						</article>
 					))}

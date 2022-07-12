@@ -40,8 +40,8 @@ export const AppRouter = () => {
 				<Route path="apply/:id" element={<ApplyJob />} />
 				<Route path="register-step-2" element={<RegisterPostulant />} />
 				<Route path="detail-post/:id" element={<DetailPost />} />
-				
-				<Route path="detail-post-company" element={<DetailPostCompany />} />
+
+				<Route path="detail-post-company/:id" element={<DetailPostCompany />} />
 				<Route path="*" element={<NoMatch />} />
 			</Routes>
 		</>
