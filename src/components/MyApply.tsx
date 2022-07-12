@@ -54,7 +54,7 @@ export const MyApply = () => {
 						<article className="cardHistory" key={p?._id}>
 							<div className="headCard">
 								<strong>{p?.title}</strong>
-								<span>CSTI CORP</span>
+								<span>{p?.state === true ? 'Publicación Abierta': 'Publicación Cerrada'}</span>
 							</div>
 							<div className="contentCard">
 								<ul className="listCard">
