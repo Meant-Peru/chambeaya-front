@@ -17,7 +17,7 @@ export const DetailPostCompany = () => {
                     </p>
                 </aside>
                 <aside className="skillTags">
-                <TagComponent type="state" level="success" tag={{ nameSkill: 'Skill 1' }} />
+                    <TagComponent type="state" level="success" tag={{ nameSkill: 'Skill 1' }} />
 
                 </aside>
                 <hr />
@@ -57,6 +57,24 @@ export const DetailPostCompany = () => {
                             <li>Tipo: Presencial</li>
                         </ul>
                     </article>
+                </aside>
+
+                <aside>
+                    <div>
+                        <h4 className="mb-3">Postulantes</h4>
+                    </div>
+                    <div className="tableUsers">
+                        <article className="headerRow">
+                            <aside className="headerItem">Postulante</aside>
+                            <aside className="headerItem">Similitud</aside>
+                            <aside className="headerItem">Acciones</aside>
+                        </article>
+                        <article className="contentRow">
+                            <aside className="contentItem">aaaaa</aside>
+                            <aside className="contentItem">bbbbb</aside>
+                            <aside className="contentItem">cccccc</aside>
+                        </article>
+                    </div>
                 </aside>
 
             </section>
