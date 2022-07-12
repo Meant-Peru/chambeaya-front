@@ -43,3 +43,12 @@
     }
   }
 }
+
+.contentRow{
+    display: flex;
+    align-items: center;
+}
+.skillTags{
+    display: flex;
+    flex-direction: row;
+}
