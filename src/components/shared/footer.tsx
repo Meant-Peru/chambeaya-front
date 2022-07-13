@@ -27,9 +27,9 @@ export default function Footer() {
           </article>
           <article>
             <ul>
-              <li>Publica un empleo</li>
-              <li>Busca un empleo</li>
-              <li onClick={handleRedirect}>Soy una compañia</li>
+              <li>Publicar un empleo</li>
+              <li>Buscar un empleo</li>
+              <li onClick={handleRedirect}>Soy una compañía</li>
             </ul>
           </article>
           <article>
