@@ -324,6 +324,14 @@ ul.pagination li a.active {
 .flex-row{
   flex-direction: row;
 }
+.w-100{
+  width: 100%;
+}
+.jc-sb{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 .algn-center{
   display: flex;
   align-items: center;
@@ -331,4 +339,23 @@ ul.pagination li a.active {
 }
 .mr-2{
   margin-right: .5rem;
+}
+.hide-caracter{
+  width: 23px;
+  overflow: hidden;
+  white-space:nowrap;
+  &::after{
+    content: '%';
+  }
+
+}
+
+.tabsection{
+  background-color: #f0f0f0;
+  width: 100%;
+  padding: 16px;
+}
+
+.mt-10 {
+  margin-top: 100px;
 }

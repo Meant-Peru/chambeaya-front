@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
 import { useAuth } from '../hooks/useAuth';
 import { usePostJob } from '../hooks/usePostJob';
+import { Reports } from '../components/Reports';
 
 export default function Dashboard() {
 	const { user } = useSelector((state: RootState) => state.auth);
@@ -92,6 +93,7 @@ export default function Dashboard() {
 							<Tab>Datos generales</Tab>
 							<Tab>Empresas</Tab>
 							<Tab>Publicaciones</Tab>
+							<Tab>Reportes</Tab>
 						</div>
 						<aside className="sideBarMenu mt-5 mb-5">
 							<a onClick={handleLogout}>Cerrar Sesión</a>
@@ -157,6 +159,9 @@ export default function Dashboard() {
 								))}
 							</div>
 						</section>
+					</TabPanel>
+					<TabPanel>
+						<Reports/>
 					</TabPanel>
 				</Tabs>
 			</section>
