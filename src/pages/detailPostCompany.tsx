@@ -29,6 +29,8 @@ export const DetailPostCompany = () => {
 	const handlerInit = async () => {
 		setLoadingPost(true);
 		const resp = await startDetailPost(id);
+		resp?.postulants.sort((a, b) => a.porcentageSkills - b.porcentageSkills);
+		resp?.postulants.reverse();
 		setPostJob(resp.listPostJob[0]);
 		setListSkill([...resp.listSkills]);
 		setListPostulant([...resp.postulants]);
