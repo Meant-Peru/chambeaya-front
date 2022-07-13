@@ -130,9 +130,9 @@ export default function Dashboard() {
 									<aside className="headerItem">Rol</aside>
 								</article>
 								<article className="contentRow">
-									<aside className="contentItem">{aUser.businessName}</aside>
-									<aside className="contentItem">{aUser.email}</aside>
-									<aside className="contentItem">{aUser.rol === POSTULANT ? 'Postulante' : aUser.rol === COMPANY ? 'Empresa' : aUser.rol === SALES ? 'Asesor' : 'Admin'}</aside>
+									{/* <aside className="contentItem">{aUser.businessName}</aside> */}
+									{/* <aside className="contentItem">{aUser.email}</aside> */}
+									{/* <aside className="contentItem">{aUser.rol === POSTULANT ? 'Postulante' : aUser.rol === COMPANY ? 'Empresa' : aUser.rol === SALES ? 'Asesor' : 'Admin'}</aside> */}
 								</article>
 							</div>
 						</section>
