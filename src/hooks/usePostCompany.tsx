@@ -18,8 +18,7 @@ export const usePostCompany = () => {
 
 	const startDetailPostulant = async ({ idP, idJob }) => {
 		const resp = await getDetailPostPostulant({ idPostJob: idJob, idPostulant: idP });
-		return resp[0] as DetailPostulant;
-		// return listPostJob as PostJob[];
+		return resp[0];
 	};
 
 	return {

@@ -42,7 +42,7 @@ export default function Login() {
 				<aside className="FormAction mt-5">
 					<BtnPrimary onClick={handleRedirect}>Login</BtnPrimary>
 					<p className="mt-2">
-						<a href="/#">No tienes una cuenta?</a>
+						<a href="/#">¿No tienes una cuenta?</a>
 					</p>
 				</aside>
 			</section>

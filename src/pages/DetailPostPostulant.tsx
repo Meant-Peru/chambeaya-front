@@ -31,8 +31,10 @@ export const DetailPostPostulant = () => {
 		// console.log({ idP, idJob });
 		setLoadingPost(true);
 		const resp = await startDetailPostulant({ idP, idJob });
+		console.log({ resp });
 		setPostJob(resp);
 		setPostulant(resp.dataPostAndPostulant.userDataPostulant);
+		console.log({ postulant });
 		// console.log('resp?.postulants', resp?.postulants);
 		// setListSkill([...resp.listSkills]);
 		setLoadingPost(false);
