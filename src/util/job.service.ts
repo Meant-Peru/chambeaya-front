@@ -46,3 +46,15 @@ export const postJobCompany = async (data: PostJob) => {
 		};
 	}
 };
+
+export const getDetallePostCompany = async (payload: any) => {
+	const token = await getLocalStorage(SESSION);
+	const { data } = await axios.post(`${URI}/user/getPostJobAndPostulantByid`, payload, { headers: { token } });
+	return data.data;
+};
+
+export const getDetailPostPostulant = async (payload: any) => {
+	const token = await getLocalStorage(SESSION);
+	const { data } = await axios.post(`${URI}/user/getPostulantJobfromPostById`, payload, { headers: { token } });
+	return data.data.data;
+};

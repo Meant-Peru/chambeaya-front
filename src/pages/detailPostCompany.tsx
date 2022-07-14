@@ -31,6 +31,7 @@ export const DetailPostCompany = () => {
 		const resp = await startDetailPost(id);
 		resp?.postulants.sort((a, b) => a.porcentageSkills - b.porcentageSkills);
 		resp?.postulants.reverse();
+
 		setPostJob(resp.listPostJob[0]);
 		setListSkill([...resp.listSkills]);
 		setListPostulant([...resp.postulants]);
@@ -116,8 +117,9 @@ export const DetailPostCompany = () => {
 									{p.namePostulant} {p.lastNamePostulant}
 								</aside>
 								<aside className="contentItem">{p.porcentageSkills.toFixed(2)} %</aside>
-								{/* <aside className="contentItem">cccccc</aside> */}
-								<ButtonComponent type="primary" link={''} label="Ver" />
+								<aside className="contentItem">
+									<ButtonComponent type="primary" link={`/detail-post-postulant/${p.idPostulant}/${p.idPostJob}`} label="Ver" />
+								</aside>
 							</article>
 						))}
 					</div>
