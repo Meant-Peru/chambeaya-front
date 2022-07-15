@@ -5,19 +5,32 @@ import {
   Txtfield,
   DropdownMenu,
   DropdownItem,
+  BtnPrimary,
 } from "./shared/styled";
+
+import imgCover from "./../assets/imgcover.png"
 
 export default function Hero() {
   return (
     <React.Fragment>
+      <div className="secFull">
       <section className="HeroComponent">
-        <aside className="cover mb-5">
-          <h1>
-             EL INICIO DE TU PRÓXIMO<br />
-             <b> TRABAJO</b>  
-          </h1>
+        <aside className="cover">
+          <article>
+            <h1>
+              EL INICIO DE TU <br /> PRÓXIMO
+              <b> TRABAJO</b>  
+              
+            </h1>
+            <BtnPrimary> Registrarme </BtnPrimary>
+          </article>
+          <article className="coverImg">
+            <img src={imgCover} alt="" />
+          </article>
         </aside>
-        <aside className="filterSection">
+      </section>
+      </div>
+      <aside className="filterSection">
           <Txtfield placeholder="Especialidad" />
           <Txtfield placeholder="Ubicación" />
           <DropdownMenu>
@@ -27,7 +40,6 @@ export default function Hero() {
           </DropdownMenu>
           <ButtonComponent type="primary" label="Filtrar" />
         </aside>
-      </section>
     </React.Fragment>
   );
 }

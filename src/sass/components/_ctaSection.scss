@@ -1,0 +1,28 @@
+@import "./../base/_grid.scss";
+
+.sectionFull {
+  width: 100%;
+  background-color: var(--gray-color-900);
+  padding: 93px 0;
+  .CtaSection {
+    width: var(--container);
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    h2 {
+      color: var(--light-color) !important;
+    }
+
+    @include tablet-p {
+      width: var(--container-tablet-portrait);
+    }
+
+    @include phone {
+      width: var(--container-phone);
+      flex-direction: column;
+    }
+  }
+}
