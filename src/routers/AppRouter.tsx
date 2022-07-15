@@ -15,7 +15,7 @@ import Register from '../pages/register';
 import SearchJob from '../pages/searchJob';
 import { RootState } from '../redux/store/store';
 import { DetailPostPostulant } from '../pages/DetailPostPostulant';
-import { DetailPostCompany } from '../pages/DetailPostCompany';
+import { DetailPostCompany } from '../pages/detailPostCompany';
 
 export const AppRouter = () => {
 	const { status } = useSelector((state: RootState) => state.auth);
@@ -54,9 +54,9 @@ export const AppRouter = () => {
 const NoMatch = () => {
 	return (
 		<div>
-			<h2>Nothing to see here!</h2>
+			<h2>No se encontró esta página, intente volviendo a la página anterior</h2>
 			<p>
-				<Link to="/">Go to the home page</Link>
+				<Link to="/">Volver al home</Link>
 			</p>
 		</div>
 	);
