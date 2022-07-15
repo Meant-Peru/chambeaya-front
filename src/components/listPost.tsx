@@ -1,16 +1,8 @@
 import * as React from "react";
-import { get } from "lodash";
 import "./../sass/components/_listPost.scss";
-import { TagComponent } from "./shared/atom/tag";
-
-import Logo1 from "./../assets/logos/1.svg";
-
-import ButtonComponent from "./shared/atom/button";
 
 import { usePostJob } from "../hooks/usePostJob";
 import { Backdrop, CircularProgress } from "@material-ui/core";
-import ReactDOM from "react-dom";
-import ReactPaginate from "react-paginate";
 import {Pagination} from './Pagination';
 
 export default function ListPost() {
@@ -41,6 +33,7 @@ export default function ListPost() {
       <section className="ListPostComponent">
         <aside className="mb-5">
           <h1>Últimos Proyectos</h1>
+          <br /><br /><br />
         </aside>
 		{
 			loadingPost ? (<Pagination postJobs={postJobs} itemsPerPage={4} key={1} />) : (<></>)

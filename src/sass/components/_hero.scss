@@ -1,12 +1,16 @@
 @import "./../base/_grid.scss";
 
+.secFull{
+    width: 100%;
+    background-color: var(--gray-color-100);
 .HeroComponent {
     width: var(--container);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 152px auto ;
+    margin: 0 auto 0 ;
     text-align: center;
+    background-color: var(--gray-color-100);
 
     @include tablet-p {
         width: var(--container-tablet-portrait); 
@@ -15,23 +19,60 @@
         width: var(--container-phone);  
         margin: 56px auto ;
     }
-
-    .filterSection {
+    .cover{
+        align-items: flex-start;
         display: flex;
-        flex: 1;
-        @include tablet-p {
-            width: var(--container-tablet-portrait); 
-        }
+        flex-direction: row;
+        justify-content: space-between;
         @include phone {
-            width: var(--container-phone); 
             display: flex;
-            flex-direction: column; 
+            flex-direction: column;
         }
-    
-        &:last-child {
-            margin-top: 72px;
-
+        article{
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            align-self: center;
+      
+            h1{
+                font-size: 48px;
+                padding-bottom: 40px;
+                color: var(--acent-color)!important;
+                font-style: italic;
+            }
+           
+        }
+        .coverImg{
+            img{
+                @include phone {
+                    width: 100%;
+                }
+            }
         }
     }
+   
 }
 
+}
+
+.filterSection {
+    width: var(--container);
+    margin: 80px auto 0;
+    display: flex;
+    flex: 1;
+
+    @include tablet-p {
+        width: var(--container-tablet-portrait); 
+    }
+    @include phone {
+        width: var(--container-phone); 
+        display: flex;
+        flex-direction: column; 
+    }
+
+    &:last-child {
+        margin-top: 72px;
+
+    }
+}
