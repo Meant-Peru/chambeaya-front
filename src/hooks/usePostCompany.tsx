@@ -2,7 +2,7 @@ import { DetailPost } from '../interfaces/DetailPost';
 import { DetailPostulant } from '../interfaces/DetailPostulant';
 import { PostJob } from '../types/post_job';
 import { GetPostCompany } from '../util/company.service';
-import { getDetallePostCompany, getDetailPostPostulant } from '../util/job.service';
+import { getDetallePostCompany, getDetailPostPostulant, createPostJobContracts } from '../util/job.service';
 
 export const usePostCompany = () => {
 	const getPosts = async () => {
@@ -21,9 +21,15 @@ export const usePostCompany = () => {
 		return resp[0] as DetailPostulant;
 	};
 
+	const startCreatePostJobContracts = async (data: any) => {
+		const resp = await createPostJobContracts(data);
+		return resp.status;
+	};
+
 	return {
 		getPosts,
 		startDetailPost,
 		startDetailPostulant,
+		startCreatePostJobContracts,
 	};
 };

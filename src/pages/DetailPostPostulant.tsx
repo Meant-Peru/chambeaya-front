@@ -4,24 +4,28 @@ import Footer from '../components/shared/footer';
 import Header from '../components/shared/header';
 import './../sass/pages/_detailPostCompany.scss';
 import Logo1 from './../assets/logos/1.svg';
-import { BtnPrimary } from '../components/shared/styled';
-import { useParams } from 'react-router-dom';
+import { BtnPrimary, BtnSecondary } from '../components/shared/styled';
+import { useNavigate, useParams } from 'react-router-dom';
 import { usePostCompany } from '../hooks/usePostCompany';
 import { ListSkill, PostulantJob } from '../interfaces/DetailPost';
 import { Backdrop, CircularProgress } from '@material-ui/core';
 import React from 'react';
 import { Skill } from '../interfaces/Skill';
-import ButtonComponent from '../components/shared/atom/button';
 import { DetailPostulant, UserDataPostulant } from '../interfaces/DetailPostulant';
+import { ModalComponent } from '../components/ModalComponent';
+import { useUi } from '../hooks/useUi';
+import toast, { Toaster } from 'react-hot-toast';
 
 export const DetailPostPostulant = () => {
 	// detail-post-company
 	const [loadingPost, setLoadingPost] = useState(false);
+	const navigate = useNavigate();
 	const [postJob, setPostJob] = useState<DetailPostulant>();
 	const [postulant, setPostulant] = useState<UserDataPostulant>();
 	const [listSkill, setListSkill] = useState<ListSkill[]>([]);
 	const { idP, idJob } = useParams();
-	const { startDetailPostulant } = usePostCompany();
+	const { startDetailPostulant, startCreatePostJobContracts } = usePostCompany();
+	const { changeStateModal } = useUi();
 
 	useEffect(() => {
 		handlerInit();
@@ -30,15 +34,39 @@ export const DetailPostPostulant = () => {
 	const handlerInit = async () => {
 		// console.log({ idP, idJob });
 		setLoadingPost(true);
-		const resp = await startDetailPostulant({ idP, idJob });
-		console.log({ resp });
+		const resp: DetailPostulant = await startDetailPostulant({ idP, idJob });
+		// console.log({ resp });
 		setPostJob(resp);
 		setPostulant(resp.dataPostAndPostulant.userDataPostulant);
-		console.log({ postulant });
+		// console.log({ postulant });
 		// console.log('resp?.postulants', resp?.postulants);
 		// setListSkill([...resp.listSkills]);
 		setLoadingPost(false);
 	};
+
+	const handlerContractor = async () => {
+		const dataSend = {
+			idPostulant: postJob.dataPostAndPostulant.idPostulant,
+			idPostJob: postJob.dataPostAndPostulant.idPostJob,
+			idCompany: postJob.idCompany,
+			dataContract: {},
+		};
+		// console.log({ dataSend });
+		const status = await startCreatePostJobContracts(dataSend);
+		changeStateModal(false);
+		if (status) {
+			toast.success('Se contrato al postulante!');
+			setTimeout(() => {
+				navigate('/myaccount');
+			}, 2000);
+		} else {
+			toast.error('Error en registrar al postulante!');
+		}
+	};
+
+	const openModal = () => changeStateModal(true);
+
+	const closeModal = () => changeStateModal(false);
 
 	return (
 		<React.Fragment>
@@ -52,6 +80,7 @@ export const DetailPostPostulant = () => {
 				<CircularProgress color="inherit" />
 			</Backdrop>
 			<Header />
+			<Toaster position="top-right" reverseOrder={false} />
 			<section className="detailPostCompanyPage">
 				<aside className="coverHeaderFlex mb-5">
 					<article className="">
@@ -63,7 +92,7 @@ export const DetailPostPostulant = () => {
 						</p>
 					</article>
 					<article className="actionApply">
-						<BtnPrimary> Contratar perfil </BtnPrimary>
+						<BtnPrimary onClick={openModal}> Contratar perfil </BtnPrimary>
 						<p className="mt-2">{postJob?.porcentageSkills}% de similitud al requerimiento</p>
 					</article>
 				</aside>
@@ -107,6 +136,24 @@ export const DetailPostPostulant = () => {
 					</ul>
 				</aside>
 			</section>
+			<ModalComponent>
+				<aside className="mt-2 mr-5 ml-5 mb-2">
+					<h2 className="text-center">Contrato del postulante</h2>
+					<p className="mt-2 text-center">
+						<i>Nuestra plataforma detecto {postJob?.porcentageSkills}% de similitud del postulante con su requerimiento.</i>
+					</p>
+					<aside className="FormGroup algn-center mt-2">
+						<br />
+						<br />
+						<BtnSecondary className="mr-2" onClick={closeModal}>
+							CANCELAR
+						</BtnSecondary>
+						<BtnPrimary type="submit" onClick={handlerContractor}>
+							SI, CONFIRMAR
+						</BtnPrimary>
+					</aside>
+				</aside>
+			</ModalComponent>
 			<Footer />
 		</React.Fragment>
 	);

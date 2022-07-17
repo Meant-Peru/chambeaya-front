@@ -58,3 +58,9 @@ export const getDetailPostPostulant = async (payload: any) => {
 	const { data } = await axios.post(`${URI}/user/getPostulantJobfromPostById`, payload, { headers: { token } });
 	return data.data.data;
 };
+
+export const createPostJobContracts = async (payload: any) => {
+	const token = await getLocalStorage(SESSION);
+	const { data } = await axios.post(`${URI}/user/createPostJobContracts`, payload, { headers: { token } });
+	return data;
+};

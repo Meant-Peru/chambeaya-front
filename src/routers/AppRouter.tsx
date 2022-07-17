@@ -15,7 +15,7 @@ import Register from '../pages/register';
 import SearchJob from '../pages/searchJob';
 import { RootState } from '../redux/store/store';
 import { DetailPostPostulant } from '../pages/DetailPostPostulant';
-import { DetailPostCompany } from '../pages/detailPostCompany';
+import { DetailPostCompany } from '../pages/DetailPostCompany';
 
 export const AppRouter = () => {
 	const { status } = useSelector((state: RootState) => state.auth);
@@ -43,7 +43,7 @@ export const AppRouter = () => {
 				<Route path="detail-post/:id" element={<DetailPost />} />
 
 				<Route path="detail-post-company/:id" element={<DetailPostCompany />} />
-				<Route path="detail-post-postulant/:idP/:idJob" element={<DetailPostPostulant />} />
+				<Route path="detail-post-postulant/:idJob/:idP" element={<DetailPostPostulant />} />
 
 				<Route path="*" element={<NoMatch />} />
 			</Routes>
