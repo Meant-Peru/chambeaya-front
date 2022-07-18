@@ -20,13 +20,6 @@ export default function Footer() {
           </article>
           <article>
             <ul>
-              <li>Sobre nosotros</li>
-              <li>Preguntas frecuentes</li>
-              <li>Conversa con nosotros</li>
-            </ul>
-          </article>
-          <article>
-            <ul>
               <li>Publicar un empleo</li>
               <li>Buscar un empleo</li>
               <li onClick={handleRedirect}>Soy una compañía</li>
