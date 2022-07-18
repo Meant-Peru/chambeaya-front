@@ -23,6 +23,11 @@
     @include phone {
       width: var(--container-phone);
       flex-direction: column;
+
+      h2{
+        margin-bottom: 48px;
+        font-size: 24px;
+      }
     }
   }
 }

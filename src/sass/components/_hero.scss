@@ -17,7 +17,8 @@
     }
     @include phone {
         width: var(--container-phone);  
-        margin: 56px auto ;
+        margin: 0 auto;
+        padding-top: 56px;
     }
     .cover{
         align-items: flex-start;
