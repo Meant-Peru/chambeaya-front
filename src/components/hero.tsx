@@ -9,8 +9,17 @@ import {
 } from "./shared/styled";
 
 import imgCover from "./../assets/imgcover.png"
+import {useNavigate} from "react-router-dom";
 
 export default function Hero() {
+
+    const navigate = useNavigate();
+    /**
+     * Handle redirects to user register form.
+     */
+    const handleRedirect = () => {
+        navigate("/register")
+    }
   return (
     <React.Fragment>
       <div className="secFull">
@@ -22,7 +31,7 @@ export default function Hero() {
               <b> TRABAJO</b>  
               
             </h1>
-            <BtnPrimary> Registrarme </BtnPrimary>
+            <BtnPrimary onClick={handleRedirect}>  Registrarme</BtnPrimary>
           </article>
           <article className="coverImg">
             <img src={imgCover} alt="" />
