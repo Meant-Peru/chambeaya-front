@@ -43,7 +43,7 @@ export default function Hero() {
           <Txtfield placeholder="Especialidad" />
           <Txtfield placeholder="Ubicación" />
           <DropdownMenu>
-            <DropdownItem>Categoría elegida</DropdownItem>
+            <DropdownItem>Seleccionar Categoría</DropdownItem>
             <DropdownItem>Diseño</DropdownItem>
             <DropdownItem>Ingeniería</DropdownItem>
           </DropdownMenu>
