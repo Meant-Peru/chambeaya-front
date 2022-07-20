@@ -263,7 +263,7 @@ export const RegisterPostulant = () => {
 									</article>
 
 									<article className="footerSection">
-										{/* <BtnPrimary type="submit"> Registrar </BtnPrimary> */}
+										{/* <BtnPrimary family="submit"> Registrar </BtnPrimary> */}
 										<BtnPrimary disabled={loading} onClick={handleRegister2}>
 											Registrar
 										</BtnPrimary>

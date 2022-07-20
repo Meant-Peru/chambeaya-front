@@ -303,7 +303,7 @@ export default function AddJob() {
 								<Txtfield placeholder="Nro de cuenta" />
 							</aside>
 							<aside>
-								<ButtonComponent type="primary" label="Actualizar" />
+								<ButtonComponent family="primary" label="Actualizar" />
 							</aside>
 						</section>
 					</TabPanel>
@@ -480,7 +480,7 @@ export default function AddJob() {
 								</aside>
 							</aside>
 							<aside className="mt-5">
-								{/* <ButtonComponent type="primary" label="Agregar" /> */}
+								{/* <ButtonComponent family="primary" label="Agregar" /> */}
 								<BtnPrimary onClick={handleCreatePost}>Agregar</BtnPrimary>
 							</aside>
 						</section>

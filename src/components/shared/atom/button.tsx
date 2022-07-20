@@ -5,15 +5,16 @@ import { useNavigate } from "react-router-dom";
 import plusIcon from "./../../../assets/plus.svg"
 
 interface Props {
-    type : string,
+    family : string,
     label : string,
     icon ?: string,
-    link ?: string
+    link ?: string,
+    category ?: String
 }
 
 export default function ButtonComponent(props: Props){
     const navigate = useNavigate();
-    const {type,label,icon,link} = props
+    const {family,label,icon,link,category} = props
 
 
     const handleRedirect = () => {
@@ -23,7 +24,7 @@ export default function ButtonComponent(props: Props){
   
     return(
         <React.Fragment>
-            <button className={"btnComponent--"+type} onClick={handleRedirect}>
+            <button className={"btnComponent--"+family} onClick={handleRedirect}>
                 {label}
                 <img src={plusIcon} className={icon} alt="Add" />
             </button>

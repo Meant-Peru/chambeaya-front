@@ -18,7 +18,9 @@ export interface PostJob {
 }
 
 export interface DataCompany {
+	_id?: string;
 	business_name?: string;
+	email?: string;
 	description?: string;
 	facebook?: string;
 	linkedin?: string;

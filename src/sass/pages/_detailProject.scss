@@ -1,0 +1,33 @@
+@import "./../base/_grid.scss";
+
+.detailProject{
+    width: var(--container);
+    display: flex;
+    flex-direction: column;
+    margin: 80px auto 120px;
+  
+    @include tablet-l {
+      width: var(--container-tablet-landscape);
+    }
+  
+    @include tablet-p {
+      width: var(--container-tablet-portrait);
+    }
+  
+    @include phone {
+      width: var(--container-phone);
+    }
+  
+}
+
+.headerTab{
+    background: #DEE1E5;
+    border-radius: 8px 8px 0px 0px;
+    padding: 12px;
+}
+.mpago{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px 8px 0;
+}

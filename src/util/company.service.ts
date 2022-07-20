@@ -18,3 +18,8 @@ export const registerSalesCompany = async (payload: any) => {
 	const token = await getLocalStorage(SESSION);
 	return await axios.post(`${URI}/user/signUpByReference`, payload, { headers: { token } });
 };
+
+export const getCompanyAll = async () => {
+	const token = await getLocalStorage(SESSION);
+	return await axios.get(`${URI}/user/getAllUserService`, { headers: { token } });
+};

@@ -74,7 +74,7 @@ export default function AccountSales() {
 								</aside>
 
 								<aside>
-									{/* <ButtonComponent  type="primary" label="Actualizar" /> */}
+									{/* <ButtonComponent  family="primary" label="Actualizar" /> */}
 									<BtnPrimary onClick={handleUpdate}>Actualizar</BtnPrimary>
 								</aside>
 							</Fragment>

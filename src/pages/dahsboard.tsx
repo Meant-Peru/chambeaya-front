@@ -5,8 +5,10 @@ import { Txtfield, BtnPrimary } from '../components/shared/styled';
 import './../sass/pages/_myAccount.scss';
 import './../sass/pages/_dashboard.scss';
 import Footer from '../components/shared/footer';
-import { ListUser } from '../util/user.service';
-import { getAllJobs } from '../util/job.service';
+import { getSkill } from '../util/skill.services';
+import { getCompanyAll } from '../util/company.service';
+
+import { GetCategory } from '../util/category.service';
 
 import { POSTULANT, COMPANY, SALES } from '../helpers/constants';
 import { Navigate } from 'react-router-dom';
@@ -19,11 +21,6 @@ import { Reports } from '../components/Reports';
 export default function Dashboard() {
 	const { user } = useSelector((state: RootState) => state.auth);
 	const { startLogout, startUpdateUser } = useAuth();
-	const [aUser, setAUser] = useState<any>({
-		businessName: '',
-		email: '',
-		rol: '',
-	});
 
 	const {
 		postJobsState: { loading, postJobs },
@@ -36,6 +33,13 @@ export default function Dashboard() {
 	const [company, setCompany] = useState({
 		...user.dataUser,
 	});
+
+
+	const [skill, setSkill] = useState([]);
+
+	const [allCompany, setAllCompany] = useState([]);
+
+	const [category, setCategory] = useState([]);
 
 	const handleEvent = (e: any) => {
 		setCompany({
@@ -71,9 +75,17 @@ export default function Dashboard() {
 
 	useEffect(() => {
 		(async () => {
-			const response = await ListUser();
-			console.log('response', response.data.dataUser);
-			setAUser(response.data.dataUser);
+	
+
+			const responseSkill = await getSkill();
+			setSkill(responseSkill.data.data);
+
+			const responseCategory = await GetCategory();
+			setCategory(responseCategory.data.data);
+
+			const responseAllCompany = await getCompanyAll();
+			setAllCompany(responseAllCompany.data.data);
+			
 		})();
 	}, []);
 
@@ -94,6 +106,8 @@ export default function Dashboard() {
 							<Tab>Empresas</Tab>
 							<Tab>Publicaciones</Tab>
 							<Tab>Reportes</Tab>
+							<Tab>Especialidades</Tab>
+							<Tab>Skill</Tab>
 						</div>
 						<aside className="sideBarMenu mt-5 mb-5">
 							<a onClick={handleLogout}>Cerrar Sesión</a>
@@ -114,7 +128,7 @@ export default function Dashboard() {
 								</aside>
 
 								<aside>
-									{/* <ButtonComponent  type="primary" label="Actualizar" /> */}
+									{/* <ButtonComponent  family="primary" label="Actualizar" /> */}
 									<BtnPrimary onClick={handleUpdate}>Actualizar</BtnPrimary>
 								</aside>
 							</Fragment>
@@ -127,15 +141,17 @@ export default function Dashboard() {
 							<h2>Usuarios</h2>
 							<div className="tableUsers">
 								<article className="headerRow">
-									<aside className="headerItem">Nombres</aside>
+									<aside className="headerItem">Razon social</aside>
 									<aside className="headerItem">Correo</aside>
-									<aside className="headerItem">Rol</aside>
+								
 								</article>
-								<article className="contentRow">
-									{/* <aside className="contentItem">{aUser.businessName}</aside> */}
-									{/* <aside className="contentItem">{aUser.email}</aside> */}
-									{/* <aside className="contentItem">{aUser.rol === POSTULANT ? 'Postulante' : aUser.rol === COMPANY ? 'Empresa' : aUser.rol === SALES ? 'Asesor' : 'Admin'}</aside> */}
-								</article>
+								{allCompany.map((p: any) => (
+									<article className="contentRow" key={p._id}>
+										<aside className="contentItem">{p.businessName}</aside>
+										<aside className="contentItem">{p.email}</aside>
+
+									</article>
+								))}
 							</div>
 						</section>
 					</TabPanel>
@@ -161,7 +177,44 @@ export default function Dashboard() {
 						</section>
 					</TabPanel>
 					<TabPanel>
-						<Reports/>
+						<Reports />
+					</TabPanel>
+					<TabPanel>
+						<h2>Especialidades</h2>
+						{/* {category.map((e) => <><br /><h1>{e.nameCategory}</h1></>)} */}
+						<div className="tableUsers">
+							<article className="headerRow">
+								<aside className="headerItem">Nombre</aside>
+								<aside className="headerItem">Descripción</aside>
+								<aside className="headerItem flex-end">Acciones</aside>
+							</article>
+							{category.map((e: any) => (
+								<article className="contentRow" key={e._id}>
+									<aside className="contentItem">{e.nameCategory}</aside>
+									<aside className="contentItem">{e.descriptionCategory}</aside>
+									<aside className="contentItem flex-end"> Agregar Posiciones</aside>
+								</article>
+							))}
+						</div>
+					</TabPanel>
+					<TabPanel>
+						<h2>Skill</h2>
+
+
+						<div className="tableUsers">
+							<article className="headerRow">
+								<aside className="headerItem">Nombre</aside>
+								<aside className="headerItem">Descripción</aside>
+								<aside className="headerItem flex-end">Acciones</aside>
+							</article>
+							{skill.map((e: any) => (
+								<article className="contentRow" key={e._id}>
+									<aside className="contentItem">{e.nameSkill}</aside>
+									<aside className="contentItem">{e.descriptionskill}</aside>
+									<aside className="contentItem flex-end"> Asociar con posición</aside>
+								</article>
+							))}
+						</div>
 					</TabPanel>
 				</Tabs>
 			</section>

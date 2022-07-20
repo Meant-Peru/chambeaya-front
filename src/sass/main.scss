@@ -141,6 +141,12 @@ p {
 ul li{
   color: var(--gray-color-700);
 }
+.mt-1{
+  margin-top: #{$size};
+}
+.mb-1{
+  margin-bottom: #{$size};
+}
 
 .mt-2{
   margin-top: #{$size*2};
@@ -364,4 +370,50 @@ ul.pagination li a.active {
 
 .mt-10 {
   margin-top: 100px;
+}
+.primary-color{
+  color: var(--primary-color);
+}
+.accent-color{
+  color: var(--acent-color);
+}
+.card{
+  background: #F9F9FA;
+  border-radius: 8px;
+}
+
+.mmlist{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  img{
+    margin-right: .5rem;
+  }
+}
+
+.mlist{
+  display: flex;
+  align-items: center;
+  button{
+      margin-left: 1rem;
+      padding: .5rem;
+      border-radius: 8px;
+  }
+}
+
+.containerModal{
+  padding: 1rem;
+  text-align: center;
+  .headModal{
+    text-align: center;
+  }
+  .contentModal{
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+
+  }
 }

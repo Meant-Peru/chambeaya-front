@@ -54,7 +54,7 @@ export const Pagination = ({ postJobs, itemsPerPage }) => {
                 <aside className="actions">
                   <ButtonComponent
                     link={"/detail-post/" + get(post, "_id", "")}
-                    type="btnCta"
+                    family="btnCta"
                     label="Aplicar"
                   />
                 </aside>

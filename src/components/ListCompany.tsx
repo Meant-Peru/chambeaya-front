@@ -47,7 +47,7 @@ export default function ListCompany() {
 									<p>{company.dataUser.ruc}</p>
 								</aside>
 								<aside className="actions">
-									<ButtonComponent type="secondary" label="Ver detalles" />
+									<ButtonComponent family="secondary" label="Ver detalles" />
 								</aside>
 							</article>
 						</aside>

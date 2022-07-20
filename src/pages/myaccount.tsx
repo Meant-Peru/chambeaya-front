@@ -1,23 +1,54 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
-import Header from '../components/shared/header';
-import ilusEmpty from './../assets/empty-state.svg';
-import { Txtfield, TxtArea, DropdownMenu, DropdownItem, BtnPrimary } from '../components/shared/styled';
 import './../sass/pages/_myAccount.scss';
+
+import Header from '../components/shared/header';
 import Footer from '../components/shared/footer';
+import check from './../assets/check.svg';
+import negative from './../assets/negative.svg';
+import ilusEmpty from "./../assets/empty-state.svg"
+
+import Modal from 'react-modal';
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
+import { Txtfield, TxtArea, DropdownMenu, DropdownItem, BtnPrimary } from '../components/shared/styled';
 
 import { COMPANY, POSTULANT } from '../helpers/constants';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
 import { useAuth } from '../hooks/useAuth';
 
 import { PostCompany } from '../components/PostCompany';
 import { MyApply } from '../components/MyApply';
-import { usePostulant } from '../hooks/usePostulant';
+
+
+import ButtonComponent from '../components/shared/atom/button';
+
+const customStyles = {
+	content: {
+		top: '50%',
+		left: '50%',
+		right: 'auto',
+		bottom: 'auto',
+		marginRight: '-50%',
+		transform: 'translate(-50%, -50%)',
+	},
+};
 
 export default function MyAccount() {
-	
+	const [modalIsOpen, setIsOpen] = React.useState(false);
+	function openModal() {
+		setIsOpen(true);
+	}
+
+	function afterOpenModal() {
+		// references are now sync'd and can be accessed.
+		//   subtitle.style.color = '#f00';
+	}
+
+	function closeModal() {
+		setIsOpen(false);
+	}
+
 
 
 	const { user } = useSelector((state: RootState) => state.auth);
@@ -101,7 +132,7 @@ export default function MyAccount() {
 									</aside>
 
 									<aside>
-										{/* <ButtonComponent type="primary" label="Actualizar" /> */}
+										{/* <ButtonComponent family="primary" label="Actualizar" /> */}
 										<BtnPrimary onClick={handleUpdate}>Actualizar</BtnPrimary>
 									</aside>
 								</Fragment>
@@ -136,7 +167,7 @@ export default function MyAccount() {
 									</aside>
 
 									<aside>
-										{/* <ButtonComponent  type="primary" label="Actualizar" /> */}
+										{/* <ButtonComponent  family="primary" label="Actualizar" /> */}
 										<BtnPrimary onClick={handleUpdate}>Actualizar</BtnPrimary>
 									</aside>
 								</Fragment>
@@ -154,8 +185,51 @@ export default function MyAccount() {
 					</TabPanel>
 					<TabPanel>
 						<section className="proyects">
-							<img src={ilusEmpty} alt="empty" />
-							<p>Aún no ingresaste a algún proyecto</p>
+							
+							{user?.rol === COMPANY ? <>
+								<h2>Listado de proyectos</h2>
+								<aside className="listCards">
+									<article className="cardHistory">
+										<div className="headCard">
+											<strong>Senior Product Designer</strong>
+											<span><i>Proyecto no iniciado</i></span>
+										</div>
+										<div className="contentCard">
+											<ul className="listCard">
+												<li>
+													<img src={check} alt="" /> <span>Contratado</span>
+												</li>
+												<li>
+													<img src={negative} alt="" /> <span>Presupuesto no depositado</span>
+												</li>
+												<li>
+													<img src={check} alt="" /> <span>Documentación completa</span>
+												</li>
+											</ul>
+											{/* <button className="btnComponent--textLink" onClick={openModal}></button> */}
+
+											<ButtonComponent
+												link={"/detail-project"}
+												family="textLink"
+												icon='whitOutIcon'
+												label="Ver Detalle"
+											/>
+
+											<Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
+												<button onClick={closeModal}>close</button>
+
+												<h2>Soy un modal</h2>
+											</Modal>
+										</div>
+									</article>
+
+								</aside>
+							</> : <>
+								<img src={ilusEmpty} alt="empty" />
+								<p>Aún no ingresaste a algún proyecto</p>
+							</>}
+
+
 						</section>
 					</TabPanel>
 				</Tabs>

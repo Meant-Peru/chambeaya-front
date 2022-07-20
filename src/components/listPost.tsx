@@ -51,7 +51,7 @@ export default function ListPost() {
                   {get(post, "state", false) && (
                     <TagComponent
                       tag={{ nameSkill: "Destacado" }}
-                      type="highlight"
+                      family="highlight"
                       level="dark"
                       label="Destacado"
                     />
@@ -63,7 +63,7 @@ export default function ListPost() {
                 <aside className="actions">
                   <ButtonComponent
                     link={"/detail-post/" + get(post, "_id", "")}
-                    type="btnCta"
+                    family="btnCta"
                     label="Aplicar"
                   />
                 </aside>

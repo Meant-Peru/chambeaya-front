@@ -104,16 +104,17 @@
         width: 48%;
       }
     }
-    .headSection{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
+
   }
 }
 
+.headSection{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
-.apply,.proyects,.billing{
+.apply,.billing{
     width: 100%;
     display: flex;
     flex-direction: column;

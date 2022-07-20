@@ -118,7 +118,7 @@ export const DetailPostCompany = () => {
 								</aside>
 								<aside className="contentItem">{p.porcentageSkills.toFixed(2)} %</aside>
 								<aside className="contentItem">
-									<ButtonComponent type="primary" link={`/detail-post-postulant/${p.idPostJob}/${p.idPostulant}`} label="Ver" />
+									<ButtonComponent family="primary" link={`/detail-post-postulant/${p.idPostJob}/${p.idPostulant}`} label="Ver" />
 								</aside>
 							</article>
 						))}
