@@ -1,26 +1,46 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import Header from '../components/shared/header';
-import { Txtfield, BtnPrimary } from '../components/shared/styled';
+import Modal from 'react-modal';
+import { Txtfield, BtnPrimary , BtnSecondary , TxtArea} from '../components/shared/styled';
+import ButtonComponent from '../components/shared/atom/button';
 import './../sass/pages/_myAccount.scss';
 import './../sass/pages/_dashboard.scss';
 import Footer from '../components/shared/footer';
+import toast, { Toaster } from 'react-hot-toast';
 import { getSkill } from '../util/skill.services';
 import { getCompanyAll } from '../util/company.service';
 
-import { GetCategory } from '../util/category.service';
+import { getCategory , createCategory } from '../util/category.service';
 
 import { POSTULANT, COMPANY, SALES } from '../helpers/constants';
-import { Navigate } from 'react-router-dom';
+import { useNavigate , Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
 import { useAuth } from '../hooks/useAuth';
-import { usePostJob } from '../hooks/usePostJob';
+import { usePostJob , usePostForm } from '../hooks/usePostJob';
+import { useCatForm } from '../hooks/useCategory';
 import { Reports } from '../components/Reports';
+
+const customStyles = {
+	content: {
+		top: '50%',
+		left: '50%',
+		right: 'auto',
+		bottom: 'auto',
+		marginRight: '-50%',
+		transform: 'translate(-50%, -50%)',
+		borderRadius: '20px',
+	}
+};
 
 export default function Dashboard() {
 	const { user } = useSelector((state: RootState) => state.auth);
 	const { startLogout, startUpdateUser } = useAuth();
+	const [modalIsOpen, setIsOpen] = React.useState(false);
+	const { handleForm, reset } = usePostForm();
+	const { formcat, handleFormCat, resetCat } = useCatForm();
+	const navigate = useNavigate();
 
 	const {
 		postJobsState: { loading, postJobs },
@@ -39,7 +59,7 @@ export default function Dashboard() {
 
 	const [allCompany, setAllCompany] = useState([]);
 
-	const [category, setCategory] = useState([]);
+	const [allcategory, setAllCategory] = useState([]);
 
 	const handleEvent = (e: any) => {
 		setCompany({
@@ -71,8 +91,6 @@ export default function Dashboard() {
 		startLogout();
 	};
 
-	console.log('postJobsState', postJobs);
-
 	useEffect(() => {
 		(async () => {
 	
@@ -80,14 +98,35 @@ export default function Dashboard() {
 			const responseSkill = await getSkill();
 			setSkill(responseSkill.data.data);
 
-			const responseCategory = await GetCategory();
-			setCategory(responseCategory.data.data);
+			const responseCategory = await getCategory();
+			setAllCategory(responseCategory.data.data);
 
 			const responseAllCompany = await getCompanyAll();
 			setAllCompany(responseAllCompany.data.data);
 			
 		})();
 	}, []);
+
+	function openModal() {
+		setIsOpen(true);
+	}
+
+	function closeModal() {
+		setIsOpen(false);
+	}
+
+	function afterOpenModal() {
+		// references are now sync'd and can be accessed.
+		//   subtitle.style.color = '#f00';
+	}
+
+	const submit = async (event: any) => {
+		event.preventDefault();
+		console.log(formcat)
+		await createCategory(formcat);
+		toast.success('Has registrado una nueva especialidad!');
+		resetCat();
+	};
 
 	if (Object.keys(user.dataUser).length === 0) return <Navigate replace to="/login" />;
 
@@ -180,7 +219,10 @@ export default function Dashboard() {
 						<Reports />
 					</TabPanel>
 					<TabPanel>
+					<div className="dflex flex-row mt-4 mb-4 algn-center">
 						<h2>Especialidades</h2>
+						<BtnPrimary onClick={openModal}> Agregar nueva </BtnPrimary>
+					</div>
 						{/* {category.map((e) => <><br /><h1>{e.nameCategory}</h1></>)} */}
 						<div className="tableUsers">
 							<article className="headerRow">
@@ -188,14 +230,34 @@ export default function Dashboard() {
 								<aside className="headerItem">Descripción</aside>
 								<aside className="headerItem flex-end">Acciones</aside>
 							</article>
-							{category.map((e: any) => (
+							{allcategory.map((e: any) => (
 								<article className="contentRow" key={e._id}>
 									<aside className="contentItem">{e.nameCategory}</aside>
 									<aside className="contentItem">{e.descriptionCategory}</aside>
-									<aside className="contentItem flex-end"> Agregar Posiciones</aside>
+									<ButtonComponent family="secondary" link={'/list-posiciones/' + e._id} label="Ver posiciones" />
 								</article>
 							))}
 						</div>
+						<Toaster position="top-right" reverseOrder={false} />
+						<Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
+						<h2 className="text-center">Nueva Especialidad</h2>
+						<p className="mt-2 text-center">
+							<i>Ingresa nueva posición , relacionalo a una especialidad</i>
+						</p>
+						<aside className="FormGroup algn-center">
+							<form onSubmit={submit}>
+								<div className="dflex flex-row mt-4 mb-4 algn-center">
+								<Txtfield placeholder="Nombre" onChange={handleFormCat} name="nameCategory" value={formcat.nameCategory} />
+								</div>
+								<div className="dflex flex-row mt-4 mb-4 algn-center">
+								<TxtArea placeholder="Descripción" onChange={handleFormCat} name="descriptionCategory" value={formcat.descriptionCategory}/>
+								</div>
+								<BtnSecondary className='mr-2' onClick={closeModal}>CANCELAR</BtnSecondary>
+								<BtnPrimary type="submit"> GUARDAR </BtnPrimary>
+							</form>
+						</aside>
+					 </Modal>
+
 					</TabPanel>
 					<TabPanel>
 						<h2>Skill</h2>
