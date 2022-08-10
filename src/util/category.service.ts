@@ -11,6 +11,8 @@ export const getCategory = async () => {
 
 export const createCategory = async (data: any) => {
 	try {
+		console.log({ nameCategory: data.nameCategory, descriptionCategory: data.descriptionCategory })
+
 		return await axios({
 			method: 'post',
 			url: `${URI}/user/createCategory`,

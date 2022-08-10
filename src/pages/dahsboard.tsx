@@ -125,6 +125,7 @@ export default function Dashboard() {
 		console.log(formcat)
 		await createCategory(formcat);
 		toast.success('Has registrado una nueva especialidad!');
+		closeModal();
 		resetCat();
 	};
 

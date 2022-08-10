@@ -35,13 +35,15 @@ export default function ListPosiciones() {
 
 	useEffect(() => {
 		(async () => {
+			await listPositions()
+		})();
+	}, []);
 
+	const listPositions = async () =>{
 			const responsePosition = await getPosition(idCategory);
 			setAllPosition(responsePosition.data);
 			console.log(responsePosition.data);
-			
-		})();
-	}, []);
+	}
 
 	formpos.id_category = idCategory.idCategory;
 
@@ -51,7 +53,10 @@ export default function ListPosiciones() {
 		event.preventDefault();
 		await createPosition(formpos);
 		toast.success('Has registrado una nueva posición!');
+		closeModal();
+		await listPositions();
 		resetPos();
+
 	};
 
 	function openModal() {
