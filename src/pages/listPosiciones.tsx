@@ -80,7 +80,7 @@ export default function ListPosiciones() {
 	return (
 		<React.Fragment>
 			<Header />
-			<div className="dflex mt-4 mb-4 algn-center">
+			<div className="dflex flex-row mt-4 mb-4 algn-center">
 			<h2>Posiciones</h2>
 			<BtnPrimary onClick={openModal}> Agregar nueva </BtnPrimary>
 			</div>

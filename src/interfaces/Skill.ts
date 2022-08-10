@@ -5,11 +5,17 @@ export interface respSkill {
 }
 
 export interface Skill {
-	id: string;
 	_id?: string;
 	idUser: string;
 	nameSkill: string;
 	level: string;
+}
+
+export interface SkillAdd {
+	_id?: string;
+	idUser: string;
+	nameSkill: string;
+	descriptionSkill: string;
 }
 
 export interface SkillSelect {
