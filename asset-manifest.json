@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.27ba647a.css",
-    "main.js": "/static/js/main.ec0d294e.js",
+    "main.css": "/static/css/main.972fb253.css",
+    "main.js": "/static/js/main.11bb9361.js",
     "static/media/imgcover.png": "/static/media/imgcover.a515898cd9e9ca1c995e.png",
     "static/media/coverCorporativo.svg": "/static/media/coverCorporativo.8cebb2afe1de3544234259ff8d5bae3d.svg",
     "static/media/plin.png": "/static/media/plin.e4a96c7042067d545385.png",
@@ -12,18 +12,18 @@
     "static/media/no-comisiones.svg": "/static/media/no-comisiones.cd9395b9a3195a90059a4dddd6d1a628.svg",
     "static/media/logo.svg": "/static/media/logo.7278b2624fde316dc167efedd7b1f741.svg",
     "static/media/pagos-garantizados.svg": "/static/media/pagos-garantizados.68c86b5aced40400853698818dad28eb.svg",
+    "index.html": "/index.html",
     "static/media/postulaciones.svg": "/static/media/postulaciones.f188ef66d6ec4993ecb0fbeb4f74c54f.svg",
     "static/media/time.svg": "/static/media/time.147cf3aadf4a2866f590486cf89dc221.svg",
-    "index.html": "/index.html",
     "static/media/plus.svg": "/static/media/plus.51abfe633ae114f71ce6dd3fd62f0dc0.svg",
     "static/media/todos-oficios.svg": "/static/media/todos-oficios.e84e6715c8ae0c0e7fb114405166c955.svg",
     "static/media/negative.svg": "/static/media/negative.4eb2c8964c2332d47a16bc38936ef358.svg",
     "static/media/check.svg": "/static/media/check.6dd21e90268838053df89d833a4bc9f4.svg",
-    "main.27ba647a.css.map": "/static/css/main.27ba647a.css.map",
-    "main.ec0d294e.js.map": "/static/js/main.ec0d294e.js.map"
+    "main.972fb253.css.map": "/static/css/main.972fb253.css.map",
+    "main.11bb9361.js.map": "/static/js/main.11bb9361.js.map"
   },
   "entrypoints": [
-    "static/css/main.27ba647a.css",
-    "static/js/main.ec0d294e.js"
+    "static/css/main.972fb253.css",
+    "static/js/main.11bb9361.js"
   ]
 }
