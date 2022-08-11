@@ -16,20 +16,18 @@ export const PostCompany = () => {
 
 	const getList = async () => {
 		const data = await getPosts();
-		console.log({ data });
+		// console.log({ data });
 		setListPost([...data]);
 	};
 
 	return (
 		<React.Fragment>
 			<section className="sectionAccount">
-		
-					<article className="headSection">
-						<h2>Publicaciones</h2>
-						<ButtonComponent family="terceary" link="/addJob" label="Nuevo" />
-					</article>
-					<p className='mb-5'>Actualmente tienes un plan gratuito, puede que no puedas colocar visible 2 o más publicaciones.</p>
-		
+				<article className="headSection">
+					<h2>Publicaciones</h2>
+					<ButtonComponent family="terceary" link="/addJob" label="Nuevo" />
+				</article>
+				<p className="mb-5">Actualmente tienes un plan gratuito, puede que no puedas colocar visible 2 o más publicaciones.</p>
 
 				<aside>
 					{listPost.map((p: PostJob) => (

@@ -25,6 +25,12 @@ export const getCompanyAll = async () => {
 };
 
 export const getProjectsAllId = async () => {
-	const token = await getLocalStorage(SESSION);
-	return await axios.get(`${URI}/user/getPostAllJobByCompanyId`, { headers: { token } });
+	try {
+		const token = await getLocalStorage(SESSION);
+		const { data } = await axios.get(`${URI}/user/getPostAllJobByCompanyId`, { headers: { token } });
+		return data.data;
+	} catch (error) {
+		console.log(error);
+		return { listProjects: [] };
+	}
 };

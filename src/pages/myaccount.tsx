@@ -1,13 +1,10 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import './../sass/pages/_myAccount.scss';
 
 import Header from '../components/shared/header';
 import Footer from '../components/shared/footer';
-import check from './../assets/check.svg';
-import negative from './../assets/negative.svg';
 import ilusEmpty from './../assets/empty-state.svg';
 
-import Modal from 'react-modal';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import { Txtfield, TxtArea, DropdownMenu, DropdownItem, BtnPrimary } from '../components/shared/styled';
 
@@ -20,8 +17,7 @@ import { useAuth } from '../hooks/useAuth';
 import { PostCompany } from '../components/PostCompany';
 import { MyApply } from '../components/MyApply';
 
-import ButtonComponent from '../components/shared/atom/button';
-import { getProjectsAllId } from '../util/company.service';
+import { ProjectsComponent } from '../components/ProjectsComponent';
 
 const customStyles = {
 	content: {
@@ -36,7 +32,7 @@ const customStyles = {
 
 export default function MyAccount() {
 	const [modalIsOpen, setIsOpen] = React.useState(false);
-	const [projects, setProjects] = useState([]);
+
 	function openModal() {
 		setIsOpen(true);
 	}
@@ -49,10 +45,6 @@ export default function MyAccount() {
 	function closeModal() {
 		setIsOpen(false);
 	}
-
-	useEffect(() => {
-		getProjectsId();
-	}, []);
 
 	const { user } = useSelector((state: RootState) => state.auth);
 	const { startLogout, startUpdateUser } = useAuth();
@@ -89,14 +81,6 @@ export default function MyAccount() {
 
 		const respUpdate = await startUpdateUser(dataSend);
 		console.log({ respUpdate });
-	};
-
-	const getProjectsId = async () => {
-		if (user.rol === COMPANY) {
-			const resp = await getProjectsAllId();
-			setProjects(resp.data.data);
-			console.log(resp.data.data);
-		}
 	};
 
 	const handleLogout = () => {
@@ -197,48 +181,7 @@ export default function MyAccount() {
 					<TabPanel>
 						<section className="proyects">
 							{user?.rol === COMPANY ? (
-								<>
-									<h2>Listado de proyectos</h2>
-									<aside className="listCards">
-										<article className="cardHistory">
-											<div className="headCard">
-												<strong>Senior Product Designer</strong>
-												<span>
-													<i>Proyecto no iniciado</i>
-												</span>
-											</div>
-											<div className="contentCard">
-												<ul className="listCard">
-													<li>
-														<img src={check} alt="" /> <span>Contratado</span>
-													</li>
-													<li>
-														<img src={negative} alt="" /> <span>Presupuesto no depositado</span>
-													</li>
-													<li>
-														<img src={check} alt="" /> <span>Documentación completa</span>
-													</li>
-												</ul>
-												{/* <button className="btnComponent--textLink" onClick={openModal}></button> */}
-
-												<ButtonComponent link={'/detail-project'} family="textLink" icon="whitOutIcon" label="Ver Detalle" />
-
-												<Modal
-													isOpen={modalIsOpen}
-													onAfterOpen={afterOpenModal}
-													onRequestClose={closeModal}
-													style={customStyles}
-													contentLabel="Example Modal"
-													overlayClassName="Overlay"
-												>
-													<button onClick={closeModal}>close</button>
-
-													<h2>Soy un modal</h2>
-												</Modal>
-											</div>
-										</article>
-									</aside>
-								</>
+								<ProjectsComponent />
 							) : (
 								<>
 									<img src={ilusEmpty} alt="empty" />

@@ -71,7 +71,7 @@ export const useAuth = () => {
 		const resp = await UpdateUser(data);
 		if (resp.message === UPDATE_SUCCESS) {
 			const { data } = resp;
-			console.log({ data });
+			// console.log({ data });
 			const user: UserGenerico = { dataUser: data.dataUser, rol: data.dataUser.rol, id: data.id };
 			saveLocalStorage(USER, user);
 			alert('Se actualizó correctamente...');
