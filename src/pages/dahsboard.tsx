@@ -2,25 +2,29 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import Header from '../components/shared/header';
 import Modal from 'react-modal';
-import { Txtfield, BtnPrimary , BtnSecondary , TxtArea} from '../components/shared/styled';
+import { Txtfield, BtnPrimary, DropdownMenu, DropdownItem, BtnSecondary , TxtArea} from '../components/shared/styled';
 import ButtonComponent from '../components/shared/atom/button';
 import './../sass/pages/_myAccount.scss';
 import './../sass/pages/_dashboard.scss';
 import Footer from '../components/shared/footer';
 import toast, { Toaster } from 'react-hot-toast';
-import { getSkill, createSkill } from '../util/skill.service';
+
+import { getSkill, createSkill, enlazarSkill } from '../util/skill.service';
 import { getCompanyAll } from '../util/company.service';
 import { getCategory , createCategory } from '../util/category.service';
+import { getPosition } from '../util/position.service';
+
+import { useAuth } from '../hooks/useAuth';
+import { usePostJob , usePostForm } from '../hooks/usePostJob';
+import { useCatForm } from '../hooks/useCategory';
+import { useSkillForm, useEnlForm } from '../hooks/useSkill';
 
 import { POSTULANT, COMPANY, SALES } from '../helpers/constants';
 import { useNavigate , Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
-import { useAuth } from '../hooks/useAuth';
-import { usePostJob , usePostForm } from '../hooks/usePostJob';
-import { useCatForm } from '../hooks/useCategory';
-import { useSkillForm } from '../hooks/useSkill';
 import { Reports } from '../components/Reports';
+import { Category } from '@material-ui/icons';
 
 const customStyles = {
 	content: {
@@ -38,9 +42,13 @@ export default function Dashboard() {
 	const { user } = useSelector((state: RootState) => state.auth);
 	const { startLogout, startUpdateUser } = useAuth();
 	const [modalIsOpen, setIsOpen] = React.useState(false);
-	const { handleForm, reset } = usePostForm();
+	const [modalIsOpenS, setIsOpenSkill] = React.useState(false);
+	const [modalIsOpenE, setIsOpenEnl] = React.useState(false);
+
 	const { formcat, handleFormCat, resetCat } = useCatForm();
 	const { formskill, handleFormSkill, resetSkill } = useSkillForm();
+	const { formenl, handleFormEnl, resetEnl } = useEnlForm();
+
 	const navigate = useNavigate();
 
 	const {
@@ -60,7 +68,9 @@ export default function Dashboard() {
 
 	const [allCompany, setAllCompany] = useState([]);
 
-	const [allcategory, setAllCategory] = useState([]);
+	const [allCategory, setAllCategory] = useState([]);
+
+	const [allPosition, setAllPosition] = useState([]);
 
 	const handleEvent = (e: any) => {
 		setCompany({
@@ -108,6 +118,15 @@ export default function Dashboard() {
 		})();
 	}, []);
 
+	const handlePosition = async (event: any) => {
+		const value = event.target.value;
+		if (value !== '0') {
+			const responsePosition = await getPosition({ idCategory : value});
+			formenl.idCategory = value;
+			setAllPosition(responsePosition.data);
+		}
+	};
+
 	function openModalCategory() {
 		setIsOpen(true);
 	}
@@ -133,11 +152,11 @@ export default function Dashboard() {
 	};
 
 	function openModalSkill() {
-		setIsOpen(true);
+		setIsOpenSkill(true);
 	}
 
 	function closeModalSkill() {
-		setIsOpen(false);
+		setIsOpenSkill(false);
 	}
 
 	function afterOpenModalSkill() {
@@ -154,6 +173,32 @@ export default function Dashboard() {
 		const responseSkill = await getSkill();
 		setSkill(responseSkill.data.data);
 		resetSkill();
+	};
+
+	function openModalEnl(event: any) {
+		const value = event.target.value;
+		formenl.idSkill = value;
+		setIsOpenEnl(true);
+	}
+
+	function closeModalEnl() {
+		setIsOpenEnl(false);
+	}
+
+	function afterOpenModalEnl() {
+		// references are now sync'd and can be accessed.
+		//   subtitle.style.color = '#f00';
+	}
+
+	const submitenl = async (event: any) => {
+		event.preventDefault();
+		console.log(formenl)
+		await enlazarSkill(formenl);
+		toast.success('Has enlazado correctamente!');
+		closeModalEnl();
+		const responseSkill = await getSkill();
+		setSkill(responseSkill.data.data);
+		resetEnl();
 	};
 
 	if (Object.keys(user.dataUser).length === 0) return <Navigate replace to="/login" />;
@@ -261,7 +306,7 @@ export default function Dashboard() {
 								<aside className="headerItem">Descripción</aside>
 								<aside className="headerItem flex-end">Acciones</aside>
 							</article>
-							{allcategory.map((e: any) => (
+							{allCategory.map((e: any) => (
 								<article className="contentRow" key={e._id}>
 									<aside className="contentItem">{e.nameCategory}</aside>
 									<aside className="contentItem">{e.descriptionCategory}</aside>
@@ -291,6 +336,7 @@ export default function Dashboard() {
 
 					</TabPanel>
 					<TabPanel>
+
 					<div className='row'>
 					<div className="dflex flex-row mt-4 mb-4 mr-5">
 						<h2>Skills</h2>
@@ -309,12 +355,12 @@ export default function Dashboard() {
 								<article className="contentRow" key={e._id}>
 									<aside className="contentItem">{e.nameSkill}</aside>
 									<aside className="contentItem">{e.descriptionskill}</aside>
-									<aside className="contentItem flex-end"> Asociar con posición</aside>
+									<aside className="contentItem flex-end"> <BtnPrimary value={e._id} onClick={openModalEnl}>Enlazar</BtnPrimary></aside>
 								</article>
 							))}
 						</div>
 						<Toaster position="top-right" reverseOrder={false} />
-						<Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModalSkill} onRequestClose={closeModalSkill} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
+						<Modal isOpen={modalIsOpenS} onAfterOpen={afterOpenModalSkill} onRequestClose={closeModalSkill} style={customStyles} contentLabel="SkillAdd Modal" overlayClassName="Overlay">
 						<h2 className="text-center">Nueva Skill</h2>
 						<p className="mt-2 text-center">
 							<i>Ingresa nueva skill</i>
@@ -332,6 +378,41 @@ export default function Dashboard() {
 							</form>
 						</aside>
 					 </Modal>
+
+					 <Toaster position="top-right" reverseOrder={false} />
+						<Modal isOpen={modalIsOpenE} onAfterOpen={afterOpenModalEnl} onRequestClose={closeModalEnl} style={customStyles} contentLabel="Enlazar Modal" overlayClassName="Overlay">
+						<h2 className="text-center">Enlazar Skill</h2>
+						<p className="mt-2 text-center">
+							<i>Enlazar Skill</i>
+						</p>
+						<aside className="FormGroup algn-center">
+						<form onSubmit={submitenl}>
+						<div className="dflex flex-row mt-4 mb-4 algn-center">
+						<DropdownMenu onChange={handlePosition} name="idCategory" value={formenl.idCategory}>
+							<DropdownItem>Eliga la especialidad</DropdownItem>
+							{allCategory.map((e: any) => (
+								<DropdownItem key={e._id} value={e._id}>
+								{e.nameCategory}
+								</DropdownItem>
+								))}
+						</DropdownMenu>
+						<DropdownMenu onChange={handleFormEnl} name="idPosition" value={formenl.idPosition}>
+							<DropdownItem>Eliga el puesto</DropdownItem>
+							{allPosition.map((e: any) => (
+								<DropdownItem key={e._id} value={e._id}>
+								{e.namePosition}
+								</DropdownItem>
+								))}
+						</DropdownMenu>
+						</div>
+						<div className="dflex flex-row mt-4 mb-4 algn-center">
+						<BtnSecondary className='mr-2' onClick={closeModalEnl}>CANCELAR</BtnSecondary>
+						<BtnPrimary type="submit"> GUARDAR </BtnPrimary>
+						</div>
+						</form>
+						</aside>
+					 </Modal>
+
 					</TabPanel>
 				</Tabs>
 			</section>

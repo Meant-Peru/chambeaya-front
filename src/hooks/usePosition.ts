@@ -3,7 +3,7 @@ import { Position } from '../interfaces/Position';
 
 
 export const usePosForm = () => {
-	const [formpos, setForm] = React.useState<Position>({
+	const [formpos, setFormPos] = React.useState<Position>({
 		_id: '',
 		id_category: '',
 		id_user: '',
@@ -12,14 +12,14 @@ export const usePosForm = () => {
 	});
 
 	const handleFormPos = (event: any) => {
-		setForm({
+		setFormPos({
 			...formpos,
 			[event.target.name]: event.target.value,
 		});
 	};
 
 	const resetPos = () => {
-		setForm({
+		setFormPos({
 			_id: '',
 			id_category: '',
 			id_user: '',
