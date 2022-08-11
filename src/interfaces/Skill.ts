@@ -23,3 +23,9 @@ export interface SkillSelect {
 	nameSkill: string;
 	select: boolean;
 }
+
+export interface SkillEnl {
+	idSkill: string;
+	idCategory: string;
+	idPosition: string;
+}

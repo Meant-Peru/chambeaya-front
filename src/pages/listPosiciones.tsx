@@ -47,8 +47,6 @@ export default function ListPosiciones() {
 
 	formpos.id_category = idCategory.idCategory;
 
-	console.log(formpos.id_category);
-
 	const submit = async (event: any) => {
 		event.preventDefault();
 		await createPosition(formpos);
