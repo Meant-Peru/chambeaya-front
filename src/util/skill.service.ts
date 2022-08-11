@@ -23,3 +23,20 @@ export const createSkill = async (data: any) => {
 		};
 	}
 };
+
+export const enlazarSkill = async (data: any) => {
+	try {
+		console.log(data);
+		return await axios({
+			method: 'post',
+			url: `${URI}/user/createSPCSkill`,
+			data: { idSkill: data.idSkill, idCategory: data.idCategory, idPositon: data.idPosition },
+		}).then((res) => res.data.data);
+	} catch (error) {
+		console.log(error);
+		return {
+			data: [],
+			status: false,
+		};
+	}
+};
