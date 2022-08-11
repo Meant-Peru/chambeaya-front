@@ -14,9 +14,9 @@ import MyAccount from '../pages/myaccount';
 import Register from '../pages/register';
 import SearchJob from '../pages/searchJob';
 import { RootState } from '../redux/store/store';
-import { DetailPostCompany } from '../pages/detailPostCompany';
-import { DetailPostPostulant } from '../pages/detailPostPostulant';
+import { DetailPostPostulant } from '../pages/DetailPostPostulant';
 import { DetailProject } from '../pages/detailProject';
+import { DetailPostCompany } from '../pages/DetailPostCompany';
 
 export const AppRouter = () => {
 	const { status } = useSelector((state: RootState) => state.auth);

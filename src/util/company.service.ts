@@ -23,3 +23,8 @@ export const getCompanyAll = async () => {
 	const token = await getLocalStorage(SESSION);
 	return await axios.get(`${URI}/user/getAllUserService`, { headers: { token } });
 };
+
+export const getProjectsAllId = async () => {
+	const token = await getLocalStorage(SESSION);
+	return await axios.get(`${URI}/user/getPostAllJobByCompanyId`, { headers: { token } });
+};
