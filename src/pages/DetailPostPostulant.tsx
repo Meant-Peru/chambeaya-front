@@ -33,23 +33,36 @@ export const DetailPostPostulant = () => {
 		// console.log({ idP, idJob });
 		setLoadingPost(true);
 		const resp: DetailPostulant = await startDetailPostulant({ idP, idJob });
-		// console.log({ resp });
+		console.log({ resp });
 		setPostJob(resp);
 		setPostulant(resp.dataPostAndPostulant.userDataPostulant);
-		// console.log({ postulant });
+		console.log({ postulant });
 		// console.log('resp?.postulants', resp?.postulants);
 		// setListSkill([...resp.listSkills]);
 		setLoadingPost(false);
 	};
 
 	const handlerContractor = async () => {
+		if (!postJob.state) return;
 		const dataSend = {
+			projectTitle: postJob.title,
 			idPostulant: postJob.dataPostAndPostulant.idPostulant,
 			idPostJob: postJob.dataPostAndPostulant.idPostJob,
+			idPostulation: postJob.dataPostAndPostulant._id,
 			idCompany: postJob.idCompany,
-			dataContract: {},
+			dataContract: {
+				typePayment: '',
+				proofPayment: '',
+				paymentAmount: '',
+				proofDate: new Date(),
+				states: {
+					initProject: false,
+					paidProject: false,
+					fullDocumentation: false,
+					stateProject: false,
+				},
+			},
 		};
-		// console.log({ dataSend });
 		const status = await startCreatePostJobContracts(dataSend);
 		changeStateModal(false);
 		if (status) {
@@ -90,7 +103,9 @@ export const DetailPostPostulant = () => {
 						</p>
 					</article>
 					<article className="actionApply">
-						<BtnPrimary onClick={openModal}> Contratar perfil </BtnPrimary>
+						<BtnPrimary onClick={openModal} disabled={!postJob?.state}>
+							Contratar perfil
+						</BtnPrimary>
 						<p className="mt-2">{postJob?.porcentageSkills}% de similitud al requerimiento</p>
 					</article>
 				</aside>

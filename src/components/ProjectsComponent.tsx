@@ -24,7 +24,7 @@ export const ProjectsComponent = () => {
 				{projects.map((p: Project) => (
 					<article className="cardHistory" key={p._id}>
 						<div className="headCard">
-							<strong>{p.title}</strong>
+							<strong>{p.projectTitle}</strong>
 							<span>
 								<i>{p.state ? 'Proyecto iniciado' : 'Proyecto no iniciado'}</i>
 							</span>
@@ -32,16 +32,16 @@ export const ProjectsComponent = () => {
 						<div className="contentCard">
 							<ul className="listCard">
 								<li>
-									<img src={check} alt="" /> <span>Contratado</span>
+									<img src={p?.dataContract.states.initProject ? check : negative} alt="" /> <span>Contratado</span>
 								</li>
 								<li>
-									<img src={negative} alt="" /> <span>Presupuesto no depositado</span>
+									<img src={p?.dataContract.states.paidProject ? check : negative} alt="" /> <span>Presupuesto no depositado</span>
 								</li>
 								<li>
-									<img src={check} alt="" /> <span>Documentación completa</span>
+									<img src={p?.dataContract.states.fullDocumentation ? check : negative} alt="" /> <span>Documentación completa</span>
 								</li>
 							</ul>
-							<ButtonComponent link={'/detail-project'} family="textLink" icon="whitOutIcon" label="Ver Detalle" />
+							<ButtonComponent link={`/detail-project/${p._id}`} family="textLink" icon="whitOutIcon" label="Ver Detalle" />
 						</div>
 					</article>
 				))}

@@ -17,7 +17,7 @@ import ListPosiciones from '../pages/listPosiciones';
 import { RootState } from '../redux/store/store';
 import { DetailPostPostulant } from '../pages/DetailPostPostulant';
 import { DetailPostCompany } from '../pages/DetailPostCompany';
-import { DetailProject } from '../pages/detailProject';
+import { DetailProject } from '../pages/DetailProject';
 
 export const AppRouter = () => {
 	const { status } = useSelector((state: RootState) => state.auth);
@@ -44,7 +44,7 @@ export const AppRouter = () => {
 				<Route path="register-step-2" element={<RegisterPostulant />} />
 				<Route path="detail-post/:id" element={<DetailPost />} />
 
-				<Route path="detail-project" element={<DetailProject />} />
+				<Route path="detail-project/:idProject" element={<DetailProject />} />
 
 				<Route path="detail-post-company/:id" element={<DetailPostCompany />} />
 				<Route path="list-posiciones/:idCategory" element={<ListPosiciones />} />
