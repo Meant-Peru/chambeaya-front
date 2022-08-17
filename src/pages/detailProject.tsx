@@ -7,9 +7,12 @@ import time from './../assets/time.svg';
 import yape from './../assets/yape.png';
 import plin from './../assets/plin.png';
 import ButtonComponent from '../components/shared/atom/button';
+import { Backdrop, CircularProgress } from '@material-ui/core';
 
 import Modal from 'react-modal';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { getDetailProjectsId } from '../util/company.service';
+import { DetailProjectInteface } from '../interfaces/DetailProjectInteface';
 
 const customStyles = {
 	content: {
@@ -23,8 +26,8 @@ const customStyles = {
 };
 
 export const DetailProject = () => {
-	const [loadingProject, setLoadingProject] = useState(false);
-	const navigate = useNavigate();
+	const [loadingDetailProject, setLoadingDetailProject] = useState(false);
+	const [detailProject, setDetailProject] = useState<DetailProjectInteface>();
 	const { idProject } = useParams();
 
 	const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -36,31 +39,50 @@ export const DetailProject = () => {
 		setIsOpen2(true);
 	}
 
-	function afterOpenModal() {
-		// references are now sync'd and can be accessed.
-		//   subtitle.style.color = '#f00';
-	}
+	function afterOpenModal() {}
 
 	function closeModal() {
 		setIsOpen(false);
 		setIsOpen2(false);
 	}
 
+	useEffect(() => {
+		getProjectsId();
+	}, []);
+
+	const getProjectsId = async () => {
+		setLoadingDetailProject(true);
+		const resp = await getDetailProjectsId({ id: idProject });
+		setDetailProject({ ...resp });
+		setLoadingDetailProject(false);
+	};
+
 	return (
 		<React.Fragment>
+			<Backdrop
+				open={loadingDetailProject}
+				style={{
+					background: 'white',
+					zIndex: 99,
+				}}
+			>
+				<CircularProgress color="inherit" />
+			</Backdrop>
 			<Header />
 			<section className="detailProject">
 				<p>Detalle de Proyecto</p>
 				<br />
-				<h2 className="accent-color">Senior Product Designer</h2>
+				<h2 className="accent-color">{detailProject?.projectTitle}</h2>
 				<hr />
 				<aside className="mt-5">
 					<h4>Perfil contratado</h4>
 					<p>El perfil fue elegido por afinidad a su requerimiento y validado para el desarrollo de su proyecto</p>
 				</aside>
 				<aside className="card mt-3">
-					<strong className="mb-1">Jose Sanchez XXX</strong>
-					<i>Desarrollador</i>
+					<strong className="mb-1">
+						{detailProject?.postulant.dataUser.name} {detailProject?.postulant.dataUser.lastName}
+					</strong>
+					<i>{detailProject?.projectTitle}</i>
 				</aside>
 				<aside className="mt-3">
 					<h4 className="mb-2">Pagos y comprobantes</h4>

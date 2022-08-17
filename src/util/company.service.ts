@@ -34,3 +34,14 @@ export const getProjectsAllId = async () => {
 		return { listProjects: [] };
 	}
 };
+
+export const getDetailProjectsId = async (payload: any) => {
+	try {
+		const token = await getLocalStorage(SESSION);
+		const { data } = await axios.post(`${URI}/user/getDetailProjectId`, payload, { headers: { token } });
+		return data.data;
+	} catch (error) {
+		console.log(error);
+		return { data: {} };
+	}
+};
