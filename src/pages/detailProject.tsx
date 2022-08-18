@@ -13,6 +13,8 @@ import Modal from 'react-modal';
 import { useParams } from 'react-router-dom';
 import { getDetailProjectsId } from '../util/company.service';
 import { DetailProjectInteface } from '../interfaces/DetailProjectInteface';
+import { ModalComponent } from '../components/ModalComponent';
+import { useUi } from '../hooks/useUi';
 
 const customStyles = {
 	content: {
@@ -26,25 +28,11 @@ const customStyles = {
 };
 
 export const DetailProject = () => {
+	const [modalIsOpen2, setModalIsOpen2] = useState(false);
 	const [loadingDetailProject, setLoadingDetailProject] = useState(false);
 	const [detailProject, setDetailProject] = useState<DetailProjectInteface>();
 	const { idProject } = useParams();
-
-	const [modalIsOpen, setIsOpen] = React.useState(false);
-	const [modalIsOpen2, setIsOpen2] = React.useState(false);
-	function openModal() {
-		setIsOpen(true);
-	}
-	function openModal2() {
-		setIsOpen2(true);
-	}
-
-	function afterOpenModal() {}
-
-	function closeModal() {
-		setIsOpen(false);
-		setIsOpen2(false);
-	}
+	const { changeStateModal } = useUi();
 
 	useEffect(() => {
 		getProjectsId();
@@ -56,6 +44,10 @@ export const DetailProject = () => {
 		setDetailProject({ ...resp });
 		setLoadingDetailProject(false);
 	};
+
+	const openModal = () => changeStateModal(true);
+
+	const closeModal = () => changeStateModal(false);
 
 	return (
 		<React.Fragment>
@@ -117,7 +109,7 @@ export const DetailProject = () => {
 						<div className="row mpago">
 							<span className="row mlist">
 								Transferencia Bancaria{' '}
-								<button className="btnComponent--textLink" onClick={openModal2}>
+								<button className="btnComponent--textLink" onClick={() => setModalIsOpen2(true)}>
 									Ver datos
 								</button>
 							</span>
@@ -130,8 +122,8 @@ export const DetailProject = () => {
 					<article className="mt-4">
 						<ButtonComponent link={'/'} family="secondary" icon="whitOutIcon" label="CRONOGRAMA DE TRABAJO" />
 					</article>
-					<Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
-						{/* <button onClick={closeModal}>close</button> */}
+
+					<ModalComponent indentifier={1}>
 						<section className="containerModal">
 							<aside className="headModal">
 								<h2>Pagar con monederos</h2>
@@ -148,10 +140,8 @@ export const DetailProject = () => {
 								Listo
 							</button>
 						</section>
-					</Modal>
-
-					<Modal isOpen={modalIsOpen2} onAfterOpen={afterOpenModal} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
-						{/* <button onClick={closeModal}>close</button> */}
+					</ModalComponent>
+					<Modal isOpen={modalIsOpen2} style={customStyles} ariaHideApp={false} overlayClassName="Overlay">
 						<section className="containerModal">
 							<aside className="headModal">
 								<h2>Transferencia Bancaria</h2>
@@ -167,7 +157,7 @@ export const DetailProject = () => {
 									</ul>
 								</article>
 							</aside>
-							<button className="btnComponent--primary" onClick={closeModal}>
+							<button className="btnComponent--primary" onClick={() => setModalIsOpen2(false)}>
 								Listo
 							</button>
 						</section>

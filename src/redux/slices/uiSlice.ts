@@ -4,11 +4,13 @@ import { CompanySales } from '../../interfaces/CompanySales';
 
 interface SalesState {
 	modalIsOpen: boolean;
+	modalIndentifier: number;
 	loading: boolean;
 }
 
 const initialState: SalesState = {
 	modalIsOpen: false,
+	modalIndentifier: 1,
 	loading: false,
 };
 
@@ -19,6 +21,7 @@ const uiSlice = createSlice({
 		changeModal: (state, { payload }: PayloadAction<any>) => {
 			return {
 				...state,
+				modalIndentifier: payload?.modalIndentifier ?? 1,
 				modalIsOpen: payload.modalIsOpen,
 			};
 		},

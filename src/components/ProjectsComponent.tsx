@@ -26,13 +26,13 @@ export const ProjectsComponent = () => {
 						<div className="headCard">
 							<strong>{p.projectTitle}</strong>
 							<span>
-								<i>{p.state ? 'Proyecto iniciado' : 'Proyecto no iniciado'}</i>
+								<i>{p?.dataContract.states.initProject ? 'Proyecto iniciado' : 'Proyecto no iniciado'}</i>
 							</span>
 						</div>
 						<div className="contentCard">
 							<ul className="listCard">
 								<li>
-									<img src={p?.dataContract.states.initProject ? check : negative} alt="" /> <span>Contratado</span>
+									<img src={p?.dataContract.states.stateProject ? check : negative} alt="" /> <span>Perfil Contratado</span>
 								</li>
 								<li>
 									<img src={p?.dataContract.states.paidProject ? check : negative} alt="" /> <span>Presupuesto no depositado</span>

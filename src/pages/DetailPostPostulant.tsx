@@ -59,7 +59,7 @@ export const DetailPostPostulant = () => {
 					initProject: false,
 					paidProject: false,
 					fullDocumentation: false,
-					stateProject: false,
+					stateProject: true,
 				},
 			},
 		};

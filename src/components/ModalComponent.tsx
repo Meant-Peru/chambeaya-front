@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
@@ -14,15 +13,11 @@ const customStyles = {
 	},
 };
 
-interface Props {
-	AfterOpen: () => void;
-	closeModal: () => void;
-}
-
-export const ModalComponent = (props) => {
+export const ModalComponent = (props: any) => {
 	const { modalIsOpen } = useSelector((state: RootState) => state.ui);
+	// console.log({ props });
 	return (
-		<Modal isOpen={modalIsOpen} ariaHideApp={false} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
+		<Modal isOpen={modalIsOpen} ariaHideApp={false} style={customStyles} overlayClassName="Overlay">
 			{props.children}
 		</Modal>
 	);
