@@ -253,14 +253,14 @@ export default function Dashboard() {
 							<h2>Usuarios</h2>
 							<div className="tableUsers">
 								<article className="headerRow">
-									<aside className="headerItem">Razon social</aside>
+									<aside className="headerItem">Razón social</aside>
 									<aside className="headerItem">Correo</aside>
 								
 								</article>
-								{allCompany.map((p: any) => (
-									<article className="contentRow" key={p._id}>
-										<aside className="contentItem">{p.businessName}</aside>
-										<aside className="contentItem">{p.email}</aside>
+								{postJobs.map((e: any) => (
+									<article className="contentRow" key={e._id}>
+										<aside className="contentItem">{e.dataCompany.businessName}</aside>
+										<aside className="contentItem">{e.dataCompany.email}</aside>
 
 									</article>
 								))}
@@ -383,7 +383,7 @@ export default function Dashboard() {
 						<Modal isOpen={modalIsOpenE} onAfterOpen={afterOpenModalEnl} onRequestClose={closeModalEnl} style={customStyles} contentLabel="Enlazar Modal" overlayClassName="Overlay">
 						<h2 className="text-center">Enlazar Skill</h2>
 						<p className="mt-2 text-center">
-							<i>Enlazar Skill</i>
+							<i>Relacionalo a una especialidad y a un puesto</i>
 						</p>
 						<aside className="FormGroup algn-center">
 						<form onSubmit={submitenl}>
