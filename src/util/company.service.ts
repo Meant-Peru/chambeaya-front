@@ -45,3 +45,13 @@ export const getDetailProjectsId = async (payload: any) => {
 		return { data: {} };
 	}
 };
+
+export const uploadProjectReceipt = async (payload: any) => {
+	try {
+		const token = await getLocalStorage(SESSION);
+		const { data } = await axios.post(`${URI}/user/uploadProjectReceipt`, payload, { headers: { token } });
+		return data.status;
+	} catch (error) {
+		return false;
+	}
+};

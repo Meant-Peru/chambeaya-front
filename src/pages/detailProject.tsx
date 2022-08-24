@@ -11,10 +11,13 @@ import { Backdrop, CircularProgress } from '@material-ui/core';
 
 import Modal from 'react-modal';
 import { useParams } from 'react-router-dom';
-import { getDetailProjectsId } from '../util/company.service';
+import { getDetailProjectsId, uploadProjectReceipt } from '../util/company.service';
 import { DetailProjectInteface } from '../interfaces/DetailProjectInteface';
 import { ModalComponent } from '../components/ModalComponent';
 import { useUi } from '../hooks/useUi';
+import { DropzoneDialog } from 'material-ui-dropzone';
+import toast, { Toaster } from 'react-hot-toast';
+import { URI } from '../enviroment/enviroment';
 
 const customStyles = {
 	content: {
@@ -28,6 +31,7 @@ const customStyles = {
 };
 
 export const DetailProject = () => {
+	const [dropzone, setDropzone] = useState(false);
 	const [modalIsOpen2, setModalIsOpen2] = useState(false);
 	const [loadingDetailProject, setLoadingDetailProject] = useState(false);
 	const [detailProject, setDetailProject] = useState<DetailProjectInteface>();
@@ -49,6 +53,21 @@ export const DetailProject = () => {
 
 	const closeModal = () => changeStateModal(false);
 
+	const handlerUploadReceipt = async (files: File[]) => {
+		setLoadingDetailProject(true);
+		const formData = new FormData();
+		formData.append('id', idProject);
+		formData.append('image', files[0]);
+		setDropzone(false);
+		const status = await uploadProjectReceipt(formData);
+		setLoadingDetailProject(false);
+		if (status) {
+			toast.success('Se cargo el comprobante correctamente');
+		} else {
+			toast.error('Error en subir el comprobante!');
+		}
+	};
+
 	return (
 		<React.Fragment>
 			<Backdrop
@@ -61,6 +80,7 @@ export const DetailProject = () => {
 				<CircularProgress color="inherit" />
 			</Backdrop>
 			<Header />
+			<Toaster position="top-right" reverseOrder={false} />
 			<section className="detailProject">
 				<p>Detalle de Proyecto</p>
 				<br />
@@ -90,7 +110,13 @@ export const DetailProject = () => {
 							<img src={time} width="20" alt="" />
 							<span>Comprobantes emitidos por el contratado</span>
 						</div>
-						<ButtonComponent link={'/'} family="terceary" icon="whitOutIcon" label="Ver documentos" />
+						{detailProject?.dataContract.proofPayment ? (
+							<a href={`${URI}/images/${detailProject?.dataContract.proofPayment}`} className={'btnComponent--terceary'} target="_blank">
+								Ver documentos
+							</a>
+						) : (
+							<ButtonComponent link={'/'} family="terceary" icon="whitOutIcon" label="Ver documentos" />
+						)}
 					</article>
 
 					<h4 className="mt-5">Presupuesto de proyecto</h4>
@@ -104,7 +130,7 @@ export const DetailProject = () => {
 									Ver datos
 								</button>
 							</span>
-							<ButtonComponent link={'/'} family="terceary" icon="whitIcon" label="Subir comprobante" />
+							<ButtonComponent onPress={() => setDropzone(true)} type="Dropzone" family="terceary" icon="whitIcon" label="Subir comprobante" />
 						</div>
 						<div className="row mpago">
 							<span className="row mlist">
@@ -113,7 +139,7 @@ export const DetailProject = () => {
 									Ver datos
 								</button>
 							</span>
-							<ButtonComponent link={'/'} family="terceary" icon="whitIcon" label="Subir comprobante" />
+							<ButtonComponent onPress={() => setDropzone(true)} type="Dropzone" family="terceary" icon="whitIcon" label="Subir comprobante" />
 						</div>
 					</article>
 
@@ -162,6 +188,18 @@ export const DetailProject = () => {
 							</button>
 						</section>
 					</Modal>
+					<DropzoneDialog
+						open={dropzone}
+						onSave={(files: File[]) => handlerUploadReceipt(files)}
+						acceptedFiles={['image/jpeg', 'image/png', 'image/bmp']}
+						showPreviews={true}
+						maxFileSize={5000000}
+						onClose={() => setDropzone(false)}
+						dialogTitle="Subir comprobantes de pago"
+						dropzoneText="Arrastre y suelte su comprobante aquí o haga click"
+						cancelButtonText="Cancelar"
+						submitButtonText="Subir"
+					/>
 				</aside>
 			</section>
 			<Footer />
