@@ -13,7 +13,7 @@ import React from 'react';
 import { Skill } from '../interfaces/Skill';
 import ButtonComponent from '../components/shared/atom/button';
 
-export const DetailPostCompany = () => {
+export const DetailPostCompanys = () => {
 	// detail-post-company
 	const [loadingPost, setLoadingPost] = useState(false);
 	const [postJob, setPostJob] = useState<ListPostJob>();
