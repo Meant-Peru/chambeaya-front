@@ -87,10 +87,20 @@ export const RegisterPostulant = () => {
 		}
 	};
 
-	const handleForm = (event: any) => {
+	const handleForm = (e: any) => {
+		let result = e.target.value.replace(/[^a-z]/gi, '');
+		if (e.target.name === 'documentNumber') {
+			console.log(e.target.name);
+			e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..?)\../g);
+		}
+		if (e.target.name === 'linkBio') {
+			console.log(e.target.name);
+			e.target.value = e.target.value.replace(/^https:\/\//);
+		}
+
 		setForm({
 			...form,
-			[event.target.name]: event.target.value,
+			[e.target.name]: e.target.value,
 		});
 	};
 
@@ -209,7 +219,7 @@ export const RegisterPostulant = () => {
 							<TabPanel tabIndex={1}>
 								<section className="formApply pt-5">
 									<article>
-										<p className="mb-3">Eligue tu especialidad</p>
+										<p className="mb-3">Elige tu especialidad: </p>
 										<aside className="FormGroup">
 											<DropdownMenu onChange={handleForm} name="category" value={form.category}>
 												<DropdownItem>Eliga su especialidad</DropdownItem>
@@ -221,7 +231,7 @@ export const RegisterPostulant = () => {
 											</DropdownMenu>
 										</aside>
 									</article>
-									<p>Elige las skills que mejor manejes</p>
+									<p>Elige los skills que mejor manejes. </p>
 									<article className="gridBox mt-4">
 										{/* {get(_postJob, 'listSkills', []).map((value) => (
 											<CheckButton value={value} onChange={handleCheck} withbg="yes" label={value.nameSkill} key={value._id} />
@@ -248,7 +258,7 @@ export const RegisterPostulant = () => {
 												<DropdownItem value="1">Linkedin</DropdownItem>
 												<DropdownItem value="2">Web</DropdownItem>
 											</DropdownMenu>
-											<Txtfield className="ml-5" placeholder="Ingrese enlace" onChange={handleForm} name="linkBio" value={form.linkBio} />
+											<Txtfield className="ml-5" type={'url'} placeholder="Ingrese enlace" onChange={handleForm} name="linkBio" value={form.linkBio} />
 										</aside>
 									</article>
 									<article className="mb-5">

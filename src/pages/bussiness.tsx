@@ -62,6 +62,20 @@ export default function BussinessSignUp() {
 	};
 
 	const handleEvent = (e: any) => {
+		let result = e.target.value.replace(/[^a-z]/gi, '');
+		if (e.target.name === 'ruc') {
+			console.log(e.target.name);
+			e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..?)\../g);
+		}
+		if (e.target.name === 'businessName') {
+			console.log(e.target.name);
+			e.target.value = e.target.value.replace(/[^a-z]/gi, '');
+		}
+		if (e.target.name === 'phone') {
+			console.log(e.target.name);
+			e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..?)\../g);
+		}
+
 		setCompanySales({
 			...companySales,
 			[e.target.name]: e.target.value,
