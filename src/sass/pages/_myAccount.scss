@@ -213,6 +213,13 @@
   }
 }
 
+.listMoldal{
+  flex-direction: column;
+  li{
+    margin: 20px 0 ;
+  }
+}
+
 
 .Overlay {
   position: fixed;
