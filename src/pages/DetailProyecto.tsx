@@ -30,7 +30,7 @@ const customStyles = {
 	},
 };
 
-export const DetailProject = () => {
+export const DetailProyecto = () => {
 	const [dropzone, setDropzone] = useState(false);
 	const [modalIsOpen2, setModalIsOpen2] = useState(false);
 	const [loadingDetailProject, setLoadingDetailProject] = useState(false);
