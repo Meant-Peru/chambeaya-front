@@ -20,6 +20,9 @@
         margin: 0 auto;
         padding-top: 56px;
     }
+    @include phone-max {
+        width: var(--container-phone-max);
+      }
     .cover{
         align-items: flex-start;
         display: flex;
@@ -29,6 +32,12 @@
             display: flex;
             flex-direction: column;
         }
+        @include phone-max {
+            width: var(--container-phone-max);
+            display: flex;
+            flex-direction: column;
+            padding-top: 15%;
+          }
         article{
             text-align: left;
             display: flex;
@@ -41,12 +50,18 @@
                 padding-bottom: 40px;
                 color: var(--acent-color)!important;
                 font-style: italic;
+                @include phone-max {
+                    font-size: 32px;
+                }
             }
            
         }
         .coverImg{
             img{
                 @include phone {
+                    width: 100%;
+                }
+                @include phone-max {
                     width: 100%;
                 }
             }
@@ -63,6 +78,17 @@
     display: flex;
     flex: 1;
 
+    input{
+        @include phone-max {
+            margin-bottom: 1rem;
+        } 
+    }
+    select{
+        @include phone-max {
+            width: 100%;
+            margin-bottom: 3rem;
+        } 
+    }
     @include tablet-p {
         width: var(--container-tablet-portrait); 
     }
@@ -71,9 +97,17 @@
         display: flex;
         flex-direction: column; 
     }
-
+    @include phone-max {
+        width: var(--container-phone-max);
+        display: flex;
+        flex-direction: column;
+        padding: 5%;
+      }
     &:last-child {
         margin-top: 72px;
-
+        @include phone-max {
+            margin-top: 32px;
+            padding-bottom: 32px;
+        }
     }
 }

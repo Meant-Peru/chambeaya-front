@@ -3,7 +3,7 @@
 .listCard{
     display: flex;
     flex-direction: row;
-    @include tablet-l {
+      @include tablet-l {
         width: var(--container-tablet-landscape);
       }
       @include tablet-p {
@@ -18,5 +18,11 @@
         flex-direction: column;
         align-items: center;
 
+      }
+      @include phone-max {
+        width: var(--container-phone-max);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 }

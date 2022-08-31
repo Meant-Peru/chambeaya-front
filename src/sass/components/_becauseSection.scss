@@ -21,6 +21,10 @@
       width: var(--container-phone);
       flex-direction: column;
     }
+    @include phone-max {
+      width: var(--container-phone-max);
+      flex-direction: column;
+    }
 
     article{
         width: 100%;
@@ -29,6 +33,10 @@
         justify-content: space-between;
         padding-top: 56px;
         @include phone {
+          display: flex;
+          flex-direction: column;
+        }
+        @include phone-max {
           display: flex;
           flex-direction: column;
         }

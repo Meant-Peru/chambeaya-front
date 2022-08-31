@@ -6,5 +6,9 @@ header{
     @include tablet-p {
         width: var(--container-tablet-portrait);
       }
+
+      @include phone-max {
+        width: var(--container-phone-max);
+      }
 }
 

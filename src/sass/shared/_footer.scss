@@ -10,6 +10,9 @@ footer{
     @include tablet-p {
       width: var(--container-tablet-portrait);
     }
+    @include phone-max {
+      width: var(--container-phone-max);
+    }
 
 
     .footerContent{
@@ -25,6 +28,11 @@ footer{
         @include phone {
           width: var(--container-phone);
           flex-direction: column;
+        }
+        @include phone-max {
+          width: var(--container-phone-max);
+          flex-direction: column;
+          padding: 24px;
         }
         p{
             color: var(--light-color);

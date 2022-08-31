@@ -19,6 +19,9 @@
   @include phone {
     width: var(--container-phone);
   }
+  @include phone-max {
+    width: var(--container-phone-max);
+  }
 
   .skillTags {
     width: 35%;
@@ -42,6 +45,13 @@
       flex-wrap: wrap;
       align-items: center;
     }
+    @include phone-max {
+      width: var(--container-phone-max);
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;   
+    }
   }
 
   .cardApply {
@@ -64,6 +74,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+    }
+    @include phone-max {
+      width: var(--container-phone-max);
+      display: flex;
+      flex-direction: column;
+      align-items: left;
     }
 
 
@@ -91,6 +107,11 @@
         width: 100%;
         margin-bottom: 24px;
       }
+      @include phone-max {
+        width: 100%;
+        margin-bottom: 24px;
+        align-items: center;
+      }
     }
 
     .infoApply {
@@ -98,7 +119,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      text-align: left;
+      text-align: center;
 
       @include tablet-l {
         width: var(--container-tablet-landscape);
@@ -113,9 +134,17 @@
         text-align: center;
         margin-bottom: 24px;
       }
+      @include phone-max {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 24px;
+      }
 
       p {
         @include phone {
+          margin-top: 4px;
+        }
+        @include phone-max {
           margin-top: 4px;
         }
       }
@@ -132,6 +161,10 @@
       }
 
       @include phone {
+        width: 100%;
+        text-align: center;
+      }
+      @include phone-max {
         width: 100%;
         text-align: center;
       }
@@ -153,6 +186,12 @@
       display: flex;
       flex-direction: column;
     }
+    @include phone-max {
+      width: var(--container-phone-max);
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+    }
 
     .leftBox {
       width: 70%;
@@ -160,6 +199,9 @@
       text-align: left;
 
       @include phone {
+        width: 100%;
+      }
+      @include phone-max {
         width: 100%;
       }
     }
@@ -170,6 +212,13 @@
       text-align: left;
 
       @include phone {
+        width: 100%;
+
+        margin-left: 0;
+        margin-top: 40px;
+      }
+
+      @include phone-max {
         width: 100%;
 
         margin-left: 0;
@@ -199,7 +248,11 @@
   .postRelated {
     text-align: left;
     padding-top: 40px;
-
+    h2{
+      @include phone-max {
+        text-align: center;
+      }
+    }
     @include tablet-l {
       width: var(--container-tablet-landscape);
     }
@@ -214,6 +267,12 @@
       flex-direction: column;
       align-items: center;
       padding-top: 24px;
+    }
+    @include phone-max {
+      width: var(--container-phone-max);
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
     }
   }
 }

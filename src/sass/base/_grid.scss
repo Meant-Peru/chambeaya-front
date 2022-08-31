@@ -1,6 +1,7 @@
 
 //-------- MEDIAQUERIES --------
 $phone-s: 375px;
+$phone-m: 420px;
 
 $tablet_m: 768px;
 $tablet_l: 1024px;
@@ -42,7 +43,12 @@ $desktop_2xl: 1600px;
 
 
 @mixin phone {
-  @media (max-width: #{$phone-s}) and (max-width: #{$tablet_m - 1}) {
+  @media (max-width: #{$phone-s}) and (max-width: #{$phone-m - 1}) {
+    @content;
+  }
+}
+@mixin phone-max {
+  @media (max-width: #{$phone-m}) and (max-width: #{$tablet_m - 1}) {
     @content;
   }
 }

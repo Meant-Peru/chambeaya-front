@@ -24,4 +24,11 @@
         margin-bottom: 24px;
         margin-right: 0px;
       }
+      @include phone-max {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 24px;
+        width: 100%;
+        margin-right: 0px;
+      }
 }

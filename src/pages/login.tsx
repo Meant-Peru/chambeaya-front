@@ -1,16 +1,13 @@
 import * as React from 'react';
 
 import Header from '../components/shared/header';
-import { SESSION, USER_OR_PASSWORD_NOT_EXISTING } from './../helpers/constants';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Txtfield, BtnPrimary } from './../components/shared/styled';
+import { useNavigate } from 'react-router-dom';
+import { Txtfield, BtnPrimary, BtnSecondary } from './../components/shared/styled';
 import Modal from 'react-modal';
 
 import './../sass/pages/_login.scss';
 
 import { useAuth } from '../hooks/useAuth';
-import {useEffect, useState} from "react";
-import {usePostulant} from "../hooks/usePostulant";
 
 const customStyles = {
 	content: {
@@ -20,6 +17,7 @@ const customStyles = {
 		bottom: 'auto',
 		marginRight: '-50%',
 		transform: 'translate(-50%, -50%)',
+		borderRadius: '24px',
 	},
 };
 
@@ -70,9 +68,14 @@ export default function Login() {
 					</p>
 				</aside>
 				<Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
-					<button onClick={closeModal}>close</button>
-
-					<h2>Soy un modal</h2>
+					{/* <button onClick={closeModal}>close</button> */}
+			
+					<h3>Olvide mi clave</h3>
+					<p className='mt-2 mb-2'>Para recuperar tu cuenta debes contactarte <br />
+						con la siguiente direcció de correo electrónico <br /> para recibir asistencia: <br/><br/>
+						<a target={"_blank"} href="mailto:ayuda@chambea-ya.com">ayuda@chambea-ya.com</a> </p>
+					<BtnSecondary onClick={closeModal}>Cerrar</BtnSecondary>
+				
 				</Modal>
 				<aside className="FormAction mt-5">
 					<BtnPrimary onClick={handleRedirect}>Login</BtnPrimary>

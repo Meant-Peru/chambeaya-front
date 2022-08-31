@@ -19,12 +19,19 @@
     @include phone {
       flex-direction: column;
     }
+    @include phone-max {
+      flex-direction: column;
+    }
 
     article{
         width: 50%;
         padding: 70px 0 70px 15%;
         background-color: var(--primary-color);
         @include phone {
+          width: 100%;
+          padding: 70px 0 70px 5%;
+        }
+        @include phone-max {
           width: 100%;
           padding: 70px 0 70px 5%;
         }
@@ -48,8 +55,15 @@
             @include phone {
               padding: 70px 5% 70px 5%;
             }
+            @include phone-max {
+              display: flex;
+              flex-wrap: wrap;
+            }
             img{
               padding-right: 2.5rem;
+              @include phone-max {
+                padding-right: 1rem;
+              }
             }
         }
     }

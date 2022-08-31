@@ -19,6 +19,7 @@ export const Theme = {
     },
     grids: {
         small: `360px`,
+        smallmax: `420px`,
         medium: `744px`,
         large: `992px`,
         xlarge: `1240px`,
@@ -41,6 +42,10 @@ export const Theme = {
         }
         @media (max-width: 768px){
           width: ${Theme.grids.medium};
+        }
+        @media (max-width: 420px){
+          width: ${Theme.grids.smallmax};
+     
         }
         @media (max-width: 375px){
           width: ${Theme.grids.small};

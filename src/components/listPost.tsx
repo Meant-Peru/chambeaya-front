@@ -38,39 +38,7 @@ export default function ListPost() {
 		{
 			loadingPost ? (<Pagination postJobs={postJobs} itemsPerPage={4} key={1} />) : (<></>)
 		}
-		{/* {postJobs && <Pagination postJobs={postJobs} itemsPerPage={4} key={1} />} */}
-        {/* {postJobs!.map((post) => (
-          <aside key={Math.random()}>
-            <article>
-              <aside className="logoBrand">
-                <img src={Logo1} alt="" />
-              </aside>
-              <div className="rContent row">
-                <aside className="title">
-                  <p>{get(post, "title", "")}</p>
-                  {get(post, "state", false) && (
-                    <TagComponent
-                      tag={{ nameSkill: "Destacado" }}
-                      family="highlight"
-                      level="dark"
-                      label="Destacado"
-                    />
-                  )}
-                </aside>
-                <aside className="ubication">
-                  <p>Lima, Perú</p>
-                </aside>
-                <aside className="actions">
-                  <ButtonComponent
-                    link={"/detail-post/" + get(post, "_id", "")}
-                    family="btnCta"
-                    label="Aplicar"
-                  />
-                </aside>
-              </div>
-            </article>
-          </aside>
-        ))} */}
+	
       </section>
     </React.Fragment>
   );
