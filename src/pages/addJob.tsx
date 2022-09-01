@@ -93,6 +93,11 @@ export default function AddJob() {
 	};
 
 	const handleEventFrom = (e: any) => {
+		let result = e.target.value.replace(/[^a-z]/gi, '');
+		if (e.target.name === 'salaryRange') {
+			console.log(e.target.name);
+			e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..?)\../g);
+		}
 		setForm({
 			...form,
 			[e.target.name]: e.target.value,
