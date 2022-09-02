@@ -8,6 +8,7 @@ export const Theme = {
       dark: `#4DBFB4`,
       light: `#FFFFFF`,
       red: `#ff5851`,
+      redlight: '#e98787',
       gray6: `#98A0AE`,
       gray9: `#3A4049`,
       border: `#e9e9e9`,
@@ -19,13 +20,12 @@ export const Theme = {
     },
     grids: {
         small: `360px`,
-        smallmax: `420px`,
         medium: `744px`,
         large: `992px`,
         xlarge: `1240px`,
     }
   }
-  
+
   export const Navbar = styled.nav`
     background: ${Theme.colors.dark};
     font-family: ${Theme.fonts.heading};
@@ -43,22 +43,18 @@ export const Theme = {
         @media (max-width: 768px){
           width: ${Theme.grids.medium};
         }
-        @media (max-width: 420px){
-          width: ${Theme.grids.smallmax};
-     
-        }
         @media (max-width: 375px){
           width: ${Theme.grids.small};
      
         }
     }`;
-  
+
   export const Brand = styled.a`
     font-weight: bold;
     font-style: italic;
     margin-left: 1rem;
     padding-right: 1rem;`;
-  
+
   export const Ul = styled.ul`
     display: flex;
     flex-wrap: nowrap;
@@ -68,7 +64,7 @@ export const Theme = {
       display: none;
     }
     `;
-  
+
   export const Li = styled.li`
     flex: 0 0 auto;
     -webkit-box-align: center;
@@ -125,6 +121,7 @@ export const Theme = {
     `;
 
     export const Txtfield = styled.input`
+    margin-bottom: 0.5em;
     background: ${Theme.colors.light};
     font-size: 16px;
     border-radius: 28px;
@@ -140,6 +137,18 @@ export const Theme = {
       margin-bottom: 1rem
     }
     `;
+
+    export const Span = styled.span`
+    font-size: 10px;
+    color: #c60000;
+    align-items: center;
+    width:50%;
+    margin-bottom: 1em;
+    @media (max-width: 375px){
+      margin-bottom: 1rem
+    }
+    `;
+
     export const TxtArea = styled.textarea`
     background: ${Theme.colors.light};
     font-size: 16px;
