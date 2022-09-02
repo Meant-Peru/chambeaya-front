@@ -2,31 +2,31 @@ import styled from "styled-components";
 
 export const Theme = {
     colors: {
-      bg: `#F9F9FA`,
-      primary: `#4DBFB4`,
-      secondary: `#FFD500`,
-      dark: `#4DBFB4`,
-      light: `#FFFFFF`,
-      red: `#ff5851`,
-      gray6: `#98A0AE`,
-      gray9: `#3A4049`,
-      border: `#e9e9e9`,
+        bg: `#F9F9FA`,
+        primary: `#4DBFB4`,
+        secondary: `#FFD500`,
+        dark: `#4DBFB4`,
+        light: `#FFFFFF`,
+        red: `#ff5851`,
+        redlight: '#e98787',
+        gray6: `#98A0AE`,
+        gray9: `#3A4049`,
+        border: `#e9e9e9`,
 
     },
     fonts: {
-      body: `Rubik , sans-serif`,
-      heading: `Rubik , sans-serif`,
+        body: `Rubik , sans-serif`,
+        heading: `Rubik , sans-serif`,
     },
     grids: {
         small: `360px`,
-        smallmax: `420px`,
         medium: `744px`,
         large: `992px`,
         xlarge: `1240px`,
     }
-  }
-  
-  export const Navbar = styled.nav`
+}
+
+export const Navbar = styled.nav`
     background: ${Theme.colors.dark};
     font-family: ${Theme.fonts.heading};
     color: ${Theme.colors.light};
@@ -43,23 +43,19 @@ export const Theme = {
         @media (max-width: 768px){
           width: ${Theme.grids.medium};
         }
-        @media (max-width: 420px){
-          width: ${Theme.grids.smallmax};
-     
-        }
         @media (max-width: 375px){
           width: ${Theme.grids.small};
      
         }
     }`;
-  
-  export const Brand = styled.a`
+
+export const Brand = styled.a`
     font-weight: bold;
     font-style: italic;
     margin-left: 1rem;
     padding-right: 1rem;`;
-  
-  export const Ul = styled.ul`
+
+export const Ul = styled.ul`
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -68,8 +64,8 @@ export const Theme = {
       display: none;
     }
     `;
-  
-  export const Li = styled.li`
+
+export const Li = styled.li`
     flex: 0 0 auto;
     -webkit-box-align: center;
     -webkit-box-pack: center;
@@ -93,7 +89,7 @@ export const Theme = {
     text-decoration: none;
     white-space: nowrap;`;
 
-    export const BtnPrimary = styled.button`
+export const BtnPrimary = styled.button`
     background: ${Theme.colors.primary};
     font-size: 16px;
     border-radius: 28px;
@@ -108,7 +104,7 @@ export const Theme = {
     
     `;
 
-    export const BtnSecondary = styled.button`
+export const BtnSecondary = styled.button`
     background: ${Theme.colors.light};
     font-size: 16px;
     border-radius: 28px;
@@ -124,7 +120,8 @@ export const Theme = {
     
     `;
 
-    export const Txtfield = styled.input`
+export const Txtfield = styled.input`
+    margin-bottom: 0.5em;
     background: ${Theme.colors.light};
     font-size: 16px;
     border-radius: 28px;
@@ -140,7 +137,19 @@ export const Theme = {
       margin-bottom: 1rem
     }
     `;
-    export const TxtArea = styled.textarea`
+
+export const Span = styled.span`
+    font-size: 10px;
+    color: #c60000;
+    align-items: center;
+    width:50%;
+    margin-bottom: 1em;
+    @media (max-width: 375px){
+      margin-bottom: 1rem
+    }
+    `;
+
+export const TxtArea = styled.textarea`
     background: ${Theme.colors.light};
     font-size: 16px;
     border-radius: 28px;
@@ -156,7 +165,7 @@ export const Theme = {
     `;
 
 
-    export const DropdownMenu = styled.select`
+export const DropdownMenu = styled.select`
     background: ${Theme.colors.light};
     font-size: 16px;
     border-radius: 28px;
@@ -176,7 +185,7 @@ export const Theme = {
       margin-bottom: 1rem
     }
         `;
-    export const DropdownItem = styled.option`
+export const DropdownItem = styled.option`
     background: ${Theme.colors.light};
     font-size: 16px;
     border-radius: 28px;

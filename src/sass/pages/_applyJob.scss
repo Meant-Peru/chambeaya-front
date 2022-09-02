@@ -17,6 +17,10 @@
     width: var(--container-phone);
   }
 
+  .error-required-field-description {
+    display: none;
+  }
+
   .FormGroup{
     width: 100%;
     display: flex;
@@ -26,7 +30,19 @@
     :first-child, :last-child{
       width: 50%;
     }
+
+    .has-error-description {
+      display: block;
+    }
   }
+
+  .has-error {
+    border: 1px solid #ff5851;
+    ::placeholder{
+      color: #e98787;
+    }
+  }
+
   .FormGroup-full{
     :first-child{
       width: 100%;

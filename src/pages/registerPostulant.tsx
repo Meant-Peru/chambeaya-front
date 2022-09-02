@@ -3,7 +3,7 @@ import Header from '../components/shared/header';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import CheckButton from '../components/shared/atom/checkButton';
 import toast, { Toaster } from 'react-hot-toast';
-import { Txtfield, DropdownMenu, DropdownItem, BtnPrimary } from '../components/shared/styled';
+import {Txtfield, DropdownMenu, DropdownItem, BtnPrimary, Span} from '../components/shared/styled';
 import 'react-tabs/style/react-tabs.css';
 import './../sass/pages/_applyJob.scss';
 import Footer from '../components/shared/footer';
@@ -88,7 +88,6 @@ export const RegisterPostulant = () => {
 	};
 
 	const handleForm = (e: any) => {
-		let result = e.target.value.replace(/[^a-z]/gi, '');
 		if (e.target.name === 'documentNumber') {
 			console.log(e.target.name);
 			e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..?)\../g);
@@ -98,6 +97,14 @@ export const RegisterPostulant = () => {
 			e.target.value = e.target.value.replace(/^https:\/\//);
 		}
 
+		if (e.target.value == '' && !e.target.classList.contains('has-error')) {
+			e.target.classList.add('has-error');
+			e.target.nextSibling.classList.add('has-error-description');
+		} else if (e.target.value !== '') {
+			e.target.classList.remove('has-error');
+			e.target.nextSibling.classList.remove('has-error-description');
+
+		}
 		setForm({
 			...form,
 			[e.target.name]: e.target.value,
@@ -206,6 +213,7 @@ export const RegisterPostulant = () => {
 												<DropdownItem value="3">Carnet de Extranjeria</DropdownItem>
 											</DropdownMenu>
 											<Txtfield className="ml-5" placeholder="Nro de documento" name="documentNumber" onChange={handleForm} value={form.documentNumber} />
+											<Span className="error-required-field-description">* Por favor ingresa tu número de documento.</Span>
 										</aside>
 									</article>
 									<article className="footerSection">
