@@ -8,7 +8,6 @@ const navNoUser = {
 	brand: { name: 'ChambeaYa.', to: '/' },
 	links: [
 		{ name: 'Buscar un empleo', to: '/searchjob' },
-		{ name: 'Contacto', to: '/contact' },
 		{ name: 'Iniciar sesión', to: '/login' },
 		{ name: 'Registrarme', to: '/register' },
 	],
@@ -18,7 +17,6 @@ const navUser = {
 	brand: { name: 'ChambeaYa.', to: '/' },
 	links: [
 		{ name: 'Buscar un empleo', to: '/searchjob' },
-		{ name: 'Contacto', to: '/contact' },
 		{ name: 'Mi perfil', to: '/myaccount' },
 	],
 };
@@ -27,7 +25,6 @@ const navSales = {
 	brand: { name: 'ChambeaYa.', to: '/' },
 	links: [
 		{ name: 'Buscar un empleo', to: '/searchjob' },
-		{ name: 'Contacto', to: '/contact' },
 		{ name: 'Mi perfil', to: '/account-sales' },
 	],
 };
@@ -35,7 +32,6 @@ const navAdmin = {
 	brand: { name: 'ChambeaYa.', to: '/' },
 	links: [
 		{ name: 'Buscar un empleo', to: '/searchjob' },
-		{ name: 'Contacto', to: '/contact' },
 		{ name: 'Mi perfil', to: '/account-sales' },
 	],
 };
