@@ -22,12 +22,10 @@ export default function Register() {
 		rolUser: POSTULANT,
 		sex: 'H',
 		birthDayDate: new Date(),
+		formErrors: [],
 	});
 
-	let disabled = false;
-
 	const handleRegister = async (e: any) => {
-		console.log(account);
 
 		const dataSend = {
 			email: account.email,
@@ -44,15 +42,12 @@ export default function Register() {
 				brithdayDate: account.birthDayDate,
 			},
 		};
-		console.log(e);
-		if (!e.target.classList.contains('error')) {
-			e.target.className += ' disabled';
-
-		}
-		console.log(disabled);
+		//if (account.countFormErrors == 0) {
+			// e.target.className += ' disabled';
+		//	navigate('/register-step-2', { replace: true });
+		//}
 
 		saveLocalStorage(TEM_USER, dataSend);
-		// navigate('/register-step-2', { replace: true });
 
 		// const response = await register(dataSend);
 
@@ -68,9 +63,8 @@ export default function Register() {
 		// 		alert('Error corregir esto :c');
 		// 		break;
 		// }
-
-		console.log('CLick en submit');
 	};
+
 
 	const handleEvent = (e: any) => {
 		// Replaces fields to correct input data.
@@ -81,50 +75,59 @@ export default function Register() {
 		if (e.target.name === 'lastName') {
 			e.target.value = e.target.value.replace(/[^a-z]/gi, '');
 		}
+		let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 		if (e.target.name === 'email') {
-			e.target.value = e.target.value.replace(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
+			if (!e.target.value.match(validRegex)) {
+				e.target.classList.add('has-error-email');
+				e.target.nextSibling.nextSibling.classList.add('has-error-description-email');
+			} else {
+				e.target.classList.remove('has-error-email');
+				e.target.nextSibling.nextSibling.classList.remove('has-error-description-email');
+			}
 		}
 		if (e.target.name === 'phone') {
-			console.log(e.target.name);
 			e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..?)\../g);
 		}
 
-
-		// Validate emptiness.
-		console.log(e.target.classList.contains('has-error'));
-		if (e.target.value == '' && !e.target.classList.contains('has-error')) {
+		// Validate emptiness for textfield.
+		if (e.target.hasOwnProperty('value') && e.target.value == '' && !e.target.classList.contains('has-error')) {
+			account.formErrors[e.target.name] = true;
 			e.target.classList.add('has-error');
 			e.target.nextSibling.classList.add('has-error-description');
-
-		} else if (e.target.value !== '') {
-			e.target.classList.remove('has-error');
-			e.target.nextSibling.classList.remove('has-error-description');
-			//e.target.className += 'FormGroup';
-			//e.target.classList = e.target.classList.filter(e => e !== 'has-error');
-
+			if (e.target.classList.contains('has-error-email')) {
+				e.target.nextSibling.nextSibling.classList.remove('has-error-description-email');
+			}
 		}
-
-		if (e.target.checked == true) {
-			e.target.classList.remove('has-error');
-			e.target.parentElement.nextSibling.classList.add('error-required-field-description');
-		} else {
-			e.target.parentElement.nextSibling.classList.remove('error-required-field-description');
-		}
-
-		console.log(e);
-
-		console.log(account);
 
 		if (e.target.name === 'confirmPassword') {
-			console.log(e.target.value);
-			console.log(account.password);
-			console.log(e.target.value !== account.password);
 			if (e.target.value != account.password) {
-				console.log("es diferente");
+				account.formErrors[e.target.name] = true;
 				e.target.classList.add('has-error');
 				e.target.nextSibling.classList.add('has-error-description');
 			}
 		}
+
+		// Validate emptiness for textfield when NOT empty.
+		else if (e.target.hasOwnProperty('value') && e.target.value !== '') {
+			account.formErrors[e.target.name] = false;
+			e.target.classList.remove('has-error');
+			e.target.nextSibling.classList.remove('has-error-description');
+		}
+
+		if (e.target.hasOwnProperty('checked') && e.target.checked == true) {
+			//account.countFormErrors--;
+			account.formErrors[e.target.name] = false;
+			e.target.classList.remove('has-error');
+			e.target.parentElement.nextSibling.classList.add('error-required-field-description');
+		}
+		else if (e.target.hasOwnProperty('checked') && e.target.checked == false)  {
+			//account.countFormErrors++;
+			account.formErrors[e.target.name] = true;
+			e.target.parentElement.nextSibling.classList.remove('error-required-field-description');
+		}
+
+		console.log(account);
+
 
 		setAccount({
 			...account,
@@ -155,7 +158,7 @@ export default function Register() {
 						<aside className="FormGroup">
 							<Txtfield type={'email'} onChange={handleEvent} name="email" className="mb-2" placeholder="Correo electrónico" required/>
 							<Span className="error-required-field-description">* Por favor ingresa tu correo. </Span>
-
+							<Span className="error-required-field-description">* Por favor ingresa el formato correcto. </Span>
 						</aside>
 						<aside className="FormGroup">
 							<Txtfield type={'tel'} onChange={handleEvent} name="phone" className="mb-2" placeholder="Teléfono / Celular" required/>
@@ -181,7 +184,9 @@ export default function Register() {
 
 
 				<aside className="FormAction mt-5">
-					<BtnPrimary onClick={handleRegister} className="">CREAR CUENTA</BtnPrimary>
+					{/* Check if all form elements DO NOT have any errors */}
+					{/* And check if there are 7 form elements in the current form. */}
+					<BtnPrimary onClick={handleRegister} className={`button-primary ${Object.entries(account.formErrors).map( ([key, val]) => val).every(element => element === false) && Object.entries(account.formErrors).length == 7 ? 'test' : 'disabled'}`} >CREAR CUENTA</BtnPrimary>
 					<p className="mt-2">
 						<a href="/login">¿Ya tienes una cuenta?</a>
 					</p>
