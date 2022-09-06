@@ -92,19 +92,32 @@ export const RegisterPostulant = () => {
 			console.log(e.target.name);
 			e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..?)\../g);
 		}
+		let urlPattern = new RegExp('^(https?:\\/\\/)?'+ // validate protocol
+			'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // validate domain name
+			'((\\d{1,3}\\.){3}\\d{1,3}))'+ // validate OR ip (v4) address
+			'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // validate port and path
+			'(\\?[;&a-z\\d%_.~+=-]*)?'+ // validate query string
+			'(\\#[-a-z\\d_]*)?$','i'); // validate fragment locator
 		if (e.target.name === 'linkBio') {
-			console.log(e.target.name);
-			e.target.value = e.target.value.replace(/^https:\/\//);
+			if (!e.target.value.match(urlPattern)) {
+				console.log("No valido");
+				e.target.classList.add('has-error-url');
+				e.target.nextSibling.nextSibling.classList.add('has-error-description-url');
+			} else {
+				e.target.classList.remove('has-error-url');
+				e.target.nextSibling.nextSibling.classList.remove('has-error-description-url');
+			}
 		}
 
 		if (e.target.value == '' && !e.target.classList.contains('has-error')) {
 			e.target.classList.add('has-error');
 			e.target.nextSibling.classList.add('has-error-description');
+			e.target.nextSibling.nextSibling.classList.remove('has-error-description-url');
 		} else if (e.target.value !== '') {
 			e.target.classList.remove('has-error');
 			e.target.nextSibling.classList.remove('has-error-description');
-
 		}
+		console.log(e);
 		setForm({
 			...form,
 			[e.target.name]: e.target.value,
@@ -267,19 +280,23 @@ export const RegisterPostulant = () => {
 												<DropdownItem value="2">Web</DropdownItem>
 											</DropdownMenu>
 											<Txtfield className="ml-5" type={'url'} placeholder="Ingrese enlace" onChange={handleForm} name="linkBio" value={form.linkBio} />
+											<Span className="error-required-field-description">* Por favor ingresa tu enlace. </Span>
+											<Span className="error-required-field-description">* Por favor ingresa el formato correcto. </Span>
 										</aside>
 									</article>
 									<article className="mb-5">
 										<p className="text-center mb-3">ó , coloca tu experiencia respecto al puesto que buscamos</p>
 										<aside className="FormGroup">
 											<Txtfield className="mr-5" placeholder="Proyecto" onChange={handleForm} name="project" value={form.project} />
+											<Span className="error-required-field-description">* Por favor ingresa tu proyecto. </Span>
 											<Txtfield className="" placeholder="Tiempo de trabajo" onChange={handleForm} name="timeProject" value={form.timeProject} />
+											<Span className="error-required-field-description">* Por favor ingresa tu tiempo de trabajo. </Span>
 										</aside>
-										<aside className="FormGroup-full mt-4">
+										<aside className="FormGroup">
 											<Txtfield placeholder="Funciones que realizaste" onChange={handleForm} name="functions" value={form.functions} />
+											<Span className="error-required-field-description">* Por favor ingresa las funciones que realizaste. </Span>
 										</aside>
 									</article>
-
 									<article className="footerSection">
 										{/* <BtnPrimary family="submit"> Registrar </BtnPrimary> */}
 										<BtnPrimary disabled={loading} onClick={handleRegister2}>

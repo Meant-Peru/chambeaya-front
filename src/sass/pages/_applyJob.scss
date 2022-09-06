@@ -34,6 +34,10 @@
     .has-error-description {
       display: block;
     }
+
+    .has-error-description-url {
+      display: block;
+    }
   }
 
   .has-error {
@@ -41,6 +45,28 @@
     ::placeholder{
       color: #e98787;
     }
+  }
+
+  .has-error-url {
+    border: 1px solid #ff5851;
+    ::placeholder{
+      color: #e98787;
+    }
+  }
+
+  .formSection{
+    width: 70%;
+    margin: 0 auto
+  }
+
+  .d-flex{
+    display: flex;
+  }
+  .flex-row{
+    flex-direction: row;
+  }
+  .flex-col{
+    flex-direction: column;
   }
 
   .FormGroup-full{

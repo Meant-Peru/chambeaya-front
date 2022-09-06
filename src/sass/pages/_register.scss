@@ -39,7 +39,9 @@
         .has-error-description {
             display: block;
         }
-
+        .has-error-description-email {
+            display: block;
+        }
     }
 
 
@@ -73,6 +75,13 @@
     }
 
     .has-error {
+        border: 1px solid #ff5851;
+        ::placeholder{
+            color: #e98787;
+        }
+    }
+
+    .has-error-email {
         border: 1px solid #ff5851;
         ::placeholder{
             color: #e98787;
