@@ -3,12 +3,10 @@ import React from "react";
 export const useTab = (form) => {
     const [selectedTab, setSelectedTab] = React.useState(0);
     const tabCount = 3;
-
-
+    
     console.log('being called');
     console.log(selectedTab);
     console.log(form);
-
 
     const handleNextTab = () => {
         console.log('handleNextTab');
@@ -23,9 +21,6 @@ export const useTab = (form) => {
             setSelectedTab((selectedTab + 1) % tabCount )
         }
     }
-
-
-
 
     return { selectedTab, handleNextTab, setSelectedTab }
 }
