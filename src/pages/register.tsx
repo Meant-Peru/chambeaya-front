@@ -42,10 +42,9 @@ export default function Register() {
 				brithdayDate: account.birthDayDate,
 			},
 		};
-		//if (account.countFormErrors == 0) {
-			// e.target.className += ' disabled';
-		//	navigate('/register-step-2', { replace: true });
-		//}
+		if (Object.entries(account.formErrors).map( ([key, val]) => val).every(element => element === false) && Object.entries(account.formErrors).length == 7) {
+			navigate('/register-step-2', { replace: true });
+		}
 
 		saveLocalStorage(TEM_USER, dataSend);
 
@@ -99,11 +98,18 @@ export default function Register() {
 			}
 		}
 
+		// ..
 		if (e.target.name === 'confirmPassword') {
+			console.log(e.target.value);
+			console.log(account.password);
 			if (e.target.value != account.password) {
 				account.formErrors[e.target.name] = true;
 				e.target.classList.add('has-error');
 				e.target.nextSibling.classList.add('has-error-description');
+			} else if (e.target.value == account.password){
+				account.formErrors[e.target.name] = false;
+				e.target.classList.remove('has-error');
+				e.target.nextSibling.classList.remove('has-error-description');
 			}
 		}
 

@@ -41,6 +41,7 @@ export const RegisterPostulant = () => {
 		project: '',
 		timeProject: '',
 		functions: '',
+		formErrors: [],
 	});
 
 	const reset = () => {
@@ -55,11 +56,12 @@ export const RegisterPostulant = () => {
 			project: '',
 			timeProject: '',
 			functions: '',
+			formErrors: [],
 		});
 	};
 
 	// const navigate = useNavigate();
-	const { selectedTab, handleNextTab, setSelectedTab } = useTab();
+	const {selectedTab, handleNextTab, setSelectedTab} = useTab(form);
 
 	useEffect(() => {
 		(async () => {
@@ -89,7 +91,6 @@ export const RegisterPostulant = () => {
 
 	const handleForm = (e: any) => {
 		if (e.target.name === 'documentNumber') {
-			console.log(e.target.name);
 			e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..?)\../g);
 		}
 		let urlPattern = new RegExp('^(https?:\\/\\/)?'+ // validate protocol
@@ -100,24 +101,44 @@ export const RegisterPostulant = () => {
 			'(\\#[-a-z\\d_]*)?$','i'); // validate fragment locator
 		if (e.target.name === 'linkBio') {
 			if (!e.target.value.match(urlPattern)) {
-				console.log("No valido");
+				form.formErrors[e.target.name] = true;
 				e.target.classList.add('has-error-url');
 				e.target.nextSibling.nextSibling.classList.add('has-error-description-url');
 			} else {
+				form.formErrors[e.target.name] = false;
 				e.target.classList.remove('has-error-url');
 				e.target.nextSibling.nextSibling.classList.remove('has-error-description-url');
 			}
 		}
+		else if (e.target.name === 'documentType' && e.target.value === '_none') {
+			form.formErrors[e.target.name] = true;
+		} else if(e.target.value !== '_none'){
+			form.formErrors[e.target.name] = false;
+		}
+
+		else if (e.target.name === 'category' && e.target.value === '_none') {
+			form.formErrors[e.target.name] = true;
+		} else if(e.target.value !== '_none'){
+			form.formErrors[e.target.name] = false;
+		}
+
+		else if (e.target.name === 'typeBio' && e.target.value === '_none') {
+			form.formErrors[e.target.name] = true;
+		} else if(e.target.value !== '_none'){
+			form.formErrors[e.target.name] = false;
+		}
 
 		if (e.target.value == '' && !e.target.classList.contains('has-error')) {
+			form.formErrors[e.target.name] = true;
 			e.target.classList.add('has-error');
 			e.target.nextSibling.classList.add('has-error-description');
 			e.target.nextSibling.nextSibling.classList.remove('has-error-description-url');
-		} else if (e.target.value !== '') {
+		} else if (e.target.value !== '' && e.target.hasOwnProperty('value')) {
+			form.formErrors[e.target.name] = false;
 			e.target.classList.remove('has-error');
 			e.target.nextSibling.classList.remove('has-error-description');
 		}
-		console.log(e);
+
 		setForm({
 			...form,
 			[e.target.name]: e.target.value,
@@ -152,26 +173,28 @@ export const RegisterPostulant = () => {
 
 		console.log({ dataSend });
 
-		const response = await register(dataSend);
+		if (Object.entries(form.formErrors).map( ([key, val]) => val).every(element => element === false) && Object.entries(form.formErrors).length == 8) {
+			const response = await register(dataSend);
 
-		switch (response.data.message) {
-			case CREATE_USER:
-				clearOneLocalStorage(TEM_USER);
-				reset();
-				toast.success('Se creo el usuario correctamente...');
-				setTimeout(() => {
-					setLoading(false);
-					navigate('/login', { replace: true });
-				}, 2000);
-				return;
-			case USER_EXISTING:
-				toast.error('el usuario ya existe');
-				// alert('el usuario ya existe');
-				return;
-			default:
-				toast.error('error en el servidor');
-				// alert('Error corregir esto :c');
-				break;
+			switch (response.data.message) {
+				case CREATE_USER:
+					clearOneLocalStorage(TEM_USER);
+					reset();
+					toast.success('Se creó el usuario correctamente.');
+					setTimeout(() => {
+						setLoading(false);
+						navigate('/login', { replace: true });
+					}, 2000);
+					return;
+				case USER_EXISTING:
+					toast.error('El usuario ya existe.');
+					// alert('el usuario ya existe');
+					return;
+				default:
+					toast.error('Error en el servidor.');
+					// alert('Error corregir esto :c');
+					break;
+			}
 		}
 	};
 
@@ -220,7 +243,7 @@ export const RegisterPostulant = () => {
 										<p className="mb-3">Comprobante de pago a emitir</p>
 										<aside className="FormGroup">
 											<DropdownMenu onChange={handleForm} name="documentType" value={form.documentType}>
-												<DropdownItem>Elige el tipo de documento</DropdownItem>
+												<DropdownItem value="_none">Elige el tipo de documento</DropdownItem>
 												<DropdownItem value="1">RUC</DropdownItem>
 												<DropdownItem value="2">DNI</DropdownItem>
 												<DropdownItem value="3">Carnet de Extranjeria</DropdownItem>
@@ -230,7 +253,7 @@ export const RegisterPostulant = () => {
 										</aside>
 									</article>
 									<article className="footerSection">
-										<BtnPrimary type="button" onClick={handleNextTab}>
+										<BtnPrimary type="button" onClick={handleNextTab} className={`button-primary ${Object.entries(form.formErrors).map( ([key, val]) => val).every(element => element === false) && Object.entries(form.formErrors).length == 2 ? 'test' : 'disabled'}`}>
 											{' '}
 											Siguiente{' '}
 										</BtnPrimary>
@@ -242,8 +265,9 @@ export const RegisterPostulant = () => {
 									<article>
 										<p className="mb-3">Elige tu especialidad: </p>
 										<aside className="FormGroup">
-											<DropdownMenu onChange={handleForm} name="category" value={form.category}>
-												<DropdownItem>Eliga su especialidad</DropdownItem>
+											<DropdownMenu onChange={handleForm} name="category" value={form.category} >
+												<DropdownItem value="_none">Elija su especialidad</DropdownItem>
+
 												{categorys.map((category: Category) => (
 													<DropdownItem key={category._id} value={category._id}>
 														{category.nameCategory}
@@ -262,7 +286,7 @@ export const RegisterPostulant = () => {
 										))}
 									</article>
 									<article className="footerSection">
-										<BtnPrimary type="button" onClick={handleNextTab}>
+										<BtnPrimary type="button" onClick={handleNextTab} className={`button-primary ${Object.entries(form.formErrors).map( ([key, val]) => val).every(element => element === false) && Object.entries(form.formErrors).length == 3 ? 'test' : 'disabled'}`} >
 											{' '}
 											Siguiente{' '}
 										</BtnPrimary>
@@ -275,7 +299,7 @@ export const RegisterPostulant = () => {
 										<p className="mb-3 text-center">Enlace digital de experiencia laboral (Certijoven, Linkedin, Web, etc)</p>
 										<aside className="FormGroup">
 											<DropdownMenu onChange={handleForm} name="typeBio" value={form.typeBio}>
-												<DropdownItem>Seleccione tipo de enlace </DropdownItem>
+												<DropdownItem value="_none">Seleccione tipo de enlace </DropdownItem>
 												<DropdownItem value="1">Linkedin</DropdownItem>
 												<DropdownItem value="2">Web</DropdownItem>
 											</DropdownMenu>
@@ -299,7 +323,7 @@ export const RegisterPostulant = () => {
 									</article>
 									<article className="footerSection">
 										{/* <BtnPrimary family="submit"> Registrar </BtnPrimary> */}
-										<BtnPrimary disabled={loading} onClick={handleRegister2}>
+										<BtnPrimary disabled={loading} onClick={handleRegister2} className={`button-primary ${Object.entries(form.formErrors).map( ([key, val]) => val).every(element => element === false) && Object.entries(form.formErrors).length == 8 ? 'test' : 'disabled'}`}>
 											Registrar
 										</BtnPrimary>
 									</article>

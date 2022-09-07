@@ -18,7 +18,9 @@ import { Backdrop, CircularProgress } from '@material-ui/core';
 export default function ApplyJob() {
 	const { form, handleForm, reset } = usePostForm();
 	const navigate = useNavigate();
-	const { selectedTab, handleNextTab, setSelectedTab } = useTab();
+	// @todo: add missing argument. Right now I am adding form but I did it to make it work.
+	// we may need to create another UseTab.
+	const { selectedTab, handleNextTab, setSelectedTab } = useTab(form);
 	const { id } = useParams();
 	const {
 		postJobSate: { loading, postJob },
