@@ -91,7 +91,6 @@ export const RegisterPostulant = () => {
 
 	const handleForm = (e: any) => {
 		if (e.target.name === 'documentNumber') {
-			console.log(e.target.name);
 			e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..?)\../g);
 		}
 		let urlPattern = new RegExp('^(https?:\\/\\/)?'+ // validate protocol
@@ -103,7 +102,6 @@ export const RegisterPostulant = () => {
 		if (e.target.name === 'linkBio') {
 			if (!e.target.value.match(urlPattern)) {
 				form.formErrors[e.target.name] = true;
-				console.log("No valido");
 				e.target.classList.add('has-error-url');
 				e.target.nextSibling.nextSibling.classList.add('has-error-description-url');
 			} else {
@@ -120,10 +118,6 @@ export const RegisterPostulant = () => {
 
 		else if (e.target.name === 'category' && e.target.value === '_none') {
 			form.formErrors[e.target.name] = true;
-			console.log('dropdown category');
-			console.log(e);
-			console.log(form);
-			console.log(e.target.value);
 		} else if(e.target.value !== '_none'){
 			form.formErrors[e.target.name] = false;
 		}
@@ -144,9 +138,6 @@ export const RegisterPostulant = () => {
 			e.target.classList.remove('has-error');
 			e.target.nextSibling.classList.remove('has-error-description');
 		}
-		console.log(e);
-		console.log(form);
-
 
 		setForm({
 			...form,
