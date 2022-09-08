@@ -5,6 +5,7 @@ export const Theme = {
       bg: `#F9F9FA`,
       primary: `#4DBFB4`,
       secondary: `#FFD500`,
+      green: '#4dbfb4',
       dark: `#4DBFB4`,
       light: `#FFFFFF`,
       red: `#ff5851`,
@@ -28,7 +29,6 @@ export const Theme = {
   }
 
   export const Navbar = styled.nav`
-    background: ${Theme.colors.dark};
     font-family: ${Theme.fonts.heading};
     color: ${Theme.colors.light};
     width: ${Theme.grids.xlarge};

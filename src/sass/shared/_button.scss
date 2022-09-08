@@ -2,7 +2,7 @@
 
 .btnComponent--{
     &primary{
-        background-color: var(--primary-color);
+        background-color: var(--button-color);
         font-size: 16px;
         border-radius: 28px;
         align-items: center;
@@ -75,14 +75,14 @@
         border-radius: 28px;
         align-items: center;
         padding: 16px 64px;
-        color: var(--acent-color);
-        border: 2px solid var(--acent-color);
+        color: var(--gray-color-600);
+        border: 2px solid var(--primary-color);
         cursor:pointer;
         img{
             display: none;
         }
         &:hover{
-            background-color: var(--acent-color);
+            background-color: var(--primary-color);
             color: var(--light-color);
         }
     }
