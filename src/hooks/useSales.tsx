@@ -13,6 +13,17 @@ export const useSales = () => {
 		try {
 			const { data } = await getSalesCompanies();
 			if (data.message === LIST_SUCCESS) {
+				// Sort by business names alphabetically.
+				data.data.dataUsers = data.data.dataUsers.sort((a, b) => {
+					if (a.dataUser.businessName.toLowerCase() < b.dataUser.businessName.toLowerCase()) {
+						return -1;
+					}
+					if (a.dataUser.businessName.toLowerCase() > b.dataUser.businessName.toLowerCase()) {
+						return 1;
+					}
+					return 0;
+				});
+				console.log(data.data.dataUsers);
 				dispatch(loadCompanies({ companies: [...data.data.dataUsers] }));
 			}
 		} catch (error) {
