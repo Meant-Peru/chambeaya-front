@@ -35,7 +35,7 @@
 
   --primary-color: #{$primary-color};
   --secondary-color: #{$secondary-color};
-
+  --button-color: #{$button-color};
   --acent-color: #{$accent-color};
   --accent-color-2: #{$accent-color-2};
 
@@ -281,7 +281,7 @@ ul.pagination li.active a {
   color: white;
 }
 ul.pagination li.active {
-  background-color: var(--primary-color);
+  background-color: var(--button-color);
 }
 
 ul.pagination li a:hover,

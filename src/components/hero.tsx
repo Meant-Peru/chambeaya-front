@@ -27,11 +27,9 @@ export default function Hero() {
         <aside className="cover">
           <article>
             <h1>
-              EL INICIO DE TU <br /> PRÓXIMO
-              <b> TRABAJO</b>  
+                <b>EL INICIO DE TU <br /> PRÓXIMO TRABAJO</b>
               
             </h1>
-            <BtnPrimary onClick={handleRedirect}>  Registrarme</BtnPrimary>
           </article>
           <article className="coverImg">
             <img src={imgCover} alt="" />
@@ -47,7 +45,7 @@ export default function Hero() {
             <DropdownItem>Diseño</DropdownItem>
             <DropdownItem>Ingeniería</DropdownItem>
           </DropdownMenu>
-          <ButtonComponent family="primary" label="Filtrar" />
+          <ButtonComponent family="primary" label="FILTRAR" />
         </aside>
     </React.Fragment>
   );
