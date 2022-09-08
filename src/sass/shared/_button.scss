@@ -1,3 +1,4 @@
+@import "./../base/_grid.scss";
 
 .btnComponent--{
     &primary{
@@ -15,6 +16,7 @@
         &:hover{
             background: var(--dark-color);
         }
+
     }
     &secondary{
         background-color: var(--dark-color);
@@ -33,6 +35,11 @@
         &:hover{
             background: var(--primary-color);
         }
+        @include phone-max {
+            margin: 24px 0 0 0;
+
+        }
+
     }
     &terceary{
         background-color: var(--gray-color-200);

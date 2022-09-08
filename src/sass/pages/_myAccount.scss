@@ -21,16 +21,28 @@
   @include phone {
     width: var(--container-phone);
   }
-
+  @include phone-max {
+    width: var(--container-phone-max);
+    margin: 0;
+  }
+.listTab{
+  display: block;
+  @include phone-max {
+    background-color: #ffffff;
+    padding: 24px;
+  }
+}
   .react-tabs {
     display: flex;
-    margin-left: 36px;
     width: 100%;
     .list {
       display: flex;
       flex-direction: column;
-      margin-right: 69px;
+      margin-right: 64px;
 
+    }
+    @include phone-max {
+      flex-direction: column;
     }
   }
 
@@ -63,6 +75,10 @@
   .react-tabs__tab-panel {
     display: none;
     width: 80%;
+    @include phone-max {
+      width: 100%;
+    }
+
   }
 
   .react-tabs__tab-panel--selected {
@@ -88,26 +104,43 @@
     width: 100%;
     // padding-left: 20px;
     margin-right: 56px;
-
+    margin-bottom: 48px;
     span {
       color: var(--gray-color-900);
     }
+
   }
 
   .sectionAccount {
     width: 100%;
 
+    @include phone-max {
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+    }
     .FormGroup {
       width: 100%;
       display: flex;
       flex-direction: row;
       flex: 1;
       justify-content: space-between;
-
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+      @include phone-max {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: .5rem;
+        margin-top: 1rem;
+      }
       :first-child,
       :last-child {
         width: 48%;
+        @include phone-max {
+          width: 100%;
+        }
       }
+      
     }
   }
 }
@@ -150,6 +183,12 @@
   justify-content: space-between;
   padding: 24px;
   margin-bottom: 1rem;
+  @include phone-max {
+    flex-direction: column!important;
+    align-items: flex-start;
+    text-align: left;
+
+  }
 }
 
 .listCards{
@@ -158,10 +197,15 @@
   margin-top: 2rem;
   flex-wrap: wrap;
   justify-content: space-between;
-  
+  @include phone-max {
+    padding: 0 24px;
+  }
   .cardHistory{
     width: 49%;
     margin-bottom: 1rem;
+    @include phone-max {
+      width: 100%;
+    }
     .headCard{
       font-weight: 700;
       font-size: 12px;

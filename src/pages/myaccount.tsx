@@ -94,8 +94,8 @@ export default function MyAccount() {
 			<Header />
 			<section className="myAccountPage">
 				<Tabs>
-					<TabList className={'mb-5'}>
-						<aside className="sideBarMenu mb-5">
+					<TabList className={'listTab'}>
+						<aside className="sideBarMenu">
 							<h3 className="mb-2">Mi Cuenta</h3>
 							<span>Gestiona tu cuenta</span>
 						</aside>
@@ -114,14 +114,14 @@ export default function MyAccount() {
 							{user?.rol === COMPANY ? (
 								<Fragment>
 									<p>Datos primarios</p>
-									<aside className="FormGroup mt-3">
+									<aside className="FormGroup">
 										<Txtfield onChange={handleEvent} value={company.businessName} name="businessName" placeholder="Nombre de empresa" />
 										<Txtfield onChange={handleEvent} value={company.ruc} name="ruc" placeholder="Nro de Documento" />
 									</aside>
-									<aside className="FormGroup mt-4 mb-4">
+									<aside className="FormGroup">
 										<TxtArea onChange={handleEvent} value={company.description} name="description" placeholder="Descripción" />
 									</aside>
-									<aside className="FormGroup mt-2 mb-5">
+									<aside className="FormGroup">
 										<Txtfield onChange={handleEvent} value={company.email} name="email" placeholder="Correo electrónico" />
 										<Txtfield onChange={handleEvent} value={company.phone} name="phone" placeholder="Teléfono" />
 									</aside>
@@ -170,12 +170,6 @@ export default function MyAccount() {
 						</section>
 					</TabPanel>
 					<TabPanel>
-						{/* <section className="apply">
-							<img src={ilusEmpty} alt="empty" />
-							<p>No se encontraron postulaciones</p>
-
-						</section> */}
-
 						{user?.rol === COMPANY ? <PostCompany /> : <MyApply />}
 					</TabPanel>
 					<TabPanel>
