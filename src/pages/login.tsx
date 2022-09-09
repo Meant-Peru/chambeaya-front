@@ -64,7 +64,7 @@ export default function Login() {
 				<aside className="FormGroup">
 					<p>
 						{' '}
-						<a onClick={openModal}>Olvide mi clave</a>{' '}
+						<a href="#" onClick={openModal}>Olvide mi clave</a>{' '}
 					</p>
 				</aside>
 				<Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
