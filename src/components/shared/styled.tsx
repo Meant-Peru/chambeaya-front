@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import "typeface-rubik";
 
 export const Theme = {
     colors: {
@@ -171,7 +172,9 @@ export const Theme = {
 
 
     export const DropdownMenu = styled.select`
+    margin-bottom: 0.5em;
     background: ${Theme.colors.light};
+    color: ${Theme.colors.gray6};
     font-size: 16px;
     border-radius: 28px;
     align-items: center;
