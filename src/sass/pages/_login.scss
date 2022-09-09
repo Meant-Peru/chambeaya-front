@@ -7,6 +7,9 @@
   justify-content: center;
   text-align: center;
   margin: 80px auto 40px;
+  .error-required-field-description {
+    display: none;
+  }
   .FormGroup{
     width: 60%;
     margin: 0 auto 0;
@@ -24,8 +27,26 @@
         color: var(--color-text);
         text-decoration: none;
     }
- 
+    .has-error-description {
+      display: block;
+    }
+    .has-error-description-email {
+      display: block;
+    }
 }
+  .has-error {
+    border: 1px solid #ff5851;
+    ::placeholder{
+      color: #e98787;
+    }
+  }
+  .has-error-email {
+    border: 1px solid #ff5851;
+    ::placeholder{
+      color: #e98787;
+    }
+  }
+
   @include tablet-l {
     width: var(--container-tablet-landscape);
   }
