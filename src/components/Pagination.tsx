@@ -62,27 +62,9 @@ export const Pagination = ({ postJobs, itemsPerPage }) => {
             </article>
           </aside>
         ))}
-      <div className="react-paginate">
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel=">"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
-          pageCount={pageCount}
-          previousLabel="<"
-          renderOnZeroPageCount={null}
-          breakClassName={"page-item"}
-          breakLinkClassName={"page-link"}
-          containerClassName={"pagination"}
-          pageClassName={"page-item"}
-          pageLinkClassName={"page-link"}
-          previousClassName={"page-item"}
-          previousLinkClassName={"page-link"}
-          nextClassName={"page-item"}
-          nextLinkClassName={"page-link"}
-          activeClassName={"active"}
-        />
-      </div>
+      <aside className="height">
+      <ButtonComponent family="primary" label="VER MÁS" />
+      </aside>
     </>
   );
 };
