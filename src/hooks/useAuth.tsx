@@ -8,6 +8,8 @@ import { GetUser, UpdateUser } from '../util/user.service';
 import { UserGenerico } from '../interfaces/User';
 import { clearLocalStorage, saveLocalStorage } from '../helpers/localStorage';
 
+import toast, { Toaster } from 'react-hot-toast';
+
 export const useAuth = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -37,10 +39,10 @@ export const useAuth = () => {
 				}
 				return;
 			case USER_OR_PASSWORD_NOT_EXISTING:
-				alert('No encontrado');
+				toast.error('Las credenciales ingresadas no son válidas.');
 				return;
 			default:
-				alert('ERROR SERVIDOR');
+				toast.error('ERROR SERVIDOR');
 				return;
 		}
 	};
@@ -74,9 +76,9 @@ export const useAuth = () => {
 			console.log({ data });
 			const user: UserGenerico = { dataUser: data.dataUser, rol: data.dataUser.rol, id: data.id };
 			saveLocalStorage(USER, user);
-			alert('Se actualizó correctamente...');
+			toast.success('Se actualizó correctamente...');
 		} else {
-			alert('ERROR UPDATE');
+			toast.error('ERROR UPDATE');
 		}
 		return resp;
 	};

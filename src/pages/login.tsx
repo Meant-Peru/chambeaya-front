@@ -5,6 +5,7 @@ import { SESSION, USER_OR_PASSWORD_NOT_EXISTING } from './../helpers/constants';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Txtfield, BtnPrimary } from './../components/shared/styled';
 import Modal from 'react-modal';
+import toast, { Toaster } from 'react-hot-toast';
 
 import './../sass/pages/_login.scss';
 
@@ -45,7 +46,33 @@ export default function Login() {
 
 	const { startLogin } = useAuth();
 
-	const handleRedirect = async () => await startLogin(user);
+	const handleRedirect = async () => {
+
+		let passed = true;
+		//// Es obligatorio
+		if (user.email === '')  {
+			toast.error('El email es obligatorio.');
+			passed = false;
+
+    		//Se muestra un texto a modo de ejemplo, luego va a ser un icono
+    		if (user.email !== '' && !(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(user.email))) {
+				toast.error('El email ingresado no es válido.');
+			    passed = false;
+			}
+		}
+
+		if (user.password === '')  {
+			toast.error('El password es obligatorio.');
+			passed = false;
+		}
+
+		if (passed === true) {
+			await startLogin(user);
+		}
+		
+	}
+
+	
 
 	const handleEvent = (e: any) => {
 		setUser({
@@ -54,9 +81,11 @@ export default function Login() {
 		});
 	};
 
+
 	return (
 		<React.Fragment>
 			<Header />
+			<Toaster position="top-center" reverseOrder={false} />
 			<section className="LoginPage pt-2">
 				<h2>Ingresar a la plataforma</h2>
 				<aside className="FormGroup mt-5">
