@@ -318,7 +318,9 @@ export default function Dashboard() {
 						<Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModalCategory} onRequestClose={closeModalCategory} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
 						<h2 className="text-center">Nueva Especialidad</h2>
 						<p className="mt-2 text-center">
-							<i>Ingresa nueva posición , relacionalo a una especialidad</i>
+							<i>Ingresa una nueva especialidad como Diseño, Redes o Base de datos <br/>
+y no te olvides agregar su descripción.
+</i>
 						</p>
 						<aside className="FormGroup algn-center">
 							<form onSubmit={submitCategory}>
