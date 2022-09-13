@@ -242,7 +242,7 @@ export default function AddJob() {
 			const resp = await postJobCompany(sendData);
 			console.log({ resp });
 			if (resp.data.message === CREATE_POST) {
-				alert('Se creo el publicación correctamente...');
+				alert('Se creo la publicación correctamente...');
 				navigate('/', { replace: true });
 			} else {
 				alert('Error al crear la publicación');
