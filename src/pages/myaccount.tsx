@@ -9,7 +9,7 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import { Txtfield, TxtArea, DropdownMenu, DropdownItem, BtnPrimary } from '../components/shared/styled';
 
 import { COMPANY, POSTULANT } from '../helpers/constants';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
 import { useAuth } from '../hooks/useAuth';
@@ -86,6 +86,9 @@ export default function MyAccount() {
 	const handleLogout = () => {
 		startLogout();
 	};
+	const { id } = useParams();
+
+	const [tabIndex, setTabIndex] = useState(+id);
 
 	if (Object.keys(user.dataUser).length === 0) return <Navigate replace to="/login" />;
 
@@ -93,7 +96,7 @@ export default function MyAccount() {
 		<React.Fragment>
 			<Header />
 			<section className="myAccountPage">
-				<Tabs>
+				<Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
 					<TabList className={'listTab'}>
 						<aside className="sideBarMenu">
 							<h3 className="mb-2">Mi Cuenta</h3>

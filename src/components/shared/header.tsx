@@ -17,7 +17,7 @@ const navUser = {
 	brand: { name: 'ChambeaYa.', to: '/' },
 	links: [
 		{ name: 'Buscar un empleo', to: '/searchjob' },
-		{ name: 'Mi perfil', to: '/myaccount' },
+		{ name: 'Mi perfil', to: '/myaccount/0' },
 	],
 };
 

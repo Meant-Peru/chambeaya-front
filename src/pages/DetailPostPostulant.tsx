@@ -68,7 +68,7 @@ export const DetailPostPostulant = () => {
 		if (status) {
 			toast.success('Se contrato al postulante!');
 			setTimeout(() => {
-				navigate('/myaccount');
+				navigate('/myaccount/0');
 			}, 2000);
 		} else {
 			toast.error('Error en registrar al postulante!');

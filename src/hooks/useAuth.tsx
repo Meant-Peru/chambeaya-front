@@ -23,7 +23,7 @@ export const useAuth = () => {
 					switch (userGenerico.rol) {
 						case POSTULANT:
 						case COMPANY:
-							navigate('/myaccount', { replace: true });
+							navigate('/myaccount/0', { replace: true });
 							return;
 						case SALES:
 							navigate('/account-sales', { replace: true });
