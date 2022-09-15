@@ -59,7 +59,8 @@ export const usePostForm = () => {
 		linkBio: '',
 	});
 
-	const handleForm = (event: any) => {
+	const handleForm = (event: any) => {+
+		console.log(event);
 		setForm({
 			...form,
 			[event.target.name]: event.target.value,
