@@ -35,9 +35,6 @@ export const ProjectsComponent = () => {
 									<img src={p?.dataContract.states.stateProject ? check : negative} alt="" /> <span>Perfil Contratado</span>
 								</li>
 								<li>
-									<img src={p?.dataContract.states.paidProject ? check : negative} alt="" /> <span>Presupuesto no depositado</span>
-								</li>
-								<li>
 									<img src={p?.dataContract.states.fullDocumentation ? check : negative} alt="" /> <span>Documentación completa</span>
 								</li>
 							</ul>
