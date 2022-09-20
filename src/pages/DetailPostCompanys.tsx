@@ -69,7 +69,7 @@ export const DetailPostCompanys = () => {
 						<img src={Logo1} alt="" />
 					</article>
 					<article className="infoApply">
-						<h4>{listPostulant.length > 0 ? listPostulant.length + 'personas aplicaron' : 'Ninguna persona ha aplicado aún'} </h4>
+						<h4>{listPostulant.length > 0 ? listPostulant.length + ' personas aplicaron' : 'Ninguna persona ha aplicado aún'} </h4>
 						{/* <p className="mt-2">10 de Diciembre 2022</p> */}
 					</article>
 					<article className="actionApply">
