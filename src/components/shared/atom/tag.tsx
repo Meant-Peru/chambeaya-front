@@ -13,8 +13,10 @@ interface Props {
 	event?: (select: any) => void;
 }
 
-export const TagComponent = ({ select = false, event = () => {}, tag }: Props) => {
-	return <>{select ? <Chip label={tag.nameSkill} variant={'outlined'} onClick={() => event(tag)} /> : <Chip label={tag.nameSkill} onClick={() => event(tag)} />}</>;
+export const TagComponent = ({ select = false, event = () => { }, tag }: Props) => {
+	return <>{select ? 
+	<Chip label={tag.nameSkill} variant={'outlined'} onDelete={() => event(tag)} /> : 
+	<Chip label={tag.nameSkill} onDelete={() => event(tag)} />}</>;
 };
 
 // export default function TagComponent({ type, level, label, event = () => {} }: Props) {
