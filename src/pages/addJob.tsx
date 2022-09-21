@@ -243,8 +243,9 @@ export default function AddJob() {
 			console.log({ resp });
 			if (resp.data.message === CREATE_POST) {
 				alert('Se creo la publicación correctamente...');
-				navigate('/', { replace: true });
-			} else {
+				navigate('/myaccount/1', { replace: true });
+			
+		} else {
 				alert('Error al crear la publicación');
 			}
 		} else {

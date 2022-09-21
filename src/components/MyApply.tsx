@@ -21,96 +21,115 @@ const customStyles = {
 };
 
 export const MyApply = () => {
+	const [loading, setLoading] = useState(true);
+
 	const [listPostulations, setListPostulations] = useState([]);
 	const { startListPostulations } = usePostulant();
 	const { changeStateModal } = useUi();
+
+	const handleListPostulations = async () => {
+		setLoading(true)
+		const data = await startListPostulations();
+		console.log({ data });
+		setListPostulations([...data]);
+		setLoading(false)
+	};
 
 	useEffect(() => {
 		handleListPostulations();
 	}, []);
 
-	const handleListPostulations = async () => {
-		const data = await startListPostulations();
-		console.log({ data });
-		setListPostulations([...data]);
-	};
+
+	if(loading){
+		return <div>Consultando tus postulaciones...</div>
+	}
 
 	return (
 		<React.Fragment>
 			<section>
-				<p>Historial</p>
-				<aside className="listCards">
-					{listPostulations.map((p: PostJob) => (
-						<article className="cardHistory" key={p?._id}>
-							<div className="headCard">
-								<strong>{p?.title}</strong>
-								<span>{p?.state === true ? 'Publicación Abierta' : 'Publicación Cerrada'}</span>
-							</div>
-							<div className="contentCard">
-								<ul className="listCard">
-									<li>
-										<img src={check} alt="" /> <span>Skills</span>
-									</li>
-									<li>
-										<img src={negative} alt="" /> <span>Presupuesto</span>
-									</li>
-									<li>
-										<img src={check} alt="" /> <span>Experiencia</span>
-									</li>
-								</ul>
-								<button className="btnComponent--textLink" onClick={() => changeStateModal(true)}>
-									{' '}
-									Ver Detalle{' '}
-								</button>
 
-								<ModalComponent>
-									<aside className="mt-2 mr-5 ml-5 mb-2">
-										<h2 className="text-center">Contrato del postulante</h2>
-										<p className="text-center">
-											<i>Nuestra plataforma detecto % de similitud del postulante con su requerimiento.</i>
-										</p>
-										<hr className="mt-2" />
-										<aside className="algn-left">
-											<p className="mt-2">
-												<i>Resumen de postulación.</i>
-											</p>
-											<ul className="listMoldal">
-												<li className="">
-													<img src={check} alt="" /> <span>Tus skills tienen el % de similitud del postulante con el puesto</span>
-													<div className="mt-1">
-														<TagComponent key={1} type="state" level="success" tag={{ nameSkill: 'aa' }} />
-														{/* <article className="skillsBox">
+				{listPostulations.length === 0 &&
+					<div>
+						<p>No hay postulaciones</p>
+					</div>
+				}
+				{listPostulations.length > 0 &&
+					<div>
+						<p>Historial</p>
+						<aside className="listCards">
+							{listPostulations!.map((p: PostJob) => (
+								<article className="cardHistory" key={p?._id}>
+									<div className="headCard">
+										<strong>{p?.title}</strong>
+										<span>{p?.state === true ? 'Publicación Abierta' : 'Publicación Cerrada'}</span>
+									</div>
+									<div className="contentCard">
+										<ul className="listCard">
+											<li>
+												<img src={check} alt="" /> <span>Skills</span>
+											</li>
+											<li>
+												<img src={negative} alt="" /> <span>Presupuesto</span>
+											</li>
+											<li>
+												<img src={check} alt="" /> <span>Experiencia</span>
+											</li>
+										</ul>
+										<button className="btnComponent--textLink" onClick={() => changeStateModal(true)}>
+											{' '}
+											Ver Detalle{' '}
+										</button>
+
+										<ModalComponent>
+											<aside className="mt-2 mr-5 ml-5 mb-2">
+												<h2 className="text-center">Contrato del postulante</h2>
+												<p className="text-center">
+													<i>Nuestra plataforma detecto % de similitud del postulante con su requerimiento.</i>
+												</p>
+												<hr className="mt-2" />
+												<aside className="algn-left">
+													<p className="mt-2">
+														<i>Resumen de postulación.</i>
+													</p>
+													<ul className="listMoldal">
+														<li className="">
+															<img src={check} alt="" /> <span>Tus skills tienen el % de similitud del postulante con el puesto</span>
+															<div className="mt-1">
+																<TagComponent key={1} type="state" level="success" tag={{ nameSkill: 'aa' }} />
+																{/* <article className="skillsBox">
 													{skillSelected.map((e: Skill) => (
 														<TagComponent key={e._id} tag={e} event={(e: any) => removeItemSkill(e)} />
 													))}
 												</article> */}
-													</div>
-												</li>
-												<li>
-													<img src={negative} alt="" /> <span>Tu presupuesto ésta dentro del rengo</span>
-													<p>El rango presupuesto del cliente es de </p>
-												</li>
-												<li>
-													<img src={check} alt="" /> <span>Años de experiencia para este puesto</span>
-													<p>5 aplicantes demostraron 3 a más años de exp</p>
-												</li>
-											</ul>
-										</aside>
-										<aside className="algn-center mt-2">
-											<br />
-											<br />
-										</aside>
-									</aside>
-								</ModalComponent>
-								{/* <Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
+															</div>
+														</li>
+														<li>
+															<img src={negative} alt="" /> <span>Tu presupuesto ésta dentro del rengo</span>
+															<p>El rango presupuesto del cliente es de </p>
+														</li>
+														<li>
+															<img src={check} alt="" /> <span>Años de experiencia para este puesto</span>
+															<p>5 aplicantes demostraron 3 a más años de exp</p>
+														</li>
+													</ul>
+												</aside>
+												<aside className="algn-center mt-2">
+													<br />
+													<br />
+												</aside>
+											</aside>
+										</ModalComponent>
+										{/* <Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
 									<button onClick={closeModal}>close</button>
 
 									<h2>Soy un modal</h2>
 								</Modal> */}
-							</div>
-						</article>
-					))}
-				</aside>
+									</div>
+								</article>
+							))}
+						</aside>
+					</div>
+				}
 			</section>
 		</React.Fragment>
 	);
