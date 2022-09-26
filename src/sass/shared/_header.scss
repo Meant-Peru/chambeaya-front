@@ -3,12 +3,8 @@
 header{
     width: 100%;
     background: linear-gradient(90deg, rgba(77,191,180,255) 0%, rgba(77,191,180,255) 70%, rgba(47,156,179,255) 100%);
-    @include tablet-p {
-        width: var(--container-tablet-portrait);
-      }
+    @include tablet-p {}
 
-      @include phone-max {
-        width: var(--container-phone-max);
-      }
+      @include phone-max {}
 }
 

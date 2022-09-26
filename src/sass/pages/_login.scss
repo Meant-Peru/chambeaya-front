@@ -20,7 +20,7 @@
     flex-wrap: wrap;
     text-align: left;
     @include phone-max {
-      width: var(--container-phone-max);
+       
       padding: 0 5%;
     }
     a{
@@ -56,11 +56,11 @@
   }
 
   @include phone-max {
-    width: var(--container-phone-max);
+     
   }
 
   @include phone {
-    width: var(--container-phone);
+      ;
   }
 
 

@@ -3,9 +3,11 @@
 .sectionFull {
   width: 100%;
   background-color: var(--gray-color-900);
-  padding: 93px 0;
+  padding: 93px 12%;
+  @include tablet-l {
+    padding: 93px 2em;
+  }
   .CtaSection {
-    width: var(--container);
     margin: 0px auto;
     display: flex;
     flex-direction: row;
@@ -14,25 +16,16 @@
 
     h2 {
       color: var(--light-color) !important;
-    }
-
-    @include tablet-p {
-      width: var(--container-tablet-portrait);
-    }
-
-    @include phone {
-      width: var(--container-phone);
-      flex-direction: column;
-
-      h2{
-        margin-bottom: 48px;
-        font-size: 24px;
+      padding-right: 2em;
+      @include tablet-l {
+        padding: 0em;
       }
     }
-    @include phone-max {
-      width: var(--container-phone-max);
+
+    @include tablet-l {}
+
+    @include phone {
       flex-direction: column;
-      padding: 0 2rem;
       h2{
         margin-bottom: 48px;
         font-size: 24px;

@@ -22,17 +22,13 @@ export default function Hero() {
     }
   return (
     <React.Fragment>
-      <div className="secFull">
+      <div className="secFull"> 
       <section className="HeroComponent">
         <aside className="cover">
           <article>
             <h1>
                 <b>EL INICIO DE TU <br /> PRÓXIMO TRABAJO</b>
-              
             </h1>
-          </article>
-          <article className="coverImg">
-            <img src={imgCover} alt="" />
           </article>
         </aside>
       </section>

@@ -14,7 +14,6 @@ export const Theme = {
       gray6: `#98A0AE`,
       gray9: `#3A4049`,
       border: `#e9e9e9`,
-
     },
     fonts: {
       body: `Rubik , sans-serif`,
@@ -32,33 +31,19 @@ export const Theme = {
   export const Navbar = styled.nav`
     font-family: ${Theme.fonts.heading};
     color: ${Theme.colors.light};
-    width: ${Theme.grids.xlarge};
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-        a { color: white; text-decoration: none;}
-
-        @media (max-width: 1024px){
-            width: ${Theme.grids.large};
-        }
-        @media (max-width: 768px){
-          width: ${Theme.grids.medium};
-        }
-        @media (max-width: 375px){
-          width: ${Theme.grids.small};
-     
-        }
-        @media (max-width: 420px){
-          width: ${Theme.grids.smallmax};
-     
-        }
-    }`;
+    padding:0 8%;
+    a { color: white; text-decoration: none;} 
+    @media (max-width: 1023px){
+      padding:0 2em;
+    }
+    `;
 
   export const Brand = styled.a`
     font-weight: bold;
     font-style: italic;
-    margin-left: 1rem;
     padding-right: 1rem;`;
 
   export const Ul = styled.ul`
@@ -66,7 +51,7 @@ export const Theme = {
     flex-wrap: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    @media (max-width: 375px){
+    @media (max-width: 425px){
       display: none;
     }
     `;
@@ -135,7 +120,7 @@ export const Theme = {
     padding: 16px 24px;
     border: 1px solid ${Theme.colors.border};
     width:100%;
-    margin-right:1rem;
+  
     ::placeholder{
         color: ${Theme.colors.gray6};
     }
@@ -180,7 +165,7 @@ export const Theme = {
     align-items: center;
     padding: 16px 24px;
     border: none;
-    margin-right:1rem;
+   
     border-right: 24px solid transparent;
     outline: ${Theme.colors.border} auto 1px;
     :focus-visible{

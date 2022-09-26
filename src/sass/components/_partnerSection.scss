@@ -11,29 +11,20 @@
       font-size: 24px;
       font-weight: 300;
     }
-
-    @include tablet-p {
-      width: var(--container-tablet-portrait);
-    }
-
+    @include tablet-l {}
     @include phone {
       flex-direction: column;
     }
-    @include phone-max {
-      flex-direction: column;
-    }
-
     article{
         width: 50%;
-        padding: 70px 0 70px 17.5%;
+        padding: 70px 12%;
         background-color: var(--primary-color);
+        @include tablet-l {
+          padding: 70px 8%;
+        }
         @include phone {
           width: 100%;
-          padding: 70px 0 70px 5%;
-        }
-        @include phone-max {
-          width: 100%;
-          padding: 70px 0 70px 5%;
+          padding: 70px 2em;
         }
         h2{
           font-size: 36px;
@@ -46,22 +37,23 @@
         &:last-child{
             background-color: var(--primary-color);
             display: flex;
-            padding: 70px 15% 70px 5%;
+            padding: 70px 12%;
             flex-direction: row;
             justify-content: flex-start;
             align-items: center;
             flex-wrap: wrap;
             background-color: var(--accent-color-2);
-            @include phone {
-              padding: 70px 5% 70px 5%;
+            @include tablet-l {
+              padding: 70px 8%;
             }
-            @include phone-max {
-              display: flex;
+            @include phone {
+             display: flex;
               flex-wrap: wrap;
+              padding: 70px 2em;
             }
             img{
               padding-right: 2.5rem;
-              @include phone-max {
+              @include phone {
                 padding-right: 1rem;
               }
             }

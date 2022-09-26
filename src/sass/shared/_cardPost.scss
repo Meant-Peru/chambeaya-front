@@ -13,14 +13,14 @@
 
       }
       @include phone {
-        width: var(--container-phone);
+          ;
         display: flex;
         flex-direction: column;
         align-items: center;
 
       }
       @include phone-max {
-        width: var(--container-phone-max);
+         
         display: flex;
         flex-direction: column;
         align-items: center;
