@@ -35,9 +35,7 @@ export default function ListPost() {
 	const [modalIsOpen, setIsOpen] = React.useState(false);
 	const navigate = useNavigate();
 	const { id } = useParams();
-	const {
-		postJobSate: { loading, postJob },
-	} = usePostJob(id);
+	const { postJobSate: { loading, postJob }, } = usePostJob(id);
 	const _postJob = postJob!.reduce((k: any, o: any) => ((k[o] = k), o), {}) as PostJob;
 	console.log({ _postJob });
 
@@ -112,7 +110,11 @@ export default function ListPost() {
 						</article>
 						<article className="actionApply">
 							<BtnPrimary onClick={openModal}> Aplicar </BtnPrimary>
-							<p className="mt-2">Requerimiento activo</p>
+							{get(_postJob, 'state', '') ?
+							<p className="mt-2">Requerimiento disponible</p>
+								: <p className="mt-2">El puesto de trabajo ya fue tomado por alguien más</p>
+								
+							}
 						</article>
 					</aside>
 
