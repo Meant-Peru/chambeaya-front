@@ -10,17 +10,16 @@ interface Props {
 	level?: string;
 	label?: string;
 	select?: boolean;
-	eventD?: (select: any) => void;
-
-
+	eventS?: (select: any) => void;
+	
 }
 
-export const TagComponent = ({ select = false, eventD = () => { }, tag }: Props) => {
+export const OptionComponent = ({ select = false, eventS = () => { }, tag }: Props) => {
 	return <>{
 		select ? 
-	<Chip label={tag.nameSkill}  onDelete={() => eventD(tag)}/>
+	<Chip className='mr-1' label={tag.nameSkill} color="primary" onClick={() => eventS(tag)} />
 	 : 
-	<Chip label={tag.nameSkill} onDelete={() => eventD(tag)}/>}</>;
+	<Chip className='mr-1' label={tag.nameSkill} onClick={() => eventS(tag)} />}</>;
 };
 
 // export default function TagComponent({ type, level, label, event = () => {} }: Props) {

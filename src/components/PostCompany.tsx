@@ -16,7 +16,7 @@ export const PostCompany = () => {
 
 	const getList = async () => {
 		const data = await getPosts();
-		// console.log({ data });
+		 console.log({ data });
 		setListPost([...data]);
 	};
 

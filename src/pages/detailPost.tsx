@@ -2,7 +2,7 @@ import * as React from 'react';
 import './../sass/pages/_detailPost.scss';
 
 import Header from '../components/shared/header';
-import { TagComponent } from '../components/shared/atom/tag';
+import { OptionComponent } from '../components/shared/atom/option';
 import CardPost from '../components/shared/cardPost';
 
 import Logo1 from './../assets/logos/1.svg';
@@ -94,9 +94,9 @@ export default function ListPost() {
 							<i>{get(_postJob.dataCompany, 'businessName', '')}</i>
 						</p>
 					</aside>
-					<aside className="skillTags">
+					<aside className="skillTags cursorText">
 						{get(_postJob, 'listSkills', []).map((value) => (
-							<TagComponent type="highlight" key={Math.random()} level="secondary" tag={value} />
+							<OptionComponent type="highlight" key={Math.random()} level="secondary" tag={value} />
 						))}
 					</aside>
 					<hr />
