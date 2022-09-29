@@ -163,6 +163,9 @@ ul li{
 .mt-4{
   margin-top: #{$size*4};
 }
+.mr-1{
+  margin-right: #{$size*1};
+}
 .mb-4{
   margin-bottom: #{$size*4};
 }
@@ -174,6 +177,9 @@ ul li{
 }
 .mt-4{
   margin-top: #{$size*4}!important;
+}
+.mr-1{
+  margin-right: #{$size*1}!important;
 }
 .mt-5{
   margin-top: #{$size*5}!important;

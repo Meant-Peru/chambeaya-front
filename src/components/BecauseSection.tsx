@@ -11,10 +11,10 @@ export default function BecauseSection() {
             <section className="BecauseSection">
                 <h2>Porque elegirnos</h2>
                 <article>
-                    <aside> <img src={img1} width="90" alt="" /> <h3>No cobramos comisiones</h3></aside>
-                    <aside> <img src={img2} width="90" alt="" /> <h3>Postulaciones ilimitadas</h3></aside>
-                    <aside> <img src={img3} width="90" alt="" /> <h3>Pagos garantizados</h3></aside>
-                    <aside> <img src={img4} width="90" alt="" /> <h3>Todos los oficios a tu alcance</h3></aside>
+                    <aside> <img src={img1} alt="" /> <h3>No cobramos comisiones</h3></aside>
+                    <aside> <img src={img2} alt="" /> <h3>Postulaciones ilimitadas</h3></aside>
+                    <aside> <img src={img3} alt="" /> <h3>Pagos garantizados</h3></aside>
+                    <aside> <img src={img4} alt="" /> <h3>Todos los oficios a tu alcance</h3></aside>
                 </article>
             </section>
         </React.Fragment>

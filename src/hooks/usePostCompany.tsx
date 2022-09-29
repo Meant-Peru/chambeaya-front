@@ -10,8 +10,8 @@ export const usePostCompany = () => {
 		return listPostJob as PostJob[];
 	};
 
-	const startDetailPost = async (id: string) => {
-		const resp = await getDetallePostCompany({ id });
+	const startDetailPost = async (idPostJob: string) => {
+		const resp = await getDetallePostCompany({ idPostJob });
 		return resp as DetailPost;
 		// return listPostJob as PostJob[];
 	};

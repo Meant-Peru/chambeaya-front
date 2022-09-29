@@ -18,7 +18,7 @@ import { getCategory, getSkillForCategory } from '../util/publication.service';
 import { Category } from '../interfaces/Category';
 import { Response } from '../interfaces/Response';
 import { Skill, SkillSelect } from '../interfaces/Skill';
-import { TagComponent } from '../components/shared/atom/tag';
+import { OptionComponent } from '../components/shared/atom/option';
 import { clearOneLocalStorage, getLocalStorage } from '../helpers/localStorage';
 import { CREATE_USER, TEM_USER, USER_EXISTING } from '../helpers/constants';
 import { register } from '../util/auth.service';
@@ -282,7 +282,7 @@ export const RegisterPostulant = () => {
 											<CheckButton value={value} onChange={handleCheck} withbg="yes" label={value.nameSkill} key={value._id} />
 										))} */}
 										{skills.map((e: SkillSelect) => (
-											<TagComponent key={e._id} tag={e} select={e.select} event={(e: SkillSelect) => selectItemSkill(e)} />
+											<OptionComponent type="selectable" key={e._id} tag={e} select={e.select} eventS={(e: SkillSelect) => selectItemSkill(e)} />
 										))}
 									</article>
 									<article className="footerSection">

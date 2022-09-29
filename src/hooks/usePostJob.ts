@@ -7,6 +7,7 @@ type PostState = {
 	loading?: boolean;
 	postJobs?: PostJob[];
 	postJob?: PostJob[];
+	postulants?:number
 };
 
 export const usePostJob = (id?: string) => {
@@ -17,12 +18,11 @@ export const usePostJob = (id?: string) => {
 	const [postJobSate, setPostJob] = React.useState<PostState>({
 		loading: true,
 		postJob: [],
+		postulants:0
 	});
 
 	const getAllJobsData = async () => {
-		const {
-			data: { listPostJob },
-		} = await getAllJobs();
+		const {data: { listPostJob },} = await getAllJobs();
 		console.log({ listPostJob });
 		setPostJobs({
 			loading: false,
@@ -31,11 +31,12 @@ export const usePostJob = (id?: string) => {
 	};
 
 	const getJobData = async (id: string) => {
-		const { listPostJob } = await getJob(id);
-		// const { dataSkill } = await getJob(listPostJob.);
+		const { listPostJob, postulants} = await getJob(id);
+		
 		setPostJob({
 			loading: false,
 			postJob: listPostJob,
+			postulants: postulants
 		});
 	};
 

@@ -13,9 +13,7 @@
   @include tablet-p {
     width: var(--container-tablet-portrait);
   }
-  @include phone {
-    width: var(--container-phone);
-  }
+  @include phone {}
 
   .error-required-field-description {
     display: none;
@@ -88,9 +86,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-  
+   
   }
-
 }
 
 
@@ -117,7 +114,5 @@
     text-align: left;
     width: 60%;
     margin: 0 auto;
-    @include phone {
-      width: var(--container-phone);
-    }
+    @include phone {}
 }

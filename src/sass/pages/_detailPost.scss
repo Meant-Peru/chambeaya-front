@@ -16,13 +16,6 @@
     width: var(--container-tablet-portrait);
   }
 
-  @include phone {
-    width: var(--container-phone);
-  }
-  @include phone-max {
-    width: var(--container-phone-max);
-  }
-
   .skillTags {
     width: 35%;
     margin: 0 auto 40px;
@@ -39,21 +32,22 @@
     }
 
     @include phone {
-      width: var(--container-phone);
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       align-items: center;
     }
     @include phone-max {
-      width: var(--container-phone-max);
+       
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       align-items: center;   
     }
   }
-
+.cursorText {
+  cursor: default !important;
+}
   .cardApply {
     background-color: var(--light-color);
     border-radius: 24px;
@@ -70,13 +64,13 @@
     }
 
     @include phone {
-      width: var(--container-phone);
+        
       display: flex;
       flex-direction: column;
       align-items: center;
     }
     @include phone-max {
-      width: var(--container-phone-max);
+       
       display: flex;
       flex-direction: column;
       align-items: left;
@@ -182,12 +176,12 @@
     flex-direction: row;
 
     @include phone {
-      width: var(--container-phone);
+        
       display: flex;
       flex-direction: column;
     }
     @include phone-max {
-      width: var(--container-phone-max);
+       
       display: flex;
       flex-direction: column;
       padding: 2rem;
@@ -262,14 +256,14 @@
     }
 
     @include phone {
-      width: var(--container-phone);
+        
       display: flex;
       flex-direction: column;
       align-items: center;
       padding-top: 24px;
     }
     @include phone-max {
-      width: var(--container-phone-max);
+       
       display: flex;
       flex-direction: column;
       box-sizing: border-box;

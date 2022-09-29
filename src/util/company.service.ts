@@ -7,17 +7,18 @@ export const GetPostCompany = async () => {
 	try {
 		const token = await getLocalStorage(SESSION);
 		const { data } = await axios.get(`${URI}/user/getPostJob`, { headers: { token } });
-		console.log(data.data.listPostJob[0].createdDate);
+		console.log("GET POST COMPANY",data.data.listPostJob);
 		// Sort by date of publication.
 		data.data.listPostJob = data.data.listPostJob.sort((a, b) => {
-			if (a.listPostJob.createdDate !== null && b.listPostJob.createdDate !== null && a.listPostJob.createdDate.getTime() < b.listPostJob.createdDate.getTime()) {
+			if (a.createdDate > b.createdDate) {
 				return -1;
 			}
-			if (a.listPostJob.createdDate !== null && b.listPostJob.createdDate !== null && a.listPostJob.createdDate.getTime() > b.listPostJob.createdDate.getTime()) {
+			if (a.createdDate < b.createdDate) {
 				return 1;
 			}
 			return 0;
 		});
+		data.data.listPostJob = [data.data.listPostJob[0]]
 		return data.data;
 	} catch (error) {
 		console.log(error);

@@ -2,7 +2,7 @@ import * as React from 'react';
 import './../sass/pages/_detailPost.scss';
 
 import Header from '../components/shared/header';
-import { TagComponent } from '../components/shared/atom/tag';
+import { OptionComponent } from '../components/shared/atom/option';
 import CardPost from '../components/shared/cardPost';
 
 import Logo1 from './../assets/logos/1.svg';
@@ -17,6 +17,9 @@ import { Backdrop, CircularProgress } from '@material-ui/core';
 import { get, split } from 'lodash';
 import { PostJob } from '../types/post_job';
 import { postulateJob } from '../util/job.service';
+
+
+
 
 const customStyles = {
 	content: {
@@ -35,16 +38,14 @@ export default function ListPost() {
 	const [modalIsOpen, setIsOpen] = React.useState(false);
 	const navigate = useNavigate();
 	const { id } = useParams();
-	const {
-		postJobSate: { loading, postJob },
-	} = usePostJob(id);
+	const { postJobSate: { loading, postJob, postulants }, } = usePostJob(id);
 	const _postJob = postJob!.reduce((k: any, o: any) => ((k[o] = k), o), {}) as PostJob;
 	console.log({ _postJob });
 
-	/*	const handleRedirect = () => {
-			navigate('/apply/' + id);
-		}; */
+	//@TODO: Buscar la libreria que tranforma la fecha, nativo genera errores
+	//const postDate = new Date(_postJob?.createdDate);
 
+	
 	form.idPostJob = id;
 
 	const submit = async (event: any) => {
@@ -96,9 +97,9 @@ export default function ListPost() {
 							<i>{get(_postJob.dataCompany, 'businessName', '')}</i>
 						</p>
 					</aside>
-					<aside className="skillTags">
+					<aside className="skillTags cursorText">
 						{get(_postJob, 'listSkills', []).map((value) => (
-							<TagComponent type="highlight" key={Math.random()} level="secondary" tag={value} />
+							<OptionComponent type="highlight" key={Math.random()} level="secondary" tag={value} />
 						))}
 					</aside>
 					<hr />
@@ -107,12 +108,19 @@ export default function ListPost() {
 							<img src={Logo1} alt="" />
 						</article>
 						<article className="infoApply">
-							<h4>12 personas aplicaron</h4>
-							<p className="mt-2">10 de Diciembre 2022</p>
+							<h4>{postulants> 0 ? postulants + ' personas aplicaron' : 'Ninguna persona ha aplicado aún'}</h4>
+
+							<p className="mt-2">
+								
+							</p>
 						</article>
 						<article className="actionApply">
 							<BtnPrimary onClick={openModal}> Aplicar </BtnPrimary>
-							<p className="mt-2">Requerimiento activo</p>
+							{get(_postJob, 'state', '') ?
+							<p className="mt-2">Requerimiento disponible</p>
+								: <p className="mt-2">El puesto de trabajo ya fue tomado por alguien más</p>
+								
+							}
 						</article>
 					</aside>
 

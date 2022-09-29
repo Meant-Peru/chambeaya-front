@@ -1,25 +1,21 @@
 @import "./../base/_grid.scss";
 
 .ListPostComponent {
-    width: var(--container);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 80px auto 90px;
+    margin: 80px 0;
     text-align: center;
-    @include tablet-p {
-        width: var(--container-tablet-portrait); 
+    padding: 0px 12%;
+    @include tablet-l {
+        padding: 0px 8%;
     }
     @include phone {
-        width: var(--container-phone);  
-    }
-    @include phone-max {
-        width: var(--container-phone-max);  
+        padding: 0px 2em;
     }
     
  aside{
      border-radius: 24px;
- 
     article{
         display: flex;
         flex-direction: row;
@@ -34,32 +30,42 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            width: 10%;
+            width: 15%;
+            padding: 0em 1em;
             img{
                 border-radius: 16px;
-                width: 80px;
-                height: 80px;
+                width: 90%;
+                height: auto;
+                @include tablet-l {
+                    width: 100%;
+                }
+                @include phone {
+                    width: 50%;
+                }
+            }
+            @include tablet-l {
+                width: 15%;
+                padding: 1em 1em 1em 0em;
             }
             @include phone {
                 width: 100%;
-            }
-            @include phone-max {
-                width: 100%;  
             }
         }
         .rContent{
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            width: 90%;
-            margin-left: 2rem;
+            width: 85%;
             .title{
-                width: 45%;
+                width: 35%;
                 text-align: left;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
+                @include phone {
+                    width: 100%;
+                }
             }
             .ubication{
                 width: 40%;
@@ -67,13 +73,16 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
+                @include phone {
+                    width: 100%;
+                }
             }
             .actions{
                 width: 25%;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                @include phone-max {
+                @include phone {
                     width: 100%;  
                     margin-top: 2rem
                 }
@@ -82,24 +91,17 @@
                     margin-top: 2rem
                 }
             }
+            @include tablet-l {
+                width: 85%;
+            }
             @include phone {
                 flex-direction: column;
                 width: 100%;
-                margin-left: 0;
-            }
-            @include phone-max {
-                flex-direction: column;
-                width: 100%;
-                margin-left: 0;
+
             }
         }
 
         @include phone {
-            width: var(--container-phone);  
-            flex-direction: column;
-        }
-        @include phone-max {
-            width: var(--container-phone-max);  
             flex-direction: column;
         }
     }

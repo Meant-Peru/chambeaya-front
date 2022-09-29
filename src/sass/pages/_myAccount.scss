@@ -19,10 +19,10 @@
   }
 
   @include phone {
-    width: var(--container-phone);
+      ;
   }
   @include phone-max {
-    width: var(--container-phone-max);
+     
     margin: 0;
   }
 .listTab{
