@@ -16,7 +16,7 @@ export const PostCompany = () => {
 
 	const getList = async () => {
 		const data = await getPosts();
-		 console.log({ data });
+		 console.log('data entre llaves',{ data });
 		setListPost([...data]);
 	};
 
@@ -27,8 +27,6 @@ export const PostCompany = () => {
 					<h2>Publicaciones</h2>
 					<ButtonComponent family="terceary" link="/addJob" label="Nuevo" />
 				</article>
-				<p className="mb-5">Actualmente tienes un plan gratuito, puede que no puedas colocar visible 2 o más publicaciones.</p>
-
 				<aside>
 					{listPost.map((p: PostJob) => (
 						<article className="rowPost row" key={p._id}>
