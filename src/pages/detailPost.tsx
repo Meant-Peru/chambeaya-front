@@ -18,6 +18,9 @@ import { get, split } from 'lodash';
 import { PostJob } from '../types/post_job';
 import { postulateJob } from '../util/job.service';
 
+
+
+
 const customStyles = {
 	content: {
 		top: '50%',
@@ -35,14 +38,14 @@ export default function ListPost() {
 	const [modalIsOpen, setIsOpen] = React.useState(false);
 	const navigate = useNavigate();
 	const { id } = useParams();
-	const { postJobSate: { loading, postJob }, } = usePostJob(id);
+	const { postJobSate: { loading, postJob, postulants }, } = usePostJob(id);
 	const _postJob = postJob!.reduce((k: any, o: any) => ((k[o] = k), o), {}) as PostJob;
 	console.log({ _postJob });
 
-	/*	const handleRedirect = () => {
-			navigate('/apply/' + id);
-		}; */
+	//@TODO: Buscar la libreria que tranforma la fecha, nativo genera errores
+	//const postDate = new Date(_postJob?.createdDate);
 
+	
 	form.idPostJob = id;
 
 	const submit = async (event: any) => {
@@ -105,8 +108,11 @@ export default function ListPost() {
 							<img src={Logo1} alt="" />
 						</article>
 						<article className="infoApply">
-							<h4>12 personas aplicaron</h4>
-							<p className="mt-2">10 de Diciembre 2022</p>
+							<h4>{postulants> 0 ? postulants + ' personas aplicaron' : 'Ninguna persona ha aplicado aún'}</h4>
+
+							<p className="mt-2">
+								
+							</p>
 						</article>
 						<article className="actionApply">
 							<BtnPrimary onClick={openModal}> Aplicar </BtnPrimary>
