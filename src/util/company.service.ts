@@ -18,7 +18,7 @@ export const GetPostCompany = async () => {
 			}
 			return 0;
 		});
-		data.data.listPostJob = [data.data.listPostJob[0]]
+		data.data.listPostJob = data.data.listPostJob
 		return data.data;
 	} catch (error) {
 		console.log(error);
