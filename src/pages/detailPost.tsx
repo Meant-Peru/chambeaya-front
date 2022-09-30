@@ -43,8 +43,9 @@ export default function ListPost() {
 	console.log({ _postJob });
 
 	//@TODO: Buscar la libreria que tranforma la fecha, nativo genera errores
-	//const postDate = new Date(_postJob?.createdDate);
-
+	const postDate =(v) => {
+		return new Intl.DateTimeFormat('es-ES', { year: 'numeric', month: 'long', day: '2-digit' }).format(v);
+	} 
 	
 	form.idPostJob = id;
 
