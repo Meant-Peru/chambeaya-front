@@ -29,6 +29,7 @@ export const DetailPostCompanys = () => {
 	const handlerInit = async () => {
 		setLoadingPost(true);
 		const resp = await startDetailPost(id);
+		console.log('DetailPostCompanys',resp)
 		resp?.postulants.sort((a, b) => b.porcentageSkills - a.porcentageSkills);
 		// resp?.postulants.reverse();
 

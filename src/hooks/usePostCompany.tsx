@@ -2,7 +2,7 @@ import { DetailPost } from '../interfaces/DetailPost';
 import { DetailPostulant } from '../interfaces/DetailPostulant';
 import { PostJob } from '../types/post_job';
 import { GetPostCompany } from '../util/company.service';
-import { getDetallePostCompany, getDetailPostPostulant, createPostJobContracts } from '../util/job.service';
+import { getDetallePost, getDetailPostPostulant, createPostJobContracts } from '../util/job.service';
 
 export const usePostCompany = () => {
 	const getPosts = async () => {
@@ -10,8 +10,8 @@ export const usePostCompany = () => {
 		return listPostJob as PostJob[];
 	};
 
-	const startDetailPost = async (idPostJob: string) => {
-		const resp = await getDetallePostCompany({ idPostJob });
+	const startDetailPost = async (id: string) => {
+		const resp = await getDetallePost({ id });
 		return resp as DetailPost;
 		// return listPostJob as PostJob[];
 	};

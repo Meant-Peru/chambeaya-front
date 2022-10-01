@@ -21,6 +21,7 @@
     "@types/react-modal": "^3.13.1",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^0.27.2",
+    "date-fns": "^2.29.3",
     "material-ui-dropzone": "^3.5.0",
     "react": "^18.0.0",
     "react-autocomplete-hint": "^2.0.0",

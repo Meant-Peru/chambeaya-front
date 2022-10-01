@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { fromUnixTime, format } from 'date-fns'
+import { es } from 'date-fns/locale'
+
 import './../sass/pages/_detailPost.scss';
 
 import Header from '../components/shared/header';
@@ -43,9 +46,11 @@ export default function ListPost() {
 	console.log({ _postJob });
 
 	//@TODO: Buscar la libreria que tranforma la fecha, nativo genera errores
-	const postDate =(v) => {
-		return new Intl.DateTimeFormat('es-ES', { year: 'numeric', month: 'long', day: '2-digit' }).format(v);
-	} 
+	const createDateFormat =(v) => {
+		let dte = format(fromUnixTime(v),"d 'de' MMMM 'del' yyyy",{locale:es});
+		return `${dte}`
+	}
+	console.log( fromUnixTime(_postJob.createdDate).getHours());
 	
 	form.idPostJob = id;
 
@@ -93,7 +98,7 @@ export default function ListPost() {
 			{!loading && (
 				<section className="DetailPostComponent">
 					<aside className="coverHeader mb-5">
-						<h1 className="mb-2">{get(_postJob, 'title', '')}</h1>
+						<h1 className="mb-2">{_postJob.title}</h1>
 						<p>
 							<i>{get(_postJob.dataCompany, 'businessName', '')}</i>
 						</p>
@@ -112,7 +117,7 @@ export default function ListPost() {
 							<h4>{postulants> 0 ? postulants + ' personas aplicaron' : 'Ninguna persona ha aplicado aún'}</h4>
 
 							<p className="mt-2">
-								
+							{createDateFormat(_postJob.createdDate)}
 							</p>
 						</article>
 						<article className="actionApply">
@@ -126,7 +131,7 @@ export default function ListPost() {
 					</aside>
 
 					<Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
-						<h2 className="text-center">Aplicar a {get(_postJob, 'title', '')}</h2>
+						<h2 className="text-center">Aplicar a {_postJob.title}</h2>
 						<p className="mt-2 text-center">
 							<i>Antes de aplicar ingresa tus pretenciones salariales</i>
 						</p>
