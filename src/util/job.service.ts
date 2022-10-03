@@ -55,7 +55,7 @@ export const getDetallePostCompany = async (payload: any) => {
 
 export const getDetallePost = async (payload: any) => {
 	const token = await getLocalStorage(SESSION);
-	const { data } = await axios.post(`${URI}/user/getPostJobtByid`, payload, { headers: { token } });
+	const { data } = await axios.post(`${URI}/user/getPostJobByid`, payload, { headers: { token } });
 	return data.data;
 };
 

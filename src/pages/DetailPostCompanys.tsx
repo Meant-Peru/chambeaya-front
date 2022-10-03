@@ -20,7 +20,7 @@ export const DetailPostCompanys = () => {
 	const [listSkill, setListSkill] = useState<ListSkill[]>([]);
 	const [listPostulant, setListPostulant] = useState<PostulantJob[]>([]);
 	const { id } = useParams();
-	const { startDetailPost } = usePostCompany();
+	const { startDetailPostCompany} = usePostCompany();
 
 	useEffect(() => {
 		handlerInit();
@@ -28,9 +28,12 @@ export const DetailPostCompanys = () => {
 
 	const handlerInit = async () => {
 		setLoadingPost(true);
-		const resp = await startDetailPost(id);
+		const resp = await startDetailPostCompany(id);
 		console.log('DetailPostCompanys',resp)
-		resp?.postulants.sort((a, b) => b.porcentageSkills - a.porcentageSkills);
+	
+		//resp?.postulants.sort((a, b) => b.porcentageSkills - a.porcentageSkills);
+		
+		
 		// resp?.postulants.reverse();
 
 		setPostJob(resp.listPostJob[0]);
