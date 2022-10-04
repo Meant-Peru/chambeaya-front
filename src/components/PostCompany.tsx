@@ -35,7 +35,8 @@ export const PostCompany = () => {
 								<TagComponent type="state" level="success" label="Publicado" /* clearTag="clearTagHide" */ tag={{ nameSkill: 'Publicado' }} />
 							</aside>
 							<aside className="title">
-								<p>{p.postulants} personas postularon</p>
+							<p>{p.postulants> 0 ? p.postulants + ' personas aplicaron' : 'Ninguna persona ha aplicado aún'}</p>
+								
 							</aside>
 							<aside className="actions">
 								<ButtonComponent family="secondary" link={'/detail-post-company/' + p._id} label="Ver detalles" />
