@@ -18,6 +18,7 @@ import { PostCompany } from '../components/PostCompany';
 import { MyApply } from '../components/MyApply';
 
 import { ProjectsComponent } from '../components/ProjectsComponent';
+import { Business } from '@material-ui/icons';
 
 const customStyles = {
 	content: {
@@ -32,6 +33,10 @@ const customStyles = {
 
 export default function MyAccount() {
 	const [modalIsOpen, setIsOpen] = React.useState(false);
+	const { user } = useSelector((state: RootState) => state.auth);
+	const { startLogout, startUpdateUser } = useAuth();
+	const { id } = useParams();
+	const [tabIndex, setTabIndex] = useState(+id);
 
 	function openModal() {
 		setIsOpen(true);
@@ -45,25 +50,14 @@ export default function MyAccount() {
 	function closeModal() {
 		setIsOpen(false);
 	}
-
-	const { user } = useSelector((state: RootState) => state.auth);
-	const { startLogout, startUpdateUser } = useAuth();
+	const handleLogout = () => {
+		startLogout();
+	};
+	
 
 	const [postulant, setPostulant] = useState({
 		...user.dataUser,
 	});
-
-	const [company, setCompany] = useState({
-		...user.dataUser,
-	});
-
-	const handleEvent = (e: any) => {
-		setCompany({
-			...company,
-			[e.target.name]: e.target.value,
-		});
-	};
-
 	const handleEventPostulant = (e: any) => {
 		setPostulant({
 			...postulant,
@@ -71,25 +65,68 @@ export default function MyAccount() {
 		});
 	};
 
+	const [company, setCompany] = useState({
+		...user.dataUser,
+	});
+	const handleEvent = (e: any) => {
+		setCompany({
+			...company,
+			[e.target.name]: e.target.value,
+		});
+	};
+
+	
+
 	const handleUpdate = async () => {
 		let dataSend;
 		if (user.rol === POSTULANT) {
-			dataSend = { ...user, dataUser: { ...postulant } };
+			dataSend = { 
+				dataUser: { 
+					name:postulant.name,
+					lastName:postulant.lastName,
+					email: postulant.email,
+					facebook:"",
+					facebookURL:"",
+					linkedin:"",
+					linkedinURL:"",
+					web:"",
+					webURL:"",
+					youtube:"",
+					youtubeURL:"",
+					phone:postulant.phone,
+					rol:postulant.rol,
+					ruc:""
+					 },
+					 rol:postulant.rol
+					 };
 		} else {
-			dataSend = { ...user, dataUser: { ...company } };
+			dataSend = { 
+				dataUser: { 
+					rol:company.rol,
+					businessName:company.businessName,
+					description:company.description,
+					email:company.email,
+					facebook:"",
+					facebookURL:"",
+					linkedin:"",
+					linkedinURL:"",
+					web:"",
+					webURL:"",
+					youtube:"",
+					youtubeURL:"",
+					phone:company.phone,
+					ruc:company.ruc
+				 },
+				 rol:company.rol,
+				};
 		}
-
+		
 		const respUpdate = await startUpdateUser(dataSend);
 		console.log({ respUpdate });
+		
 	};
 
-	const handleLogout = () => {
-		startLogout();
-	};
-	const { id } = useParams();
-
-	const [tabIndex, setTabIndex] = useState(+id);
-
+	
 	if (Object.keys(user.dataUser).length === 0) return <Navigate replace to="/login" />;
 
 	return (

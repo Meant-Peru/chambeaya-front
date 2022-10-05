@@ -70,8 +70,6 @@ export const RegisterPostulant = () => {
 	}, []);
 
 	useEffect(() => {
-		// console.log('listar categoria');
-		// console.log(form.category);
 		(async () => {
 			await getSkillsForCategory(form.category);
 		})();
@@ -127,6 +125,7 @@ export const RegisterPostulant = () => {
 		} else if(e.target.value !== '_none'){
 			form.formErrors[e.target.name] = false;
 		}
+
 
 		if (e.target.value == '' && !e.target.classList.contains('has-error')) {
 			form.formErrors[e.target.name] = true;
@@ -198,6 +197,7 @@ export const RegisterPostulant = () => {
 		}
 	};
 
+	
 	const selectItemSkill = (skill: SkillSelect) => {
 		const newData: SkillSelect[] = [];
 		skills.filter((s: SkillSelect) => {
@@ -207,29 +207,25 @@ export const RegisterPostulant = () => {
 			newData.push(s);
 		});
 		setSkills([...newData]);
+		console.log('items selected',newData);
+		verifiedSelected(newData);
+		
 	};
-
+	
+	const verifiedSelected = (e) => {
+		let ob = e.filter( option => option.select === true);
+		return ob
+	}
+	console.log('esta selecionado:',verifiedSelected)
+	
 	return (
 		<React.Fragment>
-			{/* <Backdrop
-				open={loading!}
-				style={{
-					background: 'white',
-					zIndex: 99,
-				}}
-			>
-				<CircularProgress color="inherit" />
-			</Backdrop> */}
+			{}
 			<Header />
 			<Toaster position="top-right" reverseOrder={false} />
 			<form>
 				<section className="applyJob">
-					<aside className="coverHeader mb-5">
-						{/* <h1 className="mb-2">{get(_postJob, 'title', '')}</h1>
-						<p>
-							<i>{get(_postJob.dataCompany, 'businessName', '')}</i>
-						</p> */}
-					</aside>
+					<aside className="coverHeader mb-5"></aside>
 					<aside className="contain">
 						<Tabs selectedIndex={selectedTab} onSelect={(index) => setSelectedTab(index)}>
 							<TabList className={'mb-5'}>
@@ -278,18 +274,20 @@ export const RegisterPostulant = () => {
 									</article>
 									<p>Elige los skills que mejor manejes. </p>
 									<article className="gridBox mt-4">
-										{/* {get(_postJob, 'listSkills', []).map((value) => (
-											<CheckButton value={value} onChange={handleCheck} withbg="yes" label={value.nameSkill} key={value._id} />
-										))} */}
+		
 										{skills.map((e: SkillSelect) => (
 											<OptionComponent type="selectable" key={e._id} tag={e} select={e.select} eventS={(e: SkillSelect) => selectItemSkill(e)} />
 										))}
 									</article>
 									<article className="footerSection">
-										<BtnPrimary type="button" onClick={handleNextTab} className={`button-primary ${Object.entries(form.formErrors).map( ([key, val]) => val).every(element => element === false) && Object.entries(form.formErrors).length == 3 ? 'test' : 'disabled'}`} >
+										
+											
+										
+											<BtnPrimary type="button" onClick={handleNextTab} className={`button-primary ${Object.entries(form.formErrors).map( ([key, val]) => val).every(element => element === false) && Object.entries(form.formErrors).length == 3 ? 'test' : 'disabled'}`} >
 											{' '}
 											Siguiente{' '}
 										</BtnPrimary>
+										
 									</article>
 								</section>
 							</TabPanel>
