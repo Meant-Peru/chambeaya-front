@@ -101,14 +101,7 @@ export const DetailProyecto = () => {
 					<article className="mmlist mb-1">
 						<div>
 							<img src={time} width="20" alt="" />
-							<span>Presupuesto por el proyecto aún no depositado.</span>
-						</div>
-						<ButtonComponent link={'/'} family="terceary" icon="whitOutIcon" label="Ver documentos" />
-					</article>
-					<article className="mmlist mb-1">
-						<div>
-							<img src={time} width="20" alt="" />
-							<span>Comprobantes emitidos por el contratado</span>
+							<span>Comprobantes de pago</span>
 						</div>
 						{detailProject?.dataContract.proofPayment ? (
 							<a href={`${URI}/images/${detailProject?.dataContract.proofPayment}`} className={'btnComponent--terceary'} target="_blank">
