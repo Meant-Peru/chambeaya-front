@@ -72,7 +72,7 @@ export const useAuth = () => {
 		if (resp.message === UPDATE_SUCCESS) {
 			const { data } = resp;
 			// console.log({ data });
-			const user: UserGenerico = { dataUser: data.dataUser, rol: data.dataUser.rol, id: data.id };
+			const user: UserGenerico = { dataUser: data.dataUser, rol: data.idRol, id: data.id };
 			saveLocalStorage(USER, user);
 			alert('Se actualizó correctamente...');
 		} else {
