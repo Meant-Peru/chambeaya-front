@@ -18,6 +18,7 @@ import { PostCompany } from '../components/PostCompany';
 import { MyApply } from '../components/MyApply';
 
 import { ProjectsComponent } from '../components/ProjectsComponent';
+import {PostulantProjectsComponent} from '../components/PostulantProjectsComponent';
 import { Business } from '@material-ui/icons';
 
 const customStyles = {
@@ -217,10 +218,8 @@ export default function MyAccount() {
 							{user?.rol === COMPANY ? (
 								<ProjectsComponent />
 							) : (
-								<>
-									<img src={ilusEmpty} alt="empty" />
-									<p>Aún no ingresaste a algún proyecto</p>
-								</>
+								<PostulantProjectsComponent />
+								
 							)}
 						</section>
 					</TabPanel>

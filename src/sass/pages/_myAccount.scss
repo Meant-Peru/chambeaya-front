@@ -1,5 +1,75 @@
 @import "./../base/_grid.scss";
 
+.gridSales {
+  padding-top:1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 1em;
+  row-gap: 1em;
+  @include phone-max {
+    grid-template-columns: 1fr;
+  }
+  .card{
+    width: 100%;
+    margin-bottom: 1rem;
+    @include phone-max {
+      width: 100%;
+    }
+    .headCard{
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 20px;
+      /* identical to box height, or 167% */
+    
+      display: flex;
+      align-items: center;
+      text-align: center;
+      letter-spacing: 0.05em;
+      
+    
+      /* color-accent */
+    
+      color: #6F7DFF;
+      background: #F0F2FA;
+      border-radius: 8px 8px 0px 0px;
+  
+      display: flex;
+      flex-direction: column;
+      padding: 8px 0;
+      span{
+        font-weight: 400;
+      }
+      strong{
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+  
+    }
+    .contentCard{
+      border: 3px solid #F0F2FA;
+      padding: 24px;
+      border-radius: 0px 0px 8px 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      .listCard{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        margin-bottom: 24px;
+        line-height: 24px;
+      }
+  
+    }
+  }
+}
+
+
+
+
+
 .myAccountPage {
   width: var(--container);
   display: flex;
@@ -18,9 +88,6 @@
     width: var(--container-tablet-portrait);
   }
 
-  @include phone {
-      ;
-  }
   @include phone-max {
      
     margin: 0;

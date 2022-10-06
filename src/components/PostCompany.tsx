@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { usePostCompany } from '../hooks/usePostCompany';
 import { PostJob } from '../types/post_job';
 import ButtonComponent from './shared/atom/button';
-import { TagComponent } from './shared/atom/tag';
+import { OptionComponent } from './shared/atom/option';
 import './../sass/pages/_postJob.scss';
 
 export const PostCompany = () => {
@@ -32,7 +32,7 @@ export const PostCompany = () => {
 						<article className="rowPost row" key={p._id}>
 							<aside className="title">
 								<p className="mb-2">{p.title}</p>
-								<TagComponent type="state" level="success" label="Publicado" /* clearTag="clearTagHide" */ tag={{ nameSkill: 'Publicado' }} />
+								<OptionComponent type="state" level="success" label="Publicado" /* clearTag="clearTagHide" */ tag={{ nameSkill: 'Publicado' }} />
 							</aside>
 							<aside className="title">
 							<p>{p.postulants> 0 ? p.postulants + ' personas aplicaron' : 'Ninguna persona ha aplicado aún'}</p>

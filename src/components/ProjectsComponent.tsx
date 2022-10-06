@@ -20,9 +20,9 @@ export const ProjectsComponent = () => {
 	return (
 		<>
 			<h2>Listado de proyectos</h2>
-			<aside className="listCards">
+			<aside className="gridSales">
 				{projects.map((p: Project) => (
-					<article className="cardHistory" key={p._id}>
+					<article className="card" key={p._id}>
 						<div className="headCard">
 							<strong>{p.projectTitle}</strong>
 							<span>
@@ -38,7 +38,7 @@ export const ProjectsComponent = () => {
 									<img src={p?.dataContract.states.fullDocumentation ? check : negative} alt="" /> <span>Documentación completa</span>
 								</li>
 							</ul>
-							<ButtonComponent link={`/detail-project/${p._id}`} family="textLink" icon="whitOutIcon" label="Ver Detalle" />
+							<ButtonComponent link={`/detail-project/${p._id}`} family="textLink" icon="whitOutIcon" label="Ver Cronograma" />
 						</div>
 					</article>
 				))}
