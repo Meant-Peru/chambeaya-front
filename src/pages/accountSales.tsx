@@ -1,19 +1,17 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import Header from '../components/shared/header';
-import ilusEmpty from './../assets/empty-state.svg';
-import { Txtfield, TxtArea, DropdownMenu, DropdownItem, BtnPrimary } from '../components/shared/styled';
+import { Txtfield, BtnPrimary } from '../components/shared/styled';
 import './../sass/pages/_myAccount.scss';
 import Footer from '../components/shared/footer';
+import ListCompany from '../components/ListCompany';
+import { SalesProjectsComponent } from '../components/SalesProjectsComponent';
 
-import { COMPANY, POSTULANT } from '../helpers/constants';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
 import { useAuth } from '../hooks/useAuth';
 
-import { MyApply } from '../components/MyApply';
-import ListCompany from '../components/ListCompany';
 
 export default function AccountSales() {
 	const { user } = useSelector((state: RootState) => state.auth);
@@ -89,10 +87,9 @@ export default function AccountSales() {
 						<ListCompany />
 					</TabPanel>
 					<TabPanel>
-						<section className="proyects">
-							<img src={ilusEmpty} alt="empty" />
-							<p>Aún no ingresaste a algún proyecto</p>
-						</section>
+					
+							<SalesProjectsComponent />
+					
 					</TabPanel>
 				</Tabs>
 			</section>
