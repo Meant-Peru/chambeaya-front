@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./../../sass/shared/_footer.scss";
-import LogoV4 from "./../../assets/Icon_.png";
+import LogoV4 from "./../../assets/logo_final.png";
 import { useNavigate } from "react-router-dom";
 
 export default function Footer() {

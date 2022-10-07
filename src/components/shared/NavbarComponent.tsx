@@ -1,5 +1,5 @@
 import { Brand, Navbar, Ul, Li } from "./styled";
-import Logo from "./../../assets/Icon_.png";
+import Logo from "./../../assets/logo_final.png";
 
 const NavbarComponent = (props: {
     brand: { name: string; to: string },
@@ -9,7 +9,7 @@ const NavbarComponent = (props: {
     const NavLinks: any = () => links.map((link: { name: string, to: string }) => <Li key={link.name}><a href={link.to}>{link.name}</a></Li>);
     return (
      <Navbar>
-         <Brand href={brand.to}><img src={Logo} width="100" alt="" /></Brand>
+         <Brand href={brand.to}><img src={Logo} width="200" alt="" /></Brand>
          <Ul>
             <NavLinks />
          </Ul>
