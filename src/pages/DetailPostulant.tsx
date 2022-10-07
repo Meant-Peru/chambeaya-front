@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { URI } from '../enviroment/enviroment';
 import { Backdrop, CircularProgress } from '@material-ui/core';
 import toast, { Toaster } from 'react-hot-toast';
+import { DetailUserInteface } from '../interfaces/DetailUserInterface';
 
 import { GetUserById } from '../util/user.service';
 
@@ -24,7 +25,7 @@ const customStyles = {
 export const DetailPostulant = () => {
     const [loadingDetailPostulant, setLoadingDetailPostulant] = useState(false);
     const { idPostulant } = useParams();
-    const [detailUser, setDetailUser] = useState()
+    const [detailUser, setDetailUser] = useState<DetailUserInteface>()
 
 //@TODO: 
 //ESPERANDO QUE EL SERVICIO PASE A POST
@@ -32,18 +33,15 @@ export const DetailPostulant = () => {
     const getDataById = async () => {
         setLoadingDetailPostulant(true);
         const r = await GetUserById({idUser:idPostulant})
-        console.log('detailproject',r);
-		setDetailUser({ ...r.dataUser });
+        console.log('detail postulant',r);
+		setDetailUser({ ...r.data.dataUser });
+        console.log('detailUser',detailUser);
 		setLoadingDetailPostulant(false);
     }
 
     useEffect(() => {
 		getDataById();
 	}, []);
-
-
-
-
 
     return (
         <React.Fragment>
@@ -65,7 +63,7 @@ export const DetailPostulant = () => {
             <hr />
             <aside className="mt-3">
             <h4 className="mb-2">Datos de contacto</h4>
-            <article className="mmlist mb-1">
+            <article className="mmlist mb-1 boxContainer " >
                 <p>
                     <strong>Email: </strong> 
                     {detailUser?.email}
