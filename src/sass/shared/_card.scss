@@ -18,7 +18,7 @@
       }
 
     @include phone {
-          ;
+ 
         display: flex;
         flex-direction: column;
         margin-bottom: 24px;
@@ -31,4 +31,42 @@
         width: 100%;
         margin-right: 0px;
       }
+}
+.cardPostulant{
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+  border: 1px solid var(--gray-color-100);
+  background-color: var(--light-color);
+  margin-right: 16px;
+  .cont1 {
+    display: flex;
+    flex-direction: column;
+  }
+  &:last-child{
+      margin-right: 0;
+  }
+  @include tablet-p {
+      margin-right: 24px;
+      flex: 1 ;
+      margin-bottom: 24px;
+    }
+
+  @include phone {
+
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 24px;
+      margin-right: 0px;
+    }
+    @include phone-max {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 24px;
+      width: 100%;
+      margin-right: 0px;
+    }
 }

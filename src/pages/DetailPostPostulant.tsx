@@ -33,7 +33,7 @@ export const DetailPostPostulant = () => {
 		// console.log({ idP, idJob });
 		setLoadingPost(true);
 		const resp: DetailPostulant = await startDetailPostulant({ idP, idJob });
-		console.log({ resp });
+		console.log('start detail postulant job',{ resp });
 		setPostJob(resp);
 		setPostulant(resp.dataPostAndPostulant.userDataPostulant);
 		console.log({ postulant });
