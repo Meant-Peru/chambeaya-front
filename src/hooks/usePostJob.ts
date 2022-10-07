@@ -61,6 +61,7 @@ export const usePostForm = () => {
 	});
 
 	const handleForm = (event: any) => {
+		console.log(event);
 		setForm({
 			...form,
 			[event.target.name]: event.target.value,
