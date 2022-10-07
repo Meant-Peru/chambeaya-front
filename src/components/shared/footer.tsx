@@ -16,6 +16,7 @@ export default function Footer() {
         <section className="footerContent">
           <article>
             <img src={LogoV4} alt="" className="logoFooter" />
+            <p>El inicio de tu próximo trabajo</p>
           </article>
           <article>
             <ul>
