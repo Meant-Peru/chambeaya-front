@@ -2,9 +2,12 @@
 
 header{
     width: 100%;
-    background: linear-gradient(90deg, rgba(77,191,180,255) 0%, rgba(77,191,180,255) 70%, rgba(47,156,179,255) 100%);
+    background: linear-gradient(90deg, rgba(14,115,179,255) 0%, rgba(64,175,179,255) 60%, rgba(54,186,198,255) 90%);
     @include tablet-p {}
 
       @include phone-max {}
 }
 
+.style-padding{
+  padding: 10px;
+}
