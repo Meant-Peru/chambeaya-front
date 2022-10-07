@@ -6,6 +6,8 @@ import { getLocalStorage } from '../helpers/localStorage';
 import { SESSION } from '../helpers/constants';
 import { PostJob } from '../interfaces/PostJob';
 
+
+
 export const addJob = async (payload: Job) => {
 	return await axios.post(`${URI}/user/createPostJob`, payload);
 };

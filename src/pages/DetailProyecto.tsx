@@ -18,6 +18,7 @@ import { useUi } from '../hooks/useUi';
 import { DropzoneDialog } from 'material-ui-dropzone';
 import toast, { Toaster } from 'react-hot-toast';
 import { URI } from '../enviroment/enviroment';
+import { createNoSubstitutionTemplateLiteral } from 'typescript';
 
 const customStyles = {
 	content: {
@@ -45,6 +46,7 @@ export const DetailProyecto = () => {
 	const getProjectsId = async () => {
 		setLoadingDetailProject(true);
 		const resp = await getDetailProjectsId({ id: idProject });
+		console.log('detailproject',resp);
 		setDetailProject({ ...resp });
 		setLoadingDetailProject(false);
 	};
@@ -87,14 +89,24 @@ export const DetailProyecto = () => {
 				<h2 className="accent-color">{detailProject?.projectTitle}</h2>
 				<hr />
 				<aside className="mt-5">
+					
 					<h4>Perfil contratado</h4>
 					<p>El perfil fue elegido por afinidad a su requerimiento y validado para el desarrollo de su proyecto</p>
+			
+					
+					
 				</aside>
-				<aside className="card mt-3">
+				<aside className="cardPostulant mt-3">
+					<div className='cont1'>
 					<strong className="mb-1">
 						{detailProject?.postulant.dataUser.name} {detailProject?.postulant.dataUser.lastName}
 					</strong>
 					<i>{detailProject?.projectTitle}</i>
+					</div>
+					<div>
+					<ButtonComponent family="primary" link={`/detail-postulant/${detailProject?.idPostulant}`} label="Ver" />
+					</div>
+					
 				</aside>
 				<aside className="mt-3">
 					<h4 className="mb-2">Pagos y comprobantes</h4>

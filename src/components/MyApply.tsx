@@ -2,9 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import check from './../assets/check.svg';
 import negative from './../assets/negative.svg';
-
+import { useParams } from 'react-router-dom';
 import { usePostulant } from '../hooks/usePostulant';
-import { PostJob } from '../types/post_job';
+import { usePostCompany } from '../hooks/usePostCompany';
+
+//import { DetailPostulant} from '../interfaces/DetailPostulant';
+import { PostJobPostulant } from '../types/post_job';
 import { ModalComponent } from './ModalComponent';
 import { useUi } from '../hooks/useUi';
 import { TagComponent } from './shared/atom/tag';
@@ -22,18 +25,23 @@ const customStyles = {
 
 export const MyApply = () => {
 	const [loading, setLoading] = useState(true);
-
 	const [listPostulations, setListPostulations] = useState([]);
+	//const [postJob, setPostJob] = useState<DetailPostulant>();
+
 	const { startListPostulations } = usePostulant();
+	const { startDetailPostulant } = usePostCompany();
 	const { changeStateModal } = useUi();
+	const { idP, idJob } = useParams();
 
 	const handleListPostulations = async () => {
 		setLoading(true)
 		const data = await startListPostulations();
-		console.log({ data });
+		console.log('lista de postulaciones', data);
 		setListPostulations([...data]);
 		setLoading(false)
 	};
+
+	
 
 	useEffect(() => {
 		handleListPostulations();
@@ -57,7 +65,7 @@ export const MyApply = () => {
 					<div>
 						<p>Historial</p>
 						<aside className="listCards">
-							{listPostulations!.map((p: PostJob) => (
+							{listPostulations!.map((p: PostJobPostulant) => (
 								<article className="cardHistory" key={p?._id}>
 									<div className="headCard">
 										<strong>{p?.title}</strong>
@@ -66,16 +74,16 @@ export const MyApply = () => {
 									<div className="contentCard">
 										<ul className="listCard">
 											<li>
-												<img src={check} alt="" /> <span>Skills</span>
+												<img src={p?.porcentageSkills === 100 ? check : negative} alt="" /> <span>Skills</span>
 											</li>
 											<li>
-												<img src={negative} alt="" /> <span>Presupuesto</span>
+												<img src={p?.stateSalary ? check : negative} alt="" /> <span>Presupuesto</span>
 											</li>
 											<li>
-												<img src={check} alt="" /> <span>Experiencia</span>
+												<img src={p?.stateExperience ? check : negative} alt="" /> <span>Experiencia</span>
 											</li>
 										</ul>
-										<button className="btnComponent--textLink" onClick={() => changeStateModal(true)}>
+										<button className="btnComponent--textLink" onClick={() => changeStateModal(true) }>
 											{' '}
 											Ver Detalle{' '}
 										</button>
@@ -93,10 +101,11 @@ export const MyApply = () => {
 													</p>
 													<ul className="listMoldal">
 														<li className="">
-															<img src={check} alt="" /> <span>Tus skills tienen el % de similitud del postulante con el puesto</span>
+															<img src={p?.porcentageSkills === 100 ? check : negative} alt="" /> <span>Tus skills tienen el {p?.porcentageSkills}% de similitud del postulante con el puesto.</span>
 															<div className="mt-1">
-																<TagComponent key={1} type="state" level="success" tag={{ nameSkill: 'aa' }} />
-																{/* <article className="skillsBox">
+																
+																{/* <TagComponent key={1} type="state" level="success" tag={{ nameSkill: 'aa' }} />
+																<article className="skillsBox">
 													{skillSelected.map((e: Skill) => (
 														<TagComponent key={e._id} tag={e} event={(e: any) => removeItemSkill(e)} />
 													))}
@@ -104,12 +113,13 @@ export const MyApply = () => {
 															</div>
 														</li>
 														<li>
-															<img src={negative} alt="" /> <span>Tu presupuesto ésta dentro del rengo</span>
-															<p>El rango presupuesto del cliente es de </p>
+															<img src={p?.stateSalary ? check : negative} alt="" /> <span>Tu presupuesto ésta {p?.stateSalary ? 'dentro' : 'fuera'} del rango.</span>
+															<p>El rango presupuesto del cliente es de {p?.salaryRange}. </p>
 														</li>
 														<li>
-															<img src={check} alt="" /> <span>Años de experiencia para este puesto</span>
-															<p>5 aplicantes demostraron 3 a más años de exp</p>
+															
+															<img src={p?.stateExperience ? check : negative}  alt="" /> <span>Años de experiencia para este puesto.</span>
+														
 														</li>
 													</ul>
 												</aside>

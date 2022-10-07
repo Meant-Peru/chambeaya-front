@@ -39,3 +39,14 @@ export const UpdateUser = async (data: any) => {
 		return false;
 	}
 };
+
+export const GetUserById = async (payload: any) => {
+	try {
+		const token = await getLocalStorage(SESSION);
+		const  data  = await axios.post(`${URI}/user/getUserById`, payload, { headers: { token }});
+		return data.data;
+	} catch (error) {
+		console.log(error);
+		return { data: {} };
+	}
+}

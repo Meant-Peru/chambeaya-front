@@ -34,7 +34,7 @@ export const DetailPostCompanys = () => {
 		//resp?.postulants.sort((a, b) => b.porcentageSkills - a.porcentageSkills);
 		
 		
-		// resp?.postulants.reverse();
+
 
 		setPostJob(resp.listPostJob[0]);
 		setListSkill([...resp.listSkills]);
