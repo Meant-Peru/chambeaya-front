@@ -250,7 +250,7 @@ export default function Dashboard() {
 						<section className="usersTable">
 							{/* <img src={ilusEmpty} alt="empty" />
 							<p>No se encontraron postulaciones</p> */}
-							<h2>Usuarios</h2>
+							<h2>Empresas</h2>
 							<div className="tableUsers">
 								<article className="headerRow">
 									<aside className="headerItem">Razón social</aside>
