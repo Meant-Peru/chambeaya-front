@@ -15,11 +15,11 @@ import { getCategory , createCategory } from '../util/category.service';
 import { getPosition } from '../util/position.service';
 
 import { useAuth } from '../hooks/useAuth';
-import { usePostJob , usePostForm } from '../hooks/usePostJob';
+import { usePostJob } from '../hooks/usePostJob';
 import { useCatForm } from '../hooks/useCategory';
 import { useSkillForm, useEnlForm } from '../hooks/useSkill';
 
-import { POSTULANT, COMPANY, SALES } from '../helpers/constants';
+import { POSTULANT } from '../helpers/constants';
 import { useNavigate , Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';

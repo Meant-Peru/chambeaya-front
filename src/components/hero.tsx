@@ -29,6 +29,10 @@ export default function Hero() {
             <h1>
                 <b>EL INICIO DE TU <br /> PRÓXIMO TRABAJO</b>
             </h1>
+            <div className="btnContainer">
+            <ButtonComponent family="hero1" label="Quiero trabajar" />
+            <ButtonComponent family="hero2" label="Quiero contratar" />
+            </div>
           </article>
         </aside>
       </section>

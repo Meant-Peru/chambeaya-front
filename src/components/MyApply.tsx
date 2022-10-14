@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import check from './../assets/check.svg';
 import negative from './../assets/negative.svg';
-import { useParams } from 'react-router-dom';
+
 import { usePostulant } from '../hooks/usePostulant';
-import { usePostCompany } from '../hooks/usePostCompany';
+import { getSkill } from '../util/skill.service';
 
 //import { DetailPostulant} from '../interfaces/DetailPostulant';
 import { PostJobPostulant } from '../types/post_job';
@@ -24,14 +24,14 @@ const customStyles = {
 };
 
 export const MyApply = () => {
+
 	const [loading, setLoading] = useState(true);
 	const [listPostulations, setListPostulations] = useState([]);
-	//const [postJob, setPostJob] = useState<DetailPostulant>();
-
+	const [skill, setSkill] = useState([]);
+	
 	const { startListPostulations } = usePostulant();
-	const { startDetailPostulant } = usePostCompany();
 	const { changeStateModal } = useUi();
-	const { idP, idJob } = useParams();
+	
 
 	const handleListPostulations = async () => {
 		setLoading(true)
@@ -40,11 +40,16 @@ export const MyApply = () => {
 		setListPostulations([...data]);
 		setLoading(false)
 	};
-
+	const getSkills = async () => {
+		const responseSkill = await getSkill();
+			setSkill(responseSkill.data.data);
+	}
 	
 
 	useEffect(() => {
+		getSkills();
 		handleListPostulations();
+		
 	}, []);
 
 
