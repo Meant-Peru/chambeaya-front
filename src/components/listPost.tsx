@@ -6,9 +6,8 @@ import { Backdrop, CircularProgress } from "@material-ui/core";
 import {Pagination} from './Pagination';
 
 export default function ListPost() {
-  const {
-    postJobsState: { loading, postJobs },
-  } = usePostJob();
+  const {postJobsState: { loading, postJobs },} = usePostJob();
+
   const [loadingPost, setLoadingPost] = React.useState(false);
 
   React.useEffect(() => {

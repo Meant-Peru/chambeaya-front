@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Routes, Route, BrowserRouter as Router, Link, Navigate } from 'react-router-dom';
+import { Routes, Route, BrowserRouter as Router, Link } from 'react-router-dom';
 import AccountSales from '../pages/accountSales';
 import AddJob from '../pages/addJob';
 import ApplyJob from '../pages/applyJob';
@@ -23,9 +23,9 @@ import { DetailProyecto } from '../pages/DetailProyecto';
 export const AppRouter = () => {
 	const { status } = useSelector((state: RootState) => state.auth);
 
-	// if (status === 'checking') {
-	// 	return <Login />;
-	// }
+	 //if (status === 'checking') {
+	 //	return <Login />;
+	 //}
 
 	return (
 		<>
