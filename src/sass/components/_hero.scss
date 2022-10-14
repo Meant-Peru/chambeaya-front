@@ -58,7 +58,10 @@
                     font-size: 32px;
                 }
             }
-           
+            .btnContainer {
+                display: flex;
+            flex-direction: column;
+            }
         }
     }
    
