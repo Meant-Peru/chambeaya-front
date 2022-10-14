@@ -7,7 +7,7 @@ import { getLocalStorage } from '../../helpers/localStorage';
 const navNoUser = {
 	brand: { name: 'ChambeaYa.', to: '/' },
 	links: [
-		{ name: 'Buscar un empleo', to: '/searchjob' },
+		{ name: 'Buscar chamba', to: '/searchjob' },
 		{ name: 'Iniciar sesión', to: '/login' },
 		{ name: 'Registrarme', to: '/register' },
 	],

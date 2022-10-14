@@ -1,5 +1,7 @@
 import { Brand, Navbar, Ul, Li} from "./styled";
 import Logo from "./../../assets/Icon_.png";
+import { Brand, Navbar, Ul, Li } from "./styled";
+import Logo from "./../../assets/logo_final.png";
 
 import { useState } from "react";
 import ToggleNav from './ToggleNav';
@@ -23,6 +25,19 @@ const NavbarComponent = (props: {
 
   const handleNavToggle = () => {
     setNavToggled(!navToggled);
+    brand: { name: string; to: string },
+    links: Array<{ name: string, to: string }>
+  }) => {
+    const { brand, links } = props;
+    const NavLinks: any = () => links.map((link: { name: string, to: string }) => <Li key={link.name}><a href={link.to}>{link.name}</a></Li>);
+    return (
+     <Navbar>
+         <Brand href={brand.to}><img src={Logo} width="200" alt="" className="style-padding" /></Brand>
+         <Ul>
+            <NavLinks />
+         </Ul>
+     </Navbar >
+    )
   };
 
   return (
