@@ -30,8 +30,8 @@ export default function Hero() {
                 <b>EL INICIO DE TU <br /> PRÓXIMO TRABAJO</b>
             </h1>
             <div className="btnContainer">
-            <ButtonComponent family="hero1" label="Quiero trabajar" link={"/login"}/>
-            <ButtonComponent family="hero2" label="Quiero contratar" link={"/corporativo"}/>
+            <ButtonComponent family="hero1" label="Chambear" link={"/login"}/>
+            <ButtonComponent family="hero2" label="Quiero buscar chamberos" link={"/corporativo"}/>
             </div>
           </article>
         </aside>
