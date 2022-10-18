@@ -64,6 +64,8 @@ export interface PostJob {
 	title?: string;
 	updateDate?: number;
 	listSkills?: any[];
+	idCategory:string;
+	idPosition:string;
 	postulants?: number;
 }
 

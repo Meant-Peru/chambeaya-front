@@ -17,7 +17,7 @@ import ListPosiciones from '../pages/listPosiciones';
 import { RootState } from '../redux/store/store';
 import { DetailPostPostulant } from '../pages/DetailPostPostulant';
 import { DetailPostCompanys } from '../pages/DetailPostCompanys';
-import { DetailPostulant } from '../pages/DetailPostulant';
+import { DetailUser } from '../pages/DetailUser';
 import { DetailProyecto } from '../pages/DetailProyecto';
 import { DetailProyectoPost } from '../pages/DetailProyectoPost';
 
@@ -53,7 +53,7 @@ export const AppRouter = () => {
 				<Route path="list-posiciones/:idCategory" element={<ListPosiciones />} />
 				<Route path="detail-post-postulant/:idJob/:idP" element={<DetailPostPostulant />} />
 
-				<Route path="detail-postulant/:idPostulant" element={<DetailPostulant />} />
+				<Route path="detail-user/:idPostulant" element={<DetailUser />} />
 				<Route path="*" element={<NoMatch />} />
 			</Routes>
 		</>
