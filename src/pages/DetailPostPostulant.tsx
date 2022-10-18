@@ -120,7 +120,10 @@ export const DetailPostPostulant = () => {
 					<article className="leftBox">
 						<div className="mb-5">
 							<h4 className="mb-3">Descripción</h4>
-							<p>dsadsadsa </p>
+							<p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit
+								tortor eget felis porttitor volutpat. Sed porttitor lectus nibh. Nulla quis lorem ut
+								libero malesuada feugiat. Sed porttitor lectus nibh. Curabitur aliquet quam id dui
+								posuere blandit. Cras ultricies ligula sed magna dictum porta. </p>
 						</div>
 						<hr />
 						<div className="mt-5">
