@@ -104,7 +104,7 @@ export const DetailProyecto = () => {
 					<i>{detailProject?.projectTitle}</i>
 					</div>
 					<div>
-					<ButtonComponent family="primary" link={`/detail-user/${detailProject?.idPostulant}`} label="Ver" />
+					<ButtonComponent family="primary" link={`/detail-postulant/${detailProject?.idPostulant}`} label="Ver" />
 					</div>
 					
 				</aside>

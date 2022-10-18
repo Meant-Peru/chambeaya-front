@@ -47,9 +47,7 @@ export default function ListCompany() {
 									<p>{company.dataUser.ruc}</p>
 								</aside>
 								<aside className="actions">
-									{//link={"/detail-post/" + get(post, "_id", "")
-}
-									<ButtonComponent link={"/detail-user/"+ company._id } family="secondary" label="Ver detalles" />
+									<ButtonComponent family="secondary" label="Ver detalles" />
 								</aside>
 							</article>
 						</aside>

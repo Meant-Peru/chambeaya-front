@@ -11,8 +11,5 @@ export interface DetailUserInteface {
     linkedin:string;
     linkedinURL:string;
     youtube:string;
-    youtubeURL:string;
-    businessName:string;
-    phone:string;
-    ruc:string;
+    youtubeURL:string
 }

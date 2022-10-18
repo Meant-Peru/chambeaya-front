@@ -12,7 +12,7 @@ export default function ListPost() {
 
   React.useEffect(() => {
 	if (postJobs.length > 0) {
-		console.log('postJobs', postJobs);
+		console.log('$$$$$$$$$$$$$$$$$$$$$$postJobs', postJobs);
 		setLoadingPost(true);
 	}
   }, [postJobs]);
