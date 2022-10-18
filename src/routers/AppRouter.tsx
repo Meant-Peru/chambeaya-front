@@ -19,6 +19,7 @@ import { DetailPostPostulant } from '../pages/DetailPostPostulant';
 import { DetailPostCompanys } from '../pages/DetailPostCompanys';
 import { DetailUser } from '../pages/DetailUser';
 import { DetailProyecto } from '../pages/DetailProyecto';
+import { DetailProyectoPost } from '../pages/DetailProyectoPost';
 
 export const AppRouter = () => {
 	const { status } = useSelector((state: RootState) => state.auth);
@@ -46,6 +47,7 @@ export const AppRouter = () => {
 				<Route path="detail-post/:id" element={<DetailPost />} />
 
 				<Route path="detail-project/:idProject" element={<DetailProyecto />} />
+				<Route path="detail-project-post/:idProject" element={<DetailProyectoPost />} />
 
 				<Route path="detail-post-company/:id" element={<DetailPostCompanys />} />
 				<Route path="list-posiciones/:idCategory" element={<ListPosiciones />} />

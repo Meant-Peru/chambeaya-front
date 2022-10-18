@@ -65,6 +65,20 @@ export default function Hero() {
             </article>
           </aside>
         </section>
+      <div className="secFull"> 
+      <section className="HeroComponent">
+        <aside className="cover">
+          <article>
+            <h1>
+                <b>EL INICIO DE TU <br /> PRÓXIMO TRABAJO</b>
+            </h1>
+            <div className="btnContainer">
+            <ButtonComponent family="hero1" label="Chambear" link={"/login"}/>
+            <ButtonComponent family="hero2" label="Quiero buscar chamberos" link={"/corporativo"}/>
+            </div>
+          </article>
+        </aside>
+      </section>
       </div>
       <aside className="filterSection">
         <DropdownMenu name="category" onChange={handleCategory}>
