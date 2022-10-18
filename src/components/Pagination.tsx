@@ -14,7 +14,6 @@ export const Pagination = ({ postJobs, itemsPerPage }) => {
   React.useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-    console.log("postJobs***********", postJobs);
     setCurrentItems(postJobs.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(postJobs.length / itemsPerPage));
   }, [itemOffset, itemsPerPage, postJobs]);
