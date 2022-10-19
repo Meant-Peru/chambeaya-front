@@ -16,6 +16,7 @@ import { useParams } from "react-router-dom";
 import {
   getDetailProjectsId,
   uploadProjectReceipt,
+  uploadProjectTimeline,
 } from "../util/company.service";
 import { GetUserById } from "../util/user.service";
 
@@ -39,7 +40,10 @@ const customStyles = {
 
 export const DetailProyecto = () => {
   const { rol } = getLocalStorage(USER);
+  //Dropzone comprobantes
   const [dropzone, setDropzone] = useState(false);
+  //Dropzone cronograma
+  const [open, setOpen] = useState(false);
   const [modalIsOpen2, setModalIsOpen2] = useState(false);
   const [loadingDetailProject, setLoadingDetailProject] = useState(true);
   const [detailProject, setDetailProject] = useState<DetailProjectInteface>();
@@ -75,6 +79,20 @@ export const DetailProyecto = () => {
       toast.success("Se cargo el comprobante correctamente");
     } else {
       toast.error("Error en subir el comprobante!");
+    }
+  };
+  const handlerUploadTimeline = async (files: File[]) => {
+    setLoadingDetailProject(true);
+    const formData = new FormData();
+    formData.append("id", idProject);
+    formData.append("image", files[0]);
+    setDropzone(false);
+    const status = await uploadProjectTimeline(formData);
+    setLoadingDetailProject(false);
+    if (status) {
+      toast.success("Se cargo el cronograma correctamente");
+    } else {
+      toast.error("Error en subir el cronograma!");
     }
   };
 
@@ -129,76 +147,75 @@ export const DetailProyecto = () => {
           </div>
         </aside>
         <aside className="mt-3">
-			{rol !== POSTULANT &&
-			<>
-            <h4 className="mb-2">Pagos y comprobantes</h4>
-            <article className="mmlist mb-1">
-              <div>
-                <img src={time} width="20" alt="" />
-                <span>Comprobantes de pago</span>
-              </div>
-              {detailProject?.dataContract.proofPayment ? (
-                <a
-                  href={`${URI}/images/${detailProject?.dataContract.proofPayment}`}
-                  className={"btnComponent--terceary"}
-                  target="_blank"
-                >
-                  Ver documentos
-                </a>
-              ) : (
-                <ButtonComponent
-                  link={"/"}
-                  family="terceary"
-                  icon="whitOutIcon"
-                  label="Ver documentos"
-                />
-              )}
-            </article>
+          {rol !== POSTULANT && (
+            <>
+              <h4 className="mb-2">Pagos y comprobantes</h4>
+              <article className="mmlist mb-1">
+                <div>
+                  <img src={time} width="20" alt="" />
+                  <span>Comprobantes de pago</span>
+                </div>
+                {detailProject?.dataContract.proofPayment ? (
+                  <a
+                    href={`${URI}/images/${detailProject?.dataContract.proofPayment}`}
+                    className={"btnComponent--terceary"}
+                    target="_blank"
+                  >
+                    Ver documentos
+                  </a>
+                ) : (
+                  <ButtonComponent
+                    link={"/"}
+                    family="terceary"
+                    icon="whitOutIcon"
+                    label="Ver documentos"
+                  />
+                )}
+              </article>
 
-            <h4 className="mt-5">Presupuesto de proyecto</h4>
-            <p>Se requiere el pago del proyecto para iniciar kick-off</p>
-            <article>
-              <div className="headerTab mt-3">Modo de pagos</div>
-              <div className="row mpago">
-                <span className="row mlist">
-                  Pago por Yape o Plin{" "}
-                  <button
-                    className="btnComponent--textLink"
-                    onClick={openModal}
-                  >
-                    Ver datos
-                  </button>
-                </span>
-                <ButtonComponent
-                  onPress={() => setDropzone(true)}
-                  type="Dropzone"
-                  family="terceary"
-                  icon="whitIcon"
-                  label="Subir comprobante"
-                />
-              </div>
-              <div className="row mpago">
-                <span className="row mlist">
-                  Transferencia Bancaria{" "}
-                  <button
-                    className="btnComponent--textLink"
-                    onClick={() => setModalIsOpen2(true)}
-                  >
-                    Ver datos
-                  </button>
-                </span>
-                <ButtonComponent
-                  onPress={() => setDropzone(true)}
-                  type="Dropzone"
-                  family="terceary"
-                  icon="whitIcon"
-                  label="Subir comprobante"
-                />
-              </div>
-            </article>
-          </>
-			}
-          
+              <h4 className="mt-5">Presupuesto de proyecto</h4>
+              <p>Se requiere el pago del proyecto para iniciar kick-off</p>
+              <article>
+                <div className="headerTab mt-3">Modo de pagos</div>
+                <div className="row mpago">
+                  <span className="row mlist">
+                    Pago por Yape o Plin{" "}
+                    <button
+                      className="btnComponent--textLink"
+                      onClick={openModal}
+                    >
+                      Ver datos
+                    </button>
+                  </span>
+                  <ButtonComponent
+                    onPress={() => setDropzone(true)}
+                    type="Dropzone"
+                    family="terceary"
+                    icon="whitIcon"
+                    label="Subir comprobante"
+                  />
+                </div>
+                <div className="row mpago">
+                  <span className="row mlist">
+                    Transferencia Bancaria{" "}
+                    <button
+                      className="btnComponent--textLink"
+                      onClick={() => setModalIsOpen2(true)}
+                    >
+                      Ver datos
+                    </button>
+                  </span>
+                  <ButtonComponent
+                    onPress={() => setDropzone(true)}
+                    type="Dropzone"
+                    family="terceary"
+                    icon="whitIcon"
+                    label="Subir comprobante"
+                  />
+                </div>
+              </article>
+            </>
+          )}
 
           <h4 className="mt-5">Proyecto en curso</h4>
           <p>
@@ -207,11 +224,21 @@ export const DetailProyecto = () => {
           </p>
           <article className="mt-4">
             <ButtonComponent
-              link={"/"}
+              onPress={() => setOpen(true)}
+              type="Dropzone"
               family="secondary"
               icon="whitOutIcon"
-              label="CRONOGRAMA DE TRABAJO"
+              label="ACTUALIZAR CRONOGRAMA"
             />
+          
+              <a
+                href={`${URI}/images/${detailProject?.scheduleFile}`}
+                className={"btnComponent--secondary"}
+                target="_blank"
+              >
+                VER CRONOGRAMA
+              </a>
+           
           </article>
 
           <ModalComponent indentifier={1}>
@@ -270,6 +297,19 @@ export const DetailProyecto = () => {
             onClose={() => setDropzone(false)}
             dialogTitle="Subir comprobantes de pago"
             dropzoneText="Arrastre y suelte su comprobante aquí o haga click"
+            cancelButtonText="Cancelar"
+            submitButtonText="Subir"
+          />
+
+          <DropzoneDialog
+            open={open}
+            onSave={(files: File[]) => handlerUploadTimeline(files)}
+            acceptedFiles={["image/jpeg", "image/png", "image/bmp", ".pdf"]}
+            showPreviews={true}
+            maxFileSize={5000000}
+            onClose={() => setOpen(false)}
+            dialogTitle="Cronograma de trabajo"
+            dropzoneText="Arrastre y suelte el cronograma o haga click"
             cancelButtonText="Cancelar"
             submitButtonText="Subir"
           />

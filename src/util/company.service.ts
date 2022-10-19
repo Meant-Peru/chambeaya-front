@@ -67,3 +67,12 @@ export const uploadProjectReceipt = async (payload: any) => {
 		return false;
 	}
 };
+export const uploadProjectTimeline = async (payload: any) => {
+	try {
+		const token = await getLocalStorage(SESSION);
+		const { data } = await axios.post(`${URI}/user/uploadImageScheduleFile`, payload, { headers: { token } });
+		return data.status;
+	} catch (error) {
+		return false;
+	}
+};

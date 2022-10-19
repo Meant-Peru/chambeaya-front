@@ -10,6 +10,7 @@ export interface DetailProjectInteface {
 	updateDate: number;
 	projectTitle: string;
 	postulant: Postulant;
+	scheduleFile:string
 }
 
 export interface Postulant {
