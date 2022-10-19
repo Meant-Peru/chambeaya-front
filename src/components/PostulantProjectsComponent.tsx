@@ -56,7 +56,11 @@ export const PostulantProjectsComponent = () => {
                                             <img src={p?.dataContract.states.fullDocumentation ? check : negative} alt="" /> <span>Documentación completa</span>
                                         </li>
                                     </ul>
+
+                                    <ButtonComponent link={`/detail-project/${p._id}`} family="textLink" icon="whitOutIcon" label="Ver Detalle" />
+
                                     <ButtonComponent link={`/detail-project-post/${p._id}`} family="textLink" icon="whitOutIcon" label="Ver Cronograma" />
+
                                 </div>
                             </article>
                         ))}
