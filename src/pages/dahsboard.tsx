@@ -250,7 +250,7 @@ export default function Dashboard() {
 						<section className="usersTable">
 							{/* <img src={ilusEmpty} alt="empty" />
 							<p>No se encontraron postulaciones</p> */}
-							<h2>Usuarios</h2>
+							<h2>Empresas</h2>
 							<div className="tableUsers">
 								<article className="headerRow">
 									<aside className="headerItem">Razón social</aside>
@@ -280,7 +280,7 @@ export default function Dashboard() {
 								</article>
 								{postJobs.map((e: any) => (
 									<article className="contentRow" key={e._id}>
-										<aside className="contentItem">{e.title}</aside>
+										<aside className="contentItem"><a  href={'/detail-post-company/' + e._id}>{e.title}</a></aside>
 										<aside className="contentItem">{e.dataCompany.businessName}</aside>
 										{/* <aside className="contentItem">Nmancilla</aside> */}
 									</article>

@@ -267,7 +267,7 @@ export default function AddJob() {
 							<Tab>Datos generales</Tab>
 							<Tab>Mis publicaciones</Tab>
 							<Tab>Proyectos</Tab>
-							<Tab>Facturación</Tab>
+							<Tab>Cerrar sesión</Tab>
 						</div>
 					</TabList>
 
