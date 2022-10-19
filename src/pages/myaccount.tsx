@@ -3,7 +3,6 @@ import './../sass/pages/_myAccount.scss';
 
 import Header from '../components/shared/header';
 import Footer from '../components/shared/footer';
-import ilusEmpty from './../assets/empty-state.svg';
 
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import { Txtfield, TxtArea, DropdownMenu, DropdownItem, BtnPrimary } from '../components/shared/styled';
@@ -19,38 +18,13 @@ import { MyApply } from '../components/MyApply';
 
 import { ProjectsComponent } from '../components/ProjectsComponent';
 import {PostulantProjectsComponent} from '../components/PostulantProjectsComponent';
-import { Business } from '@material-ui/icons';
-
-const customStyles = {
-	content: {
-		top: '50%',
-		left: '50%',
-		right: 'auto',
-		bottom: 'auto',
-		marginRight: '-50%',
-		transform: 'translate(-50%, -50%)',
-	},
-};
 
 export default function MyAccount() {
-	const [modalIsOpen, setIsOpen] = React.useState(false);
 	const { user } = useSelector((state: RootState) => state.auth);
 	const { startLogout, startUpdateUser } = useAuth();
 	const { id } = useParams();
 	const [tabIndex, setTabIndex] = useState(+id);
-
-	function openModal() {
-		setIsOpen(true);
-	}
-
-	function afterOpenModal() {
-		// references are now sync'd and can be accessed.
-		//   subtitle.style.color = '#f00';
-	}
-
-	function closeModal() {
-		setIsOpen(false);
-	}
+	
 	const handleLogout = () => {
 		startLogout();
 	};
