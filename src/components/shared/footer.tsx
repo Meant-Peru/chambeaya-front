@@ -30,6 +30,11 @@ export default function Footer() {
               <li>Facebook</li>
               <li>Linkedin</li>
               <li>Instagram</li>
+              <li>
+                <a href="https://bit.ly/chambea-latam-terminos-condiciones" target="_blank">
+                Términos y condiciones
+                </a>
+              </li>
             </ul>
           </article>
         </section>
