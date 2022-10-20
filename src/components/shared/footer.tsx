@@ -20,8 +20,8 @@ export default function Footer() {
           </article>
           <article>
             <ul>
-              <li>Publicar un empleo</li>
-              <li>Buscar un empleo</li>
+              <li><a href={"/corporativo/"}>Publicar un empleo</a></li>
+              <li><a href={"/login/"}>Buscar un empleo</a></li>
               <li onClick={handleRedirect}>Soy una compañía</li>
             </ul>
           </article>
