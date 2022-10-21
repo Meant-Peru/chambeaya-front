@@ -93,7 +93,7 @@
     }
     &hero1{
         margin-bottom: 0.5em;
-        background-color: #3433FF;
+        background-color: #0b73b2;
         font-size: 16px;
         border-radius: 28px;
         align-items: center;
@@ -106,11 +106,16 @@
         }
         &:hover{
             background: var(--dark-color);
+        }
+        @include phone {
+            position: relative;
+            top:310px;
+            left:20px;
         }
     }
     &hero2{
         margin-bottom: 0.5em;
-        background-color: #4CBFB4;
+        background-color: #4DBFB4;
         font-size: 16px;
         border-radius: 28px;
         align-items: center;
@@ -123,6 +128,11 @@
         }
         &:hover{
             background: var(--dark-color);
+        }
+        @include phone {
+            position: relative;
+            top:310px;
+            left:20px;
         }
     }
 }

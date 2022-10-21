@@ -250,6 +250,102 @@ export default function Dashboard() {
                     placeholder="Teléfono"
                   />
                 </aside>
+								<aside>
+									{/* <ButtonComponent  family="primary" label="Actualizar" /> */}
+									<BtnPrimary onClick={handleUpdate}>Actualizar</BtnPrimary>
+								</aside>
+							</Fragment>
+						</section>
+					</TabPanel>
+					<TabPanel>
+						<section className="usersTable">
+							{/* <img src={ilusEmpty} alt="empty" />
+							<p>No se encontraron postulaciones</p> */}
+							<h2>Empresas</h2>
+							<div className="tableUsers">
+								<article className="headerRow">
+									<aside className="headerItem">Razón social</aside>
+									<aside className="headerItem">Correo</aside>
+								
+								</article>
+								{postJobs.map((e: any) => (
+									<article className="contentRow" key={e._id}>
+										<aside className="contentItem">{e.dataCompany.businessName}</aside>
+										<aside className="contentItem">{e.dataCompany.email}</aside>
+
+									</article>
+								))}
+							</div>
+						</section>
+					</TabPanel>
+					<TabPanel>
+						<section className="usersTable">
+							{/* <img src={ilusEmpty} alt="empty" />
+							<p>No se encontraron postulaciones</p> */}
+							<h2>Publicaciones</h2>
+							<div className="tableUsers">
+								<article className="headerRow">
+									<aside className="headerItem">Nombre</aside>
+									<aside className="headerItem">Empresa</aside>
+									{/* <aside className="headerItem">Cartera</aside> */}
+								</article>
+								{postJobs.map((e: any) => (
+									<article className="contentRow" key={e._id}>
+										<aside className="contentItem"><a  href={'/detail-post-company/' + e._id}>{e.title}</a></aside>
+										<aside className="contentItem">{e.dataCompany.businessName}</aside>
+										{/* <aside className="contentItem">Nmancilla</aside> */}
+									</article>
+								))}
+							</div>
+						</section>
+					</TabPanel>
+					<TabPanel>
+						<Reports />
+					</TabPanel>
+					<TabPanel>
+					<div className='row'>
+					<div className="dflex flex-row mt-4 mb-4 mr-5">
+						<h2>Especialidades</h2>
+					</div>
+					<div className="dflex flex-row mt-4 mb-4 ml-5">
+						<BtnPrimary onClick={openModalCategory}> Agregar nueva </BtnPrimary>
+					</div>
+					</div>
+						<div className="tableUsers">
+							<article className="headerRow">
+								<aside className="headerItem">Nombre</aside>
+								<aside className="headerItem">Descripción</aside>
+								<aside className="headerItem flex-end">Acciones</aside>
+							</article>
+							{allCategory.map((e: any) => (
+								<article className="contentRow" key={e._id}>
+									<aside className="contentItem">{e.nameCategory}</aside>
+									<aside className="contentItem">{e.descriptionCategory}</aside>
+									<ButtonComponent family="secondary" link={'/list-posiciones/' + e._id} label="Ver posiciones" />
+								</article>
+							))}
+						</div>
+						<Toaster position="top-right" reverseOrder={false} />
+						<Modal isOpen={modalIsOpen}  onRequestClose={closeModalCategory} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
+						<h2 className="text-center">Nueva Especialidad</h2>
+						<p className="mt-2 text-center">
+							<i>Ingresa una nueva especialidad como Diseño, Redes o Base de datos <br/>
+y no te olvides agregar su descripción.
+</i>
+						</p>
+						<aside className="FormGroup algn-center">
+							<form onSubmit={submitCategory}>
+								<div className="dflex flex-row mt-4 mb-4 algn-center">
+								<Txtfield placeholder="Nombre" onChange={handleFormCat} name="nameCategory" value={formcat.nameCategory} />
+								</div>
+								<div className="dflex flex-row mt-4 mb-4 algn-center">
+								<TxtArea placeholder="Descripción" onChange={handleFormCat} name="descriptionCategory" value={formcat.descriptionCategory}/>
+								</div>
+								<BtnSecondary className='mr-2' onClick={closeModalCategory}>CANCELAR</BtnSecondary>
+								<BtnPrimary type="submit"> GUARDAR </BtnPrimary>
+							</form>
+						</aside>
+					 </Modal>
 
                 <aside>
                   

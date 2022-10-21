@@ -27,7 +27,13 @@
         border-bottom: 1px solid #ccc;
         .contentItem{
             flex: 1;
-       
+            a:link{
+                text-decoration: none;
+                color: black;
+            }
+            a:visited{
+                color: black;
+            }
         }  
     }
 }

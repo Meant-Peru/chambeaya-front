@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./../../sass/shared/_footer.scss";
-import LogoV4 from "./../../assets/Icon_.png";
+import LogoV4 from "./../../assets/logo_final.png";
 import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
@@ -16,12 +16,12 @@ export default function Footer() {
         <section className="footerContent">
           <article>
             <img src={LogoV4} alt="" className="logoFooter" />
-            <p><i>El punto para encontrar proyectos</i></p>
+            <p>El inicio de tu próximo trabajo</p>
           </article>
           <article>
             <ul>
-              <li>Publicar un empleo</li>
-              <li>Buscar un empleo</li>
+              <li><a href={"/corporativo/"}>Publicar un empleo</a></li>
+              <li><a href={"/login/"}>Buscar un empleo</a></li>
               <li onClick={handleRedirect}>Soy una compañía</li>
             </ul>
           </article>
@@ -30,6 +30,11 @@ export default function Footer() {
               <li>Facebook</li>
               <li>Linkedin</li>
               <li>Instagram</li>
+              <li>
+                <a href="https://bit.ly/chambea-latam-terminos-condiciones" target="_blank">
+                Términos y condiciones
+                </a>
+              </li>
             </ul>
           </article>
         </section>

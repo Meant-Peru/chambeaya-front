@@ -24,7 +24,7 @@ footer {
     }
 
     .logoFooter {
-      width: 100px;
+      width: 200px;
     }
 
     article {
@@ -49,6 +49,21 @@ footer {
 
           :active {
             font-weight: 500;
+          }
+          a {
+            list-style: none;
+            color: var(--light-color);
+            font-weight: 300;
+            cursor: pointer;
+            margin-bottom: 8px;
+            text-decoration: none;
+            &:hover {
+              font-weight: 500;
+            }
+
+            :active {
+              font-weight: 500;
+            }
           }
         }
       }
