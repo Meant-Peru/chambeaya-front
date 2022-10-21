@@ -101,6 +101,20 @@ export const BtnPrimary = styled.button`
   }
 `;
 
+export const BtnTable = styled.button`
+  background: ${Theme.colors.primary};
+  font-size: 16px;
+  border-radius: 28px;
+  align-items: center;
+  padding: 0.75em 1.5em;
+  color: ${Theme.colors.light};
+  border-style: none;
+  cursor: pointer;
+  &:hover {
+    background: ${Theme.colors.gray6};
+  }
+`;
+
 export const BtnSecondary = styled.button`
   background: ${Theme.colors.light};
   font-size: 16px;

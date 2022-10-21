@@ -2,14 +2,14 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import Header from '../components/shared/header';
 import Modal from 'react-modal';
-import { Txtfield, BtnPrimary, DropdownMenu, DropdownItem, BtnSecondary , TxtArea} from '../components/shared/styled';
+import { Txtfield, BtnPrimary,BtnTable, DropdownMenu, DropdownItem, BtnSecondary , TxtArea} from '../components/shared/styled';
 import ButtonComponent from '../components/shared/atom/button';
 import './../sass/pages/_myAccount.scss';
 import './../sass/pages/_dashboard.scss';
 import Footer from '../components/shared/footer';
 import toast, { Toaster } from 'react-hot-toast';
 
-import { getSkill, createSkill, enlazarSkill } from '../util/skill.service';
+import { getSkill, createSkill, enlazarSkill, updateSkill } from '../util/skill.service';
 import { getCompanyAll } from '../util/company.service';
 import { getCategory , createCategory } from '../util/category.service';
 import { getPosition } from '../util/position.service';
@@ -20,11 +20,10 @@ import { useCatForm } from '../hooks/useCategory';
 import { useSkillForm, useEnlForm } from '../hooks/useSkill';
 
 import { POSTULANT } from '../helpers/constants';
-import { useNavigate , Navigate } from 'react-router-dom';
+import {  Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
 import { Reports } from '../components/Reports';
-import { Category } from '@material-ui/icons';
 
 const customStyles = {
 	content: {
@@ -41,43 +40,30 @@ const customStyles = {
 export default function Dashboard() {
 	const { user } = useSelector((state: RootState) => state.auth);
 	const { startLogout, startUpdateUser } = useAuth();
+
 	const [modalIsOpen, setIsOpen] = React.useState(false);
 	const [modalIsOpenS, setIsOpenSkill] = React.useState(false);
 	const [modalIsOpenE, setIsOpenEnl] = React.useState(false);
+	const [editModalOpen, setEditModalOpen] = useState(false);
 
 	const { formcat, handleFormCat, resetCat } = useCatForm();
-	const { formskill, handleFormSkill, resetSkill } = useSkillForm();
+	const { formskill, handleFormSkill, resetSkill, setFormSkill } = useSkillForm();
 	const { formenl, handleFormEnl, resetEnl } = useEnlForm();
-
-	const navigate = useNavigate();
 
 	const {
 		postJobsState: { loading, postJobs },
 	} = usePostJob();
-
 	const [postulant, setPostulant] = useState({
 		...user.dataUser,
 	});
-
 	const [company, setCompany] = useState({
 		...user.dataUser,
 	});
 
-
 	const [skill, setSkill] = useState([]);
-
 	const [allCompany, setAllCompany] = useState([]);
-
 	const [allCategory, setAllCategory] = useState([]);
-
 	const [allPosition, setAllPosition] = useState([]);
-
-	const handleEvent = (e: any) => {
-		setCompany({
-			...company,
-			[e.target.name]: e.target.value,
-		});
-	};
 
 	const handleEventPostulant = (e: any) => {
 		setPostulant({
@@ -101,20 +87,17 @@ export default function Dashboard() {
 	const handleLogout = () => {
 		startLogout();
 	};
-
+	const listSkills = async () => {
+		const responseSkill = await getSkill();
+			setSkill(responseSkill.data.data);
+	}
 	useEffect(() => {
 		(async () => {
-	
-
-			const responseSkill = await getSkill();
-			setSkill(responseSkill.data.data);
-
+			listSkills()
 			const responseCategory = await getCategory();
 			setAllCategory(responseCategory.data.data);
-
 			const responseAllCompany = await getCompanyAll();
 			setAllCompany(responseAllCompany.data.data);
-			
 		})();
 	}, []);
 
@@ -126,7 +109,21 @@ export default function Dashboard() {
 			setAllPosition(responsePosition.data);
 		}
 	};
-
+	const editSkill=(s) => {
+		console.log(s);
+		setFormSkill(s);
+		toggleModal();
+	}
+	const toggleModal = () => {
+		setEditModalOpen(!editModalOpen);
+	  };
+	const update =async () => {
+		await updateSkill(formskill);
+		toast.success("Has actualizado la posición");
+		toggleModal();
+		await listSkills()
+		resetSkill();
+	}
 	function openModalCategory() {
 		setIsOpen(true);
 	}
@@ -134,12 +131,21 @@ export default function Dashboard() {
 	function closeModalCategory() {
 		setIsOpen(false);
 	}
-
-	function afterOpenModalCategory() {
-		// references are now sync'd and can be accessed.
-		//   subtitle.style.color = '#f00';
+	function openModalSkill() {
+		setIsOpenSkill(true);
 	}
 
+	function closeModalSkill() {
+		setIsOpenSkill(false);
+	}
+	function openModalEnl(event: any) {
+		const value = event.target.value;
+		formenl.idSkill = value;
+		setIsOpenEnl(true);
+	}
+	function closeModalEnl() {
+		setIsOpenEnl(false);
+	}
 	const submitCategory = async (event: any) => {
 		event.preventDefault();
 		console.log(formcat)
@@ -151,44 +157,15 @@ export default function Dashboard() {
 		resetCat();
 	};
 
-	function openModalSkill() {
-		setIsOpenSkill(true);
-	}
-
-	function closeModalSkill() {
-		setIsOpenSkill(false);
-	}
-
-	function afterOpenModalSkill() {
-		// references are now sync'd and can be accessed.
-		//   subtitle.style.color = '#f00';
-	}
-
 	const submitskill = async (event: any) => {
 		event.preventDefault();
 		console.log(formskill)
 		await createSkill(formskill);
 		toast.success('Has registrado una nueva skill!');
 		closeModalSkill();
-		const responseSkill = await getSkill();
-		setSkill(responseSkill.data.data);
+		await listSkills()
 		resetSkill();
 	};
-
-	function openModalEnl(event: any) {
-		const value = event.target.value;
-		formenl.idSkill = value;
-		setIsOpenEnl(true);
-	}
-
-	function closeModalEnl() {
-		setIsOpenEnl(false);
-	}
-
-	function afterOpenModalEnl() {
-		// references are now sync'd and can be accessed.
-		//   subtitle.style.color = '#f00';
-	}
 
 	const submitenl = async (event: any) => {
 		event.preventDefault();
@@ -196,8 +173,7 @@ export default function Dashboard() {
 		await enlazarSkill(formenl);
 		toast.success('Has enlazado correctamente!');
 		closeModalEnl();
-		const responseSkill = await getSkill();
-		setSkill(responseSkill.data.data);
+		await listSkills()
 		resetEnl();
 	};
 
@@ -315,7 +291,7 @@ export default function Dashboard() {
 							))}
 						</div>
 						<Toaster position="top-right" reverseOrder={false} />
-						<Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModalCategory} onRequestClose={closeModalCategory} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
+						<Modal isOpen={modalIsOpen}  onRequestClose={closeModalCategory} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
 						<h2 className="text-center">Nueva Especialidad</h2>
 						<p className="mt-2 text-center">
 							<i>Ingresa una nueva especialidad como Diseño, Redes o Base de datos <br/>
@@ -357,12 +333,14 @@ y no te olvides agregar su descripción.
 								<article className="contentRow" key={e._id}>
 									<aside className="contentItem">{e.nameSkill}</aside>
 									<aside className="contentItem">{e.descriptionskill}</aside>
-									<aside className="contentItem flex-end"> <BtnPrimary value={e._id} onClick={openModalEnl}>Enlazar</BtnPrimary></aside>
+									<aside className="contentItem containerButtons"> 
+									<BtnTable value={e._id} onClick={openModalEnl}>Enlazar</BtnTable>
+									<BtnTable onClick={() => editSkill(e)}>Editar</BtnTable></aside>
 								</article>
 							))}
 						</div>
 						<Toaster position="top-right" reverseOrder={false} />
-						<Modal isOpen={modalIsOpenS} onAfterOpen={afterOpenModalSkill} onRequestClose={closeModalSkill} style={customStyles} contentLabel="SkillAdd Modal" overlayClassName="Overlay">
+						<Modal isOpen={modalIsOpenS} ariaHideApp={false} onRequestClose={closeModalSkill} style={customStyles} contentLabel="SkillAdd Modal" overlayClassName="Overlay">
 						<h2 className="text-center">Nueva Skill</h2>
 						<p className="mt-2 text-center">
 							<i>Ingresa nueva skill</i>
@@ -373,16 +351,31 @@ y no te olvides agregar su descripción.
 								<Txtfield placeholder="Skill" onChange={handleFormSkill} name="nameSkill" value={formskill.nameSkill} />
 								</div>
 								<div className="dflex flex-row mt-4 mb-4 algn-center">
-								<TxtArea placeholder="Descripción" onChange={handleFormSkill} name="descriptionSkill" value={formskill.descriptionSkill}/>
+								<TxtArea placeholder="Descripción" onChange={handleFormSkill} name="descriptionskill" value={formskill.descriptionskill}/>
 								</div>
 								<BtnSecondary className='mr-2' onClick={closeModalSkill}>CANCELAR</BtnSecondary>
 								<BtnPrimary type="submit"> GUARDAR </BtnPrimary>
 							</form>
 						</aside>
 					 </Modal>
+					 <Modal isOpen={editModalOpen}  onRequestClose={toggleModal} style={customStyles} overlayClassName="Overlay" ariaHideApp={false}>
+						<h2 className="text-center">Editar Skill</h2>
+						
+							
+								<div className="dflex flex-row mt-4 mb-4 algn-center">
+								<Txtfield placeholder="Skill" onChange={handleFormSkill} name="nameSkill" value={formskill.nameSkill} />
+								</div>
+								<div className="dflex flex-row mt-4 mb-4 algn-center">
+								<TxtArea placeholder="Descripción" onChange={handleFormSkill} name="descriptionskill" value={formskill.descriptionskill}/>
+								</div>
+								<BtnSecondary className='mr-2' onClick={toggleModal}>CANCELAR</BtnSecondary>
+								<BtnPrimary onClick={update}> GUARDAR </BtnPrimary>
+							
+						
+					 </Modal>
 
 					 <Toaster position="top-right" reverseOrder={false} />
-						<Modal isOpen={modalIsOpenE} onAfterOpen={afterOpenModalEnl} onRequestClose={closeModalEnl} style={customStyles} contentLabel="Enlazar Modal" overlayClassName="Overlay">
+						<Modal isOpen={modalIsOpenE} ariaHideApp={false} onRequestClose={closeModalEnl} style={customStyles} contentLabel="Enlazar Modal" overlayClassName="Overlay">
 						<h2 className="text-center">Enlazar Skill</h2>
 						<p className="mt-2 text-center">
 							<i>Relacionalo a una especialidad y a un puesto</i>
