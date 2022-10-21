@@ -32,8 +32,12 @@ export const registerSalesCompany = async (payload: any) => {
 };
 
 export const getCompanyAll = async () => {
+	try {
 	const token = await getLocalStorage(SESSION);
 	return await axios.get(`${URI}/user/getAllUserService`, { headers: { token } });
+} catch(error)  {
+	console.error(error)
+}
 };
 
 export const getProjectsAllId = async () => {

@@ -23,7 +23,6 @@ import {
   enlazarSkill,
   updateSkill,
 } from "../util/skill.service";
-import { getCompanyAll } from "../util/company.service";
 import { getCategory, createCategory } from "../util/category.service";
 import { getPosition } from "../util/position.service";
 
@@ -37,7 +36,9 @@ import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store/store";
 import { Reports } from "../components/Reports";
-import {Publications} from "../components/Publications";
+import { Publications } from "../components/Publications";
+import { Companies } from "../components/Companies";
+
 const customStyles = {
   content: {
     top: "50%",
@@ -67,7 +68,7 @@ export default function Dashboard() {
   const {
     postJobsState: { loading, postJobs },
   } = usePostJob();
-  
+
   const [postulant, setPostulant] = useState({
     ...user.dataUser,
   });
@@ -76,7 +77,6 @@ export default function Dashboard() {
   });
 
   const [skill, setSkill] = useState([]);
-  const [allCompany, setAllCompany] = useState([]);
   const [allCategory, setAllCategory] = useState([]);
   const [allPosition, setAllPosition] = useState([]);
 
@@ -111,8 +111,7 @@ export default function Dashboard() {
       listSkills();
       const responseCategory = await getCategory();
       setAllCategory(responseCategory.data.data);
-      const responseAllCompany = await getCompanyAll();
-      setAllCompany(responseAllCompany.data.data);
+      
     })();
   }, []);
 
@@ -129,7 +128,7 @@ export default function Dashboard() {
     setFormSkill(s);
     toggleModal();
   };
-  
+
   const toggleModal = () => {
     setEditModalOpen(!editModalOpen);
   };
@@ -253,36 +252,17 @@ export default function Dashboard() {
                 </aside>
 
                 <aside>
-                  {/* <ButtonComponent  family="primary" label="Actualizar" /> */}
+                  
                   <BtnPrimary onClick={handleUpdate}>Actualizar</BtnPrimary>
                 </aside>
               </Fragment>
             </section>
           </TabPanel>
           <TabPanel>
-            <section className="usersTable">
-              {/* <img src={ilusEmpty} alt="empty" />
-							<p>No se encontraron postulaciones</p> */}
-              <h2>Usuarios</h2>
-              <div className="tableUsers">
-                <article className="headerRow">
-                  <aside className="headerItem">Razón social</aside>
-                  <aside className="headerItem">Correo</aside>
-                </article>
-                {postJobs.map((e: any) => (
-                  <article className="contentRow" key={e._id}>
-                    <aside className="contentItem">
-                      {e.dataCompany.businessName}
-                    </aside>
-                    <aside className="contentItem">{e.dataCompany.email}</aside>
-                  </article>
-                ))}
-              </div>
-            </section>
+            <Companies />
           </TabPanel>
           <TabPanel>
-			<Publications />
-           
+            <Publications />
           </TabPanel>
           <TabPanel>
             <Reports />

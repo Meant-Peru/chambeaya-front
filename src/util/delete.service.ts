@@ -3,14 +3,14 @@ import { URI } from '../enviroment/enviroment';
 import { SESSION } from '../helpers/constants';
 import { getLocalStorage } from '../helpers/localStorage';
 
-export const deletePublication = async (data) => {
+export const deleteData = async (data,type) => {
 	try {
 		console.log(data);
 		return await axios({
 			method: 'delete',
 			url: `${URI}/user/deleteService`,
 			data: { 
-                collection : "postJob",
+                collection : type,
                 id:data._id
 			},
 		}).then((res) => res.data);

@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./../sass/pages/_detailPost.scss";
-
 import Header from "../components/shared/header";
 import toast, { Toaster } from "react-hot-toast";
+import { Backdrop, CircularProgress } from "@material-ui/core";
 import Modal from "react-modal";
 import {
   Txtfield,
   BtnPrimary,
   BtnSecondary,
-  TxtArea
+  TxtArea,
+  BtnTable
 } from "./../components/shared/styled";
 
 import { useParams } from "react-router-dom";
 import { getPosition, createPosition, updatePosition } from "../util/position.service";
 import { usePosForm } from "../hooks/usePosition";
+import { deleteData } from "../util/delete.service";
 
 const customStyles = {
   content: {
@@ -32,8 +34,9 @@ export default function ListPosiciones() {
   const [editModalOpen, setEditModalOpen] = useState(false);
   const idCategory = useParams();
   const { formpos, handleFormPos, resetPos,setFormPos } = usePosForm();
-
   const [positions, setAllPosition] = useState([]);
+  const [edit, setLoadingPost] = useState(false);
+
 
 const editPosition = (p) => {
 	setFormPos(p);
@@ -53,7 +56,7 @@ const listPositions = async () => {
   };
 
   useEffect(() => {
-    (async () => {
+    (async () => {    
       await listPositions();
     })();
   }, []);
@@ -72,17 +75,35 @@ const listPositions = async () => {
   const toggleModal = () => {
     setEditModalOpen(!editModalOpen);
   };
+
+  const deletePosition = async (p) => {
+      setLoadingPost(true);
+      await deleteData(p, "position");
+      await listPositions();
+      setLoadingPost(false);
+  } 
   
   function openModal() {
     setIsOpen(true);
   }
   function closeModal() {
     setIsOpen(false);
-	setEditModalOpen(false);
+	  setEditModalOpen(false);
   }
 
+  
   return (
     <React.Fragment>
+       <Backdrop
+        open={edit!}
+        style={{
+          zIndex: 99,
+        }}
+      >
+        {" "}
+        .
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Header />
       <div className="dflex flex-row mt-4 mb-4 algn-center">
         <h2>Posiciones</h2>
@@ -100,10 +121,13 @@ const listPositions = async () => {
               <article className="contentRow" key={e._id}>
                 <aside className="contentItem">{e.namePosition}</aside>
                 <aside className="contentItem">{e.descriptionPosition}</aside>
-                <aside className="contentItem flex-end">
-                  <BtnPrimary onClick={() => editPosition(e)}>
+                <aside className="contentItem containerButtons">
+                  <BtnTable onClick={() => editPosition(e)}>
                     Editar
-                  </BtnPrimary>
+                  </BtnTable>
+                  <BtnTable onClick={() => deletePosition(e)}>
+                    Eliminar
+                  </BtnTable>
                 </aside>
               </article>
             </div>
@@ -111,7 +135,9 @@ const listPositions = async () => {
         </div>
       </div>
       <Toaster position="top-right" reverseOrder={false} />
-      <Modal isOpen={editModalOpen} style={customStyles} overlayClassName="Overlay" ariaHideApp={false}>
+      <Modal 
+      onRequestClose={toggleModal}
+      isOpen={editModalOpen} style={customStyles} overlayClassName="Overlay" ariaHideApp={false}>
         <h2 className="text-center">Editar Posición</h2>
        
 		<div className="dflex flex-row mt-4 mb-4 algn-center">

@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { Backdrop, CircularProgress } from "@material-ui/core";
 import { BtnTable } from "../components/shared/styled";
 import { usePostJob } from "../hooks/usePostJob";
-import { deletePublication } from "../util/delete.service";
+import { deleteData } from "../util/delete.service";
 
 export const Publications = () => {
   const {postJobsState: { loading, postJobs }, getAllJobsData} = usePostJob();
-  const [edit, setLoadingPost] = React.useState(false);
+  const [edit, setLoadingPost] = useState(false);
 
   const handleDelete = async (p) => {
     setLoadingPost(true);
     console.log(p);
-    await deletePublication(p);
+    await deleteData(p,"postJob");
     await getAllJobsData()
     setLoadingPost(false);
   };
 
   if (loading) {
-    return <div>Consultando tus publicaciones...</div>
+    return <div>Consultando todas las publicaciones...</div>
 }
   return (
     <>
