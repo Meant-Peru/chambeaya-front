@@ -45,7 +45,7 @@ export const usePostJob = (id?: string) => {
 		getJobData(id!).then((r) => r);
 	}, []);
 
-	return { postJobsState, postJobSate };
+	return { postJobsState, postJobSate, getAllJobsData,setPostJobs};
 };
 
 export const usePostForm = () => {

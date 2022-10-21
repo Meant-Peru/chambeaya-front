@@ -20,9 +20,6 @@ const contratadosMes = [
 ];
 const COLORS2 = ['#0088FE', '#CCC'];
 
-
-
-
 const dataBar = [
     {
         name: 'Sr Product Designer',
@@ -62,9 +59,6 @@ const dataPublic = [
 ];
 
 export const Reports = () => {
-    // static demoUrl = 'https://codesandbox.io/s/tiny-bar-chart-35meb';
-
-
     return (
         <>
             <h2 className="mb-4">Reportes</h2>
