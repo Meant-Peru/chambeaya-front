@@ -101,7 +101,6 @@ const listPositions = async () => {
                 <aside className="contentItem">{e.namePosition}</aside>
                 <aside className="contentItem">{e.descriptionPosition}</aside>
                 <aside className="contentItem flex-end">
-                  {" "}
                   <BtnPrimary onClick={() => editPosition(e)}>
                     Editar
                   </BtnPrimary>
