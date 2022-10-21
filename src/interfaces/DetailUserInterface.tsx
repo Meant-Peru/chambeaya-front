@@ -15,4 +15,5 @@ export interface DetailUserInteface {
     businessName:string;
     phone:string;
     ruc:string;
+    rol:string
 }

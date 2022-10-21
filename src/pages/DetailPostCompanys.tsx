@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { Fragment,useEffect, useState } from 'react';
 import { TagComponent } from '../components/shared/atom/tag';
 import Footer from '../components/shared/footer';
 import Header from '../components/shared/header';
+import ButtonComponent from '../components/shared/atom/button';
 import './../sass/pages/_detailPostCompany.scss';
 import Logo1 from './../assets/logos/1.svg';
 import { BtnPrimary } from '../components/shared/styled';
@@ -9,12 +10,9 @@ import { useParams } from 'react-router-dom';
 import { usePostCompany } from '../hooks/usePostCompany';
 import { ListPostJob, ListSkill, PostulantJob } from '../interfaces/DetailPost';
 import { Backdrop, CircularProgress } from '@material-ui/core';
-import React from 'react';
-import { Skill } from '../interfaces/Skill';
-import ButtonComponent from '../components/shared/atom/button';
+
 
 export const DetailPostCompanys = () => {
-	// detail-post-company
 	const [loadingPost, setLoadingPost] = useState(false);
 	const [postJob, setPostJob] = useState<ListPostJob>();
 	const [listSkill, setListSkill] = useState<ListSkill[]>([]);
@@ -30,12 +28,6 @@ export const DetailPostCompanys = () => {
 		setLoadingPost(true);
 		const resp = await startDetailPostCompany(id);
 		console.log('DetailPostCompanys',resp)
-	
-		//resp?.postulants.sort((a, b) => b.porcentageSkills - a.porcentageSkills);
-		
-		
-
-
 		setPostJob(resp.listPostJob[0]);
 		setListSkill([...resp.listSkills]);
 		setListPostulant([...resp.postulants]);
@@ -43,7 +35,7 @@ export const DetailPostCompanys = () => {
 	};
 
 	return (
-		<React.Fragment>
+		<Fragment>
 			<Backdrop
 				open={loadingPost}
 				style={{
@@ -77,7 +69,8 @@ export const DetailPostCompanys = () => {
 						{/* <p className="mt-2">10 de Diciembre 2022</p> */}
 					</article>
 					<article className="actionApply">
-						<BtnPrimary> Ver Postulantes </BtnPrimary>
+						 <a href="#postulantsList"><BtnPrimary>Ver Postulantes</BtnPrimary></a>
+							 
 						<p className="mt-2">Requerimiento {postJob?.state ? 'activo' : 'no activo'}</p>
 					</article>
 				</aside>
@@ -107,7 +100,7 @@ export const DetailPostCompanys = () => {
 
 				<aside>
 					<div>
-						<h4 className="mb-3">Postulantes</h4>
+						<h4 className="mb-3" id="postulantsList">Postulantes</h4>
 					</div>
 					<div className="tableUsers">
 						<article className="headerRow">
@@ -130,6 +123,6 @@ export const DetailPostCompanys = () => {
 				</aside>
 			</section>
 			<Footer />
-		</React.Fragment>
+		</Fragment>
 	);
 };

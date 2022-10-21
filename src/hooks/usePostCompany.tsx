@@ -13,13 +13,11 @@ export const usePostCompany = () => {
 	const startDetailPost = async (id: string) => {
 		const resp = await getDetallePost({ id });
 		return resp as DetailPost;
-		// return listPostJob as PostJob[];
 	};
 
 	const startDetailPostCompany = async (idPostJob: string) => {
 		const resp = await getDetallePostCompany({ idPostJob });
 		return resp as DetailPost;
-		// return listPostJob as PostJob[];
 	};
 
 	const startDetailPostulant = async ({ idP, idJob }) => {

@@ -38,7 +38,6 @@ export const postJobCompany = async (data: PostJob) => {
 	try {
 		const token = await getLocalStorage(SESSION);
 		const resultData = await axios.post(`${URI}/user/createPostJob`, data, { headers: { token } });
-		// console.log('resultData.data', resultData.data);
 		return resultData;
 	} catch (error) {
 		console.log(error);
