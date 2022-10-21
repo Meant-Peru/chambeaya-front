@@ -15,7 +15,8 @@ export interface SkillAdd {
 	_id?: string;
 	idUser: string;
 	nameSkill: string;
-	descriptionSkill: string;
+	descriptionskill: string;
+	createdDate:number
 }
 
 export interface SkillSelect {

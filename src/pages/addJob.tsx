@@ -1,12 +1,13 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Header from '../components/shared/header';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import boxEmpty from './../assets/box-empty.svg';
+
 import ilusEmpty from './../assets/empty-state.svg';
 import Autocomplete from '@mui/material/Autocomplete';
 import CircularProgress from '@mui/material/CircularProgress';
 import TextField from '@mui/material/TextField';
-import { Hint } from 'react-autocomplete-hint';
+
 
 import { Txtfield, DropdownMenu, DropdownItem, TxtArea, BtnPrimary } from './../components/shared/styled';
 import 'react-tabs/style/react-tabs.css';
@@ -14,7 +15,7 @@ import './../sass/pages/_addJob.scss';
 import Footer from '../components/shared/footer';
 import ButtonComponent from '../components/shared/atom/button';
 
-import { addJob, postJobCompany } from './../util/job.service';
+import { postJobCompany } from './../util/job.service';
 import { getCategory, getPosition, createPosition, getSkill } from '../util/publication.service';
 import { Response } from '../interfaces/Response';
 import { Category } from '../interfaces/Category';
@@ -27,7 +28,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function AddJob() {
 	const navigate = useNavigate();
-	const [open, setOpen] = React.useState(false);
+	const [open, setOpen] = useState(false);
 	const [encounter, setEncounter] = React.useState(true);
 	const [categorys, setCategorys] = React.useState<Category[]>([]);
 	const [positions, setPositions] = React.useState<Position[]>([]);

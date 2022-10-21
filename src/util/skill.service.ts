@@ -13,7 +13,34 @@ export const createSkill = async (data: any) => {
 		return await axios({
 			method: 'post',
 			url: `${URI}/user/createSkill`,
-			data: { nameSkill: data.nameSkill, description: data.descriptionSkill },
+			data: { nameSkill: data.nameSkill, description: data.descriptionSkill  },
+		}).then((res) => res.data.data);
+	} catch (error) {
+		console.log(error);
+		return {
+			data: [],
+			status: false,
+		};
+	}
+};
+export const updateSkill = async (data: any) => {
+	if(data.nameSkill == null){
+		data = {
+			nameSkill:"",
+			...data
+		}
+	}else if(data.descriptionskill == null) {
+		data ={
+			descriptionskill:"",
+			...data
+		}
+	}
+	try {
+		return await axios({
+			method: 'put',
+			url: `${URI}/user/updateSkill`,
+			data: { nameSkill: data.nameSkill, description: data.descriptionskill,
+			id:data._id },
 		}).then((res) => res.data.data);
 	} catch (error) {
 		console.log(error);

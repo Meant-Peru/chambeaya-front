@@ -6,7 +6,6 @@ import negative from './../assets/negative.svg';
 import { usePostulant } from '../hooks/usePostulant';
 import { getSkill } from '../util/skill.service';
 
-//import { DetailPostulant} from '../interfaces/DetailPostulant';
 import { PostJobPostulant } from '../types/post_job';
 import { ModalComponent } from './ModalComponent';
 import { useUi } from '../hooks/useUi';
@@ -128,17 +127,10 @@ export const MyApply = () => {
 														</li>
 													</ul>
 												</aside>
-												<aside className="algn-center mt-2">
-													<br />
-													<br />
-												</aside>
+												
 											</aside>
 										</ModalComponent>
-										{/* <Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal" overlayClassName="Overlay">
-									<button onClick={closeModal}>close</button>
-
-									<h2>Soy un modal</h2>
-								</Modal> */}
+										
 									</div>
 								</article>
 							))}

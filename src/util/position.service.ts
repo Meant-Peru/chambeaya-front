@@ -36,3 +36,36 @@ export const createPosition = async (data: any) => {
 		};
 	}
 };
+
+export const updatePosition = async (data: any) => {
+	if(data.namePosition == null){
+		data = {
+			namePosition:"",
+			...data
+		}
+	}else if(data.descriptionPosition == null) {
+		data ={
+			descriptionPosition:"",
+			...data
+		}
+	}
+	try {
+		console.log(data);
+		return await axios({
+			method: 'put',
+			url: `${URI}/user/updatePosition`,
+			data: { 
+				namePosition: data.namePosition, 
+				descriptionPosition: data.descriptionPosition,
+				id: data._id
+			},
+		}).then((res) => res.data.data);
+	} catch (error) {
+		console.log(error);
+		return {
+			data: [],
+			status: false,
+		};
+	}
+};
+

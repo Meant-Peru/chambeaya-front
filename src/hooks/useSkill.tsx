@@ -7,7 +7,8 @@ export const useSkillForm = () => {
 		_id: '',
 		idUser: '',
 		nameSkill: '',
-		descriptionSkill: '',
+		descriptionskill: '',
+		createdDate:0
 	});
 
 	const handleFormSkill = (event: any) => {
@@ -22,11 +23,12 @@ export const useSkillForm = () => {
 			_id: '',
 			idUser: '',
 			nameSkill: '',
-			descriptionSkill: '',
+			descriptionskill: '',
+			createdDate:0
 		});
 	};
 
-	return { formskill, handleFormSkill, resetSkill };
+	return { formskill, handleFormSkill, resetSkill, setFormSkill };
 };
 
 export const useEnlForm = () => {

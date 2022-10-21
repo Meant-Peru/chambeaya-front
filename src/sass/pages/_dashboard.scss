@@ -59,12 +59,16 @@
         border-bottom: 1px solid #ccc;
         .contentItem{
             flex: 1;
-       
         }  
+        
     }
 }
-
+.containerButtons {
+            display: flex;
+            justify-content: space-evenly;
+        }
 .flex-end{
     display: flex;
     justify-content: center;
+    align-items: center;
 }

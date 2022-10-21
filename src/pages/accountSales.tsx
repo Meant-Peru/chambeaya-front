@@ -79,11 +79,6 @@ export default function AccountSales() {
 						</section>
 					</TabPanel>
 					<TabPanel>
-						{/* <section className="apply">
-							<img src={ilusEmpty} alt="empty" />
-							<p>No se encontraron postulaciones</p>
-
-						</section> */}
 						<ListCompany />
 					</TabPanel>
 					<TabPanel>

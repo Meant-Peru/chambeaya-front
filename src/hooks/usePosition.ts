@@ -9,6 +9,7 @@ export const usePosForm = () => {
 		id_user: '',
 		namePosition: '',
 		descriptionPosition: '',
+		createdDate:''
 	});
 
 	const handleFormPos = (event: any) => {
@@ -25,8 +26,9 @@ export const usePosForm = () => {
 			id_user: '',
 			namePosition: '',
 			descriptionPosition: '',
+			createdDate:''
 		});
 	};
 
-	return { formpos, handleFormPos, resetPos };
+	return { formpos, handleFormPos, resetPos, setFormPos };
 };
