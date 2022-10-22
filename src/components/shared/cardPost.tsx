@@ -2,7 +2,9 @@ import * as React from "react";
 import Card from "./atom/card";
 import "./../../sass/shared/_cardPost.scss";
 
-export default function CardPost() {
+export default function CardPost(data) {
+  console.log(data);
+  
   return (
     <React.Fragment>
     

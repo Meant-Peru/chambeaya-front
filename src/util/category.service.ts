@@ -24,4 +24,18 @@ export const createCategory = async (data: any) => {
 		};
 	}
 };
-
+export const searchPostByCategory = async (c: string) => {
+	try {
+		return await axios({
+			method: 'post',
+			url: `${URI}/user/searchPostJobByCategory`,
+			data: { idCategory : c },
+		}).then((res) => res.data);
+	} catch (error) {
+		console.log(error);
+		return {
+			data: [],
+			status: false,
+		};
+	}
+};
