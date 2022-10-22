@@ -7,19 +7,31 @@ import ButtonComponent from './shared/atom/button';
 
 export const ProjectsComponent = () => {
 	const [projects, setProjects] = useState<Project[]>([]);
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		getProjectsId();
 	}, []);
 
 	const getProjectsId = async () => {
+		setLoading(true)
 		const resp = await getProjectsAllId();
 		setProjects(resp.listProjects);
+		setLoading(false)
 	};
+
+	if(loading){
+		return <div>Consultando tus proyectos...</div>
+	}
 
 	return (
 		<>
 			<h2>Listado de proyectos</h2>
+			{projects.length == 0 ? 
+			<aside className="gridSales">
+				<p>No tienes proyectos.</p>
+			</aside>:
+			
 			<aside className="gridSales">
 				{projects.map((p: Project) => (
 					<article className="card" key={p._id}>
@@ -43,6 +55,7 @@ export const ProjectsComponent = () => {
 					</article>
 				))}
 			</aside>
+			}
 		</>
 	);
 };
