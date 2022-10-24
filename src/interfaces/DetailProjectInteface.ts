@@ -54,7 +54,7 @@ export interface Category {
 
 export interface DataContract {
 	typePayment: string;
-	proofPayment: string;
+	proofPayment: string[];
 	paymentAmount: string;
 	proofDate: string;
 	states: States;

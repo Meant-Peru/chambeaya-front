@@ -79,6 +79,7 @@ export default function Dashboard() {
   const [skill, setSkill] = useState([]);
   const [allCategory, setAllCategory] = useState([]);
   const [allPosition, setAllPosition] = useState([]);
+  const [warning,setWarning] = useState(false);
 
   const handleEventPostulant = (e: any) => {
     setPostulant({
@@ -162,14 +163,20 @@ export default function Dashboard() {
     setIsOpenEnl(false);
   }
   const submitCategory = async (event: any) => {
+    setWarning(false)
     event.preventDefault();
     console.log(formcat);
+    if(formcat.nameCategory.length === 0 || formcat.descriptionCategory.length === 0 ){
+      setWarning(true)
+    }else {    
     await createCategory(formcat);
     toast.success("Has registrado una nueva especialidad!");
     closeModalCategory();
     const responseCategory = await getCategory();
     setAllCategory(responseCategory.data.data);
     resetCat();
+    }
+    
   };
 
   const submitskill = async (event: any) => {
@@ -304,6 +311,7 @@ export default function Dashboard() {
               style={customStyles}
               contentLabel="Example Modal"
               overlayClassName="Overlay"
+              ariaHideApp={false}
             >
               <h2 className="text-center">Nueva Especialidad</h2>
               <p className="mt-2 text-center">
@@ -312,7 +320,7 @@ export default function Dashboard() {
                   datos <br />y no te olvides agregar su descripción.
                 </i>
               </p>
-              <aside className="FormGroup algn-center">
+              <aside className="FormGroup algn-center" style={{flexDirection:'column'}}>
                 <form onSubmit={submitCategory}>
                   <div className="dflex flex-row mt-4 mb-4 algn-center">
                     <Txtfield
@@ -335,6 +343,9 @@ export default function Dashboard() {
                   </BtnSecondary>
                   <BtnPrimary type="submit"> GUARDAR </BtnPrimary>
                 </form>
+                {warning === true &&
+                  <p style={{color:'red',paddingTop:'0.5em'}}>Debes completar el formulario para crear una especialidad.</p>
+                }
               </aside>
             </Modal>
           </TabPanel>

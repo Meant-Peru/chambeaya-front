@@ -28,10 +28,8 @@ export const DetailUser = () => {
   const getDataById = async () => {
     setLoadingDetailPostulant(true);
     const r = await GetUserById({ idUser: idPostulant });
-    console.log("detail postulant", r);
     setRol(r.data.rol);
     setDetailUser({ ...r.data.dataUser });
-    console.log("dataUser", detailUser);
     setLoadingDetailPostulant(false);
   };
 

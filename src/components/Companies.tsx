@@ -3,11 +3,17 @@ import { Backdrop, CircularProgress } from "@material-ui/core";
 import { BtnTable } from "../components/shared/styled";
 import { getCompanyAll } from "../util/company.service";
 import { deleteData } from "../util/delete.service";
+import { useNavigate } from 'react-router-dom';
 
 export const Companies = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [companies, setCompanies] = useState([]);
   const [edit, setLoadingPost] = useState(false);
+
+  const changeRoute = (c) => {
+    navigate("/detail-user/" + c);
+  }
 
   useEffect(() => {
     (async () => {
@@ -50,13 +56,14 @@ export const Companies = () => {
           <article className="headerRow">
             <aside className="headerItem">Razón social</aside>
             <aside className="headerItem">Correo</aside>
-            <aside className="headerItem">Acciones</aside>
+            <aside className="headerItem" style={{textAlign:'center'}}>Acciones</aside>
           </article>
           {companies.map((e: any) => (
             <article className="contentRow" key={e._id}>
               <aside className="contentItem">{e.dataUser.businessName}</aside>
               <aside className="contentItem">{e.dataUser.email}</aside>
-              <aside className="contentItem">
+              <aside className="contentItem containerButtons">
+                <BtnTable onClick={() => changeRoute(e._id)}>Ver detalles</BtnTable>
                 <BtnTable onClick={() => handleDelete(e)}>Eliminar</BtnTable>
               </aside>
             </article>

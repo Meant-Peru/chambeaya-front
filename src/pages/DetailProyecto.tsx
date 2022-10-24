@@ -154,23 +154,19 @@ export const DetailProyecto = () => {
                 <div>
                   <img src={time} width="20" alt="" />
                   <span>Comprobantes de pago</span>
-                </div>
-                {detailProject?.dataContract.proofPayment ? (
-                  <a
-                    href={`${URI}/images/${detailProject?.dataContract.proofPayment}`}
+                  <div>
+                     {/* detailProject?.dataContract.proofPayment.map((e: any,i) =>
+                  ( <a
+                    href={`${URI}/images/${e}`}
                     className={"btnComponent--terceary"}
                     target="_blank"
                   >
-                    Ver documentos
-                  </a>
-                ) : (
-                  <ButtonComponent
-                    link={"/"}
-                    family="terceary"
-                    icon="whitOutIcon"
-                    label="Ver documentos"
-                  />
-                )}
+                    Boleta {i}
+                  </a>)
+                  )  */}
+                  </div>
+                </div>
+               
               </article>
 
               <h4 className="mt-5">Presupuesto de proyecto</h4>
