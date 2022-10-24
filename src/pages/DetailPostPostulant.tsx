@@ -6,7 +6,6 @@ import './../sass/pages/_detailPostCompany.scss';
 import { BtnPrimary, BtnSecondary } from '../components/shared/styled';
 import { useNavigate, useParams } from 'react-router-dom';
 import { usePostCompany } from '../hooks/usePostCompany';
-import { ListSkill } from '../interfaces/DetailPost';
 import { Backdrop, CircularProgress } from '@material-ui/core';
 import React from 'react';
 import { DetailPostulant, UserDataPostulant } from '../interfaces/DetailPostulant';
@@ -15,30 +14,25 @@ import { useUi } from '../hooks/useUi';
 import toast, { Toaster } from 'react-hot-toast';
 
 export const DetailPostPostulant = () => {
-	// detail-post-company
+	//@ TODO: FALTA EL LISTADO DE SKILLS
 	const [loadingPost, setLoadingPost] = useState(false);
 	const navigate = useNavigate();
 	const [postJob, setPostJob] = useState<DetailPostulant>();
 	const [postulant, setPostulant] = useState<UserDataPostulant>();
-	const [listSkill, setListSkill] = useState<ListSkill[]>([]);
 	const { idP, idJob } = useParams();
 	const { startDetailPostulant, startCreatePostJobContracts } = usePostCompany();
+
 	const { changeStateModal } = useUi();
 
 	useEffect(() => {
 		handlerInit();
-	}, [idP, idJob]);
+	}, []);
 
 	const handlerInit = async () => {
-		// console.log({ idP, idJob });
 		setLoadingPost(true);
 		const resp: DetailPostulant = await startDetailPostulant({ idP, idJob });
-		console.log('start detail postulant job',{ resp });
 		setPostJob(resp);
 		setPostulant(resp.dataPostAndPostulant.userDataPostulant);
-		console.log({ postulant });
-		// console.log('resp?.postulants', resp?.postulants);
-		// setListSkill([...resp.listSkills]);
 		setLoadingPost(false);
 	};
 
@@ -128,8 +122,8 @@ export const DetailPostPostulant = () => {
 						<hr />
 						<div className="mt-5">
 							<h4 className="mb-3">Documentos</h4>
-							<p>{postulant?.documentType == '1' ? 'DNI' : 'Recibo por Honorarios'}</p>
-							<p>{postulant?.documentNumber}</p>
+							<p>{postJob?.dataPostAndPostulant.documentType == '1' ? 'DNI' : 'Recibo por Honorarios'}</p>
+							<p>{postJob?.dataPostAndPostulant.documentNumber}</p>
 						</div>
 					</article>
 					<article className="rightBox">
@@ -146,9 +140,23 @@ export const DetailPostPostulant = () => {
 						<h4 className="mb-3">Referencias de Experiencia</h4>
 					</div>
 					<ul>
-						<li>Certijoven</li>
-						<li>Linkedin</li>
-						<li>CV</li>
+						{
+							( postulant?.linkedinURL == "" && postulant?.facebookURL == "" && postulant?.webURL == "" && postulant?.youtubeURL== "") ?
+							<li>El postulante no a completado esta sección.</li> :
+							<li></li>
+						}
+						{postulant?.facebookURL !== "" && 
+							<a href={postulant?.facebookURL} >Facebook</a>
+						}
+						{postulant?.linkedinURL !== "" && 
+							<a href={postulant?.linkedinURL} >Linkedin</a>
+						}
+						{postulant?.webURL !== "" && 
+							<a href={postulant?.webURL}>Web</a>
+						}
+						{postulant?.youtubeURL !== "" && 
+							<a href={postulant?.youtubeURL}>Youtube</a>
+						}
 					</ul>
 				</aside>
 			</section>
