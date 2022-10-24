@@ -427,3 +427,30 @@ ul.pagination li a.active {
 
   }
 }
+.FormGroupAllInputs {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  .containerLabeInput {
+      display: flex;
+      flex-direction: row;
+      p {
+        width: 40%;
+      }
+      .inputContainer {
+       width: 60%; 
+      }
+      
+}
+  a {
+      color: var(--color-text);
+      text-decoration: none;
+  }
+  .has-error-description {
+      display: block;
+  }
+  .has-error-description-email {
+      display: block;
+  }
+}

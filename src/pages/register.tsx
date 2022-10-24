@@ -1,14 +1,12 @@
 import * as React from 'react';
 import CheckButton from '../components/shared/atom/checkButton';
-import { CREATE_USER, TEM_USER, USER_EXISTING } from './../helpers/constants';
 
 import Header from '../components/shared/header';
 import {Txtfield, BtnPrimary, Span} from './../components/shared/styled';
 import './../sass/pages/_register.scss';
-import { register } from './../util/auth.service';
 import { useNavigate } from 'react-router-dom';
 
-import { POSTULANT } from './../helpers/constants';
+import { POSTULANT,TEM_USER } from './../helpers/constants';
 import { saveLocalStorage } from '../helpers/localStorage';
 
 export default function Register() {
@@ -26,7 +24,6 @@ export default function Register() {
 	});
 
 	const handleRegister = async (e: any) => {
-
 		const dataSend = {
 			email: account.email,
 			password: account.password,
@@ -132,9 +129,7 @@ export default function Register() {
 			e.target.parentElement.nextSibling.classList.remove('error-required-field-description');
 		}
 
-		console.log(account);
-
-
+		console.log('HandleEvent',account);
 		setAccount({
 			...account,
 			[e.target.name]: e.target.value,
