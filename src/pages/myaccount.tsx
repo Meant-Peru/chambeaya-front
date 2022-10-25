@@ -29,7 +29,6 @@ export default function MyAccount() {
 		startLogout();
 	};
 	
-
 	const [postulant, setPostulant] = useState({
 		...user.dataUser,
 	});
@@ -61,13 +60,13 @@ export default function MyAccount() {
 					lastName:postulant.lastName,
 					email: postulant.email,
 					facebook:"",
-					facebookURL:"",
+					facebookURL:postulant.facebookURL,
 					linkedin:"",
 					linkedinURL:"",
 					web:"",
-					webURL:"",
+					webURL:postulant.webURL,
 					youtube:"",
-					youtubeURL:"",
+					youtubeURL:postulant.youtubeURL,
 					phone:postulant.phone,
 					rol:postulant.rol,
 					ruc:""
@@ -97,12 +96,13 @@ export default function MyAccount() {
 		}
 		
 		const respUpdate = await startUpdateUser(dataSend);
-		console.log({ respUpdate });
+		console.log('lo q envio',dataSend);
+		console.log('respuesta',respUpdate);
 		
 	};
 
 	
-	if (Object.keys(user.dataUser).length === 0) return <Navigate replace to="/login" />;
+	if ( user === undefined || user === null) return <Navigate to="/login" replace={true}/>;
 
 	return (
 		<React.Fragment>
@@ -157,6 +157,24 @@ export default function MyAccount() {
 										<Txtfield onChange={handleEventPostulant} value={postulant.email} name="email" placeholder="Correo electrónico" />
 										<Txtfield onChange={handleEventPostulant} value={postulant.phone} name="phone" placeholder="Teléfono" />
 									</aside>
+									<hr/>
+									<p className='mt-3'>Redes Sociales</p>
+									<aside className="FormGroupRS mt-2">
+										<p>Instagram:</p>
+										<Txtfield onChange={handleEventPostulant} value={postulant.instagramURL} name="instagramURL" placeholder="Perfil de Instagram" />
+									</aside>
+									<aside className="FormGroupRS mt-2">
+										<p>Facebook:</p>
+										<Txtfield onChange={handleEventPostulant} value={postulant.facebookURL} name="facebookURL" placeholder="Perfil de Facebook" />
+									</aside>
+									<aside className="FormGroupRS mt-2">
+										<p>Youtube:</p>
+										<Txtfield onChange={handleEventPostulant} value={postulant.youtubeURL} name="youtubeURL" placeholder="Canal de Youtube" />
+									</aside>
+									<aside className="FormGroupRS mt-2">
+										<p>Web:</p>
+										<Txtfield onChange={handleEventPostulant} value={postulant.webURL} name="webURL" placeholder="Web personal" />
+									</aside>
 									<p>Datos de Pago</p>
 									<aside className="FormGroup mt-3">
 										<DropdownMenu>
@@ -177,7 +195,6 @@ export default function MyAccount() {
 									</aside>
 
 									<aside>
-										{/* <ButtonComponent  family="primary" label="Actualizar" /> */}
 										<BtnPrimary onClick={handleUpdate}>Actualizar</BtnPrimary>
 									</aside>
 								</Fragment>
