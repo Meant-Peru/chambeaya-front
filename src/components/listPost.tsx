@@ -19,16 +19,16 @@ export default function ListPost() {
 
   return (
     <React.Fragment>
-      <Backdrop
-        open={loading!}
-        style={{
-          zIndex: 99,
-        }}
-      >
-        {" "}
-        .
-        <CircularProgress color="inherit" />
-      </Backdrop>
+      {/*<Backdrop*/}
+      {/*  open={loading!}*/}
+      {/*  style={{*/}
+      {/*    zIndex: 99,*/}
+      {/*  }}*/}
+      {/*>*/}
+      {/*  {" "}*/}
+      {/*  .*/}
+      {/*  <CircularProgress color="inherit" />*/}
+      {/*</Backdrop>*/}
       <section className="ListPostComponent">
         <aside className="mb-5">
           <h1>Últimos Proyectos</h1>
