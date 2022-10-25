@@ -10,6 +10,7 @@ import Dashboard from '../pages/dahsboard';
 import DetailPost from '../pages/detailPost';
 import Home from '../pages/home';
 import Login from '../pages/login';
+import Politicas from '../pages/politicas-privacidad';
 import MyAccount from '../pages/myaccount';
 import Register from '../pages/register';
 import SearchJob from '../pages/searchJob';
@@ -36,6 +37,7 @@ export const AppRouter = () => {
 				<Route path="register" element={<Register />} />
 				<Route path="searchjob" element={<SearchJob />} />
 				<Route path="login" element={<Login />} />
+				<Route path="politicas-privacidad" element={<Politicas />} />
 				<Route path="myaccount/:id" element={<MyAccount />} />
 				<Route path="dashboard" element={<Dashboard />} />
 				<Route path="account-sales" element={<AccountSales />} />

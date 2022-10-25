@@ -35,6 +35,11 @@ export default function Footer() {
                 Términos y condiciones
                 </a>
               </li>
+              <li>
+                <a href={"/politicas-privacidad/"}>
+                  Políticas de privacidad
+                </a>
+              </li>
             </ul>
           </article>
         </section>
