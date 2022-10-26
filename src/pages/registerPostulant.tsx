@@ -183,7 +183,7 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
       },
     };
 
-    console.log('',{ dataSend });
+    console.log('Crear user',{ dataSend });
 
     if (
       Object.entries(form.formErrors)

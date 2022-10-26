@@ -70,9 +70,10 @@ export const useAuth = () => {
 	const startUpdateUser = async (data: any) => {
 		const resp = await UpdateUser(data);
 		if (resp.message === UPDATE_SUCCESS) {
-			const { data } = resp;
-			// console.log({ data });
-			const user: UserGenerico = { dataUser: data.dataUser, rol: data.idRol, id: data.id };
+			const { data} = resp;
+			console.log(data[0]);
+			const user: UserGenerico = { dataUser: data[0].dataUser, rol: data[0].idRol, id: data[0]._id };
+			console.log(user);
 			saveLocalStorage(USER, user);
 			alert('Se actualizó correctamente...');
 		} else {
