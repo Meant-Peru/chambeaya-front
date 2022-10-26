@@ -32,7 +32,7 @@ const navAdmin = {
 	brand: { name: 'ChambeaYa.', to: '/' },
 	links: [
 		{ name: 'Buscar un empleo', to: '/searchjob' },
-		{ name: 'Mi perfil', to: '/account-sales' },
+		{ name: 'Mi perfil', to: '/dashboard' },
 	],
 };
 

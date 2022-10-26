@@ -40,84 +40,96 @@
     }
    
 }
- .contentRow{
-        padding: 1rem 2rem;
-        display: flex;
-        flex-direction: row;
-        background-color: #fff;
-        border-bottom: 1px solid #ccc;
-        overflow-wrap: break-word;
-        @include phone-max {
-            flex-direction: column;
-            margin-bottom:1em; 
-        }
-        .contentItem{
-            flex: 1;
-            overflow-wrap: break-word;
-            word-break: break-word;
-            @include phone-max {
-                padding: 0.5em 0em;
-                display: flex;
-                align-items: flex-end;
-            }
-            .contentIcon {
-                display: none;
-                @include phone-max {
-                    display: block;
-                    margin-right: 0.5em;
-                }
-            a:link{
-                text-decoration: none;
-                color: black;
-            }
-            a:visited{
-                color: black;
-            }
-        }  
-    }
-.tablePosicions{
-    width: 80%;
-    margin-top: 2rem;
-    .headerRow{
-        padding: 1.5rem 2rem;
-        display: flex;
-        flex-direction: row;
-        background-color: #f5f5f5;
-        border-radius: 8px 8px 0 0;
-        .headerItem{
-            flex: 1;
-        }
-    }
-    .contentRow{
-        padding: 1rem 2rem;
-        display: flex;
-        flex-direction: row;
-        background-color: #fff;
-        border-bottom: 1px solid #ccc;
-        .contentItem{
-            flex: 1;
-        }  
-        
-    }
-}
-.containerButtons {
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            flex: 1;
-            @include phone-max {
-                flex-direction: column;
-                margin-top: 0.75em;
-            }
-        }
+ .contentRow {
+   padding: 1rem 2rem;
+   display: flex;
+   flex-direction: row;
+   background-color: #fff;
+   border-bottom: 1px solid #ccc;
+   overflow-wrap: break-word;
+   @include phone-max {
+     flex-direction: column;
+     margin-bottom: 1em;
+   }
 
-.flex-end{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.notMobile{
-    @include phone-max {
-        display: none;
-    }
-}
+   .contentItem {
+     flex: 1;
+     overflow-wrap: break-word;
+     word-break: break-word;
+     @include phone-max {
+       padding: 0.5em 0em;
+       display: flex;
+       align-items: flex-end;
+     }
+
+     .contentIcon {
+       display: none;
+       @include phone-max {
+         display: block;
+         margin-right: 0.5em;
+       }
+
+       a:link {
+         text-decoration: none;
+         color: black;
+       }
+
+       a:visited {
+         color: black;
+       }
+     }
+   }
+
+   .tablePosicions {
+     width: 80%;
+     margin-top: 2rem;
+
+     .headerRow {
+       padding: 1.5rem 2rem;
+       display: flex;
+       flex-direction: row;
+       background-color: #f5f5f5;
+       border-radius: 8px 8px 0 0;
+
+       .headerItem {
+         flex: 1;
+       }
+     }
+
+     .contentRow {
+       padding: 1rem 2rem;
+       display: flex;
+       flex-direction: row;
+       background-color: #fff;
+       border-bottom: 1px solid #ccc;
+
+       .contentItem {
+         flex: 1;
+       }
+
+     }
+   }
+
+   .containerButtons {
+     display: flex;
+     align-items: center;
+     justify-content: space-evenly;
+     flex: 1;
+     @include phone-max {
+       flex-direction: column;
+       margin-top: 0.75em;
+     }
+   }
+
+   .flex-end {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   }
+
+   .notMobile {
+     @include phone-max {
+       display: none;
+     }
+   }
+ }
