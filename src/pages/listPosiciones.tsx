@@ -9,11 +9,16 @@ import {
   BtnPrimary,
   BtnSecondary,
   TxtArea,
-  BtnTable
+  BtnTable,
+  BtnMobile,
 } from "./../components/shared/styled";
-
-import { useParams } from "react-router-dom";
-import { getPosition, createPosition, updatePosition } from "../util/position.service";
+import { PersonAdd, KeyboardReturn, PortraitOutlined } from "@material-ui/icons";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  getPosition,
+  createPosition,
+  updatePosition,
+} from "../util/position.service";
 import { usePosForm } from "../hooks/usePosition";
 import { deleteData } from "../util/delete.service";
 
@@ -33,30 +38,32 @@ export default function ListPosiciones() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const idCategory = useParams();
-  const { formpos, handleFormPos, resetPos,setFormPos } = usePosForm();
+  const { formpos, handleFormPos, resetPos, setFormPos } = usePosForm();
   const [positions, setAllPosition] = useState([]);
   const [edit, setLoadingPost] = useState(false);
+  const navigate = useNavigate();
 
-
-const editPosition = (p) => {
-	setFormPos(p);
-	toggleModal();
+  const editPosition = (p) => {
+    setFormPos(p);
+    toggleModal();
   };
-
-const update = async () => {
-	await updatePosition(formpos);
-	toast.success("Has actualizado la posición");
+  const goBack = () => {
+    navigate("/dashboard");
+  };
+  const update = async () => {
+    await updatePosition(formpos);
+    toast.success("Has actualizado la posición");
     closeModal();
     await listPositions();
     resetPos();
-}
-const listPositions = async () => {
+  };
+  const listPositions = async () => {
     const responsePosition = await getPosition(idCategory);
     setAllPosition(responsePosition.data);
   };
 
   useEffect(() => {
-    (async () => {    
+    (async () => {
       await listPositions();
     })();
   }, []);
@@ -77,24 +84,23 @@ const listPositions = async () => {
   };
 
   const deletePosition = async (p) => {
-      setLoadingPost(true);
-      await deleteData(p, "position");
-      await listPositions();
-      setLoadingPost(false);
-  } 
-  
+    setLoadingPost(true);
+    await deleteData(p, "position");
+    await listPositions();
+    setLoadingPost(false);
+  };
+
   function openModal() {
     setIsOpen(true);
   }
   function closeModal() {
     setIsOpen(false);
-	  setEditModalOpen(false);
+    setEditModalOpen(false);
   }
 
-  
   return (
     <React.Fragment>
-       <Backdrop
+      <Backdrop
         open={edit!}
         style={{
           zIndex: 99,
@@ -105,62 +111,84 @@ const listPositions = async () => {
         <CircularProgress color="inherit" />
       </Backdrop>
       <Header />
-      <div className="dflex flex-row mt-4 mb-4 algn-center">
-        <h2>Posiciones</h2>
-        <BtnPrimary onClick={openModal}> Agregar nueva </BtnPrimary>
-      </div>
-      <div className="dflex flex-row mt-4 mb-4 algn-center">
-        <div className="tablePosicions">
-          <article className="headerRow">
-            <aside className="headerItem">Nombre</aside>
-            <aside className="headerItem">Descripción</aside>
-            <aside className="headerItem flex-end">Acciones</aside>
-          </article>
-          {positions.map((e: any) => (
-            <div key={e._id}>
-              <article className="contentRow" key={e._id}>
-                <aside className="contentItem">{e.namePosition}</aside>
-                <aside className="contentItem">{e.descriptionPosition}</aside>
-                <aside className="contentItem containerButtons">
-                  <BtnTable onClick={() => editPosition(e)}>
-                    Editar
-                  </BtnTable>
-                  <BtnTable onClick={() => deletePosition(e)}>
-                    Eliminar
-                  </BtnTable>
-                </aside>
-              </article>
-            </div>
-          ))}
+      <div className="positionContainer">
+        <div className="usersTable">
+          <div className="containerBack">
+            <KeyboardReturn />
+            <p onClick={() => goBack()}>Regresar</p>
+          </div>
+          <div className="titleTable">
+            <h2>Posiciones</h2>
+            <BtnMobile onClick={openModal}>
+              <PersonAdd />
+            </BtnMobile>
+            <BtnPrimary className="notMobile" onClick={openModal}>
+              {" "}
+              Agregar nueva{" "}
+            </BtnPrimary>
+          </div>
+        </div>
+        <div className="">
+          <div className="tableUsers">
+            <article className="headerRow">
+              <aside className="headerItem">Nombre</aside>
+              <aside className="headerItem">Descripción</aside>
+              <aside className="headerItem flex-end">Acciones</aside>
+            </article>
+            {positions.map((e: any) => (
+              <div key={e._id}>
+                <article className="contentRow" key={e._id}>
+                  <aside className="contentItem">
+                    <PortraitOutlined className="contentIcon"/>
+                    {e.namePosition}</aside>
+                  <aside className="contentItem">{e.descriptionPosition}</aside>
+                  <aside className="containerButtons">
+                    <BtnTable onClick={() => editPosition(e)}>Editar</BtnTable>
+                    <BtnTable onClick={() => deletePosition(e)}>
+                      Eliminar
+                    </BtnTable>
+                  </aside>
+                </article>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
       <Toaster position="top-right" reverseOrder={false} />
-      <Modal 
-      onRequestClose={toggleModal}
-      isOpen={editModalOpen} style={customStyles} overlayClassName="Overlay" ariaHideApp={false}>
+      <Modal
+        onRequestClose={toggleModal}
+        isOpen={editModalOpen}
+        style={customStyles}
+        overlayClassName="Overlay"
+        ariaHideApp={false}
+      >
         <h2 className="text-center">Editar Posición</h2>
-       
-		<div className="dflex flex-row mt-4 mb-4 algn-center">
-              <Txtfield
-                placeholder="Puesto"
-                onChange={handleFormPos}
-                name="namePosition"
-                value={formpos.namePosition}
-              />
-            </div>
-            <div className="dflex flex-row mt-4 mb-4 algn-center">
-              <TxtArea
-                placeholder="Descripción"
-                onChange={handleFormPos}
-                name="descriptionPosition"
-                value={formpos.descriptionPosition}
-              />
-            </div>
-          <BtnSecondary className="mr-2" onClick={toggleModal}>
-            CANCELAR
-          </BtnSecondary>
-          <BtnPrimary onClick={update} > GUARDAR </BtnPrimary>
-  
+
+        <div className="dflex flex-row mt-4 mb-4 algn-center">
+          <Txtfield
+            placeholder="Puesto"
+            onChange={handleFormPos}
+            name="namePosition"
+            value={formpos.namePosition}
+          />
+        </div>
+        <div className="dflex flex-row mt-4 mb-4 algn-center">
+          <TxtArea
+            placeholder="Descripción"
+            onChange={handleFormPos}
+            name="descriptionPosition"
+            value={formpos.descriptionPosition}
+          />
+        </div>
+        <div className="modalButtons">
+<BtnSecondary className="mr-2" onClick={toggleModal}>
+          CANCELAR
+        </BtnSecondary>
+        <br/>
+        <BtnPrimary onClick={update}> GUARDAR </BtnPrimary>
+        </div>
+        
       </Modal>
       <Modal
         isOpen={modalIsOpen}
@@ -184,17 +212,21 @@ const listPositions = async () => {
               />
             </div>
             <div className="dflex flex-row mt-4 mb-4 algn-center">
-              <Txtfield
+              <TxtArea
                 placeholder="Descripción"
                 onChange={handleFormPos}
                 name="descriptionPosition"
                 value={formpos.descriptionPosition}
               />
             </div>
-            <BtnSecondary className="mr-2" onClick={closeModal}>
+            <div className="modalButtons">
+               <BtnSecondary className="mr-2" onClick={closeModal}>
               CANCELAR
             </BtnSecondary>
+            <br/>
             <BtnPrimary type="submit"> GUARDAR </BtnPrimary>
+            </div>
+           
           </form>
         </aside>
       </Modal>

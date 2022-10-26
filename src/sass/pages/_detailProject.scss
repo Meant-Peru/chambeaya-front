@@ -1,5 +1,6 @@
 @import "./../base/_grid.scss";
 
+// Admi: detail-user /:id
 .detailProject{
     width: var(--container);
     display: flex;
@@ -13,11 +14,24 @@
     @include tablet-p {
       width: var(--container-tablet-portrait);
     }
-  
+    @include phone-max {
+      width: 100%;
+      padding: 1em;
+      margin:  0em;
+    }
     
   
 }
-
+.containerBack {
+    display: flex;
+    p,svg {
+      color: rgb(81, 81, 81);
+      cursor: pointer;
+    }
+    @include phone-max {
+      padding-bottom: 1.5em;
+    }
+  }
 .headerTab{
     background: #DEE1E5;
     border-radius: 8px 8px 0px 0px;

@@ -3,6 +3,7 @@ import { Backdrop, CircularProgress } from "@material-ui/core";
 import { BtnTable } from "../components/shared/styled";
 import { usePostJob } from "../hooks/usePostJob";
 import { deleteData } from "../util/delete.service";
+import { DescriptionOutlined,Business} from "@material-ui/icons";
 
 export const Publications = () => {
   const {postJobsState: { loading, postJobs }, getAllJobsData} = usePostJob();
@@ -43,9 +44,15 @@ export const Publications = () => {
             <article className="contentRow" key={e._id}>
               <aside className="contentItem"><a href={'/detail-post-company/' + e._id}>{e.title}</a></aside>
               <aside className="contentItem">
+              <DescriptionOutlined className="contentIcon"/>
+                {e.title}</aside>
+              <aside className="contentItem">
+                {e.dataCompany.businessName && 
+                  <Business className="contentIcon"/>
+                }
                 {e.dataCompany.businessName}
               </aside>
-              <aside className="contentItem">
+              <aside className="containerButtons">
                 <BtnTable onClick={() => handleDelete(e)}>Eliminar</BtnTable>
               </aside>
             </article>
