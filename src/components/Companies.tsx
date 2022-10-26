@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {Business,AlternateEmail} from '@material-ui/icons';
 import { Backdrop, CircularProgress } from "@material-ui/core";
 import { BtnTable } from "../components/shared/styled";
 import { getCompanyAll } from "../util/company.service";
@@ -60,9 +61,13 @@ export const Companies = () => {
           </article>
           {companies.map((e: any) => (
             <article className="contentRow" key={e._id}>
-              <aside className="contentItem">{e.dataUser.businessName}</aside>
-              <aside className="contentItem">{e.dataUser.email}</aside>
-              <aside className="contentItem containerButtons">
+              <aside className="contentItem">
+                <Business className="contentIcon"/>
+                {e.dataUser.businessName}</aside>
+              <aside className="contentItem">
+              <AlternateEmail className="contentIcon"/>
+                {e.dataUser.email}</aside>
+              <aside className="containerButtons">
                 <BtnTable onClick={() => changeRoute(e._id)}>Ver detalles</BtnTable>
                 <BtnTable onClick={() => handleDelete(e)}>Eliminar</BtnTable>
               </aside>

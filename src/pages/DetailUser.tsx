@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/shared/header";
 
 import "./../sass/pages/_detailProject.scss";
-import { useParams } from "react-router-dom";
+import { KeyboardReturn } from "@material-ui/icons";
+import { useParams, useNavigate } from "react-router-dom";
 import { Backdrop, CircularProgress } from "@material-ui/core";
 import { Toaster } from "react-hot-toast";
 import { DetailUserInteface } from "../interfaces/DetailUserInterface";
@@ -24,6 +25,7 @@ export const DetailUser = () => {
   const { idPostulant } = useParams();
   const [detailUser, setDetailUser] = useState<DetailUserInteface>();
   const [rol, setRol] = useState("");
+  const navigate = useNavigate();
 
   const getDataById = async () => {
     setLoadingDetailPostulant(true);
@@ -32,7 +34,9 @@ export const DetailUser = () => {
     setDetailUser({ ...r.data.dataUser });
     setLoadingDetailPostulant(false);
   };
-
+  const goBack = () => {
+    navigate("/dashboard");
+  };
   useEffect(() => {
     getDataById();
   }, []);
@@ -61,9 +65,16 @@ export const DetailUser = () => {
           </div>
         ) : (
           <div>
-            <p>Empresa</p>
+            <div className="containerBack">
+              <KeyboardReturn />
+              <p onClick={() => goBack()}>Regresar</p>
+            </div>
+            <div>
+              <p>Empresa</p>
             <br />
             <h2 className="accent-color">{detailUser?.businessName}</h2>
+            </div>
+            
           </div>
         )}
 
@@ -81,14 +92,16 @@ export const DetailUser = () => {
               {detailUser?.phone}
             </p>
             <br />
-            {rol === "2" ? (<p>
+            {rol === "2" ? (
+              <p>
                 <strong>RUC: </strong>
                 {detailUser?.ruc}
-              </p>):<p>
-               
-              </p>}
-              
-              <br />
+              </p>
+            ) : (
+              <p></p>
+            )}
+
+            <br />
           </article>
           <hr />
           <br />

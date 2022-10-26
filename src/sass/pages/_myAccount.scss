@@ -91,8 +91,10 @@
   @include phone-max {
     width: 100%;
     margin: 0;
-    padding: 0 1rem;
+    padding: 1rem;
   }
+//--------------------------------
+//Componen los tabs y sus partes
 .listTab{
   display: block;
   @include phone-max {
@@ -174,8 +176,8 @@
   }
 
   
-
-
+//Componen los tabs y sus partes
+//--------------------------------
 
   .panel-content {
     text-align: center;
@@ -384,4 +386,11 @@
   right: 0;
   bottom: 0;
   background-color: rgba($color: #000000, $alpha: 0.4);
+  .modalButtons {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }

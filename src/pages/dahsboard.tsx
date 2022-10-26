@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import Header from "../components/shared/header";
 import Modal from "react-modal";
+import { PostAddOutlined, CategoryOutlined, BuildOutlined, PlaylistAddCheckOutlined } from "@material-ui/icons";
 import {
   Txtfield,
   BtnPrimary,
@@ -10,6 +11,7 @@ import {
   DropdownItem,
   BtnSecondary,
   TxtArea,
+  BtnMobile
 } from "../components/shared/styled";
 import ButtonComponent from "../components/shared/atom/button";
 import "./../sass/pages/_myAccount.scss";
@@ -35,7 +37,6 @@ import { POSTULANT } from "../helpers/constants";
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store/store";
-import { Reports } from "../components/Reports";
 import { Publications } from "../components/Publications";
 import { Companies } from "../components/Companies";
 
@@ -218,7 +219,7 @@ export default function Dashboard() {
               <Tab>Datos generales</Tab>
               <Tab>Empresas</Tab>
               <Tab>Publicaciones</Tab>
-              <Tab>Reportes</Tab>
+      
               <Tab>Especialidades</Tab>
               <Tab>Skill</Tab>
             </div>
@@ -271,20 +272,19 @@ export default function Dashboard() {
           <TabPanel>
             <Publications />
           </TabPanel>
+         
           <TabPanel>
-            <Reports />
-          </TabPanel>
-          <TabPanel>
-            <div className="row">
-              <div className="dflex flex-row mt-4 mb-4 mr-5">
+            <div className="usersTable">
+              <div className="titleTable">
                 <h2>Especialidades</h2>
-              </div>
-              <div className="dflex flex-row mt-4 mb-4 ml-5">
-                <BtnPrimary onClick={openModalCategory}>
-                  {" "}
-                  Agregar nueva{" "}
+                <BtnMobile onClick={openModalCategory}>
+                  <PostAddOutlined />
+                </BtnMobile>
+                <BtnPrimary className="notMobile" onClick={openModalCategory}>
+                  Agregar nueva
                 </BtnPrimary>
               </div>
+
             </div>
             <div className="tableUsers">
               <article className="headerRow">
@@ -294,7 +294,9 @@ export default function Dashboard() {
               </article>
               {allCategory.map((e: any) => (
                 <article className="contentRow" key={e._id}>
-                  <aside className="contentItem">{e.nameCategory}</aside>
+                  <aside className="contentItem">
+                <CategoryOutlined className="contentIcon"/>
+                    {e.nameCategory}</aside>
                   <aside className="contentItem">{e.descriptionCategory}</aside>
                   <ButtonComponent
                     family="secondary"
@@ -321,7 +323,7 @@ export default function Dashboard() {
                 </i>
               </p>
               <aside className="FormGroup algn-center" style={{flexDirection:'column'}}>
-                <form onSubmit={submitCategory}>
+                <form onSubmit={submitCategory} style={{width:'100%'}}>
                   <div className="dflex flex-row mt-4 mb-4 algn-center">
                     <Txtfield
                       placeholder="Nombre"
@@ -338,10 +340,14 @@ export default function Dashboard() {
                       value={formcat.descriptionCategory}
                     />
                   </div>
-                  <BtnSecondary className="mr-2" onClick={closeModalCategory}>
+                  <div className="modalButtons">
+                     <BtnSecondary className="mr-2" onClick={closeModalCategory}>
                     CANCELAR
                   </BtnSecondary>
+                  <br/>
                   <BtnPrimary type="submit"> GUARDAR </BtnPrimary>
+                  </div>
+                 
                 </form>
                 {warning === true &&
                   <p style={{color:'red',paddingTop:'0.5em'}}>Debes completar el formulario para crear una especialidad.</p>
@@ -350,12 +356,14 @@ export default function Dashboard() {
             </Modal>
           </TabPanel>
           <TabPanel>
-            <div className="row">
-              <div className="dflex flex-row mt-4 mb-4 mr-5">
+            <div className="usersTable">
+              <div className="titleTable">
                 <h2>Skills</h2>
-              </div>
-              <div className="dflex flex-row mt-4 mb-4 ml-5">
-                <BtnPrimary onClick={openModalSkill}>
+                <BtnMobile onClick={openModalSkill}>
+                 <PlaylistAddCheckOutlined />
+                
+                </BtnMobile>
+                <BtnPrimary  className="notMobile" onClick={openModalSkill}>
                   {" "}
                   Agregar nueva{" "}
                 </BtnPrimary>
@@ -369,9 +377,11 @@ export default function Dashboard() {
               </article>
               {skill.map((e: any) => (
                 <article className="contentRow" key={e._id}>
-                  <aside className="contentItem">{e.nameSkill}</aside>
+                  <aside className="contentItem">
+                  <BuildOutlined className="contentIcon"/>
+                    {e.nameSkill}</aside>
                   <aside className="contentItem">{e.descriptionskill}</aside>
-                  <aside className="contentItem containerButtons">
+                  <aside className="containerButtons">
                     <BtnTable value={e._id} onClick={openModalEnl}>
                       Enlazar
                     </BtnTable>
@@ -411,10 +421,14 @@ export default function Dashboard() {
                       value={formskill.descriptionskill}
                     />
                   </div>
-                  <BtnSecondary className="mr-2" onClick={closeModalSkill}>
+                  <div className="modalButtons">
+                     <BtnSecondary className="mr-2" onClick={closeModalSkill}>
                     CANCELAR
                   </BtnSecondary>
+                  <br/>
                   <BtnPrimary type="submit"> GUARDAR </BtnPrimary>
+                  </div>
+                 
                 </form>
               </aside>
             </Modal>
@@ -443,10 +457,13 @@ export default function Dashboard() {
                   value={formskill.descriptionskill}
                 />
               </div>
-              <BtnSecondary className="mr-2" onClick={toggleModal}>
+              <div className="modalButtons">
+                <BtnSecondary className="mr-2" onClick={toggleModal}>
                 CANCELAR
               </BtnSecondary>
-              <BtnPrimary onClick={update}> GUARDAR </BtnPrimary>
+              <br/>
+              <BtnPrimary onClick={update}> GUARDAR </BtnPrimary></div>
+              
             </Modal>
 
             <Toaster position="top-right" reverseOrder={false} />
@@ -462,9 +479,10 @@ export default function Dashboard() {
               <p className="mt-2 text-center">
                 <i>Relacionalo a una especialidad y a un puesto</i>
               </p>
+              <br/>
               <aside className="FormGroup algn-center">
                 <form onSubmit={submitenl}>
-                  <div className="dflex flex-row mt-4 mb-4 algn-center">
+                  <div>
                     <DropdownMenu
                       onChange={handlePosition}
                       name="idCategory"
@@ -490,10 +508,11 @@ export default function Dashboard() {
                       ))}
                     </DropdownMenu>
                   </div>
-                  <div className="dflex flex-row mt-4 mb-4 algn-center">
+                  <div className="modalButtons">
                     <BtnSecondary className="mr-2" onClick={closeModalEnl}>
                       CANCELAR
                     </BtnSecondary>
+                    <br/>
                     <BtnPrimary type="submit"> GUARDAR </BtnPrimary>
                   </div>
                 </form>

@@ -101,6 +101,24 @@ export const BtnPrimary = styled.button`
   }
 `;
 
+export const BtnMobile = styled.button`
+display:none;
+  background: ${Theme.colors.primary};
+  font-size: 16px;
+  border-radius: 28px;
+  align-items: center;
+  padding: 0.5em;
+  color: ${Theme.colors.light};
+  border-style: none;
+  cursor: pointer;
+  &:hover {
+    background: ${Theme.colors.gray6};
+  }
+  @media (max-width: 767px) {
+    display:flex;
+  }
+`;
+
 export const BtnTable = styled.button`
   background: ${Theme.colors.primary};
   font-size: 16px;
@@ -113,6 +131,9 @@ export const BtnTable = styled.button`
   &:hover {
     background: ${Theme.colors.gray6};
   }
+  @media (max-width: 767px) {
+    margin-bottom:0.5em
+        }
 `;
 
 export const BtnSecondary = styled.button`
@@ -171,6 +192,9 @@ export const TxtArea = styled.textarea`
   font-family: ${Theme.fonts.body};
   ::placeholder {
     color: ${Theme.colors.gray6};
+  }
+  @media (max-width: 767px) {
+    margin:0px
   }
 `;
 
