@@ -42,6 +42,7 @@ export const Publications = () => {
           </article>
           {postJobs.map((e: any) => (
             <article className="contentRow" key={e._id}>
+              <aside className="contentItem"><a href={'/detail-post-company/' + e._id}>{e.title}</a></aside>
               <aside className="contentItem">
               <DescriptionOutlined className="contentIcon"/>
                 {e.title}</aside>

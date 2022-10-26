@@ -55,3 +55,30 @@
     }
   }
 }
+
+.Policies {
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 12%;
+
+  h1{
+    text-align: center;
+    font-size: 40px;
+  }
+
+  h2 {
+    color: var(--dark-color) !important;
+    font-size: 32px;
+    margin-right:auto
+  }
+
+  ul{
+    padding-left: 30px;
+  }
+
+  li{
+    list-style-type: '* ';
+    padding-left: 5px;
+  }
+}

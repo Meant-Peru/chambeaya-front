@@ -179,7 +179,7 @@ export default function Register() {
 					</div>
 					<aside className="d-flex flex-col mt-4">
 						<CheckButton onChange={handleEvent} withbg="no" label="Acepto los Términos y Condiciones"/>
-						<Span className="has-error-description">* Ingresa a este enlace para ver los <a href="example.html">términos y condiciones.</a> </Span>
+						<Span className="has-error-description">* Ingresa a este enlace para ver los <a href="https://bit.ly/chambea-latam-terminos-condiciones" target="_blank">términos y condiciones.</a> </Span>
 					</aside>
 				</form>
 
