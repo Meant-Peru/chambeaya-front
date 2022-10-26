@@ -208,9 +208,11 @@ export default function Dashboard() {
       <section className="myAccountPage">
         <Tabs>
           <TabList className={"mb-5"}>
-            <aside className="sideBarMenu mb-5">
-              <h3 className="mb-2">Admin</h3>
-              <span>Cuenta de administrador</span>
+            <aside className="sideBarMenu">
+              <h3 className="mb-1">Admin</h3>
+              <span className="mb-1">Cuenta de administrador</span>
+             <p className="mb-1 mt-1"><a onClick={handleLogout}>Cerrar Sesión</a>
+              </p> 
             </aside>
             <div className="list">
               <Tab>Datos generales</Tab>
@@ -220,9 +222,7 @@ export default function Dashboard() {
               <Tab>Especialidades</Tab>
               <Tab>Skill</Tab>
             </div>
-            <aside className="sideBarMenu mt-5 mb-5">
-              <a onClick={handleLogout}>Cerrar Sesión</a>
-            </aside>
+            
           </TabList>
 
           <TabPanel>
@@ -258,7 +258,7 @@ export default function Dashboard() {
                   />
                 </aside>
 
-                <aside>
+                <aside style={{display:'flex', justifyContent:'center'}}>
                   
                   <BtnPrimary onClick={handleUpdate}>Actualizar</BtnPrimary>
                 </aside>

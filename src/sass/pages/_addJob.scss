@@ -14,9 +14,6 @@
         width: var(--container-tablet-portrait);
     }
 
-    @include phone {
-          ;
-    }
 
     .css-16awh2u-MuiAutocomplete-root .MuiOutlinedInput-root {
         padding: 0px !important;
@@ -99,7 +96,6 @@
 
     .sideBarMenu {
         width: 100%;
-        // padding-left: 20px;
         margin-right: 56px;
 
         span {

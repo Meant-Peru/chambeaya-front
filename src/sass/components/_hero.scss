@@ -19,11 +19,11 @@
         background-position: initial;
     }
     @include phone {
-        padding: 2em 2em 22em;
+        padding: 2em 2em 24em;
         background-image: url("../../assets/webmovil_.png");
         background-repeat: no-repeat;
         background-size: cover;
-        background-position: initial;
+        background-position: 50% 0%;
     }
     
     .cover{
@@ -35,12 +35,7 @@
         @include phone {
             display: flex;
             flex-direction: column;
-        }
-        @include phone-max {
-         
-            display: flex;
-            flex-direction: column;
-            padding-top: 15%;
+            padding-top: 8%;
           }
         article{
             text-align: left;
@@ -48,7 +43,9 @@
             flex-direction: column;
             align-items: flex-start;
             align-self: center;
-      
+            @include phone {
+                width: 100%;
+            }
             h1{
                 font-size: 48px;
                 padding-bottom: 40px;
@@ -56,11 +53,16 @@
                 font-style: italic;
                 @include phone-max {
                     font-size: 32px;
+                    width: 100%;
                 }
             }
             .btnContainer {
                 display: flex;
             flex-direction: column;
+            align-items: center;
+            @include phone-max {
+                width: 100%;
+            }
             }
         }
     }
