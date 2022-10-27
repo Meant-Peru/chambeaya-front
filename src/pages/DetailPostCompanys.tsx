@@ -30,7 +30,8 @@ export const DetailPostCompanys = () => {
 		console.log('DetailPostCompanys',resp)
 		setPostJob(resp.listPostJob[0]);
 		setListSkill([...resp.listSkills]);
-		setListPostulant([...resp.postulants]);
+		const porcentageSkills = resp.postulants.sort((a, b) => b.porcentageSkills-a.porcentageSkills)
+		setListPostulant([...porcentageSkills]);
 		setLoadingPost(false);
 	};
 
@@ -106,14 +107,17 @@ export const DetailPostCompanys = () => {
 						<article className="headerRow">
 							<aside className="headerItem">Postulante</aside>
 							<aside className="headerItem">Similitud</aside>
+							<aside className="headerItem">Pretensiones Salariales</aside>
 							<aside className="headerItem">Acciones</aside>
 						</article>
+				
 						{listPostulant.map((p: PostulantJob) => (
 							<article className="contentRow" key={p._id}>
 								<aside className="contentItem">
 									{p.namePostulant} {p.lastNamePostulant}
 								</aside>
 								<aside className="contentItem">{p.porcentageSkills.toFixed(2)} %</aside>
+								<aside className="contentItem">S/ {p.amountEstimated} </aside>
 								<aside className="contentItem">
 									<ButtonComponent family="primary" link={`/detail-post-postulant/${p.idPostJob}/${p.idPostulant}`} label="Ver" />
 								</aside>

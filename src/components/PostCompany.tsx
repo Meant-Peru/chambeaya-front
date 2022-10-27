@@ -31,8 +31,8 @@ export const PostCompany = () => {
 
   return (
     <Fragment>
-      <section className="sectionAccount">
-        <article className="headSection">
+      <section className="usersTable">
+        <article className="titleTable">
           <h2>Publicaciones</h2>
           <ButtonComponent family="terceary" link="/addJob" label="Nuevo" />
         </article>

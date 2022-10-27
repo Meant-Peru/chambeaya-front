@@ -109,19 +109,17 @@ export default function MyAccount() {
 			<Header />
 			<section className="myAccountPage">
 				<Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-					<TabList className={'listTab'}>
+					<TabList className={"mb-5"}>
 						<aside className="sideBarMenu">
-							<h3 className="mb-2">Mi Cuenta</h3>
+							<h3 className="mb-1">Mi Cuenta</h3>
 							<span>Gestiona tu cuenta</span>
+							<p className="mb-1 mt-1"><a onClick={handleLogout}>Cerrar Sesión</a></p>
 						</aside>
 						<div className="list">
 							<Tab>Datos generales</Tab>
 							<Tab> {user?.rol === COMPANY ? 'Mis publicaciones' : 'Mis postulaciones'}</Tab>
 							<Tab>Proyectos</Tab>
 						</div>
-						<aside className="sideBarMenu mt-5 mb-5">
-							<a onClick={handleLogout}>Cerrar Sesión</a>
-						</aside>
 					</TabList>
 
 					<TabPanel>
@@ -141,8 +139,7 @@ export default function MyAccount() {
 										<Txtfield onChange={handleEvent} value={company.phone} name="phone" placeholder="Teléfono" />
 									</aside>
 
-									<aside>
-										{/* <ButtonComponent family="primary" label="Actualizar" /> */}
+									<aside style={{display:'flex', justifyContent:'center'}}>
 										<BtnPrimary onClick={handleUpdate}>Actualizar</BtnPrimary>
 									</aside>
 								</Fragment>
