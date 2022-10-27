@@ -189,6 +189,7 @@
     margin-bottom: 3em;
     @include phone-max {
       margin-bottom: 2em;
+      margin-right: 0px;
     }
     span {
       color: var(--gray-color-900);

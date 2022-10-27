@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import Header from "../components/shared/header";
 import Modal from "react-modal";
-import { PostAddOutlined, CategoryOutlined, BuildOutlined, PlaylistAddCheckOutlined } from "@material-ui/icons";
+import { PostAddOutlined, CategoryOutlined, BuildOutlined, LibraryAddOutlined } from "@material-ui/icons";
 import {
   Txtfield,
   BtnPrimary,
@@ -360,7 +360,7 @@ export default function Dashboard() {
               <div className="titleTable">
                 <h2>Skills</h2>
                 <BtnMobile onClick={openModalSkill}>
-                 <PlaylistAddCheckOutlined />
+                 <LibraryAddOutlined />
                 
                 </BtnMobile>
                 <BtnPrimary  className="notMobile" onClick={openModalSkill}>
