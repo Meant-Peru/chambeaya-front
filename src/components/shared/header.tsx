@@ -7,7 +7,7 @@ import { getLocalStorage } from '../../helpers/localStorage';
 const navNoUser = {
 	brand: { name: 'ChambeaYa.', to: '/' },
 	links: [
-		{ name: 'Buscar un empleo', to: '/searchjob' },
+		{ name: 'Buscar chamba', to: '/searchjob' },
 		{ name: 'Iniciar sesión', to: '/login' },
 		{ name: 'Registrarme', to: '/register' },
 	],
@@ -32,7 +32,7 @@ const navAdmin = {
 	brand: { name: 'ChambeaYa.', to: '/' },
 	links: [
 		{ name: 'Buscar un empleo', to: '/searchjob' },
-		{ name: 'Mi perfil', to: '/account-sales' },
+		{ name: 'Mi perfil', to: '/dashboard' },
 	],
 };
 

@@ -106,7 +106,7 @@ export default function Login() {
 					<h3>Olvide mi clave</h3>
 					<p className='mt-2 mb-2'>Para recuperar tu cuenta debes contactarte <br />
 						con la siguiente direcció de correo electrónico <br /> para recibir asistencia: <br/><br/>
-						<a target={"_blank"} href="mailto:ayuda@chambea-ya.com">ayuda@chambea-ya.com</a> </p>
+						<a target={"_blank"} href="mailto:hola@chambea-latam.com">hola@chambea-latam.com</a> </p>
 					<BtnSecondary onClick={closeModal}>Cerrar</BtnSecondary>
 				
 				</Modal>

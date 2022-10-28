@@ -59,8 +59,8 @@ export default function Hero() {
                 </b>
               </h1>
               <div className="btnContainer">
-                <ButtonComponent family="hero1" label="Quiero trabajar" />
-                <ButtonComponent family="hero2" label="Quiero contratar" />
+                <ButtonComponent family="hero1" label="Chambear" link={"/login/"} />
+                <ButtonComponent family="hero2" label="Quiero buscar chamberos" link={"/corporativo/"}/>
               </div>
             </article>
           </aside>

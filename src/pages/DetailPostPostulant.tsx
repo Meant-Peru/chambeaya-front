@@ -114,7 +114,7 @@ export const DetailPostPostulant = () => {
 					<article className="leftBox">
 						<div className="mb-5">
 							<h4 className="mb-3">Descripción</h4>
-							<p>dsadsadsa </p>
+							<p> {postJob?.descriptionPost} </p>
 						</div>
 						<hr />
 						<div className="mt-5">

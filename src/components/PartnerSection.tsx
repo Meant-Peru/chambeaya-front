@@ -9,7 +9,7 @@ export default function PartnerSection() {
                 <section className="PartnerSection">
                    <article>
                         <h2>Empresas que trabajan <br /> con nosotros</h2>
-                        <p>Ellos confían en nuestra plataforma</p>
+                        <p>Ellos confían en nuestra Plataforma Chambera</p>
                    </article>
                    <article>
                         <img src={logoIpsum} alt="" />

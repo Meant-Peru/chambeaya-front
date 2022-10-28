@@ -10,6 +10,7 @@ import Dashboard from '../pages/dahsboard';
 import DetailPost from '../pages/detailPost';
 import Home from '../pages/home';
 import Login from '../pages/login';
+import Politicas from '../pages/politicas-privacidad';
 import MyAccount from '../pages/myaccount';
 import Register from '../pages/register';
 import SearchJob from '../pages/searchJob';
@@ -19,6 +20,7 @@ import { DetailPostPostulant } from '../pages/DetailPostPostulant';
 import { DetailPostCompanys } from '../pages/DetailPostCompanys';
 import { DetailUser } from '../pages/DetailUser';
 import { DetailProyecto } from '../pages/DetailProyecto';
+import { DetailProyectoPost } from '../pages/DetailProyectoPost';
 
 export const AppRouter = () => {
 	const { status } = useSelector((state: RootState) => state.auth);
@@ -35,6 +37,7 @@ export const AppRouter = () => {
 				<Route path="register" element={<Register />} />
 				<Route path="searchjob" element={<SearchJob />} />
 				<Route path="login" element={<Login />} />
+				<Route path="politicas-privacidad" element={<Politicas />} />
 				<Route path="myaccount/:id" element={<MyAccount />} />
 				<Route path="dashboard" element={<Dashboard />} />
 				<Route path="account-sales" element={<AccountSales />} />
@@ -46,6 +49,7 @@ export const AppRouter = () => {
 				<Route path="detail-post/:id" element={<DetailPost />} />
 
 				<Route path="detail-project/:idProject" element={<DetailProyecto />} />
+				<Route path="detail-project-post/:idProject" element={<DetailProyectoPost />} />
 
 				<Route path="detail-post-company/:id" element={<DetailPostCompanys />} />
 				<Route path="list-posiciones/:idCategory" element={<ListPosiciones />} />

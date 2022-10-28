@@ -9,12 +9,12 @@ export default function BecauseSection() {
     return (
         <React.Fragment>
             <section className="BecauseSection">
-                <h2>¿Por qué elegirnos?</h2>
+                <h2>Beneficios de ser un Chambero Latam</h2>
                 <article>
                     <aside> <img src={img1} alt="" /> <h3>No cobramos comisiones</h3></aside>
-                    <aside> <img src={img2} alt="" /> <h3>Postulaciones ilimitadas</h3></aside>
+                    <aside> <img src={img2} alt="" /> <h3>Postular a chambas ilimitadas</h3></aside>
                     <aside> <img src={img3} alt="" /> <h3>Pagos garantizados</h3></aside>
-                    <aside> <img src={img4} alt="" /> <h3>Todos los oficios a tu alcance</h3></aside>
+                    <aside> <img src={img4} alt="" /> <h3>Todas las chambas a tu alcance</h3></aside>
                 </article>
             </section>
         </React.Fragment>

@@ -2,7 +2,7 @@ import * as React from 'react';
 import CheckButton from '../components/shared/atom/checkButton';
 import Footer from '../components/shared/footer';
 import Header from '../components/shared/header';
-import { BtnPrimary, Txtfield } from '../components/shared/styled';
+import {BtnPrimary, Span, Txtfield} from '../components/shared/styled';
 import './../sass/pages/_corporativo.scss';
 
 import CoverCorporativo from './../assets/coverCorporativo.svg';
@@ -22,6 +22,7 @@ export default function Corporativo() {
 		description: '',
 		ruc: '',
 		rolUser: COMPANY,
+		formErrors: [],
 	});
 
 	const handleRegister = async () => {
@@ -59,6 +60,18 @@ export default function Corporativo() {
 	};
 
 	const handleEvent = (e: any) => {
+		if (e.target.hasOwnProperty('checked') && e.target.checked == true) {
+			//account.countFormErrors--;
+			account.formErrors[e.target.name] = false;
+			e.target.classList.remove('has-error');
+			e.target.parentElement.nextSibling.classList.add('error-required-field-description');
+		}
+		else if (e.target.hasOwnProperty('checked') && e.target.checked == false)  {
+			//account.countFormErrors++;
+			account.formErrors[e.target.name] = true;
+			e.target.parentElement.nextSibling.classList.remove('error-required-field-description');
+		}
+
 		setAccount({
 			...account,
 			[e.target.name]: e.target.value,
@@ -88,8 +101,9 @@ export default function Corporativo() {
 						<Txtfield className="mb-3" onChange={handleEvent} name="password" value={account.password} type={'password'} placeholder="Clave" autoComplete="off" />
 						<Txtfield className="mb-2" onChange={handleEvent} name="confirmPassword" type={'password'} placeholder="Repetir clave" />
 					</aside>
-					<aside className="FormGroupFull">
-						<CheckButton withbg="no" label="Acepto los Términos y Condiciones" />
+					<aside className="d-flex flex-col mt-4">
+						<CheckButton onChange={handleEvent} withbg="no" label="Acepto los Términos y Condiciones" />
+						<Span className="has-error-description">* Ingresa a este enlace para ver los <a href="https://bit.ly/chambea-latam-terminos-condiciones" target="_blank">términos y condiciones.</a> </Span>
 					</aside>
 					<aside className="FormAction mt-5">
 						<BtnPrimary onClick={handleRegister}>CREAR CUENTA</BtnPrimary>

@@ -25,6 +25,9 @@ import { respSkill, Skill } from '../interfaces/Skill';
 import { PostJob } from '../interfaces/PostJob';
 import { CREATE_POST } from '../helpers/constants';
 import { useNavigate } from 'react-router-dom';
+import {clearLocalStorage} from "../helpers/localStorage";
+import {logout} from "../redux/slices/authSlice";
+import {useDispatch} from "react-redux";
 
 export default function AddJob() {
 	const navigate = useNavigate();
@@ -72,6 +75,18 @@ export default function AddJob() {
 		namePosition: '',
 		description: '',
 	});
+
+	const dispatch = useDispatch();
+
+	const handleLogout = () => {
+		startLogout();
+	};
+
+	const startLogout = () => {
+		clearLocalStorage();
+		dispatch(logout());
+		navigate('/login', { replace: true });
+	};
 
 	const [skillPayload, setSkillPayload] = React.useState({ idCategory: '', idPositon: '' });
 
@@ -245,7 +260,7 @@ export default function AddJob() {
 			if (resp.data.message === CREATE_POST) {
 				alert('Se creo la publicación correctamente...');
 				navigate('/myaccount/1', { replace: true });
-			
+
 		} else {
 				alert('Error al crear la publicación');
 			}
@@ -268,7 +283,7 @@ export default function AddJob() {
 							<Tab>Datos generales</Tab>
 							<Tab>Mis publicaciones</Tab>
 							<Tab>Proyectos</Tab>
-							<Tab>Facturación</Tab>
+							<Tab><p><a onClick={handleLogout}>Cerrar Sesión</a></p></Tab>
 						</div>
 					</TabList>
 
@@ -486,7 +501,26 @@ export default function AddJob() {
 									</aside>
 								</aside>
 							</aside>
-							<aside className="mt-5">
+							<aside className="FormsRow">
+								<aside className="FormGroup mt-3">
+									<p>¿Qué tipo de publicación deseas adquirir?</p>
+									<DropdownMenu onChange={handleEventFrom} name="modality">
+										<DropdownItem value={'0'}>Elegir tipo de publicación</DropdownItem>
+										<DropdownItem value={'Híbrido'}>Publicación gratuita</DropdownItem>
+										<DropdownItem value={'Presencial'}>Publicación simple</DropdownItem>
+										<DropdownItem value={'Remoto'}>Publicación del proyecto</DropdownItem>
+									</DropdownMenu><br />
+									<div className="notes">
+									<p>Notas: </p>
+									<ul>
+										<li>Publicación simple que estará en la plataforma durante 30 días</li>
+										<li>Es tu mejor opción para contratar servicios presenciales o trabajos por horas. Transfiere a la cuenta de XXXXXXX o YYYYYY para poder iniciar caso contrario se eliminará su publicación en 24 horas.</li>
+										<li>Publicación promedio, pago asegurando un gantt de seguimiento, pago del proyecto por adelantado y se le puede asignar un usuario de reemplazo de NO cumplir con las fechas. Transfiere a la cuenta de XXXXXXX o YYYYYY para poder iniciar caso contrario se eliminará su publicación en 24 horas.</li>
+									</ul>
+									</div>
+								</aside>
+							</aside>
+							<aside className="mt-4">
 								{/* <ButtonComponent family="primary" label="Agregar" /> */}
 								<BtnPrimary onClick={handleCreatePost}>Agregar</BtnPrimary>
 							</aside>
