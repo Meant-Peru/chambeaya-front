@@ -28,7 +28,7 @@ export default function Politicas() {
         <React.Fragment>
             <Header />
             <section className="Policies">
-                <h1 id="pol-tica-de-privacidad">POLÍTICA DE PRIVACIDAD</h1><br />
+                <h1 id="pol-tica-de-privacidad">POLÍTICAS DE PRIVACIDAD</h1><br />
                 <h2 id="1-compromiso-con-la-privacidad">1. COMPROMISO CON LA PRIVACIDAD</h2><br/>
                 <p>Las empresa Mang Corp S.A. respeta la privacidad de toda persona que visite el sitio web enunciado en la <a href="https://www.bumeran.com.pe/empresas/politicasDePrivacidad">cláusula 12</a> (en adelante, la &quot;Plataforma&quot;).
                     Esta Política de Privacidad indica la información que Mang Corp S.A. puede recopilar y el uso que puede dar a esa información. También explica las medidas de seguridad tomadas para proteger su información, su posibilidad de acceder a su información, y a quién podrá contactar en Mang Corp S.A. para que sus preguntas en relación con esta Política de Privacidad sean contestadas.</p><br />

@@ -66,10 +66,10 @@ export default function Register() {
 		// Replaces fields to correct input data.
 		if (e.target.name === 'name') {
 			// Only allow letter alphabetical from a-z.
-			e.target.value = e.target.value.replace(/[^a-z]/gi, '');
+			e.target.value = e.target.value.replace(/[^a-z\s]/gi, '');
 		}
 		if (e.target.name === 'lastName') {
-			e.target.value = e.target.value.replace(/[^a-z]/gi, '');
+			e.target.value = e.target.value.replace(/[^a-z\s]/gi, '');
 		}
 		let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 		if (e.target.name === 'email') {
