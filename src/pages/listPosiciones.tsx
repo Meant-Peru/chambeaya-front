@@ -12,7 +12,11 @@ import {
   BtnTable,
   BtnMobile,
 } from "./../components/shared/styled";
-import { PersonAdd, KeyboardReturn, PortraitOutlined } from "@material-ui/icons";
+import {
+  PersonAdd,
+  KeyboardReturn,
+  PortraitOutlined,
+} from "@material-ui/icons";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   getPosition,
@@ -139,8 +143,9 @@ export default function ListPosiciones() {
               <div key={e._id}>
                 <article className="contentRow" key={e._id}>
                   <aside className="contentItem">
-                    <PortraitOutlined className="contentIcon"/>
-                    {e.namePosition}</aside>
+                    <PortraitOutlined className="contentIcon" />
+                    {e.namePosition}
+                  </aside>
                   <aside className="contentItem">{e.descriptionPosition}</aside>
                   <aside className="containerButtons">
                     <BtnTable onClick={() => editPosition(e)}>Editar</BtnTable>
@@ -159,45 +164,48 @@ export default function ListPosiciones() {
       <Modal
         onRequestClose={toggleModal}
         isOpen={editModalOpen}
-        style={customStyles}
-        overlayClassName="Overlay"
         ariaHideApp={false}
+        contentLabel="Edit Position"
+        overlayClassName="Overlay"
+        className="ModalContent"
       >
-        <h2 className="text-center">Editar Posición</h2>
+        <div className="ModalContainerText">
+          <h2 className="text-center">Editar Posición</h2>
 
-        <div className="dflex flex-row mt-4 mb-4 algn-center">
-          <Txtfield
-            placeholder="Puesto"
-            onChange={handleFormPos}
-            name="namePosition"
-            value={formpos.namePosition}
-          />
+          <div className="dflex flex-row mt-4 mb-4 algn-center">
+            <Txtfield
+              placeholder="Puesto"
+              onChange={handleFormPos}
+              name="namePosition"
+              value={formpos.namePosition}
+            />
+          </div>
+          <div className="dflex flex-row mt-4 mb-4 algn-center">
+            <TxtArea
+              placeholder="Descripción"
+              onChange={handleFormPos}
+              name="descriptionPosition"
+              value={formpos.descriptionPosition}
+            />
+          </div>
+          <div className="modalButtons">
+            <BtnSecondary className="mr-2" onClick={toggleModal}>
+              CANCELAR
+            </BtnSecondary>
+            <br />
+            <BtnPrimary onClick={update}> GUARDAR </BtnPrimary>
+          </div>
         </div>
-        <div className="dflex flex-row mt-4 mb-4 algn-center">
-          <TxtArea
-            placeholder="Descripción"
-            onChange={handleFormPos}
-            name="descriptionPosition"
-            value={formpos.descriptionPosition}
-          />
-        </div>
-        <div className="modalButtons">
-<BtnSecondary className="mr-2" onClick={toggleModal}>
-          CANCELAR
-        </BtnSecondary>
-        <br/>
-        <BtnPrimary onClick={update}> GUARDAR </BtnPrimary>
-        </div>
-        
       </Modal>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="New Position"
         overlayClassName="Overlay"
+        className="ModalContent"
       >
-        <h2 className="text-center">Nueva Posición</h2>
+        <div className="ModalContainerText">
+          <h2 className="text-center">Nueva Posición</h2>
         <p className="mt-2 text-center">
           <i>Ingresa nueva posición , relacionalo a una especialidad</i>
         </p>
@@ -220,15 +228,16 @@ export default function ListPosiciones() {
               />
             </div>
             <div className="modalButtons">
-               <BtnSecondary className="mr-2" onClick={closeModal}>
-              CANCELAR
-            </BtnSecondary>
-            <br/>
-            <BtnPrimary type="submit"> GUARDAR </BtnPrimary>
+              <BtnSecondary className="mr-2" onClick={closeModal}>
+                CANCELAR
+              </BtnSecondary>
+              <br />
+              <BtnPrimary type="submit"> GUARDAR </BtnPrimary>
             </div>
-           
           </form>
         </aside>
+        </div>
+        
       </Modal>
     </React.Fragment>
   );

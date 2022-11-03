@@ -215,9 +215,10 @@ export const DropdownMenu = styled.select`
     border-right: 24px solid transparent;
     outline: ${Theme.colors.primary} auto 1px;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 767px) {
     margin-right: 0;
     margin-bottom: 1rem;
+    width:100%
   }
 `;
 export const DropdownItem = styled.option`

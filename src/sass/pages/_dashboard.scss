@@ -127,9 +127,10 @@
      align-items: center;
    }
 
-   .notMobile {
+   
+ }
+ .notMobile {
      @include phone-max {
        display: none;
      }
    }
- }
