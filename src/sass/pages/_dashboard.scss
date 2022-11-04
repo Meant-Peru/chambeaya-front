@@ -9,7 +9,8 @@
     
 }
 //--------------------------------------
-//Admi: Tabla de especialidades
+//Admi: Tabla de especialidades 
+//Compañia: Mis publicaciones
 .usersTable {
     width: 100%;
     display: flex;
@@ -18,6 +19,9 @@
     .titleTable {
         display: flex;
         justify-content: space-between;
+        @include phone-max {
+          padding-bottom: 1.5em;
+        }
     }
 }
 //--------------------------------------

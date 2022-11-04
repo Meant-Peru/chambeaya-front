@@ -35,7 +35,7 @@ export const Navbar = styled.nav`
   color: ${Theme.colors.light};
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 8%;
   a {
     color: white;
@@ -47,6 +47,7 @@ export const Navbar = styled.nav`
 `;
 
 export const Brand = styled.a`
+
   font-weight: bold;
   font-style: italic;
   padding-right: 1rem;
@@ -57,6 +58,8 @@ export const Ul = styled.ul`
   flex-wrap: nowrap;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  position: absolute;
+  right: 2rem;
   @media (max-width: 425px) {
     display: none;
   }

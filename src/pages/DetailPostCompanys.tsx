@@ -38,7 +38,7 @@ export const DetailPostCompanys = () => {
     setLoadingPost(false);
   };
   const goBack = () => {
-    navigate("/dashboard");
+    navigate(-1);
   };
 
   return (

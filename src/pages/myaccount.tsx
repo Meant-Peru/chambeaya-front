@@ -191,7 +191,7 @@ export default function MyAccount() {
 										<Txtfield placeholder="Nro de cuenta" />
 									</aside>
 
-									<aside>
+									<aside style={{display:'flex', justifyContent:'center'}} >
 										<BtnPrimary onClick={handleUpdate}>Actualizar</BtnPrimary>
 									</aside>
 								</Fragment>

@@ -1,5 +1,10 @@
 @import "./../base/_grid.scss";
-
+.dataModalComponent {
+  margin:2em 5em;
+  @include phone-max {
+    margin:2em 0.75em;
+  }
+}
 .gridSales {
   padding-top:1rem;
   display: grid;
