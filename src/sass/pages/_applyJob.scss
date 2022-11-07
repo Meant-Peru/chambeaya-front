@@ -1,7 +1,7 @@
 @import "./../base/_grid.scss";
 
 .applyJob {
-  width: var(--container);
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,8 +13,17 @@
   @include tablet-p {
     width: var(--container-tablet-portrait);
   }
-  @include phone {}
-
+  @include phone {
+    width: 100%;
+    margin: 0px;
+    padding: 1em 0em;
+  }
+.coverHeader {
+  margin-bottom: 5em;
+  @include phone-max {
+    margin: 0em;
+  }
+}
   .error-required-field-description {
     display: none;
   }
@@ -25,10 +34,21 @@
     flex-direction: row;
     flex: 1;
     justify-content: space-between;
+    @include phone-max {
+      flex-direction: column;
+    }
     :first-child, :last-child{
       width: 50%;
+      @include phone-max {
+        width: 100%;
+      }
     }
-
+    .diferent-text {
+      margin-left: 5em;
+      @include phone-max {
+        margin-left: 0em;
+      }
+    }
     .has-error-description {
       display: block;
     }
@@ -113,5 +133,10 @@
     text-align: left;
     width: 60%;
     margin: 0 auto;
-    @include phone {}
+    padding-top: 5em;
+    @include phone {
+      width: 100%;
+      margin: 0px;
+      padding: 1em 1em;
+    }
 }

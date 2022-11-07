@@ -6,6 +6,7 @@
     flex-direction: column;
     justify-content: center;
     margin: 80px auto 40px;
+    
 
     @include tablet-l {
         width: var(--container-tablet-landscape);
@@ -14,7 +15,11 @@
     @include tablet-p {
         width: var(--container-tablet-portrait);
     }
-
+@include phone-max {
+        width: 100%;
+        margin: 0px;
+        padding: 4em 0em;
+    }
     
     .error-required-field-description {
         display: none;
@@ -24,10 +29,17 @@
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-
+        @include phone-max {
+            width: 100%;
+            margin: 0px;
+            padding-top: 1em;
+        }
         :first-child {
             margin-right: 16px;
             text-align: left;
+            @include phone-max {
+
+            }
         }
 
         a {
@@ -36,6 +48,7 @@
         }
         .has-error-description {
             display: block;
+           
         }
         .has-error-description-email {
             display: block;
@@ -47,7 +60,19 @@
 
     .formSection{
         width: 70%;
-        margin: 0 auto
+        margin: 0 auto;
+        @include phone-max {
+            width: 100%;
+            margin: 0px;
+            padding: 0em 1em; 
+        }
+        h2 {
+            padding-bottom: 1.75em;
+            @include phone-max {
+                text-align: center;
+                padding-bottom: 0.75em;
+            }  
+        }
     }
     .text-center{
         text-align: center;
@@ -62,6 +87,9 @@
     }
     .flex-row{
         flex-direction: row;
+        @include phone-max {
+            flex-direction: column;
+        }
     }
     .flex-col{
         flex-direction: column;

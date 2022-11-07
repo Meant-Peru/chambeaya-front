@@ -93,7 +93,7 @@ export const MyApply = () => {
 										</button>
 
 										<ModalComponent>
-											<aside className="dataModalComponent">
+											<aside className="rdataModalComponent">
 												<h2 className="text-center">Contrato del postulante</h2>
 												<p className="text-center">
 													<i>Nuestra plataforma detecto % de similitud del postulante con su requerimiento.</i>

@@ -4,7 +4,7 @@
     width: 100%;
     background-color: var(--gray-color-100);
 .HeroComponent {
-    padding: 12% 8%;
+    padding: 3% 8% 0% 8%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,17 +13,20 @@
     background-image: url("../../assets/web_.png");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: right bottom;
+    background-position: 100% 0%;
+    height: 80vh;
     @include tablet-l {
         padding: 4em 2em;
         background-position: initial;
     }
     @include phone {
-        padding: 2em 2em 24em;
+        height: 105vh;
+        justify-content: flex-start;
+        padding: 2em 2em;
         background-image: url("../../assets/webmovil_.png");
         background-repeat: no-repeat;
         background-size: cover;
-        background-position: 50% 0%;
+        background-position: 50% 13%;
     }
     
     .cover{
@@ -35,6 +38,7 @@
         @include phone {
             display: flex;
             flex-direction: column;
+            height: 100%;
             padding-top: 8%;
           }
         article{
@@ -45,6 +49,8 @@
             align-self: center;
             @include phone {
                 width: 100%;
+                height: 100%;
+                justify-content: space-between;
             }
             h1{
                 font-size: 48px;

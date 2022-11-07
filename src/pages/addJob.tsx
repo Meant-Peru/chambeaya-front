@@ -514,10 +514,10 @@ export default function AddJob() {
 								<aside className="FormGroup mt-3">
 									<p>¿Qué tipo de publicación deseas adquirir?</p>
 									<DropdownMenu onChange={handleEventFrom} name="modality">
-										<DropdownItem value={'0'}>Elegir tipo de publicación</DropdownItem>
-										<DropdownItem value={'Híbrido'}>Publicación gratuita</DropdownItem>
-										<DropdownItem value={'Presencial'}>Publicación simple</DropdownItem>
-										<DropdownItem value={'Remoto'}>Publicación del proyecto</DropdownItem>
+										<DropdownItem value={'_none'}>Elegir tipo de publicación</DropdownItem>
+										<DropdownItem value={'1'}>Publicación gratuita</DropdownItem>
+										<DropdownItem value={'2'}>Publicación simple</DropdownItem>
+										<DropdownItem value={'3'}>Publicación del proyecto</DropdownItem>
 									</DropdownMenu><br />
 									<div className="notes">
 									<p>Notas: </p>

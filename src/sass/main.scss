@@ -311,6 +311,10 @@ hr {
   flex-direction: column;
   flex-wrap: wrap;
   text-align: center;
+  @include phone-max {
+    width: 100%;
+    padding-top: 1em;
+  }
   a {
     color: var(--color-text);
     text-decoration: none;
@@ -509,11 +513,27 @@ ul.pagination li a.active {
   .containerLabeInput {
     display: flex;
     flex-direction: row;
+    @include phone-max {
+        flex-direction: column;
+        padding-bottom: 1.25em;
+    }
     p {
       width: 40%;
+      @include phone-max {
+        width: 100%;
+      }
     }
     .inputContainer {
       width: 60%;
+      @include phone-max {
+        width: 100%;
+      }
+      .field {
+        margin-left: 5em;
+        @include phone-max {
+          margin: 0px;
+        }
+      }
     }
   }
   a {

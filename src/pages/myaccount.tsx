@@ -29,6 +29,9 @@ export default function MyAccount() {
 		startLogout();
 	};
 	
+	const [avatar, setAvatar] = useState(
+		user.avatar,
+	);
 	const [postulant, setPostulant] = useState({
 		...user.dataUser,
 	});
@@ -133,6 +136,9 @@ export default function MyAccount() {
 									</aside>
 									<aside className="FormGroup">
 										<TxtArea onChange={handleEvent} value={company.description} name="description" placeholder="Descripción" />
+										<div>
+											<img src={'https://api.chambea-ya.com/public/'+avatar} alt="" />
+										</div>
 									</aside>
 									<aside className="FormGroup">
 										<Txtfield onChange={handleEvent} value={company.email} name="email" placeholder="Correo electrónico" />
