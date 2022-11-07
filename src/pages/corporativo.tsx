@@ -60,9 +60,23 @@ export default function Corporativo() {
 	};
 
 	const handleEvent = (e: any) => {
-		let regexPass = ""
+		let regexPass = /^.{6,}$/;
 		if (e.target.name == 'password') {
-
+			if (!e.target.value.match(regexPass)) {
+				e.target.classList.add('has-error');
+				e.target.nextSibling.classList.add('has-error-description');
+			} else {
+				e.target.classList.remove('has-error');
+				e.target.nextSibling.classList.remove('has-error-description');
+			}
+		}else if (e.target.name == 'confirmPassword') {
+			if (e.target.value !== account.password) {
+				e.target.classList.add('has-error');
+				e.target.nextSibling.classList.add('has-error-description');
+			} else {
+				e.target.classList.remove('has-error');
+				e.target.nextSibling.classList.remove('has-error-description');
+			}
 		}
 		else if (e.target.hasOwnProperty('checked') && e.target.checked == true) {
 			//account.countFormErrors--;
@@ -101,10 +115,17 @@ export default function Corporativo() {
 						<Txtfield type={'email'} onChange={handleEvent} name="email" value={account.email} className="mb-3" placeholder="Correo electrónico" autoComplete="off" />
 						<Txtfield type={'tel'} onChange={handleEvent} name="phone" className="mb-2" placeholder="Teléfono / Celular" />
 					</aside>
-					<aside className="FormGroup">
+					<div className='GroupValidation'>
+						<aside className="FormGroupValidate">					
 						<Txtfield className="mb-3" onChange={handleEvent} name="password" value={account.password} type={'password'} placeholder="Clave" autoComplete="off" />
-						<Txtfield className="mb-2" onChange={handleEvent} name="confirmPassword" type={'password'} placeholder="Repetir clave" />
+						<Span className="error-required-field-description">* La contraseña debe tener más de 6 caracteres. </Span>							
 					</aside>
+					<aside className="FormGroup">
+						<Txtfield className="mb-2" onChange={handleEvent} name="confirmPassword" type={'password'} placeholder="Repetir clave" />
+						<Span className="error-required-field-description">* Ambas contraseñas deben coincidir. </Span>
+					</aside>
+					</div>
+					
 					<aside className="d-flex flex-col">
 						<CheckButton onChange={handleEvent} withbg="no" label="Acepto los Términos y Condiciones" />
 						<Span className="has-error-description">* Ingresa a este enlace para ver los <a href="https://bit.ly/chambea-latam-terminos-condiciones" target="_blank">términos y condiciones.</a> </Span>
