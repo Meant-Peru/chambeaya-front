@@ -35,14 +35,14 @@ export const Navbar = styled.nav`
   color: ${Theme.colors.light};
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0 8%;
+  justify-content: flex-start;
+  padding: 0.5em 8%;
   a {
     color: white;
     text-decoration: none;
   }
   @media (max-width: 1023px) {
-    padding: 0 2em;
+    padding: 0.5em 2em;
   }
 `;
 

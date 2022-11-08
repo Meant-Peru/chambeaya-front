@@ -46,6 +46,7 @@ export default function MyAccount() {
 		...user.dataUser,
 	});
 	const handleEvent = (e: any) => {
+		console.log('user',user);
 		setCompany({
 			...company,
 			[e.target.name]: e.target.value,
@@ -137,7 +138,7 @@ export default function MyAccount() {
 									<aside className="FormGroup">
 										<TxtArea onChange={handleEvent} value={company.description} name="description" placeholder="Descripción" />
 										<div>
-											<img src={'https://api.chambea-ya.com/public/'+avatar} alt="" />
+											<img src={'https://api.chambea-ya.com/public/'+user.avatar} alt="" />
 										</div>
 									</aside>
 									<aside className="FormGroup">
