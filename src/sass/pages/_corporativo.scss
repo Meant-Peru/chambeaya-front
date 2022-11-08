@@ -14,8 +14,11 @@
         width: var(--container-tablet-portrait);
     }
 
-    @include phone {
-          ;
+    @include phone-max {
+        width: 100%;
+            flex-direction: column; 
+            margin: 0px;
+            padding: 4em 0em;
     }
 
     .error-required-field-description {
@@ -24,6 +27,14 @@
 
     .coverSection {
         width: 40%;
+        img {
+            width: 100%;
+        }
+        @include phone-max {
+            display: none;
+          order: 2;
+          width: 100%;
+        }
         span{
             color: var(--gray-color-800);
             font-weight: 400;
@@ -34,15 +45,32 @@
     .formRegister {
         width: 60%;
         text-align: center;
-
+        padding: 0em 2em;
+        @include phone-max {
+            width: 100%;
+            padding:0em 1em;
+            text-align: left;
+        }
+        h2 {
+            padding-bottom: 1.5em;
+            @include phone-max {
+                padding-bottom: 0.5em;
+                text-align: center;
+            }
+        }
         .FormGroup {
-            width: 80%;
-            margin: 0 auto 0;
+            width: 100%;
+            margin: 0px;
             display: flex;
             flex-direction: row;
-
+            padding: 0.75em 0em;
+            @include phone-max {
+                flex-direction: column;
+                width: 100%;
+                margin: 0px;
+            }
             :first-child {
-                margin-right: 16px;
+               margin-right: 0.5em;
                 text-align: left;
             }
 
@@ -54,7 +82,41 @@
                 display: block;
             }
         }
+        
+        .GroupValidation {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            width: 100%;
+            @include phone-max {
+                flex-direction: column;
+            }
+            .FormGroupValidate {
+            width: 100%;
+            margin: 0px;
+            display: flex;
+            flex-direction: column;
+            padding: 0.5em 0.5em 0.5em 0em;
+            @include phone-max {
+                flex-direction: column;
+                width: 100%;
+                margin: 0px;
+                padding: 0em;
+            }
+            :first-child {
+              
+                text-align: left;
+            }
 
+            a {
+                color: var(--color-text);
+                text-decoration: none;
+            }
+            .has-error-description {
+                display: block;
+            }
+        }
+        }
         .FormGroupFull {
             width: 50%;
             margin: 0 auto 0;

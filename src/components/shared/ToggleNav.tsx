@@ -16,6 +16,8 @@ background-color:transparent;
 display: none;
 color: #fff;
 font-size:2rem;
+position: absolute;
+  right: 2rem;
   @media (max-width: 425px) {
     display: flex;
     cursor:pointer

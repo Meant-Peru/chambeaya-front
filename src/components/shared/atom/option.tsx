@@ -21,14 +21,3 @@ export const OptionComponent = ({ select = false, eventS = () => { }, tag }: Pro
 	 : 
 	<Chip className='mr-1' label={tag.nameSkill} onClick={() => eventS(tag)} />}</>;
 };
-
-// export default function TagComponent({ type, level, label, event = () => {} }: Props) {
-// 	return (
-// 		<React.Fragment>
-// 			<button className={'tagComponent-' + type + '-' + level}>{label}</button>
-// 			<div className="clearTag" onClick={() => event}>
-// 				x
-// 			</div>
-// 		</React.Fragment>
-// 	);
-// }

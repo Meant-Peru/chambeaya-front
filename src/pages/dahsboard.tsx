@@ -2,7 +2,12 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import Header from "../components/shared/header";
 import Modal from "react-modal";
-import { PostAddOutlined, CategoryOutlined, BuildOutlined, LibraryAddOutlined } from "@material-ui/icons";
+import {
+  PostAddOutlined,
+  CategoryOutlined,
+  BuildOutlined,
+  LibraryAddOutlined,
+} from "@material-ui/icons";
 import {
   Txtfield,
   BtnPrimary,
@@ -11,7 +16,7 @@ import {
   DropdownItem,
   BtnSecondary,
   TxtArea,
-  BtnMobile
+  BtnMobile,
 } from "../components/shared/styled";
 import ButtonComponent from "../components/shared/atom/button";
 import "./../sass/pages/_myAccount.scss";
@@ -40,17 +45,6 @@ import { RootState } from "../redux/store/store";
 import { Publications } from "../components/Publications";
 import { Companies } from "../components/Companies";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    borderRadius: "20px",
-  },
-};
 
 export default function Dashboard() {
   const { user } = useSelector((state: RootState) => state.auth);
@@ -80,7 +74,7 @@ export default function Dashboard() {
   const [skill, setSkill] = useState([]);
   const [allCategory, setAllCategory] = useState([]);
   const [allPosition, setAllPosition] = useState([]);
-  const [warning,setWarning] = useState(false);
+  const [warning, setWarning] = useState(false);
 
   const handleEventPostulant = (e: any) => {
     setPostulant({
@@ -113,7 +107,6 @@ export default function Dashboard() {
       listSkills();
       const responseCategory = await getCategory();
       setAllCategory(responseCategory.data.data);
-      
     })();
   }, []);
 
@@ -164,20 +157,22 @@ export default function Dashboard() {
     setIsOpenEnl(false);
   }
   const submitCategory = async (event: any) => {
-    setWarning(false)
+    setWarning(false);
     event.preventDefault();
     console.log(formcat);
-    if(formcat.nameCategory.length === 0 || formcat.descriptionCategory.length === 0 ){
-      setWarning(true)
-    }else {    
-    await createCategory(formcat);
-    toast.success("Has registrado una nueva especialidad!");
-    closeModalCategory();
-    const responseCategory = await getCategory();
-    setAllCategory(responseCategory.data.data);
-    resetCat();
+    if (
+      formcat.nameCategory.length === 0 ||
+      formcat.descriptionCategory.length === 0
+    ) {
+      setWarning(true);
+    } else {
+      await createCategory(formcat);
+      toast.success("Has registrado una nueva especialidad!");
+      closeModalCategory();
+      const responseCategory = await getCategory();
+      setAllCategory(responseCategory.data.data);
+      resetCat();
     }
-    
   };
 
   const submitskill = async (event: any) => {
@@ -212,18 +207,18 @@ export default function Dashboard() {
             <aside className="sideBarMenu">
               <h3 className="mb-1">Admin</h3>
               <span className="mb-1">Cuenta de administrador</span>
-             <p className="mb-1 mt-1"><a onClick={handleLogout}>Cerrar Sesión</a>
-              </p> 
+              <p className="mb-1 mt-1">
+                <a onClick={handleLogout}>Cerrar Sesión</a>
+              </p>
             </aside>
             <div className="list">
               <Tab>Datos generales</Tab>
               <Tab>Empresas</Tab>
               <Tab>Publicaciones</Tab>
-      
+
               <Tab>Especialidades</Tab>
               <Tab>Skill</Tab>
             </div>
-            
           </TabList>
 
           <TabPanel>
@@ -259,8 +254,7 @@ export default function Dashboard() {
                   />
                 </aside>
 
-                <aside style={{display:'flex', justifyContent:'center'}}>
-                  
+                <aside style={{ display: "flex", justifyContent: "center" }}>
                   <BtnPrimary onClick={handleUpdate}>Actualizar</BtnPrimary>
                 </aside>
               </Fragment>
@@ -272,7 +266,7 @@ export default function Dashboard() {
           <TabPanel>
             <Publications />
           </TabPanel>
-         
+
           <TabPanel>
             <div className="usersTable">
               <div className="titleTable">
@@ -284,7 +278,6 @@ export default function Dashboard() {
                   Agregar nueva
                 </BtnPrimary>
               </div>
-
             </div>
             <div className="tableUsers">
               <article className="headerRow">
@@ -295,8 +288,9 @@ export default function Dashboard() {
               {allCategory.map((e: any) => (
                 <article className="contentRow" key={e._id}>
                   <aside className="contentItem">
-                <CategoryOutlined className="contentIcon"/>
-                    {e.nameCategory}</aside>
+                    <CategoryOutlined className="contentIcon" />
+                    {e.nameCategory}
+                  </aside>
                   <aside className="contentItem">{e.descriptionCategory}</aside>
                   <ButtonComponent
                     family="secondary"
@@ -310,49 +304,58 @@ export default function Dashboard() {
             <Modal
               isOpen={modalIsOpen}
               onRequestClose={closeModalCategory}
-              style={customStyles}
-              contentLabel="Example Modal"
+              contentLabel="New Category"
               overlayClassName="Overlay"
+              className="ModalContent"
               ariaHideApp={false}
             >
-              <h2 className="text-center">Nueva Especialidad</h2>
-              <p className="mt-2 text-center">
-                <i>
-                  Ingresa una nueva especialidad como Diseño, Redes o Base de
-                  datos <br />y no te olvides agregar su descripción.
-                </i>
-              </p>
-              <aside className="FormGroup algn-center" style={{flexDirection:'column'}}>
-                <form onSubmit={submitCategory} style={{width:'100%'}}>
-                  <div className="dflex flex-row mt-4 mb-4 algn-center">
-                    <Txtfield
-                      placeholder="Nombre"
-                      onChange={handleFormCat}
-                      name="nameCategory"
-                      value={formcat.nameCategory}
-                    />
-                  </div>
-                  <div className="dflex flex-row mt-4 mb-4 algn-center">
-                    <TxtArea
-                      placeholder="Descripción"
-                      onChange={handleFormCat}
-                      name="descriptionCategory"
-                      value={formcat.descriptionCategory}
-                    />
-                  </div>
-                  <div className="modalButtons">
-                     <BtnSecondary className="mr-2" onClick={closeModalCategory}>
-                    CANCELAR
-                  </BtnSecondary>
-                  <br/>
-                  <BtnPrimary type="submit"> GUARDAR </BtnPrimary>
-                  </div>
-                 
-                </form>
-                {warning === true &&
-                  <p style={{color:'red',paddingTop:'0.5em'}}>Debes completar el formulario para crear una especialidad.</p>
-                }
-              </aside>
+              <div className="ModalContainerText">
+                <h2 className="text-center">Nueva Especialidad</h2>
+                <p className="mt-2 text-center">
+                  <i>
+                    Ingresa una nueva especialidad como Diseño, Redes o Base de
+                    datos <br />y no te olvides agregar su descripción.
+                  </i>
+                </p>
+                <aside
+                  className="FormGroup algn-center"
+                  style={{ flexDirection: "column" }}
+                >
+                  <form onSubmit={submitCategory} style={{ width: "100%" }}>
+                    <div className="dflex flex-row mt-4 mb-4 algn-center">
+                      <Txtfield
+                        placeholder="Nombre"
+                        onChange={handleFormCat}
+                        name="nameCategory"
+                        value={formcat.nameCategory}
+                      />
+                    </div>
+                    <div className="dflex flex-row mt-4 mb-4 algn-center">
+                      <TxtArea
+                        placeholder="Descripción"
+                        onChange={handleFormCat}
+                        name="descriptionCategory"
+                        value={formcat.descriptionCategory}
+                      />
+                    </div>
+                    <div className="modalButtons">
+                      <BtnSecondary
+                        className="mr-2"
+                        onClick={closeModalCategory}
+                      >
+                        CANCELAR
+                      </BtnSecondary>
+                      <br />
+                      <BtnPrimary type="submit"> GUARDAR </BtnPrimary>
+                    </div>
+                  </form>
+                  {warning === true && (
+                    <p style={{ color: "red", paddingTop: "0.5em" }}>
+                      Debes completar el formulario para crear una especialidad.
+                    </p>
+                  )}
+                </aside>
+              </div>
             </Modal>
           </TabPanel>
           <TabPanel>
@@ -360,10 +363,9 @@ export default function Dashboard() {
               <div className="titleTable">
                 <h2>Skills</h2>
                 <BtnMobile onClick={openModalSkill}>
-                 <LibraryAddOutlined />
-                
+                  <LibraryAddOutlined />
                 </BtnMobile>
-                <BtnPrimary  className="notMobile" onClick={openModalSkill}>
+                <BtnPrimary className="notMobile" onClick={openModalSkill}>
                   {" "}
                   Agregar nueva{" "}
                 </BtnPrimary>
@@ -378,8 +380,9 @@ export default function Dashboard() {
               {skill.map((e: any) => (
                 <article className="contentRow" key={e._id}>
                   <aside className="contentItem">
-                  <BuildOutlined className="contentIcon"/>
-                    {e.nameSkill}</aside>
+                    <BuildOutlined className="contentIcon" />
+                    {e.nameSkill}
+                  </aside>
                   <aside className="contentItem">{e.descriptionskill}</aside>
                   <aside className="containerButtons">
                     <BtnTable value={e._id} onClick={openModalEnl}>
@@ -395,75 +398,78 @@ export default function Dashboard() {
               isOpen={modalIsOpenS}
               ariaHideApp={false}
               onRequestClose={closeModalSkill}
-              style={customStyles}
-              contentLabel="SkillAdd Modal"
+              contentLabel="New Skill"
               overlayClassName="Overlay"
+              className="ModalContent"
             >
-              <h2 className="text-center">Nueva Skill</h2>
-              <p className="mt-2 text-center">
-                <i>Ingresa nueva skill</i>
-              </p>
-              <aside className="FormGroup algn-center">
-                <form onSubmit={submitskill}>
-                  <div className="dflex flex-row mt-4 mb-4 algn-center">
-                    <Txtfield
-                      placeholder="Skill"
-                      onChange={handleFormSkill}
-                      name="nameSkill"
-                      value={formskill.nameSkill}
-                    />
-                  </div>
-                  <div className="dflex flex-row mt-4 mb-4 algn-center">
-                    <TxtArea
-                      placeholder="Descripción"
-                      onChange={handleFormSkill}
-                      name="descriptionskill"
-                      value={formskill.descriptionskill}
-                    />
-                  </div>
-                  <div className="modalButtons">
-                     <BtnSecondary className="mr-2" onClick={closeModalSkill}>
-                    CANCELAR
-                  </BtnSecondary>
-                  <br/>
-                  <BtnPrimary type="submit"> GUARDAR </BtnPrimary>
-                  </div>
-                 
-                </form>
-              </aside>
+              <div className="ModalContainerText">
+                <h2 className="text-center">Nueva Skill</h2>
+                <p className="mt-2 text-center">
+                  <i>Ingresa nueva skill</i>
+                </p>
+                <aside className="FormGroup algn-center">
+                  <form onSubmit={submitskill}>
+                    <div className="dflex flex-row mt-4 mb-4 algn-center">
+                      <Txtfield
+                        placeholder="Skill"
+                        onChange={handleFormSkill}
+                        name="nameSkill"
+                        value={formskill.nameSkill}
+                      />
+                    </div>
+                    <div className="dflex flex-row mt-4 mb-4 algn-center">
+                      <TxtArea
+                        placeholder="Descripción"
+                        onChange={handleFormSkill}
+                        name="descriptionskill"
+                        value={formskill.descriptionskill}
+                      />
+                    </div>
+                    <div className="modalButtons">
+                      <BtnSecondary className="mr-2" onClick={closeModalSkill}>
+                        CANCELAR
+                      </BtnSecondary>
+                      <br />
+                      <BtnPrimary type="submit"> GUARDAR </BtnPrimary>
+                    </div>
+                  </form>
+                </aside>
+              </div>
             </Modal>
             <Modal
               isOpen={editModalOpen}
               onRequestClose={toggleModal}
-              style={customStyles}
+              contentLabel="Edit Skill"
               overlayClassName="Overlay"
+              className="ModalContent"
               ariaHideApp={false}
             >
-              <h2 className="text-center">Editar Skill</h2>
-
-              <div className="dflex flex-row mt-4 mb-4 algn-center">
-                <Txtfield
-                  placeholder="Skill"
-                  onChange={handleFormSkill}
-                  name="nameSkill"
-                  value={formskill.nameSkill}
-                />
+              <div className="ModalContainerText">
+                <h2 className="text-center">Editar Skill</h2>
+                <div className="dflex flex-row mt-4 mb-4 algn-center">
+                  <Txtfield
+                    placeholder="Skill"
+                    onChange={handleFormSkill}
+                    name="nameSkill"
+                    value={formskill.nameSkill}
+                  />
+                </div>
+                <div className="dflex flex-row mt-4 mb-4 algn-center">
+                  <TxtArea
+                    placeholder="Descripción"
+                    onChange={handleFormSkill}
+                    name="descriptionskill"
+                    value={formskill.descriptionskill}
+                  />
+                </div>
+                <div className="modalButtons">
+                  <BtnSecondary className="mr-2" onClick={toggleModal}>
+                    CANCELAR
+                  </BtnSecondary>
+                  <br />
+                  <BtnPrimary onClick={update}> GUARDAR </BtnPrimary>
+                </div>
               </div>
-              <div className="dflex flex-row mt-4 mb-4 algn-center">
-                <TxtArea
-                  placeholder="Descripción"
-                  onChange={handleFormSkill}
-                  name="descriptionskill"
-                  value={formskill.descriptionskill}
-                />
-              </div>
-              <div className="modalButtons">
-                <BtnSecondary className="mr-2" onClick={toggleModal}>
-                CANCELAR
-              </BtnSecondary>
-              <br/>
-              <BtnPrimary onClick={update}> GUARDAR </BtnPrimary></div>
-              
             </Modal>
 
             <Toaster position="top-right" reverseOrder={false} />
@@ -471,16 +477,17 @@ export default function Dashboard() {
               isOpen={modalIsOpenE}
               ariaHideApp={false}
               onRequestClose={closeModalEnl}
-              style={customStyles}
-              contentLabel="Enlazar Modal"
+              contentLabel="Relation Skill"
               overlayClassName="Overlay"
+              className="ModalContent"
             >
+              <div className="ModalContainerText">
               <h2 className="text-center">Enlazar Skill</h2>
               <p className="mt-2 text-center">
                 <i>Relacionalo a una especialidad y a un puesto</i>
               </p>
-              <br/>
-              <aside className="FormGroup algn-center">
+              <br />
+              <aside className="algn-center">
                 <form onSubmit={submitenl}>
                   <div>
                     <DropdownMenu
@@ -512,11 +519,12 @@ export default function Dashboard() {
                     <BtnSecondary className="mr-2" onClick={closeModalEnl}>
                       CANCELAR
                     </BtnSecondary>
-                    <br/>
+                    <br />
                     <BtnPrimary type="submit"> GUARDAR </BtnPrimary>
                   </div>
                 </form>
               </aside>
+              </div>
             </Modal>
           </TabPanel>
         </Tabs>

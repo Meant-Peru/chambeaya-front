@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import Header from '../components/shared/header';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { KeyboardReturn } from "@material-ui/icons";
 
 import ilusEmpty from './../assets/empty-state.svg';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -11,7 +12,8 @@ import TextField from '@mui/material/TextField';
 
 import { Txtfield, DropdownMenu, DropdownItem, TxtArea, BtnPrimary } from './../components/shared/styled';
 import 'react-tabs/style/react-tabs.css';
-import './../sass/pages/_addJob.scss';
+import './../sass/pages/_myAccount.scss';
+//import './../sass/pages/_addJob.scss';
 import Footer from '../components/shared/footer';
 import ButtonComponent from '../components/shared/atom/button';
 
@@ -239,6 +241,9 @@ export default function AddJob() {
 		}
 	}, [open]);
 
+	const goBack = () => {
+		navigate("/myaccount/1");
+	  };
 	const handleCreatePost = async () => {
 		if (form.modality !== '0') {
 			const sendData: PostJob = {
@@ -272,24 +277,24 @@ export default function AddJob() {
 	return (
 		<React.Fragment>
 			<Header />
-			<section className="addJobPage">
+			<section className="myAccountPage">
 				<Tabs defaultIndex={1}>
 					<TabList className={'mb-5'}>
 						<aside className="sideBarMenu mb-5">
 							<h3 className="mb-2">Mi Cuenta</h3>
 							<span>Gestiona tu cuenta</span>
+							<p className="mb-1 mt-1"><a onClick={handleLogout}>Cerrar Sesión</a></p>
 						</aside>
 						<div className="list">
 							<Tab>Datos generales</Tab>
 							<Tab>Mis publicaciones</Tab>
 							<Tab>Proyectos</Tab>
-							<Tab><p><a onClick={handleLogout}>Cerrar Sesión</a></p></Tab>
 						</div>
 					</TabList>
 
 					<TabPanel>
 						<section className="sectionTab">
-							<aside className="mb-5">
+							<aside>
 								<article className="headSection">
 									<h2>Datos Generales</h2>
 								</article>
@@ -324,14 +329,18 @@ export default function AddJob() {
 								</DropdownMenu>
 								<Txtfield placeholder="Nro de cuenta" />
 							</aside>
-							<aside>
+							<aside style={{display:'flex', justifyContent:'center'}}>
 								<ButtonComponent family="primary" label="Actualizar" />
 							</aside>
 						</section>
 					</TabPanel>
 					<TabPanel>
 						<section className="sectionTab">
-							<aside className="mb-5">
+							<aside>
+							
+							<p style={{fontSize:'0.75em',cursor :'pointer',display:'flex',alignItems:'center'}}  onClick={() => goBack()} className="mb-1 mt-1">
+								<KeyboardReturn />
+								Ver todas mis publicaciones</p>
 								<article className="headSection">
 									<h2>Nueva publicación</h2>
 								</article>
@@ -505,10 +514,10 @@ export default function AddJob() {
 								<aside className="FormGroup mt-3">
 									<p>¿Qué tipo de publicación deseas adquirir?</p>
 									<DropdownMenu onChange={handleEventFrom} name="modality">
-										<DropdownItem value={'0'}>Elegir tipo de publicación</DropdownItem>
-										<DropdownItem value={'Híbrido'}>Publicación gratuita</DropdownItem>
-										<DropdownItem value={'Presencial'}>Publicación simple</DropdownItem>
-										<DropdownItem value={'Remoto'}>Publicación del proyecto</DropdownItem>
+										<DropdownItem value={'_none'}>Elegir tipo de publicación</DropdownItem>
+										<DropdownItem value={'1'}>Publicación gratuita</DropdownItem>
+										<DropdownItem value={'2'}>Publicación simple</DropdownItem>
+										<DropdownItem value={'3'}>Publicación del proyecto</DropdownItem>
 									</DropdownMenu><br />
 									<div className="notes">
 									<p>Notas: </p>
@@ -520,7 +529,7 @@ export default function AddJob() {
 									</div>
 								</aside>
 							</aside>
-							<aside className="mt-4">
+							<aside className="mt-4" style={{display:'flex', justifyContent:'center'}} >
 								{/* <ButtonComponent family="primary" label="Agregar" /> */}
 								<BtnPrimary onClick={handleCreatePost}>Agregar</BtnPrimary>
 							</aside>

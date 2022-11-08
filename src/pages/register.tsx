@@ -144,18 +144,18 @@ export default function Register() {
 					<h2>Registro de nuevo postulante</h2>
 				</div>
 				<form className="d-flex flex-col formSection ">
-					<div className="d-flex flex-row mb-2">
-						<aside className="FormGroup mt-5">
+					<div className="d-flex flex-row">
+						<aside className="FormGroup">
 							<Txtfield className="mb-2" onChange={handleEvent} name="name" placeholder="Nombres" required/>
 							<Span className="error-required-field-description">* Por favor ingresa tu nombre.</Span>
 						</aside>
-						<aside className="FormGroup mt-5">
+						<aside className="FormGroup">
 							<Txtfield className="mb-2" onChange={handleEvent} name="lastName" placeholder="Apellidos" required/>
 							<Span className="error-required-field-description"> * Por favor ingresa tu apellido. </Span>
 						</aside>
 					</div>
 
-					<div className="d-flex flex-row mb-2">
+					<div className="d-flex flex-row">
 						<aside className="FormGroup">
 							<Txtfield type={'email'} onChange={handleEvent} name="email" className="mb-2" placeholder="Correo electrónico" required/>
 							<Span className="error-required-field-description">* Por favor ingresa tu correo. </Span>
@@ -169,7 +169,7 @@ export default function Register() {
 
 					<div className="d-flex flex-row">
 						<aside className="FormGroup">
-							<Txtfield className="mb-3" onChange={handleEvent} name="password" type={'password'} placeholder="Clave" />
+							<Txtfield className="mb-2" onChange={handleEvent} name="password" type={'password'} placeholder="Clave" />
 							<Span className="error-required-field-description">* Por favor ingresa la clave. </Span>
 						</aside>
 						<aside className="FormGroup">
@@ -177,14 +177,14 @@ export default function Register() {
 							<Span className="error-required-field-description">* La clave es diferente. </Span>
 						</aside>
 					</div>
-					<aside className="d-flex flex-col mt-4">
+					<aside className="d-flex flex-col">
 						<CheckButton onChange={handleEvent} withbg="no" label="Acepto los Términos y Condiciones"/>
 						<Span className="has-error-description">* Ingresa a este enlace para ver los <a href="https://bit.ly/chambea-latam-terminos-condiciones" target="_blank">términos y condiciones.</a> </Span>
 					</aside>
 				</form>
 
 
-				<aside className="FormAction mt-5">
+				<aside className="FormAction">
 					{/* Check if all form elements DO NOT have any errors */}
 					{/* And check if there are 7 form elements in the current form. */}
 					<BtnPrimary onClick={handleRegister} className={`button-primary ${Object.entries(account.formErrors).map( ([key, val]) => val).every(element => element === false) && Object.entries(account.formErrors).length == 7 ? 'test' : 'disabled'}`} >CREAR CUENTA</BtnPrimary>

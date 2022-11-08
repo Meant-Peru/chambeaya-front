@@ -244,19 +244,19 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
       <Toaster position="top-right" reverseOrder={false} />
       <form>
         <section className="applyJob">
-          <aside className="coverHeader mb-5"></aside>
+          <aside className="coverHeader"></aside>
           <aside className="contain">
             <Tabs
               selectedIndex={selectedTab}
               onSelect={(index) => setSelectedTab(index)}
             >
-              <TabList className={"mb-5"}>
+              <TabList className={"mb-1"}>
                 <Tab tabIndex={"0"}>Datos generales</Tab>
                 <Tab tabIndex={"1"}>Skills</Tab>
                 <Tab tabIndex={"2"}>Experiencia</Tab>
               </TabList>
               <TabPanel tabIndex={0}>
-                <section className="formApply pt-5">
+                <section className="formApply">
                   <article className="mb-5">
                     <p className="mb-3">Comprobante de pago a emitir</p>
                     <aside className="FormGroup">
@@ -275,7 +275,7 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
                         </DropdownItem>
                       </DropdownMenu>
                       <Txtfield
-                        className="ml-5"
+                        className="ml-5 diferent-text"
                         placeholder="Nro de documento"
                         name="documentNumber"
                         onChange={handleForm}
@@ -306,7 +306,7 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
                 </section>
               </TabPanel>
               <TabPanel tabIndex={1}>
-                <section className="formApply pt-5">
+                <section className="formApply">
                   <article>
                     <p className="mb-3">Elige tu especialidad: </p>
                     <aside className="FormGroup">
@@ -360,7 +360,7 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
                 </section>
               </TabPanel>
               <TabPanel tabIndex={2}>
-                <section className="formApply pt-5">
+                <section className="formApply">
                   <article className="mb-5">
                     <p className="mb-3 text-center">
                       Enlace digital de experiencia laboral (Certijoven,
@@ -371,9 +371,9 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
                         <p>Ingrese su enlace de LinkedIn</p>
                         <div className="inputContainer">
                           <Txtfield
-                            className="ml-5"
+                            className="field"
                             type={"url"}
-                            placeholder="Ingrese enlace"
+                            placeholder="www.example.com"
                             onChange={handleForm}
                             name="linkedinURL"
                             value={form.linkedinURL}
@@ -384,9 +384,9 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
                         <p>Ingrese su enlace de Facebook</p>
                         <div className="inputContainer">
                           <Txtfield
-                            className="ml-5"
+                            className="field"
                             type={"url"}
-                            placeholder="Ingrese enlace"
+                            placeholder="www.example.com"
                             onChange={handleForm}
                             name="facebookURL"
                             value={form.facebookURL}
@@ -397,9 +397,9 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
                         <p> Ingrese su enlace de Youtube</p>
                         <div className="inputContainer">
                           <Txtfield
-                            className="ml-5"
+                            className="field"
                             type={"url"}
-                            placeholder="Ingrese enlace"
+                            placeholder="www.example.com"
                             onChange={handleForm}
                             name="youtubeURL"
                             value={form.youtubeURL}
@@ -410,9 +410,9 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
                         <p>Ingrese otros enlaces web:</p>
                         <div className="inputContainer">
                           <Txtfield
-                            className="ml-5"
+                            className="field"
                             type={"url"}
-                            placeholder="Ingrese enlace"
+                            placeholder="www.example.com"
                             onChange={handleForm}
                             name="webURL"
                             value={form.webURL}

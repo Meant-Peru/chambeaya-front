@@ -92,7 +92,7 @@
         }
     }
     &hero1{
-        margin-bottom: 0.5em;
+        margin-bottom: 1em;
         background-color: #0b73b2;
         font-size: 16px;
         border-radius: 28px;
@@ -107,11 +107,7 @@
         &:hover{
             background: var(--dark-color);
         }
-        @include phone {
-            position: relative;
-            top:310px;
-            left:20px;
-        }
+        
     }
     &hero2{
         margin-bottom: 0.5em;
@@ -123,17 +119,16 @@
         color: var(--light-color);
         border-style:none;
         cursor:pointer;
+        @include phone-max {
+            padding: 16px 3.5em;
+        }
         img{
             display: none;
         }
         &:hover{
             background: var(--dark-color);
         }
-        @include phone {
-            position: relative;
-            top:310px;
-            left:20px;
-        }
+       
     }
 }
 
