@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.8c00d462.css",
-    "main.js": "/static/js/main.9d3edf7a.js",
+    "main.js": "/static/js/main.9242e6ad.js",
     "static/media/webmovil_.png": "/static/media/webmovil_.d805309f6e66d1467ae1.png",
     "static/media/web_.png": "/static/media/web_.e710d600151cfcfed5ba.png",
     "static/media/coverCorporativo.svg": "/static/media/coverCorporativo.8cebb2afe1de3544234259ff8d5bae3d.svg",
@@ -42,16 +42,15 @@
     "static/media/pagos-garantizados.svg": "/static/media/pagos-garantizados.464200d4d1256ab1ac21b9d40742e8ee.svg",
     "index.html": "/index.html",
     "static/media/postulaciones.svg": "/static/media/postulaciones.be57436f4e44073b591ad1182ebb2f9c.svg",
-    "static/media/time.svg": "/static/media/time.147cf3aadf4a2866f590486cf89dc221.svg",
     "static/media/plus.svg": "/static/media/plus.51abfe633ae114f71ce6dd3fd62f0dc0.svg",
     "static/media/todos-oficios.svg": "/static/media/todos-oficios.48648304343dd56b2fdee1cfb83dee62.svg",
     "static/media/negative.svg": "/static/media/negative.4eb2c8964c2332d47a16bc38936ef358.svg",
     "static/media/check.svg": "/static/media/check.6dd21e90268838053df89d833a4bc9f4.svg",
     "main.8c00d462.css.map": "/static/css/main.8c00d462.css.map",
-    "main.9d3edf7a.js.map": "/static/js/main.9d3edf7a.js.map"
+    "main.9242e6ad.js.map": "/static/js/main.9242e6ad.js.map"
   },
   "entrypoints": [
     "static/css/main.8c00d462.css",
-    "static/js/main.9d3edf7a.js"
+    "static/js/main.9242e6ad.js"
   ]
 }
