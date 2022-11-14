@@ -146,11 +146,11 @@ export default function Register() {
 				<form className="d-flex flex-col formSection ">
 					<div className="d-flex flex-row">
 						<aside className="FormGroup">
-							<Txtfield className="mb-2" onChange={handleEvent} name="name" placeholder="Nombres" required/>
+							<Txtfield className="mb-2" onChange={handleEvent} name="name" placeholder="Nombres" required maxLength={15}/>
 							<Span className="error-required-field-description">* Por favor ingresa tu nombre.</Span>
 						</aside>
 						<aside className="FormGroup">
-							<Txtfield className="mb-2" onChange={handleEvent} name="lastName" placeholder="Apellidos" required/>
+							<Txtfield className="mb-2" onChange={handleEvent} name="lastName" placeholder="Apellidos" required maxLength={15}/>
 							<Span className="error-required-field-description"> * Por favor ingresa tu apellido. </Span>
 						</aside>
 					</div>
@@ -162,7 +162,7 @@ export default function Register() {
 							<Span className="error-required-field-description">* Por favor ingresa el formato correcto. </Span>
 						</aside>
 						<aside className="FormGroup">
-							<Txtfield type={'tel'} onChange={handleEvent} name="phone" className="mb-2" placeholder="Teléfono / Celular" required/>
+							<Txtfield type={'tel'} onChange={handleEvent} name="phone" className="mb-2" placeholder="Teléfono / Celular" required maxLength={12}/>
 							<Span className="error-required-field-description">* Por favor ingresa tu telefono. </Span>
 						</aside>
 					</div>
