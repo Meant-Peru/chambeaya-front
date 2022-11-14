@@ -19,6 +19,7 @@
     .titleTable {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         @include phone-max {
           padding-bottom: 1.5em;
         }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "../components/shared/footer";
 import Header from "../components/shared/header";
 import "./../sass/pages/_detailProject.scss";
+import { KeyboardReturn } from "@material-ui/icons";
 import time from "./../assets/time.svg";
 import { DropzoneDialog } from "material-ui-dropzone";
 import toast, { Toaster } from "react-hot-toast";
@@ -13,7 +14,7 @@ import ButtonComponent from "../components/shared/atom/button";
 import { Backdrop, CircularProgress } from "@material-ui/core";
 
 import Modal from "react-modal";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   getDetailProjectsId,
   uploadProjectReceipt,
@@ -40,6 +41,7 @@ const customStyles = {
 };
 
 export const DetailProyecto = () => {
+  const navigate = useNavigate();
   const { rol } = getLocalStorage(USER);
   //Dropzone comprobantes
   const [dropzone, setDropzone] = useState(false);
@@ -55,7 +57,9 @@ export const DetailProyecto = () => {
   useEffect(() => {
     getProjectsId();
   }, []);
-
+  const goBack = () => {
+    navigate(-1);
+  };
   const getProjectsId = async () => {
     const resp = await getDetailProjectsId({ id: idProject });
     console.log("detailproject", resp);
@@ -117,6 +121,10 @@ export const DetailProyecto = () => {
       <Header />
       <Toaster position="top-right" reverseOrder={false} />
       <section className="detailProject">
+      <div className="containerBack">
+              <KeyboardReturn />
+              <p onClick={() => goBack()}>Regresar</p>
+            </div>
         <p>Detalle de Proyecto</p>
         <br />
         <h2 className="accent-color">{detailProject?.projectTitle}</h2>

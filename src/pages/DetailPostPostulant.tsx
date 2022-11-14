@@ -5,6 +5,7 @@ import Header from '../components/shared/header';
 import './../sass/pages/_detailPostCompany.scss';
 import { BtnPrimary, BtnSecondary } from '../components/shared/styled';
 import { useNavigate, useParams } from 'react-router-dom';
+import {KeyboardReturn} from "@material-ui/icons";
 import { usePostCompany } from '../hooks/usePostCompany';
 import { Backdrop, CircularProgress } from '@material-ui/core';
 import React from 'react';
@@ -27,7 +28,9 @@ export const DetailPostPostulant = () => {
 	useEffect(() => {
 		handlerInit();
 	}, []);
-
+	const goBack = () => {
+		navigate(-1);
+	  };
 	const handlerInit = async () => {
 		setLoadingPost(true);
 		const resp: DetailPostulant = await startDetailPostulant({ idP, idJob });
@@ -87,6 +90,10 @@ export const DetailPostPostulant = () => {
 			<Header />
 			<Toaster position="top-right" reverseOrder={false} />
 			<section className="detailPostCompanyPage">
+			<div className="containerBack">
+            <KeyboardReturn />
+            <p onClick={() => goBack()}>Regresar</p>
+          </div>
 				<aside className="coverHeaderFlex mb-5">
 					<article className="">
 						<h1 className="mb-2">
@@ -112,19 +119,19 @@ export const DetailPostPostulant = () => {
 
 				<aside className="detailsApply mt-5 mb-5">
 					<article className="leftBox">
-						<div className="mb-5">
-							<h4 className="mb-3">Descripción</h4>
+						<div className="mb-2">
+							<h4 className="mb-1">Descripción</h4>
 							<p> {postJob?.descriptionPost} </p>
 						</div>
 						<hr />
-						<div className="mt-5">
-							<h4 className="mb-3">Documentos</h4>
+						<div className="mt-3">
+							<h4 className="mb-1">Documentos</h4>
 							<p>{postJob?.dataPostAndPostulant.documentType == '1' ? 'DNI' : 'Recibo por Honorarios'}</p>
 							<p>{postJob?.dataPostAndPostulant.documentNumber}</p>
 						</div>
 					</article>
 					<article className="rightBox">
-						<h4 className="mb-3">Precisiones</h4>
+						<h4>Precisiones</h4>
 
 						<ul>
 							<li>Presupuesto estimado: S/ {postJob?.salaryRange}</li>
@@ -134,7 +141,7 @@ export const DetailPostPostulant = () => {
 
 				<aside>
 					<div>
-						<h4 className="mb-3">Referencias de Experiencia</h4>
+						<h4 className="mb-1">Referencias de Experiencia</h4>
 					</div>
 					<ul>
 						{
@@ -142,17 +149,23 @@ export const DetailPostPostulant = () => {
 							<li>El postulante no a completado esta sección.</li> :
 							<li></li>
 						}
+						
 						{postulant?.facebookURL !== "" && 
-							<a href={postulant?.facebookURL} >Facebook</a>
+							<a href={postulant?.facebookURL} ><br/>Perfil de Facebook<br/>
+							</a>
 						}
+						
 						{postulant?.linkedinURL !== "" && 
-							<a href={postulant?.linkedinURL} >Linkedin</a>
+							<a href={postulant?.linkedinURL} ><br/>Perfil de Linkedin<br/></a>
 						}
+						
 						{postulant?.webURL !== "" && 
-							<a href={postulant?.webURL}>Web</a>
+							<a href={postulant?.webURL}><br/>Web personal<br/></a>
 						}
+						
 						{postulant?.youtubeURL !== "" && 
-							<a href={postulant?.youtubeURL}>Youtube</a>
+							<a href={postulant?.youtubeURL}><br/>Canal de Youtube<br/></a>
+							
 						}
 					</ul>
 				</aside>

@@ -441,6 +441,9 @@ ul.pagination li a.active {
 .coverHeaderFlex {
   display: flex;
   justify-content: space-between;
+  @include phone-max {
+    flex-direction: column;
+  }
 }
 .hide-caracter {
   width: 23px;
