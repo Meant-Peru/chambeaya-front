@@ -547,3 +547,8 @@ ul.pagination li a.active {
     display: block;
   }
 }
+.conteiner-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

@@ -41,7 +41,7 @@ export const PostCompany = () => {
             <p>No tienes postulaciones</p>
           </>
         ) : (
-          <aside>
+          <aside style={{paddingTop:"1em"}}>
             {listPost.map((p: PostJob) => (
               <article className="rowPost row" key={p._id}>
                 <aside className="title">

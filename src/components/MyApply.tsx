@@ -6,10 +6,10 @@ import negative from './../assets/negative.svg';
 import { usePostulant } from '../hooks/usePostulant';
 import { getSkill } from '../util/skill.service';
 
+import ButtonComponent from "./shared/atom/button";
 import { PostJobPostulant } from '../types/post_job';
 import { ModalComponent } from './ModalComponent';
 import { useUi } from '../hooks/useUi';
-import { TagComponent } from './shared/atom/tag';
 
 const customStyles = {
 	content: {
@@ -126,6 +126,13 @@ export const MyApply = () => {
 														
 														</li>
 													</ul>
+													<div className='conteiner-center'>
+													<ButtonComponent
+                    link={"/detail-post/" +p?._id }
+                    family="secondary"
+                    label="Ver detalles"
+                  />
+													</div>
 												</aside>
 												
 											</aside>
@@ -141,177 +148,3 @@ export const MyApply = () => {
 		</React.Fragment>
 	);
 };
-
-// export default function MyApply() {
-//     const [modalIsOpen, setIsOpen] = React.useState(false);
-//     const [listPostulations, setListPostulations] = useState([]);
-
-//     function openModal() {
-//         setIsOpen(true);
-//     }
-
-//     function afterOpenModal() {
-//         // references are now sync'd and can be accessed.
-//         //   subtitle.style.color = '#f00';
-//     }
-
-//     function closeModal() {
-//         setIsOpen(false);
-//     }
-//     return (
-//         <React.Fragment>
-//             <section>
-//                 <p>Historial</p>
-//                 <aside className="listCards">
-//                     <article className="cardHistory">
-//                         <div className="headCard">
-//                             <strong> UX Designer</strong>
-//                             <span>CSTI CORP</span>
-//                         </div>
-//                         <div className="contentCard">
-//                             <ul className="listCard">
-//                                 <li>
-//                                     <img src={check} alt="" /> <span>Skills</span>
-//                                 </li>
-//                                 <li>
-//                                     <img src={negative} alt="" /> <span>Presupuesto</span>
-//                                 </li>
-//                                 <li>
-//                                     <img src={check} alt="" /> <span>Experiencia</span>
-//                                 </li>
-//                             </ul>
-//                             <button className="btnComponent--textLink" onClick={openModal}>
-//                                 {' '}
-//                                 Ver Detalle{' '}
-//                             </button>
-
-//                             <Modal
-//                                 isOpen={modalIsOpen}
-//                                 onAfterOpen={afterOpenModal}
-//                                 onRequestClose={closeModal}
-//                                 style={customStyles}
-//                                 contentLabel="Example Modal"
-//                                 overlayClassName="Overlay"
-//                             >
-//                                 <button onClick={closeModal}>close</button>
-
-//                                 <h2>Soy un modal</h2>
-//                             </Modal>
-//                         </div>
-//                     </article>
-
-//                     <article className="cardHistory">
-//                         <div className="headCard">
-//                             <strong> UX Designer</strong>
-//                             <span>CSTI CORP</span>
-//                         </div>
-//                         <div className="contentCard">
-//                             <ul className="listCard">
-//                                 <li>
-//                                     <img src={check} alt="" /> <span>Skills</span>
-//                                 </li>
-//                                 <li>
-//                                     <img src={negative} alt="" /> <span>Presupuesto</span>
-//                                 </li>
-//                                 <li>
-//                                     <img src={check} alt="" /> <span>Experiencia</span>
-//                                 </li>
-//                             </ul>
-//                             <button className="btnComponent--textLink" onClick={openModal}>
-//                                 {' '}
-//                                 Ver Detalle{' '}
-//                             </button>
-
-//                             <Modal
-//                                 isOpen={modalIsOpen}
-//                                 onAfterOpen={afterOpenModal}
-//                                 onRequestClose={closeModal}
-//                                 style={customStyles}
-//                                 contentLabel="Example Modal"
-//                                 overlayClassName="Overlay"
-//                             >
-//                                 <button onClick={closeModal}>close</button>
-
-//                                 <h2>Soy un modal</h2>
-//                             </Modal>
-//                         </div>
-//                     </article>
-
-//                     <article className="cardHistory">
-//                         <div className="headCard">
-//                             <strong> UX Designer</strong>
-//                             <span>CSTI CORP</span>
-//                         </div>
-//                         <div className="contentCard">
-//                             <ul className="listCard">
-//                                 <li>
-//                                     <img src={check} alt="" /> <span>Skills</span>
-//                                 </li>
-//                                 <li>
-//                                     <img src={negative} alt="" /> <span>Presupuesto</span>
-//                                 </li>
-//                                 <li>
-//                                     <img src={check} alt="" /> <span>Experiencia</span>
-//                                 </li>
-//                             </ul>
-//                             <button className="btnComponent--textLink" onClick={openModal}>
-//                                 {' '}
-//                                 Ver Detalle{' '}
-//                             </button>
-
-//                             <Modal
-//                                 isOpen={modalIsOpen}
-//                                 onAfterOpen={afterOpenModal}
-//                                 onRequestClose={closeModal}
-//                                 style={customStyles}
-//                                 contentLabel="Example Modal"
-//                                 overlayClassName="Overlay"
-//                             >
-//                                 <button onClick={closeModal}>close</button>
-
-//                                 <h2>Soy un modal</h2>
-//                             </Modal>
-//                         </div>
-//                     </article>
-
-//                     <article className="cardHistory">
-//                         <div className="headCard">
-//                             <strong> UX Designer</strong>
-//                             <span>CSTI CORP</span>
-//                         </div>
-//                         <div className="contentCard">
-//                             <ul className="listCard">
-//                                 <li>
-//                                     <img src={check} alt="" /> <span>Skills</span>
-//                                 </li>
-//                                 <li>
-//                                     <img src={negative} alt="" /> <span>Presupuesto</span>
-//                                 </li>
-//                                 <li>
-//                                     <img src={check} alt="" /> <span>Experiencia</span>
-//                                 </li>
-//                             </ul>
-//                             <button className="btnComponent--textLink" onClick={openModal}>
-//                                 {' '}
-//                                 Ver Detalle{' '}
-//                             </button>
-
-//                             <Modal
-//                                 isOpen={modalIsOpen}
-//                                 onAfterOpen={afterOpenModal}
-//                                 onRequestClose={closeModal}
-//                                 style={customStyles}
-//                                 contentLabel="Example Modal"
-//                                 overlayClassName="Overlay"
-//                             >
-//                                 <button onClick={closeModal}>close</button>
-
-//                                 <h2>Soy un modal</h2>
-//                             </Modal>
-//                         </div>
-//                     </article>
-//                 </aside>
-//             </section>
-//         </React.Fragment>
-//     )
-// }
