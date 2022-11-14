@@ -27,9 +27,9 @@ export default function Footer() {
           </article>
           <article>
             <ul>
-              <li>Facebook</li>
-              <li>Linkedin</li>
-              <li>Instagram</li>
+              <li><a href="https://www.facebook.com/profile.php?id=100086839093196" target="_blank">Facebook</a></li>
+              <li><a href="https://www.linkedin.com/company/chambea-latam" target="_blank">Linkedin</a></li>
+              <li><a href="https://instagram.com/chambea.latam" target="_blank">Instagram</a></li>
               <li>
                 <a href="https://bit.ly/chambea-latam-terminos-condiciones" target="_blank">
                 Términos y condiciones
