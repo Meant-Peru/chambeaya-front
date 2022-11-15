@@ -12,4 +12,5 @@ export interface PostJob {
 	idSkills: string[];
 	location: string;
 	priority: number;
+	typePost:number
 }
