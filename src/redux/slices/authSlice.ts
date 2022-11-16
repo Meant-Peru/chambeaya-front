@@ -15,6 +15,7 @@ const userNull: UserGenerico = {
 	rol: '',
 	id: '',
 	dataUser: {},
+	avatar:''
 };
 const persistedUser = getLocalStorage(USER);
 

@@ -20,6 +20,7 @@ export interface UserGenerico {
 	dataUser: {};
 	rol: string;
 	id?: string;
+	avatar:string
 }
 
 export interface CompanyDetailInterface {

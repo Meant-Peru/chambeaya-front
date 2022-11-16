@@ -9,11 +9,9 @@ import Autocomplete from '@mui/material/Autocomplete';
 import CircularProgress from '@mui/material/CircularProgress';
 import TextField from '@mui/material/TextField';
 
-
 import { Txtfield, DropdownMenu, DropdownItem, TxtArea, BtnPrimary } from './../components/shared/styled';
 import 'react-tabs/style/react-tabs.css';
 import './../sass/pages/_myAccount.scss';
-//import './../sass/pages/_addJob.scss';
 import Footer from '../components/shared/footer';
 import ButtonComponent from '../components/shared/atom/button';
 

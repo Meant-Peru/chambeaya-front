@@ -3,10 +3,9 @@ import Footer from "../components/shared/footer";
 import Header from "../components/shared/header";
 import "./../sass/pages/_detailProject.scss";
 import { KeyboardReturn } from "@material-ui/icons";
-import time from "./../assets/time.svg";
 import { DropzoneDialog } from "material-ui-dropzone";
 import toast, { Toaster } from "react-hot-toast";
-import avance from "./../assets/avance.jpeg";
+
 
 import yape from "./../assets/yape.png";
 import plin from "./../assets/plin.png";
