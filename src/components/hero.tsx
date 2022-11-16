@@ -11,7 +11,7 @@ import { getCategory, getPosition } from "../util/publication.service";
 export default function Hero() {
   const [categorys, setCategorys] = useState<Category[]>([]);
   const [positions, setPositions] = useState<Position[]>([]);
-  
+  const [idCategorySelected, setIdCategorySelected] = useState("");
   const [position, setPosition] = React.useState({
 		idCategory: '',
 		namePosition: '',
@@ -26,12 +26,13 @@ export default function Hero() {
 
   const handleCategory = async (e: any) => {
     const value = e.target.value;
-    setPositions([]);
-    if (value !== "0") {
-      setPosition({ ...position, idCategory: value });
-      const p = await getPosition({ idCategory: value });
-      setPositions(p.data);
-    }
+    setIdCategorySelected(value);
+   // setPositions([]);
+   // if (value !== "0") {
+    //  setPosition({ ...position, idCategory: value });
+   //   const p = await getPosition({ idCategory: value });
+    //  setPositions(p.data);
+   // }
   };
 
   useEffect(() => {
@@ -87,7 +88,7 @@ export default function Hero() {
 						</DropdownMenu>
 
         <Txtfield placeholder="Ubicación" />
-        <ButtonComponent family="primary" label="FILTRAR" />
+        <ButtonComponent family="primary" label="FILTRAR" link={"/searchjob/" + idCategorySelected }/>
       </aside>
     </React.Fragment>
   );
