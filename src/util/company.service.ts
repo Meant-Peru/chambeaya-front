@@ -80,3 +80,12 @@ export const uploadProjectTimeline = async (payload: any) => {
 		return false;
 	}
 };
+export const uploadCompanyLogo = async (payload: any) => {
+	try {
+		const token = await getLocalStorage(SESSION);
+		const { data } = await axios.post(`${URI}/user/uploadImageProfile`, payload, { headers: { token } });
+		return data.status;
+	} catch (error) {
+		return false;
+	}
+};

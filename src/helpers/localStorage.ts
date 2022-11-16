@@ -5,6 +5,7 @@ const userNull: UserGenerico = {
 	rol: '',
 	id: '',
 	dataUser: {},
+	avatar:''
 };
 
 export const getLocalStorage = (localItem: string) => {

@@ -14,7 +14,7 @@ export const useAuth = () => {
 
 	const startLogin = async (user: any) => {
 		const response = await auth(user);
-		console.log({ response });
+		console.log('start login',response);
 		switch (response.data.message) {
 			case LOGIN_SUCCESS:
 				const { status, user: userGenerico } = await validateToken(response.data.data.token);
@@ -49,7 +49,7 @@ export const useAuth = () => {
 		try {
 			const { data } = await GetUser(token);
 			console.log('data validateToken', data);
-			const user: UserGenerico = { dataUser: data.dataUser, rol: data.rol };
+			const user: UserGenerico = { dataUser: data.dataUser, rol: data.rol, avatar :data.avatar};
 			const paylod = { token: token, user };
 			dispatch(signIn(paylod));
 			saveLocalStorage(SESSION, token);
@@ -72,7 +72,7 @@ export const useAuth = () => {
 		if (resp.message === UPDATE_SUCCESS) {
 			const { data} = resp;
 			console.log(data[0]);
-			const user: UserGenerico = { dataUser: data[0].dataUser, rol: data[0].idRol, id: data[0]._id };
+			const user: UserGenerico = { dataUser: data[0].dataUser, rol: data[0].idRol, id: data[0]._id, avatar:data[0].avatar };
 			console.log(user);
 			saveLocalStorage(USER, user);
 			alert('Se actualizó correctamente...');
