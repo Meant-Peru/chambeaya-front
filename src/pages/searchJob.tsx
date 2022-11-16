@@ -13,8 +13,8 @@ import "./../sass/components/_hero.scss";
 
 import { Category } from "../interfaces/Category";
 import { Position } from "../interfaces/Position";
-
-import { getCategory, getPosition } from "../util/publication.service";
+import { useParams } from "react-router-dom";
+import { getCategory } from "../util/publication.service";
 
 //LIST-POST
 import "./../sass/components/_listPost.scss";
@@ -23,6 +23,7 @@ import { Backdrop, CircularProgress } from "@material-ui/core";
 import { Pagination } from "../components/Pagination";
 
 export default function SearchJob() {
+  const { idCategory } = useParams();
   const [categorys, setCategorys] = useState<Category[]>([]);
   const [positions, setPositions] = useState<Position[]>([]);
   let [newPost,setNewPost] = useState([]);
@@ -49,6 +50,18 @@ export default function SearchJob() {
       filterPost(value, position);
     }
   };
+  const handleCategoryInitial = async (id) => {
+    console.log('id',id);
+    setCategory(id);
+    setPositions([]);
+
+    if (id !== "0") {
+      // setPosition({ ...position, idCategory: value });
+      //const p = await getPosition({ idCategory: value });
+      //setPositions(p.data);
+      filterPost(id, position);
+    }
+  };
 
   const filterPost = async (idC, idP) => {
     console.log(idC);
@@ -67,11 +80,7 @@ export default function SearchJob() {
     }
   };
 
-  useEffect(() => {
-    (async () => {
-      await getAllCategories();
-    })();
-  }, []);
+ 
 
   //LIST-POST
   let {postJobsState: { loading, postJobs },} = usePostJob();
@@ -82,6 +91,10 @@ export default function SearchJob() {
     if (postJobs.length > 0) {
       console.log("postJobs", postJobs);
       setLoadingPost(true);
+
+      getAllCategories();
+      handleCategoryInitial(idCategory)
+
     }
   }, [postJobs]);
 
@@ -92,7 +105,7 @@ export default function SearchJob() {
         <h1>Buscar empleo</h1>
       </section>
       <aside className="filterSection">
-        <DropdownMenu name="category" onChange={handleCategory}>
+        <DropdownMenu name="category" onChange={handleCategory} value={category}>
           <DropdownItem value="_none">Seleccionar Categoría</DropdownItem>
 
           {categorys.map((category: Category) => (
@@ -140,7 +153,9 @@ export default function SearchJob() {
 
 
           ) : (
-            <></>
+            <> 
+            
+            </>
           )}
 
          

@@ -35,7 +35,7 @@ export const AppRouter = () => {
 				<Route path="/" element={<Home />} />
 				<Route index element={<Home />} />
 				<Route path="register" element={<Register />} />
-				<Route path="searchjob" element={<SearchJob />} />
+				<Route path="searchjob/:idCategory" element={<SearchJob />} />
 				<Route path="login" element={<Login />} />
 				<Route path="politicas-privacidad" element={<Politicas />} />
 				<Route path="myaccount/:id" element={<MyAccount />} />
