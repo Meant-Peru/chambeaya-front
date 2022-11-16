@@ -182,7 +182,7 @@ export default function MyAccount() {
                         Actualizar logo
                       </BtnPrimary>
                       <img
-                        src={"https://api.chambea-ya.com/public/" + avatar}
+                        src={"https://api.chambea-latam.com/public/" + avatar}
                         alt=""
                       />
                     </div>
