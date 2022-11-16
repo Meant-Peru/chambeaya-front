@@ -50,6 +50,7 @@ export default function AddJob() {
 		funtionsPost: '',
 		location: '',
 		priority: 1,
+		typePost: 1
 	});
 
 	const [positionSelected, setPositionSelected] = React.useState<any>({
@@ -258,6 +259,7 @@ export default function AddJob() {
 				location: form.location,
 				priority: form.priority,
 				idSkills: [...skillSelected.map((i) => i._id)],
+				typePost: form.typePost
 			};
 			console.log({ sendData });
 			const resp = await postJobCompany(sendData);
@@ -465,14 +467,7 @@ export default function AddJob() {
 											<TagComponent  key={e._id} tag={e} eventD={(e: any) => removeItemSkill(e)} />
 										))}
 									</article>
-									{/* <DropdownMenu onChange={addSkill}>
-										<DropdownItem value={'0'}>Agregar Skills</DropdownItem>
-										{skills.map((k: Skill) => (
-											<DropdownItem key={k.id} value={k.id}>
-												{k.nameSkill}
-											</DropdownItem>
-										))}
-									</DropdownMenu> */}
+								
 								</aside>
 							</aside>
 
@@ -513,7 +508,7 @@ export default function AddJob() {
 							<aside className="FormsRow">
 								<aside className="FormGroup mt-3">
 									<p>¿Qué tipo de publicación deseas adquirir?</p>
-									<DropdownMenu onChange={handleEventFrom} name="modality">
+									<DropdownMenu onChange={handleEventFrom} name="typePost">
 										<DropdownItem value={'_none'}>Elegir tipo de publicación</DropdownItem>
 										<DropdownItem value={'1'}>Publicación gratuita</DropdownItem>
 										<DropdownItem value={'2'}>Publicación simple</DropdownItem>

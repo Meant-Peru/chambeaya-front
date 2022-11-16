@@ -25,7 +25,7 @@ export const DetailUser = () => {
     setLoadingDetailPostulant(false);
   };
   const goBack = () => {
-    navigate("/dashboard");
+    navigate(-1);
   };
   useEffect(() => {
     getDataById();
@@ -45,6 +45,10 @@ export const DetailUser = () => {
       <Header />
       <Toaster position="top-right" reverseOrder={false} />
       <section className="detailProject">
+      <div className="containerBack">
+              <KeyboardReturn />
+              <p onClick={() => goBack()}>Regresar</p>
+            </div>
         {rol === "1" ? (
           <div>
             <p>Postulante</p>
@@ -55,10 +59,7 @@ export const DetailUser = () => {
           </div>
         ) : (
           <div>
-            <div className="containerBack">
-              <KeyboardReturn />
-              <p onClick={() => goBack()}>Regresar</p>
-            </div>
+           
             <div>
               <p>Empresa</p>
             <br />
@@ -98,24 +99,39 @@ export const DetailUser = () => {
           <h4 className="mb-2">Redes Sociales</h4>
           <article className="mmlist mb-1 boxContainer ">
             <p>
-              <strong>Facebook: </strong>
+              <strong>Facebook: </strong> </p>
+              <p>
+              <a href= {detailUser?.facebookURL} target="_blank">
               {detailUser?.facebookURL}
-            </p>
+              </a>
+              </p>
             <br />
             <p>
-              <strong>Linkedin: </strong>
+              <strong>Linkedin: </strong> </p>
+              <p>
+              <a href={detailUser?.linkedinURL} target="_blank">
               {detailUser?.linkedinURL}
-            </p>
+              </a>
+              </p>
+              
+           
             <br />
             <p>
-              <strong>Web: </strong>
+              <strong>Web: </strong> </p>
+            <p>
+              <a href={detailUser?.webURL} target="_blank">
               {detailUser?.webURL}
-            </p>
+              </a>
+            </p> 
             <br />
             <p>
-              <strong>Youtube: </strong>
+              <strong>Youtube: </strong> </p>
+            <p><a href={detailUser?.youtubeURL} target="_blank">
               {detailUser?.youtubeURL}
-            </p>
+              </a>
+              </p>  
+              
+           
           </article>
         </aside>
       </section>

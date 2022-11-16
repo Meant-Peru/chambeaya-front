@@ -5,9 +5,13 @@ import { useSales } from "../hooks/useSales";
 import { RootState } from "../redux/store/store";
 import ButtonComponent from "./shared/atom/button";
 import { TagComponent } from "./shared/atom/tag";
-import { BtnPrimary, BtnSecondary } from "./shared/styled";
+import { BtnPrimary, BtnSecondary ,BtnMobile } from "./shared/styled";
 import { Backdrop, CircularProgress } from "@material-ui/core";
+import {
+  Loupe
+} from "@material-ui/icons";
 import { deleteData } from "../util/delete.service";
+import "./../sass/pages/_postJob.scss";
 
 export default function ListCompany() {
   const navigate = useNavigate();
@@ -43,17 +47,20 @@ export default function ListCompany() {
         .
         <CircularProgress color="inherit" />
       </Backdrop>
-      <section className="sectionAccount">
-        <aside className="mb-5">
-          <article className="headSection dfr jc-sb">
+      <section className="">
+        <aside className="usersTable">
+          <article className="titleTable">
             <h2>Cartera de negocios</h2>
-            <BtnPrimary onClick={handleRedirect}>
-              CREAR NUEVA CARTERA
+            <BtnMobile onClick={handleRedirect}>
+              <Loupe />
+            </BtnMobile>
+            <BtnPrimary  className="notMobile" onClick={handleRedirect}>
+             Nueva cartera
             </BtnPrimary>
           </article>
-          <p>Tienes {companies?.length ?? 0} compañias en tu cartera</p>
+         
         </aside>
-
+        <p>Tienes {companies?.length ?? 0} compañias en tu cartera</p>
         <div>
           {companies.map((company) => (
             <aside key={company._id}>
@@ -71,6 +78,7 @@ export default function ListCompany() {
                     family="secondary"
                     label="Ver detalles"
                   />
+                  <br/>
                   <BtnSecondary onClick={() => deleteCompany(company)}>Eliminar</BtnSecondary>
                 </aside>
               </article>

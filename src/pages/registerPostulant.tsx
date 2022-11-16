@@ -277,6 +277,7 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
                       <Txtfield
                         className="ml-5 diferent-text"
                         placeholder="Nro de documento"
+                        maxLength={15}
                         name="documentNumber"
                         onChange={handleForm}
                         value={form.documentNumber}

@@ -53,6 +53,9 @@ export const AppRouter = () => {
 
 				<Route path="detail-post-company/:id" element={<DetailPostCompanys />} />
 				<Route path="list-posiciones/:idCategory" element={<ListPosiciones />} />
+				{
+					/*DetailPostPostulant - Compañia: perfil del postulante que aplicó a su oferta, muestra su % de similitud */
+				}
 				<Route path="detail-post-postulant/:idJob/:idP" element={<DetailPostPostulant />} />
 
 				<Route path="detail-user/:idPostulant" element={<DetailUser />} />
