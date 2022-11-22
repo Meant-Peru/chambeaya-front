@@ -88,10 +88,10 @@ export default function Login() {
 			<section className="LoginPage pt-2">
 				<h2>Ingresar a la plataforma</h2>
 				<aside className="FormGroup mt-5">
-					<Txtfield onChange={handleEvent} name="email" className="mb-3" placeholder="Usuario" />
+					<Txtfield onChange={handleEvent} name="email" className="mb-3" placeholder="Usuario" maxLength={25}/>
 					<Span className="error-required-field-description"> * Por favor ingresa tu usuario. </Span>
 					<Span className="error-required-field-description">* Por favor ingresa el formato correcto. </Span>
-					<Txtfield onChange={handleEvent} name="password" className="mb-2" type={'password'} placeholder="Contraseña" />
+					<Txtfield onChange={handleEvent} name="password" className="mb-2" type={'password'} placeholder="Contraseña" maxLength={15}/>
 					<Span className="error-required-field-description"> * Por favor ingresa tu contraseña. </Span>
 				</aside>
 				<aside className="FormGroup">
