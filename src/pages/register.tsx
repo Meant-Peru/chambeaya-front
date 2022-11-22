@@ -157,7 +157,7 @@ export default function Register() {
 
 					<div className="d-flex flex-row">
 						<aside className="FormGroup">
-							<Txtfield type={'email'} onChange={handleEvent} name="email" className="mb-2" placeholder="Correo electrónico" required/>
+							<Txtfield type={'email'} onChange={handleEvent} name="email" className="mb-2" placeholder="Correo electrónico" required maxLength={25}/>
 							<Span className="error-required-field-description">* Por favor ingresa tu correo. </Span>
 							<Span className="error-required-field-description">* Por favor ingresa el formato correcto. </Span>
 						</aside>
@@ -169,11 +169,11 @@ export default function Register() {
 
 					<div className="d-flex flex-row">
 						<aside className="FormGroup">
-							<Txtfield className="mb-2" onChange={handleEvent} name="password" type={'password'} placeholder="Clave" />
+							<Txtfield className="mb-2" onChange={handleEvent} name="password" type={'password'} placeholder="Clave" maxLength={15}/>
 							<Span className="error-required-field-description">* Por favor ingresa la clave. </Span>
 						</aside>
 						<aside className="FormGroup">
-							<Txtfield className="mb-2" onChange={handleEvent} name="confirmPassword" type={'password'} placeholder="Repetir clave" />
+							<Txtfield className="mb-2" onChange={handleEvent} name="confirmPassword" type={'password'} placeholder="Repetir clave" maxLength={15}/>
 							<Span className="error-required-field-description">* La clave es diferente. </Span>
 						</aside>
 					</div>
