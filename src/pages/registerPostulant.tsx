@@ -470,7 +470,7 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
                         Object.entries(form.formErrors)
                           .map(([key, val]) => val)
                           .every((element) => element === false) &&
-                        Object.entries(form.formErrors).length == 8
+                        Object.entries(form.formErrors).length == 10
                           ? "test"
                           : "disabled"
                       }`}
