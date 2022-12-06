@@ -1,0 +1,30 @@
+Pasos para el despliegue del ambiente local
+
+Seleccionar code y copiar el enlace para poder clonarlo.
+
+
+Dirigirse a la carpeta donde se alojará el proyecto en caso downloads y copiar el enlace con git clone.
+
+
+
+Dirigirse a la carpeta creada y colocar npm install.
+
+
+Abrir el proyecto en un editor de código como Webstorm, dirigirse a la carpeta src -> environment -> environment.ts, comentar la segunda línea y descomentar la cuarta, tal como se muestra en la imagen.
+
+
+
+
+
+
+
+
+
+Realizar los cambios que se deseen, para mostrarlos deberás entrar a la carpeta por tu terminal y colocar npm install.
+
+
+
+Los cambios se verán en tu localhost.
+
+
+
