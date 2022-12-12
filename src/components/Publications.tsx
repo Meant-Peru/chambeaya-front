@@ -38,7 +38,7 @@ export const Publications = () => {
           <article className="headerRow">
             <aside className="headerItem">Nombre</aside>
             <aside className="headerItem">Empresa</aside>
-            <aside className="headerItem">Accionees</aside>
+            <aside className="headerItem">Acciones</aside>
           </article>
           {postJobs.map((e: any) => (
             <article className="contentRow" key={e._id}>
