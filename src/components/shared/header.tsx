@@ -16,7 +16,7 @@ const navNoUser = {
 const navUser = {
 	brand: { name: 'ChambeaYa.', to: '/' },
 	links: [
-		{ name: 'Buscar un empleo', to: '/searchjob' },
+		{ name: 'Buscar un empleo', to: '/searchjob/{idCategorySelected}' },
 		{ name: 'Mi perfil', to: '/myaccount/0' },
 	],
 };
@@ -24,14 +24,14 @@ const navUser = {
 const navSales = {
 	brand: { name: 'ChambeaYa.', to: '/' },
 	links: [
-		{ name: 'Buscar un empleo', to: '/searchjob' },
+		{ name: 'Buscar un empleo', to: '/searchjob/{idCategorySelected}' },
 		{ name: 'Mi perfil', to: '/account-sales' },
 	],
 };
 const navAdmin = {
 	brand: { name: 'ChambeaYa.', to: '/' },
 	links: [
-		{ name: 'Buscar un empleo', to: '/searchjob' },
+		{ name: 'Buscar un empleo', to: '/searchjob/{idCategorySelected}' },
 		{ name: 'Mi perfil', to: '/dashboard' },
 	],
 };
