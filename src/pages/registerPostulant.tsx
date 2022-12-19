@@ -462,19 +462,11 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
                     </aside>
                   </article>
                   <article className="footerSection">
-                    {/* <BtnPrimary family="submit"> Registrar </BtnPrimary> */}
+                 
                     <BtnPrimary
                       disabled={loading}
                       onClick={handleRegister2}
-                      className={`button-primary ${
-                        Object.entries(form.formErrors)
-                          .map(([key, val]) => val)
-                          .every((element) => element === false) &&
-                        Object.entries(form.formErrors).length == 10
-                          ? "test"
-                          : "disabled"
-                      }`}
-                    >
+                      className={`button-primary`}>
                       Registrar
                     </BtnPrimary>
                   </article>
