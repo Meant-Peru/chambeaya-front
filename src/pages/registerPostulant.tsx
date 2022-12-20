@@ -185,12 +185,6 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
 
     console.log('Crear user',{ dataSend });
 
-    if (
-      Object.entries(form.formErrors)
-        .map(([key, val]) => val)
-        .every((element) => element === false) &&
-      Object.entries(form.formErrors).length == 10
-    ) {
       const response = await register(dataSend);
 
       switch (response.data.message) {
@@ -210,7 +204,8 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
           toast.error("Error en el servidor.");
           break;
       }
-    }
+
+  
   };
 
   const selectItemSkill = (skill: SkillSelect) => {
@@ -435,9 +430,7 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
                         name="project"
                         value={form.project}
                       />
-                      <Span className="error-required-field-description">
-                        * Por favor ingresa tu proyecto.{" "}
-                      </Span>
+                      
                       <Txtfield
                         className=""
                         placeholder="Tiempo de trabajo"
@@ -445,9 +438,7 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
                         name="timeProject"
                         value={form.timeProject}
                       />
-                      <Span className="error-required-field-description">
-                        * Por favor ingresa tu tiempo de trabajo.{" "}
-                      </Span>
+                      
                     </aside>
                     <aside className="FormGroup">
                       <Txtfield
@@ -456,9 +447,7 @@ if (e.target.name === "documentType" && e.target.value === "_none") {
                         name="functions"
                         value={form.functions}
                       />
-                      <Span className="error-required-field-description">
-                        * Por favor ingresa las funciones que realizaste.{" "}
-                      </Span>
+                     
                     </aside>
                   </article>
                   <article className="footerSection">
